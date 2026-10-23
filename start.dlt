@@ -1,0 +1,57 @@
+@echo off
+TITLE DleafTech CRM - Full Stack Launcher (.dlt)
+color 0B
+
+echo =====================================================================
+echo           DLEAFTECH ENTERPRISE CRM - LOCAL LAUNCHER (.dlt)
+echo      Full Stack: React Frontend (3000) + Node.js Backend (5000)
+echo =====================================================================
+echo.
+
+echo [1/4] Checking Node.js installation...
+node -v
+if %ERRORLEVEL% NEQ 0 (
+    echo [ERROR] Node.js is not installed or not in your PATH!
+    echo Please install Node.js from https://nodejs.org/
+    pause
+    exit /b
+)
+
+echo.
+echo [2/4] Initializing Backend (Node.js + Express + PostgreSQL)...
+cd backend
+if not exist node_modules (
+    echo Installing backend dependencies...
+    call npm install --ignore-scripts --legacy-peer-deps
+) else (
+    echo Backend packages already installed.
+)
+cd ..
+
+echo.
+echo [3/4] Initializing Frontend (React 19 + Vite + Tailwind CSS)...
+cd frontend
+if not exist node_modules (
+    echo Installing frontend dependencies...
+    call npm install --legacy-peer-deps
+) else (
+    echo Frontend packages already installed.
+)
+cd ..
+
+echo.
+echo =====================================================================
+echo [4/4] Launching DleafTech CRM!
+echo.
+echo * Backend API:  http://localhost:5000/api/health
+echo * Frontend UI:  http://localhost:3000
+echo =====================================================================
+echo.
+
+start "DleafTech CRM - Backend (Port 5000)" cmd /k "cd backend && npm run dev"
+timeout /t 2 >nul
+start "DleafTech CRM - Frontend (Port 3000)" cmd /k "cd frontend && npm run dev"
+
+echo CRM is running! Open http://localhost:3000 in your browser.
+echo.
+pause

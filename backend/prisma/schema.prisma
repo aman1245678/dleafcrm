@@ -1,0 +1,329 @@
+// DleafTech CRM - Prisma Schema for PostgreSQL
+// Enterprise Data Model matching Zoho CRM Functional Specification
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// -------------------------------------------------------------
+// 1. User & Multi-Tenant Organization
+// -------------------------------------------------------------
+model Organization {
+  id          String   @id @default(uuid())
+  name        String
+  domain      String?
+  currency    String   @default("INR")
+  timezone    String   @default("Asia/Kolkata")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  users       User[]
+  deals       Deal[]
+  leads       Lead[]
+  accounts    Account[]
+  contacts    Contact[]
+}
+
+model User {
+  id             String        @id @default(uuid())
+  email          String        @unique
+  name           String
+  role           String        @default("Sales Representative") // Admin, Manager, Sales Representative
+  avatar         String?
+  organizationId String
+  organization   Organization  @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  deals          Deal[]
+  leads          Lead[]
+  tasks          Task[]
+}
+
+// -------------------------------------------------------------
+// 2. Sales Pipeline: Leads, Accounts, Contacts & Deals
+// -------------------------------------------------------------
+model Lead {
+  id                 String    @id @default(uuid())
+  firstName          String
+  lastName           String
+  company            String
+  title              String?
+  email              String
+  secondaryEmail     String?
+  phone              String
+  mobile             String?
+  leadSource         String    @default("Web Download")
+  leadStatus         String    @default("Not Contacted")
+  rating             String    @default("Active")
+  industry           String    @default("Technology")
+  annualRevenue      Float?
+  employees          Int?
+  score              Int       @default(50)
+  owner              String    @default("Aman Kumar")
+  city               String?
+  state              String?
+  country            String?   @default("India")
+  postalCode         String?
+  website            String?
+  tags               String[]  @default([])
+  isConverted        Boolean   @default(false)
+  convertedAccountId String?
+  convertedContactId String?
+  convertedDealId    String?
+  notes              String?
+  organizationId     String?
+  organization       Organization? @relation(fields: [organizationId], references: [id])
+  userId             String?
+  user               User?         @relation(fields: [userId], references: [id])
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model Account {
+  id             String    @id @default(uuid())
+  name           String
+  accountNumber  String?
+  phone          String
+  website        String?
+  industry       String    @default("Technology")
+  accountType    String    @default("Customer")
+  annualRevenue  Float     @default(1000000)
+  employees      Int       @default(25)
+  rating         String    @default("Hot")
+  owner          String    @default("Aman Kumar")
+  billingCity    String?
+  billingCountry String?   @default("India")
+  shippingCity   String?
+  shippingCountry String?  @default("India")
+  organizationId String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  contacts       Contact[]
+  deals          Deal[]
+}
+
+model Contact {
+  id             String    @id @default(uuid())
+  firstName      String
+  lastName       String
+  email          String
+  phone          String
+  mobile         String?
+  title          String?
+  department     String?
+  owner          String    @default("Aman Kumar")
+  accountId      String?
+  account        Account?  @relation(fields: [accountId], references: [id])
+  organizationId String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deals          Deal[]
+}
+
+model Deal {
+  id                     String    @id @default(uuid())
+  name                   String
+  amount                 Float
+  stage                  String    @default("Qualification") // Qualification, Needs Analysis, Value Proposition, etc.
+  probability            Int       @default(10)
+  expectedRevenue        Float     @default(0)
+  closingDate            String
+  owner                  String    @default("Aman Kumar")
+  leadSource             String    @default("Partner Referral")
+  campaignSource         String?
+  nextStep               String?
+  reasonForLoss          String?
+  type                   String    @default("New Business")
+  tags                   String[]  @default([])
+  accountId              String?
+  account                Account?  @relation(fields: [accountId], references: [id])
+  contactId              String?
+  contact                Contact?  @relation(fields: [contactId], references: [id])
+  userId                 String?
+  user                   User?     @relation(fields: [userId], references: [id])
+  organizationId         String?
+  organization           Organization? @relation(fields: [organizationId], references: [id])
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+  quotes                 Quote[]
+}
+
+// -------------------------------------------------------------
+// 3. Activities: Tasks, Meetings & Calls
+// -------------------------------------------------------------
+model Task {
+  id                String    @id @default(uuid())
+  subject           String
+  dueDate           String
+  priority          String    @default("Normal") // High, Normal, Low
+  status            String    @default("Not Started") // Not Started, In Progress, Completed, Deferred
+  relatedModule     String?   // Deals, Leads, Contacts, Accounts
+  relatedRecordId   String?
+  relatedRecordName String?
+  owner             String    @default("Aman Kumar")
+  description       String?
+  reminder          Boolean   @default(false)
+  userId            String?
+  user              User?     @relation(fields: [userId], references: [id])
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model Meeting {
+  id                String    @id @default(uuid())
+  title             String
+  fromTime          String
+  toTime            String
+  location          String?
+  host              String    @default("Aman Kumar")
+  participants      String[]  @default([])
+  relatedRecordName String?
+  status            String    @default("Scheduled")
+  createdAt         DateTime  @default(now())
+}
+
+model Call {
+  id                String    @id @default(uuid())
+  subject           String
+  callType          String    @default("Outbound") // Inbound, Outbound
+  callPurpose       String    @default("Prospecting")
+  relatedRecordName String?
+  durationSeconds   Int       @default(300)
+  callStartTime     String
+  callResult        String    @default("Connected")
+  owner             String    @default("Aman Kumar")
+  notes             String?
+  createdAt         DateTime  @default(now())
+}
+
+// -------------------------------------------------------------
+// 4. Inventory, Quotes & Billing
+// -------------------------------------------------------------
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  productCode String   @unique
+  category    String   @default("Software")
+  unitPrice   Float
+  taxPercent  Float    @default(18.0)
+  inStock     Int      @default(100)
+  status      String   @default("Active")
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Quote {
+  id            String      @id @default(uuid())
+  quoteNumber   String      @unique
+  subject       String
+  accountName   String
+  contactName   String
+  quoteStage    String      @default("Draft")
+  validUntil    String
+  subTotal      Float       @default(0)
+  discountTotal Float       @default(0)
+  taxTotal      Float       @default(0)
+  grandTotal    Float       @default(0)
+  dealId        String?
+  deal          Deal?       @relation(fields: [dealId], references: [id])
+  owner         String      @default("Aman Kumar")
+  items         QuoteItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model QuoteItem {
+  id              String   @id @default(uuid())
+  quoteId         String
+  quote           Quote    @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  productId       String
+  productName     String
+  quantity        Int      @default(1)
+  listPrice       Float
+  discountPercent Float    @default(0)
+  total           Float
+}
+
+model Invoice {
+  id            String        @id @default(uuid())
+  invoiceNumber String        @unique
+  subject       String
+  accountName   String
+  contactName   String
+  dealName      String?
+  status        String        @default("Sent") // Draft, Sent, Paid, Overdue
+  invoiceDate   String
+  dueDate       String
+  subTotal      Float
+  taxAmount     Float
+  grandTotal    Float
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+// -------------------------------------------------------------
+// 5. Support, Communication & Automations
+// -------------------------------------------------------------
+model Case {
+  id          String   @id @default(uuid())
+  caseNumber  String   @unique
+  subject     String
+  accountName String
+  contactName String
+  priority    String   @default("High")
+  status      String   @default("New")
+  caseOrigin  String   @default("Email")
+  productName String?
+  owner       String   @default("Aman Kumar")
+  description String
+  solution    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model EmailMessage {
+  id         String   @id @default(uuid())
+  threadId   String
+  category   String   @default("Deals") // Deals, Contacts/Leads, Colleagues, Others
+  from       String
+  fromName   String
+  to         String
+  subject    String
+  body       String
+  snippet    String
+  timestamp  String
+  isRead     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+model WorkflowRule {
+  id                String   @id @default(uuid())
+  name              String
+  module            String   // Deals, Leads, Contacts, Invoices
+  triggerType       String   // On Create, On Edit, Time Based
+  conditionField    String
+  conditionOperator String
+  conditionValue    String
+  actionType        String
+  actionDetails     String
+  isActive          Boolean  @default(true)
+  createdAt         DateTime @default(now())
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  action     String   // CREATE, UPDATE, DELETE, CONVERT, etc.
+  module     String
+  recordName String
+  user       String   @default("Aman Kumar")
+  timestamp  String
+  details    String
+  createdAt  DateTime @default(now())
+}

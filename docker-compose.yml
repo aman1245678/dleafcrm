@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL Database (Matching your whatsapp database)
+  postgres:
+    image: postgres:16-alpine
+    container_name: dleaftech_crm_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: aman
+      POSTGRES_DB: whatsapp
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # 2. Node.js Backend Server
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: dleaftech_crm_backend
+    restart: always
+    ports:
+      - '5000:5000'
+    environment:
+      PORT: 5000
+      DATABASE_URL: 'postgresql://postgres:aman@postgres:5432/whatsapp?schema=public'
+      CLIENT_URL: 'http://localhost:3000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

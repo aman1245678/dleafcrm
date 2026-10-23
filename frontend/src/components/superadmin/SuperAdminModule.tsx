@@ -1,0 +1,418 @@
+import React, { useState } from 'react';
+import {
+  Shield,
+  Building2,
+  Users,
+  CreditCard,
+  TrendingUp,
+  Layers,
+  Key,
+  ExternalLink,
+  CheckCircle2,
+  AlertTriangle,
+  RefreshCw,
+  Search,
+  Filter,
+  Sparkles,
+  ArrowRight
+} from 'lucide-react';
+
+interface ClientTenant {
+  id: number;
+  company_id: string;
+  name: string;
+  email: string;
+  phone: string;
+  plan_key: 'trial' | 'starter' | 'growth' | 'enterprise';
+  plan_status: 'active' | 'expired' | 'suspended';
+  agent_limit: number;
+  contact_limit: number;
+  deal_limit: number;
+  user_count: number;
+  expires_at: string;
+}
+
+const INITIAL_CLIENTS: ClientTenant[] = [
+  {
+    id: 1,
+    company_id: 'comp-Dleaf',
+    name: 'Dleaf Global HQ (Primary)',
+    email: 'aman.kumar@Dleaf.com',
+    phone: '+91 98765 43210',
+    plan_key: 'enterprise',
+    plan_status: 'active',
+    agent_limit: 50,
+    contact_limit: 500000,
+    deal_limit: 100000,
+    user_count: 14,
+    expires_at: '2028-12-31',
+  },
+  {
+    id: 2,
+    company_id: 'comp-fintech-hub',
+    name: 'FinTech Growth Labs',
+    email: 'finance@fintechhub.in',
+    phone: '+91 99881 22334',
+    plan_key: 'growth',
+    plan_status: 'active',
+    agent_limit: 8,
+    contact_limit: 20000,
+    deal_limit: 2500,
+    user_count: 6,
+    expires_at: '2026-11-15',
+  },
+  {
+    id: 3,
+    company_id: 'comp-rapid-scale',
+    name: 'RapidScale Retail Solutions',
+    email: 'ops@rapidscale.co',
+    phone: '+91 91234 56789',
+    plan_key: 'starter',
+    plan_status: 'active',
+    agent_limit: 3,
+    contact_limit: 2500,
+    deal_limit: 250,
+    user_count: 2,
+    expires_at: '2026-10-30',
+  },
+  {
+    id: 4,
+    company_id: 'comp-zenith-corp',
+    name: 'Zenith Logistics Hub',
+    email: 'ceo@zenithlog.com',
+    phone: '+91 98112 34455',
+    plan_key: 'trial',
+    plan_status: 'active',
+    agent_limit: 2,
+    contact_limit: 500,
+    deal_limit: 50,
+    user_count: 1,
+    expires_at: '2026-10-22',
+  },
+];
+
+export const SuperAdminModule: React.FC = () => {
+  const [clients, setClients] = useState<ClientTenant[]>(INITIAL_CLIENTS);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState<'tenants' | 'plans' | 'impersonate'>('tenants');
+  const [impersonateMessage, setImpersonateMessage] = useState<string | null>(null);
+
+  // Plan pricing constants (matching backend & NexwAPI)
+  const planCosts: Record<string, number> = {
+    trial: 0,
+    starter: 1499,
+    growth: 3999,
+    enterprise: 9999,
+  };
+
+  const totalMRR = clients.reduce((acc, c) => acc + (c.plan_status === 'active' ? planCosts[c.plan_key] || 0 : 0), 0);
+  const totalSeats = clients.reduce((acc, c) => acc + c.user_count, 0);
+
+  const handlePlanChange = (companyId: string, newPlan: 'trial' | 'starter' | 'growth' | 'enterprise') => {
+    setClients(prev => prev.map(c => {
+      if (c.company_id === companyId) {
+        const limits = {
+          trial: { agent: 2, contact: 500, deal: 50 },
+          starter: { agent: 3, contact: 2500, deal: 250 },
+          growth: { agent: 8, contact: 20000, deal: 2500 },
+          enterprise: { agent: 50, contact: 500000, deal: 100000 },
+        }[newPlan];
+
+        return {
+          ...c,
+          plan_key: newPlan,
+          agent_limit: limits.agent,
+          contact_limit: limits.contact,
+          deal_limit: limits.deal,
+        };
+      }
+      return c;
+    }));
+  };
+
+  const handleStatusToggle = (companyId: string) => {
+    setClients(prev => prev.map(c => {
+      if (c.company_id === companyId) {
+        return {
+          ...c,
+          plan_status: c.plan_status === 'active' ? 'suspended' : 'active',
+        };
+      }
+      return c;
+    }));
+  };
+
+  const handleImpersonate = (client: ClientTenant) => {
+    setImpersonateMessage(`✅ Impersonated token generated for '${client.name}'. Switched workspace to [${client.company_id}] under ${client.plan_key.toUpperCase()} plan.`);
+    setTimeout(() => setImpersonateMessage(null), 5000);
+  };
+
+  const filteredClients = clients.filter(c =>
+    c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    c.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    c.company_id.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <div className="flex-1 flex flex-col h-full bg-slate-100 overflow-y-auto">
+      {/* Top Banner / Super Admin Header */}
+      <div className="bg-gradient-to-r from-[#0F221B] via-[#153B2E] to-[#0F221B] text-white px-8 py-6 shadow-md border-b border-[#1C3E32]">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="p-3 bg-[#3F7657]/30 border border-[#3F7657]/50 rounded-2xl text-emerald-300">
+              <Shield className="w-7 h-7" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-2xl font-bold tracking-tight text-white">Super Admin Control Center</h1>
+                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                  Platform Owner Access
+                </span>
+              </div>
+              <p className="text-xs text-emerald-200/70 mt-1">
+                Multi-tenant billing, plan gates, license seats, and 1-click client impersonation (Mirroring NexwAPI Architecture).
+              </p>
+            </div>
+          </div>
+
+          {/* Quick Metrics */}
+          <div className="flex items-center gap-4">
+            <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-center">
+              <div className="text-xs text-slate-400 uppercase font-bold tracking-wider">Est. Monthly MRR</div>
+              <div className="text-lg font-extrabold text-emerald-400">₹{totalMRR.toLocaleString('en-IN')}</div>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-center">
+              <div className="text-xs text-slate-400 uppercase font-bold tracking-wider">Active Tenants</div>
+              <div className="text-lg font-extrabold text-emerald-400">{clients.filter(c => c.plan_status === 'active').length}</div>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-center">
+              <div className="text-xs text-slate-400 uppercase font-bold tracking-wider">Total Seats</div>
+              <div className="text-lg font-extrabold text-amber-400">{totalSeats}</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Impersonation Toast */}
+        {impersonateMessage && (
+          <div className="mt-4 p-3 bg-emerald-950/80 border border-emerald-500/50 rounded-xl text-emerald-300 text-xs flex items-center justify-between animate-fadeIn">
+            <span>{impersonateMessage}</span>
+            <button onClick={() => setImpersonateMessage(null)} className="text-emerald-400 hover:text-white">✕</button>
+          </div>
+        )}
+
+        {/* Navigation Tabs */}
+        <div className="flex items-center gap-2 mt-6">
+          <button
+            onClick={() => setActiveTab('tenants')}
+            className={`px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition cursor-pointer ${
+              activeTab === 'tenants' ? 'bg-[#3F7657] text-white shadow-md' : 'text-slate-300 hover:text-white hover:bg-white/10'
+            }`}
+          >
+            <Building2 className="w-4 h-4" />
+            Client Tenants ({clients.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('plans')}
+            className={`px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition cursor-pointer ${
+              activeTab === 'plans' ? 'bg-[#3F7657] text-white shadow-md' : 'text-slate-300 hover:text-white hover:bg-white/10'
+            }`}
+          >
+            <CreditCard className="w-4 h-4" />
+            Subscription Catalog & Limits
+          </button>
+        </div>
+      </div>
+
+      {/* Main Tab Content */}
+      <div className="p-8">
+        {activeTab === 'tenants' && (
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            {/* Table Action Bar */}
+            <div className="p-5 border-b border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="relative flex-1 max-w-md">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Search client by company name, ID or admin email..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#3F7657]/20 focus:border-[#3F7657]"
+                />
+              </div>
+
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => alert('New client onboarding wizard: Use POST /api/super-admin/clients to provision new tenant.')}
+                  className="px-4 py-2 bg-[#3F7657] hover:bg-[#336147] text-white rounded-xl text-xs font-semibold flex items-center gap-2 transition shadow-sm cursor-pointer active:scale-95"
+                >
+                  <Building2 className="w-3.5 h-3.5" />
+                  + Provision New Client
+                </button>
+              </div>
+            </div>
+
+            {/* Tenants Data Table */}
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-slate-50/80 border-b border-slate-200 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                    <th className="py-3 px-5">Client / Tenant</th>
+                    <th className="py-3 px-5">Plan Tier</th>
+                    <th className="py-3 px-5">License Limits</th>
+                    <th className="py-3 px-5">Status</th>
+                    <th className="py-3 px-5">Expires On</th>
+                    <th className="py-3 px-5 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+                  {filteredClients.map((client) => (
+                    <tr key={client.id} className="hover:bg-[#E5EFE4]/30 transition">
+                      <td className="py-4 px-5">
+                        <div className="font-bold text-slate-900">{client.name}</div>
+                        <div className="text-[11px] text-slate-400 flex items-center gap-2 mt-0.5">
+                          <span>{client.email}</span>
+                          <span>•</span>
+                          <span className="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-[10px]">{client.company_id}</span>
+                        </div>
+                      </td>
+
+                      <td className="py-4 px-5">
+                        <select
+                          value={client.plan_key}
+                          onChange={(e) => handlePlanChange(client.company_id, e.target.value as any)}
+                          className={`font-semibold rounded-lg px-2.5 py-1 text-xs border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3F7657]/20 cursor-pointer ${
+                            client.plan_key === 'enterprise' ? 'bg-purple-50 text-purple-700 border-purple-200' :
+                            client.plan_key === 'growth' ? 'bg-[#E5EFE4] text-[#153B2E] border-[#D8E3D6]' :
+                            client.plan_key === 'starter' ? 'bg-[#F2F6F2] text-[#5F7A5D] border-[#C4D5C2]' :
+                            'bg-slate-100 text-slate-700'
+                          }`}
+                        >
+                          <option value="trial">Free Trial (₹0)</option>
+                          <option value="starter">Starter (₹1,499/mo)</option>
+                          <option value="growth">Growth (₹3,999/mo)</option>
+                          <option value="enterprise">Enterprise (₹9,999/mo)</option>
+                        </select>
+                      </td>
+
+                      <td className="py-4 px-5">
+                        <div className="text-[11px] space-y-0.5">
+                          <div className="text-slate-600 font-medium">👥 <b>{client.user_count}</b> / {client.agent_limit} Seats</div>
+                          <div className="text-slate-400">📇 Max {client.contact_limit.toLocaleString()} Leads</div>
+                        </div>
+                      </td>
+
+                      <td className="py-4 px-5">
+                        <button
+                          onClick={() => handleStatusToggle(client.company_id)}
+                          className={`px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase transition cursor-pointer ${
+                            client.plan_status === 'active'
+                              ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100'
+                              : 'bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100'
+                          }`}
+                        >
+                          {client.plan_status}
+                        </button>
+                      </td>
+
+                      <td className="py-4 px-5 font-mono text-[11px] text-slate-500">
+                        {client.expires_at}
+                      </td>
+
+                      <td className="py-4 px-5 text-right">
+                        <div className="flex items-center justify-end gap-2">
+                          <button
+                            onClick={() => handleImpersonate(client)}
+                            className="px-3 py-1.5 bg-[#E5EFE4] hover:bg-[#d8e7d2] text-[#153B2E] rounded-lg text-xs font-semibold flex items-center gap-1.5 transition border border-[#D8E3D6] cursor-pointer"
+                            title="Login as this client without requiring their password"
+                          >
+                            <Key className="w-3.5 h-3.5 text-[#3F7657]" />
+                            Login As Client
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'plans' && (
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {/* Free Trial */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-slate-400">Evaluation</div>
+                <h3 className="text-xl font-extrabold text-slate-900 mt-1">Free Trial</h3>
+                <div className="text-2xl font-bold text-slate-800 mt-2">₹0 <span className="text-xs font-normal text-slate-400">/ 14 days</span></div>
+                <p className="text-xs text-slate-500 mt-3">Basic platform exploration for testing the workflow.</p>
+                <div className="mt-5 space-y-2 text-xs text-slate-600">
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Max 2 Agent Seats</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> 500 Leads & Contacts</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> WhatsApp Web Inbox</div>
+                  <div className="flex items-center gap-2 text-slate-300">✕ Custom Automations</div>
+                  <div className="flex items-center gap-2 text-slate-300">✕ Inventory & Quotes</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Starter */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-[#738F70]">Tier 1</div>
+                <h3 className="text-xl font-extrabold text-slate-900 mt-1">Starter CRM</h3>
+                <div className="text-2xl font-bold text-slate-800 mt-2">₹1,499 <span className="text-xs font-normal text-slate-400">/ month</span></div>
+                <p className="text-xs text-slate-500 mt-3">Essential sales pipeline & lead scoring for startups.</p>
+                <div className="mt-5 space-y-2 text-xs text-slate-600">
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> 3 Agent Seats</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> 2,500 Leads & Contacts</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Sales Pipelines & Kanban</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> WhatsApp Campaign Dispatch</div>
+                  <div className="flex items-center gap-2 text-slate-300">✕ Inventory & Invoicing</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Growth Suite */}
+            <div className="bg-white rounded-2xl p-6 border-2 border-[#3F7657] shadow-md flex flex-col justify-between relative">
+              <span className="absolute -top-3 right-6 bg-[#3F7657] text-white px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                Most Popular
+              </span>
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-[#3F7657]">Tier 2</div>
+                <h3 className="text-xl font-extrabold text-slate-900 mt-1">Growth Suite</h3>
+                <div className="text-2xl font-bold text-slate-800 mt-2">₹3,999 <span className="text-xs font-normal text-slate-400">/ month</span></div>
+                <p className="text-xs text-slate-500 mt-3">Multi-agent WhatsApp, automated sales funnels & invoicing.</p>
+                <div className="mt-5 space-y-2 text-xs text-slate-600">
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> 8 Agent Seats</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> 20,000 Leads & Contacts</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Full Inventory & Invoicing</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Workflow Automations</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Meta WhatsApp Cloud API</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Enterprise Cloud */}
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-purple-600">Tier 3</div>
+                <h3 className="text-xl font-extrabold text-slate-900 mt-1">Enterprise Cloud</h3>
+                <div className="text-2xl font-bold text-slate-800 mt-2">₹9,999 <span className="text-xs font-normal text-slate-400">/ month</span></div>
+                <p className="text-xs text-slate-500 mt-3">High-volume corporate deployment with dedicated support.</p>
+                <div className="mt-5 space-y-2 text-xs text-slate-600">
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Up to 50 Agent Seats</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> 500,000+ Contacts</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Custom MCP AI Agents</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Dedicated Account Manager</div>
+                  <div className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Custom Domain White-labeling</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
