@@ -366,10 +366,10 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     planName: string;
     expiresAt?: string;
   }>({
-    hasSubscription: true,
-    planKey: 'enterprise',
-    planStatus: 'active',
-    planName: 'Enterprise Cloud',
+    hasSubscription: false,
+    planKey: 'none',
+    planStatus: 'expired',
+    planName: 'No Active Subscription',
   });
 
   const refreshSubscription = async () => {

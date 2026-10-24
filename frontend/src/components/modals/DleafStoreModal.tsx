@@ -34,7 +34,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const { refreshSubscription } = useCRM();
+  const { refreshSubscription, currentUser } = useCRM();
   const [selectedPlanId, setSelectedPlanId] = useState<string>('enterprise');
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -184,9 +184,9 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
           }
         },
         prefill: {
-          name: 'Aman Kumar',
-          email: 'aman.kumar@dleaftech.com',
-          contact: '+919876543210',
+          name: currentUser?.name || 'Aman Kumar',
+          email: currentUser?.email || 'client@dleafcrm.com',
+          contact: currentUser?.phone || '+919876543210',
         },
         theme: {
           color: '#153B2E',
@@ -206,7 +206,9 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
 
       const rzpInstance = new (window as any).Razorpay(options);
       rzpInstance.on('payment.failed', function (failRes: any) {
-        alert(failRes.error?.description || 'Payment cancelled or rejected by bank.');
+        console.error('Razorpay Payment Failed Response:', failRes);
+        const reason = failRes.error?.description || failRes.error?.reason || 'Payment cancelled or rejected by merchant gateway.';
+        alert(`Payment Failed: ${reason}\nIf this is in Razorpay test/activation mode, please verify your Razorpay KYC/account status.`);
         setIsProcessing(false);
       });
       rzpInstance.open();

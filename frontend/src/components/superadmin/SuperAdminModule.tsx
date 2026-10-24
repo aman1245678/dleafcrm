@@ -14,7 +14,10 @@ import {
   Search,
   Filter,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  Clock,
+  Ban,
+  Calendar,
 } from 'lucide-react';
 
 interface ClientTenant {
@@ -140,6 +143,39 @@ export const SuperAdminModule: React.FC = () => {
       }
       return c;
     }));
+  };
+
+  const handleExtendTrial = (companyId: string, days: number = 14) => {
+    setClients(prev => prev.map(c => {
+      if (c.company_id === companyId) {
+        const currentExp = new Date(c.expires_at).getTime();
+        const base = currentExp > Date.now() ? currentExp : Date.now();
+        const newExp = new Date(base + days * 86400000).toISOString().split('T')[0];
+        return {
+          ...c,
+          plan_status: 'active',
+          expires_at: newExp,
+        };
+      }
+      return c;
+    }));
+    setImpersonateMessage(`⏳ Trial extended by +${days} days for tenant [${companyId}].`);
+    setTimeout(() => setImpersonateMessage(null), 4000);
+  };
+
+  const handleExpireNow = (companyId: string) => {
+    setClients(prev => prev.map(c => {
+      if (c.company_id === companyId) {
+        return {
+          ...c,
+          plan_status: 'expired',
+          expires_at: new Date(Date.now() - 86400000).toISOString().split('T')[0],
+        };
+      }
+      return c;
+    }));
+    setImpersonateMessage(`🚫 Plan/Trial terminated immediately for tenant [${companyId}]. Access revoked.`);
+    setTimeout(() => setImpersonateMessage(null), 4000);
   };
 
   const handleImpersonate = (client: ClientTenant) => {
@@ -314,19 +350,44 @@ export const SuperAdminModule: React.FC = () => {
                         </button>
                       </td>
 
-                      <td className="py-4 px-5 font-mono text-[11px] text-slate-500">
-                        {client.expires_at}
+                      <td className="py-4 px-5">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-[11px] text-slate-700 font-semibold">{client.expires_at}</span>
+                          {new Date(client.expires_at).getTime() < Date.now() ? (
+                            <span className="text-[10px] bg-rose-100 text-rose-700 px-1.5 py-0.5 rounded font-bold uppercase">Expired</span>
+                          ) : (
+                            <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded font-bold">
+                              {Math.max(0, Math.ceil((new Date(client.expires_at).getTime() - Date.now()) / (1000 * 60 * 60 * 24)))}d left
+                            </span>
+                          )}
+                        </div>
                       </td>
 
                       <td className="py-4 px-5 text-right">
-                        <div className="flex items-center justify-end gap-2">
+                        <div className="flex items-center justify-end gap-1.5">
+                          <button
+                            onClick={() => handleExtendTrial(client.company_id, 14)}
+                            className="px-2.5 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-lg text-[11px] font-semibold flex items-center gap-1 transition border border-emerald-200 cursor-pointer"
+                            title="Extend Trial by +14 Days"
+                          >
+                            <Clock className="w-3 h-3" />
+                            +14d
+                          </button>
+                          <button
+                            onClick={() => handleExpireNow(client.company_id)}
+                            className="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-lg text-[11px] font-semibold flex items-center gap-1 transition border border-rose-200 cursor-pointer"
+                            title="Terminate access immediately"
+                          >
+                            <Ban className="w-3 h-3" />
+                            Expire
+                          </button>
                           <button
                             onClick={() => handleImpersonate(client)}
                             className="px-3 py-1.5 bg-[#E5EFE4] hover:bg-[#d8e7d2] text-[#153B2E] rounded-lg text-xs font-semibold flex items-center gap-1.5 transition border border-[#D8E3D6] cursor-pointer"
                             title="Login as this client without requiring their password"
                           >
                             <Key className="w-3.5 h-3.5 text-[#3F7657]" />
-                            Login As Client
+                            Login
                           </button>
                         </div>
                       </td>

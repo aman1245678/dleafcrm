@@ -18,7 +18,7 @@ import {
 import { useCRM } from '../../context/CRMContext';
 
 export const PortalFreeTools: React.FC = () => {
-  const { setIsPortalSignInOpen, setAppMode } = useCRM();
+  const { setIsPortalSignInOpen, setAppMode, isAuthenticated } = useCRM();
   const [activeTool, setActiveTool] = useState<'roi' | 'commission' | 'signature' | 'leadScore'>('roi');
 
   // ROI Calculator State
@@ -225,10 +225,16 @@ export const PortalFreeTools: React.FC = () => {
                   </div>
 
                   <button
-                    onClick={() => setIsPortalSignInOpen(true)}
-                    className="mt-6 w-full py-3 bg-[#e11d48] hover:bg-[#be123c] text-white font-bold text-xs rounded-xl transition cursor-pointer"
+                    onClick={() => {
+                      if (isAuthenticated) {
+                        setAppMode('workspace');
+                      } else {
+                        setIsPortalSignInOpen(true);
+                      }
+                    }}
+                    className="mt-6 w-full py-3 bg-[#153B2E] hover:bg-[#0F221B] text-white font-bold text-xs rounded-xl transition cursor-pointer"
                   >
-                    Unlock This Growth with 15-Day Free Trial
+                    {isAuthenticated ? 'Open in CRM Workspace' : 'Unlock This Growth with 15-Day Free Trial'}
                   </button>
                 </div>
               </div>

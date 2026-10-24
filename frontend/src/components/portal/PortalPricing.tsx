@@ -421,10 +421,16 @@ export const PortalPricing: React.FC = () => {
               </div>
 
               <button
-                onClick={() => setIsPortalSignInOpen(true)}
-                className="mt-6 w-full bg-[#e11d48] hover:bg-[#be123c] active:scale-95 text-white font-bold py-3 rounded-xl text-xs transition shadow-md cursor-pointer"
+                onClick={() => {
+                  if (isAuthenticated) {
+                    setAppMode('workspace');
+                  } else {
+                    setIsPortalSignInOpen(true);
+                  }
+                }}
+                className="mt-6 w-full bg-[#153B2E] hover:bg-[#0F221B] active:scale-95 text-white font-bold py-3 rounded-xl text-xs transition shadow-md cursor-pointer"
               >
-                Sign Up With This Estimate
+                {isAuthenticated ? 'Go to CRM Workspace' : 'Sign Up With This Estimate'}
               </button>
             </div>
           </div>

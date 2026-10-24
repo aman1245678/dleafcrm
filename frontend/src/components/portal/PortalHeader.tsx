@@ -11,8 +11,10 @@ import {
   CheckCircle2,
   Lock,
   Leaf,
+  BookOpen,
 } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
+import { UserGuideModal } from '../modals/UserGuideModal';
 
 export const PortalHeader: React.FC = () => {
   const {
@@ -27,6 +29,7 @@ export const PortalHeader: React.FC = () => {
   } = useCRM();
 
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isGuideOpen, setIsGuideOpen] = useState(false);
 
   const handleNavClick = (page: 'home' | 'features' | 'pricing' | 'platform' | 'customers' | 'resources' | 'free-tools') => {
     setPortalPage(page);
@@ -57,6 +60,15 @@ export const PortalHeader: React.FC = () => {
           >
             <Headphones className="w-3.5 h-3.5 text-[#C4D5C2]" />
             <span>Contact Sales</span>
+          </button>
+
+          <button
+            onClick={() => setIsGuideOpen(true)}
+            className="flex items-center gap-1.5 hover:text-white transition cursor-pointer text-[#A3CCA1] font-semibold"
+            title="Download English PDF User Guide"
+          >
+            <BookOpen className="w-3.5 h-3.5 text-[#A3CCA1]" />
+            <span>User Guide (PDF)</span>
           </button>
 
           <button
@@ -193,10 +205,16 @@ export const PortalHeader: React.FC = () => {
 
           {/* Start Free Trial Primary Brand Green (#3F7657) Button */}
           <button
-            onClick={() => setIsPortalSignInOpen(true)}
+            onClick={() => {
+              if (isAuthenticated) {
+                setAppMode('workspace');
+              } else {
+                setIsPortalSignInOpen(true);
+              }
+            }}
             className="bg-[#3F7657] hover:bg-[#336147] active:scale-95 text-white font-bold text-xs px-4 sm:px-5 py-2 rounded-full transition shadow-md shadow-[#3F7657]/30 flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
           >
-            <span>Start Free Trial</span>
+            <span>{isAuthenticated ? 'Go to CRM Workspace' : 'Start Free Trial'}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
 
@@ -216,6 +234,7 @@ export const PortalHeader: React.FC = () => {
           </button>
         </div>
       </div>
+      <UserGuideModal isOpen={isGuideOpen} onClose={() => setIsGuideOpen(false)} />
     </header>
   );
 };

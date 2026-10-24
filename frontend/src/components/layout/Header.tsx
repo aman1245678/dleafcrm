@@ -23,10 +23,14 @@ import {
   Globe,
   LogOut,
   Cpu,
+  Timer,
+  CreditCard,
+  BookOpen,
 } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
 import { DleafProfileDrawer } from '../modals/DleafProfileDrawer';
 import { DleafStoreModal } from '../modals/DleafStoreModal';
+import { UserGuideModal } from '../modals/UserGuideModal';
 
 export const Header: React.FC = () => {
   const crm = useCRM();
@@ -63,6 +67,7 @@ export const Header: React.FC = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isDleafDrawerOpen, setIsDleafDrawerOpen] = useState(false);
   const [isDleafStoreOpen, setIsDleafStoreOpen] = useState(false);
+  const [isUserGuideOpen, setIsUserGuideOpen] = useState(false);
   const [logoSrc, setLogoSrc] = useState<string>('/logo.png');
   const [hasLogoError, setHasLogoError] = useState(false);
 
@@ -338,6 +343,33 @@ export const Header: React.FC = () => {
             <span className="hidden xl:inline">WhatsApp</span>
           </button>
 
+          {/* Live Subscription / Trial Status Indicator for Client */}
+          <button
+            onClick={() => crm?.setIsSubscriptionModalOpen?.(true)}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#E5EFE4] hover:bg-[#d8e7d2] text-[#153B2E] border border-[#D8E3D6] text-xs font-bold transition shadow-xs cursor-pointer"
+            title="Subscription & Plan Status"
+          >
+            <Timer className="w-3.5 h-3.5 text-[#3F7657]" />
+            <span className="hidden md:inline">
+              {crm?.subscription?.planStatus === 'active'
+                ? `${crm?.subscription?.planName || 'Enterprise'} (Active)`
+                : 'Free Trial (14 Days)'}
+            </span>
+            <span className="text-[10px] bg-[#3F7657] text-white px-1.5 py-0.2 rounded font-extrabold uppercase">
+              Upgrade
+            </span>
+          </button>
+
+          {/* User Guide PDF Manual Button */}
+          <button
+            onClick={() => setIsUserGuideOpen(true)}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#F5F8F3] hover:bg-[#E5EFE4] text-[#153B2E] border border-[#D8E3D6] text-xs font-bold transition shadow-xs cursor-pointer active:scale-95"
+            title="Download & View Full English User Guide Manual (PDF)"
+          >
+            <BookOpen className="w-3.5 h-3.5 text-[#3F7657]" />
+            <span className="hidden lg:inline">User Guide (PDF)</span>
+          </button>
+
           {/* Settings Gear */}
           <button
             onClick={() => setActiveModule('setup')}
@@ -427,16 +459,7 @@ export const Header: React.FC = () => {
                       </span>
                     </div>
                   </button>
-                  <button
-                    onClick={() => {
-                      setIsUserMenuOpen(false);
-                      setIsAuthModalOpen(true);
-                    }}
-                    className="w-full px-3 py-1.5 text-left hover:bg-[#F2F6F2] text-[#5F7A5D] flex items-center gap-2 font-semibold"
-                  >
-                    <ShieldCheck className="w-4 h-4 text-[#738F70]" />
-                    <span>Switch Role / User & Security (OTP)</span>
-                  </button>
+
                   <button
                     onClick={() => {
                       setIsUserMenuOpen(false);
@@ -506,6 +529,12 @@ export const Header: React.FC = () => {
       <DleafStoreModal
         isOpen={isDleafStoreOpen}
         onClose={() => setIsDleafStoreOpen(false)}
+      />
+
+      {/* User Guide PDF Manual Modal */}
+      <UserGuideModal
+        isOpen={isUserGuideOpen}
+        onClose={() => setIsUserGuideOpen(false)}
       />
     </div>
   );

@@ -21,7 +21,7 @@ import {
 import { useCRM } from '../../context/CRMContext';
 
 export const PortalFeatures: React.FC = () => {
-  const { portalActiveFeatureCategory, setPortalActiveFeatureCategory, setIsPortalSignInOpen, setAppMode } = useCRM();
+  const { portalActiveFeatureCategory, setPortalActiveFeatureCategory, setIsPortalSignInOpen, setAppMode, isAuthenticated } = useCRM();
   const [selectedCat, setSelectedCat] = useState<string>(portalActiveFeatureCategory || 'SFA');
 
   const categories = [
@@ -310,10 +310,16 @@ export const PortalFeatures: React.FC = () => {
                         {item.metrics}
                       </span>
                       <button
-                        onClick={() => setIsPortalSignInOpen(true)}
-                        className="text-[#738F70] font-bold hover:underline flex items-center gap-1"
+                        onClick={() => {
+                          if (isAuthenticated) {
+                            setAppMode('workspace');
+                          } else {
+                            setIsPortalSignInOpen(true);
+                          }
+                        }}
+                        className="text-[#3F7657] font-bold hover:underline flex items-center gap-1 cursor-pointer"
                       >
-                        <span>Try now</span>
+                        <span>{isAuthenticated ? 'Open in CRM' : 'Try now'}</span>
                         <ArrowRight className="w-3 h-3" />
                       </button>
                     </div>

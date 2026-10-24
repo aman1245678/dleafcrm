@@ -34,17 +34,24 @@ import {
   Cpu,
   Sliders,
   Rocket,
+  BookOpen,
 } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
+import { UserGuideModal } from '../modals/UserGuideModal';
 
 export const PortalHome: React.FC = () => {
-  const { setPortalPage, setIsPortalSignInOpen, setAppMode, setIsZiaOpen } = useCRM();
+  const { setPortalPage, setIsPortalSignInOpen, setAppMode, setIsZiaOpen, isAuthenticated } = useCRM();
   const [ctaEmail, setCtaEmail] = useState('');
   const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [isGuideOpen, setIsGuideOpen] = useState(false);
 
   const handleCtaSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsPortalSignInOpen(true);
+    if (isAuthenticated) {
+      setAppMode('workspace');
+    } else {
+      setIsPortalSignInOpen(true);
+    }
   };
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
@@ -121,7 +128,7 @@ export const PortalHome: React.FC = () => {
                 </div>
               </form>
 
-              {/* Clean Micro Trust Indicators */}
+              {/* Clean Micro Trust Indicators + PDF User Guide CTA */}
               <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-[12px] text-[#47574B] font-medium pt-1">
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#3F7657]" />
@@ -135,6 +142,15 @@ export const PortalHome: React.FC = () => {
                   <CheckCircle2 className="w-4 h-4 text-[#3F7657]" />
                   <span>Setup in 2 Minutes</span>
                 </div>
+                <button
+                  type="button"
+                  onClick={() => setIsGuideOpen(true)}
+                  className="flex items-center gap-1.5 text-[#153B2E] font-bold hover:underline cursor-pointer bg-[#E5EFE4] px-2.5 py-1 rounded-full border border-[#D8E3D6]"
+                  title="View and download full user guide manual"
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-[#3F7657]" />
+                  <span>Download User Guide (PDF)</span>
+                </button>
               </div>
 
             </div>
@@ -916,6 +932,8 @@ export const PortalHome: React.FC = () => {
         </div>
       </footer>
 
+      {/* Downloadable / Printable User Guide Modal */}
+      <UserGuideModal isOpen={isGuideOpen} onClose={() => setIsGuideOpen(false)} />
     </div>
   );
 };

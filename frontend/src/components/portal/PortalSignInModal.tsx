@@ -105,24 +105,7 @@ export const PortalSignInModal: React.FC = () => {
     setIsPortalSignInOpen(false);
   };
 
-  // 1-Click Demo Fill for easy testing
-  const fillDemoCredentials = (role: 'admin' | 'manager' | 'agent') => {
-    setActiveTab('signin');
-    setStep('credentials');
-    setErrorMessage(null);
-    setSuccessMessage(null);
 
-    if (role === 'admin') {
-      setSignInEmail('aman.kumar@dleaftech.com');
-      setSignInPassword('aman');
-    } else if (role === 'manager') {
-      setSignInEmail('manager@dleaf.com');
-      setSignInPassword('manager123');
-    } else {
-      setSignInEmail('agent@dleaf.com');
-      setSignInPassword('agent123');
-    }
-  };
 
   // -------------------------------------------------------------------------
   // Step 1: Handle Sign In Submit (Request Email OTP)
@@ -513,25 +496,6 @@ export const PortalSignInModal: React.FC = () => {
                     <span>Sign Up</span>
                   </button>
                 </div>
-
-                {/* 1-Click Demo Testing Pill Menu */}
-                <div className="hidden sm:flex items-center gap-1.5 text-[11px]">
-                  <span className="text-[#47574B] font-medium">Demo:</span>
-                  <button
-                    onClick={() => fillDemoCredentials('admin')}
-                    className="px-2.5 py-1 bg-[#F5F8F3] hover:bg-[#E5EFE4] text-[#153B2E] rounded-lg border border-[#D8E3D6] transition cursor-pointer text-[10px] font-semibold"
-                    title="Fill Super Admin (Aman Kumar)"
-                  >
-                    Admin
-                  </button>
-                  <button
-                    onClick={() => fillDemoCredentials('manager')}
-                    className="px-2.5 py-1 bg-[#F5F8F3] hover:bg-[#E5EFE4] text-[#153B2E] rounded-lg border border-[#D8E3D6] transition cursor-pointer text-[10px] font-semibold"
-                    title="Fill Manager (Priya)"
-                  >
-                    Manager
-                  </button>
-                </div>
               </div>
             )}
 
@@ -588,18 +552,9 @@ export const PortalSignInModal: React.FC = () => {
 
                   {/* Password Input */}
                   <div>
-                    <div className="flex items-center justify-between mb-1.5">
-                      <label className="text-xs font-semibold text-[#17251D]">
-                        Password
-                      </label>
-                      <button
-                        type="button"
-                        onClick={() => fillDemoCredentials('admin')}
-                        className="text-[11px] text-[#3F7657] hover:underline transition cursor-pointer font-semibold"
-                      >
-                        Use Demo Pass?
-                      </button>
-                    </div>
+                    <label className="block text-xs font-semibold text-[#17251D] mb-1.5">
+                      Password
+                    </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#738F70]">
                         <Lock className="w-4 h-4" />

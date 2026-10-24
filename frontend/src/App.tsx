@@ -150,8 +150,13 @@ const CRMAppContainer: React.FC = () => {
     );
   }
 
-  // Once logged in, workspace is directly accessible
-  const isWorkspaceUnlocked = true;
+  // Subscription Gate: Only allow access if user has an active subscription or is Super Admin
+  const isSuperAdmin =
+    currentUser?.email?.toLowerCase().trim() === 'aman.kumar@dleaftech.com' ||
+    (currentUser?.role as string) === 'SUPER_ADMIN';
+  const isWorkspaceUnlocked =
+    isSuperAdmin ||
+    (Boolean(subscription?.hasSubscription) && subscription?.planStatus === 'active');
 
   if (!isWorkspaceUnlocked) {
     return (
