@@ -838,9 +838,9 @@ export const PortalHome: React.FC = () => {
           <div className="col-span-2 space-y-2.5">
             <div className="flex items-center gap-2">
               <img
-                src="/logo.png"
+                src="/logo1.png"
                 alt="Dleaf CRM Logo"
-                className="h-10 w-auto max-w-[210px] object-contain drop-shadow-xs"
+                className="h-10 w-auto max-w-[220px] object-contain"
               />
             </div>
             <p className="font-editorial-body text-[11.5px] text-[#47574B] leading-relaxed max-w-xs">

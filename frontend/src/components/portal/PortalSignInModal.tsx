@@ -391,9 +391,9 @@ export const PortalSignInModal: React.FC = () => {
           <div className="space-y-6 relative z-10">
             <div className="flex items-center gap-2.5">
               <img
-                src="/logo.png"
+                src="/logo1.png"
                 alt="DleafCRM Logo"
-                className="h-10 w-auto object-contain"
+                className="h-9 w-auto max-w-[200px] object-contain brightness-0 invert"
               />
             </div>
 

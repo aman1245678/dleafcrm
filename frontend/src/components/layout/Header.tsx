@@ -100,9 +100,9 @@ export const Header: React.FC = () => {
             {/* Logo Container with optimized size & visibility */}
             <div className="relative flex items-center justify-center shrink-0">
               <img
-                src="/logo.png"
+                src="/logo1.png"
                 alt="DleafCRM Logo"
-                className="h-11 sm:h-12 md:h-13 w-auto max-w-[240px] object-contain drop-shadow-xs transition-transform group-hover:scale-[1.02]"
+                className="h-10 sm:h-11 md:h-12 w-auto max-w-[250px] object-contain transition-transform group-hover:scale-[1.02]"
               />
             </div>
           </div>
