@@ -135,12 +135,18 @@ export const PortalHeader: React.FC = () => {
             onClick={() => handleNavClick('home')}
             className="flex items-center gap-2.5 cursor-pointer text-left"
           >
-            {/* DleafCRM Real Brand Logo from /logo1.png */}
-            <div className="flex items-center">
+            {/* DleafCRM Real Brand Logo from /logo1.png with cache-bust & fallback */}
+            <div className="flex items-center min-w-[140px] min-h-[40px]">
               <img
-                src="/logo1.png"
-                alt="DleafCRM Logo"
-                className="h-10 sm:h-11 md:h-12 w-auto max-w-[260px] object-contain transition-transform hover:scale-[1.03]"
+                src="/logo1.png?v=10"
+                alt="DleafCRM"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('logo.png')) {
+                    target.src = '/logo.png?v=10';
+                  }
+                }}
+                className="h-10 sm:h-11 md:h-12 w-auto max-w-[260px] object-contain transition-transform hover:scale-[1.03] block"
               />
             </div>
           </button>
