@@ -421,10 +421,9 @@ router.post('/signup', async (req, res) => {
     return res.status(200).json({
       success: true,
       otpRequired: true,
-      message: `A 6-digit verification code has been sent to ${cleanEmail}. Please verify to complete your registration.`,
+      message: `A 6-digit verification code has been sent to ${cleanEmail}. Please check your email inbox to complete registration.`,
       email: cleanEmail,
       expiresIn: 600,
-      devHint: generatedOtp,
       dispatchStatus: dispatchRes.provider,
     });
   } catch (error: any) {
@@ -631,10 +630,9 @@ router.post('/signin', async (req, res) => {
     return res.status(200).json({
       success: true,
       otpRequired: true,
-      message: `A 6-digit security code was sent to your email (${foundUser.email}). Please enter it to sign in.`,
+      message: `A 6-digit security code was sent to your email (${foundUser.email}). Please check your email inbox to sign in.`,
       email: foundUser.email,
       expiresIn: 600,
-      devHint: generatedOtp,
       dispatchStatus: dispatchRes.provider,
     });
   } catch (error: any) {
@@ -683,9 +681,8 @@ router.post('/resend-email-otp', async (req, res) => {
 
     return res.json({
       success: true,
-      message: `A new 6-digit verification code has been dispatched to ${cleanEmail}.`,
+      message: `A new 6-digit verification code has been dispatched to ${cleanEmail}. Please check your email inbox.`,
       expiresIn: 600,
-      devHint: newOtp,
     });
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message });

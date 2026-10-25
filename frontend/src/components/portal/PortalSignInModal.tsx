@@ -838,22 +838,6 @@ export const PortalSignInModal: React.FC = () => {
                       />
                     ))}
                   </div>
-
-                  {/* Dev Mode Code Helper (Click to fill) */}
-                  {devOtpHint && (
-                    <div className="mt-4 p-2.5 bg-[#E5EFE4] border border-[#D8E3D6] rounded-xl text-center text-xs flex items-center justify-between gap-2 max-w-xs mx-auto">
-                      <span className="text-[#153B2E] font-medium text-[11.5px]">
-                        Security Verification OTP: <strong className="text-[#17251D] tracking-widest font-mono">{devOtpHint}</strong>
-                      </span>
-                      <button
-                        type="button"
-                        onClick={autoFillDevOtp}
-                        className="px-2 py-0.5 bg-[#3F7657] hover:bg-[#336147] text-white text-[10px] font-bold rounded-md transition cursor-pointer"
-                      >
-                        Auto-Fill
-                      </button>
-                    </div>
-                  )}
                 </div>
 
                 {/* Action Buttons */}

@@ -16,81 +16,96 @@ function generateOtpHtml(toEmail: string, otp: string, purpose: 'signin' | 'sign
   const isSignup = purpose === 'signup';
   const actionTitle = isSignup ? 'Verify Your Work Email' : 'Sign-In Security Verification';
   const actionDesc = isSignup
-    ? 'Thank you for registering with Dleaf CRM Enterprise. Please enter this 6-digit verification code to activate your account and access your CRM workspace.'
-    : 'A sign-in attempt was detected for your Dleaf CRM account. Enter the 6-digit one-time security code below to complete your authentication.';
+    ? 'Welcome to Dleaf CRM! To activate your enterprise CRM workspace and confirm your account, please enter the 6-digit one-time security code below.'
+    : 'A sign-in request was initiated for your Dleaf CRM account. Enter the 6-digit one-time security verification code below to securely access your portal.';
 
   return `
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Dleaf CRM Security Code</title>
+  <title>Dleaf CRM - Security Verification Code</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin: 0; padding: 0; background-color: #0f172a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #0f172a; padding: 40px 10px;">
+<body style="margin: 0; padding: 0; background-color: #0c0f17; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #0c0f17; padding: 45px 12px;">
     <tr>
       <td align="center">
         <!-- Main Card Container -->
-        <table role="presentation" width="100%" style="max-width: 540px; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);">
+        <table role="presentation" width="100%" style="max-width: 540px; background-color: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 255, 255, 0.1);">
           
-          <!-- Top Accent Bar -->
+          <!-- Top Gradient Accent Bar with exact brand colors: Orange -> Pink -> Purple -->
           <tr>
-            <td style="height: 6px; background: linear-gradient(90deg, #2563eb, #7c3aed, #059669);"></td>
+            <td style="height: 7px; background: linear-gradient(90deg, #FF6A00 0%, #EE0979 50%, #8A2387 100%);"></td>
           </tr>
 
-          <!-- Header with Brand -->
+          <!-- Header with Brand Logo & Gradient Typography -->
           <tr>
-            <td style="padding: 32px 36px 20px 36px; text-align: center; background-color: #ffffff;">
+            <td style="padding: 34px 38px 24px 38px; text-align: center; background: #ffffff;">
               <table role="presentation" align="center" cellspacing="0" cellpadding="0">
                 <tr>
                   <td style="vertical-align: middle;">
-                    <div style="display: inline-block; width: 44px; height: 44px; line-height: 44px; background: linear-gradient(135deg, #1e40af, #3b82f6); border-radius: 12px; color: #ffffff; font-weight: 800; font-size: 20px; text-align: center; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);">
-                      D
+                    <!-- SVG Brand Icon replicating the exact DleafCRM Logo -->
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #FF7A00 0%, #FF007A 50%, #7928CA 100%); border-radius: 14px; display: inline-block; padding: 2px; box-shadow: 0 8px 18px -4px rgba(238, 9, 121, 0.4);">
+                      <table role="presentation" width="100%" height="100%" cellspacing="0" cellpadding="0" style="background: #ffffff; border-radius: 12px;">
+                        <tr>
+                          <td align="center" valign="middle">
+                            <span style="font-size: 22px; font-weight: 900; background: linear-gradient(135deg, #FF7A00, #FF007A, #7928CA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Segoe UI', Roboto, sans-serif;">D</span>
+                          </td>
+                        </tr>
+                      </table>
                     </div>
                   </td>
-                  <td style="vertical-align: middle; padding-left: 12px; text-align: left;">
-                    <div style="font-size: 18px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px;">DLEAF <span style="color: #2563eb;">CRM</span></div>
-                    <div style="font-size: 11px; font-weight: 600; color: #64748b; letter-spacing: 0.5px; text-transform: uppercase;">Enterprise Identity Guard</div>
+                  <td style="vertical-align: middle; padding-left: 14px; text-align: left;">
+                    <div style="font-size: 22px; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1;">
+                      <span style="color: #0f172a;">Dleaf</span><span style="color: #FF007A;">C</span><span style="color: #FF7A00;">R</span><span style="color: #7928CA;">M</span>
+                    </div>
+                    <div style="font-size: 11px; font-weight: 700; color: #8A2387; letter-spacing: 1.2px; text-transform: uppercase; margin-top: 3px;">
+                      Enterprise Cloud Solutions
+                    </div>
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
 
-          <!-- Body Content -->
+          <!-- Body Card Content -->
           <tr>
-            <td style="padding: 10px 36px 30px 36px;">
-              <div style="background-color: #f8fafc; border-radius: 12px; padding: 24px; border: 1px solid #e2e8f0; text-align: center;">
-                <h2 style="margin: 0 0 10px 0; color: #0f172a; font-size: 20px; font-weight: 700;">
+            <td style="padding: 10px 38px 32px 38px;">
+              <div style="background: linear-gradient(180deg, #faf5ff 0%, #fff7ed 100%); border-radius: 16px; padding: 28px 24px; border: 1px solid #fce7f3; text-align: center;">
+                <div style="display: inline-block; padding: 6px 16px; background: linear-gradient(90deg, rgba(255,106,0,0.12), rgba(238,9,121,0.12)); border-radius: 9999px; font-size: 11px; font-weight: 800; color: #EE0979; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;">
+                  🔒 One-Time Security Passcode
+                </div>
+                
+                <h2 style="margin: 0 0 10px 0; color: #0f172a; font-size: 21px; font-weight: 800; letter-spacing: -0.4px;">
                   ${actionTitle}
                 </h2>
-                <p style="margin: 0 0 20px 0; color: #475569; font-size: 13.5px; line-height: 1.6;">
-                  Hello ${recipientName || toEmail.split('@')[0]},<br/>
+                <p style="margin: 0 0 22px 0; color: #475569; font-size: 14px; line-height: 1.6;">
+                  Hello <strong style="color: #0f172a;">${recipientName || toEmail.split('@')[0]}</strong>,<br/>
                   ${actionDesc}
                 </p>
 
-                <!-- OTP Code Display Box -->
-                <div style="background: #ffffff; border: 2px dashed #2563eb; border-radius: 12px; padding: 18px 20px; margin: 20px 0; display: inline-block; min-width: 220px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
-                  <div style="font-size: 11px; font-weight: 700; color: #2563eb; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;">
-                    One-Time Verification Code
+                <!-- OTP Code Display Card with Logo Gradient Border -->
+                <div style="background: #ffffff; border: 2px solid transparent; background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(135deg, #FF6A00 0%, #EE0979 50%, #8A2387 100%); background-origin: border-box; background-clip: content-box, border-box; border-radius: 16px; padding: 20px 24px; margin: 20px 0 16px 0; display: inline-block; min-width: 250px; box-shadow: 0 10px 25px -5px rgba(238, 9, 121, 0.15);">
+                  <div style="font-size: 11px; font-weight: 800; color: #EE0979; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">
+                    Your 6-Digit Code
                   </div>
-                  <div style="font-family: 'Courier New', Courier, monospace; font-size: 36px; font-weight: 800; letter-spacing: 10px; color: #0f172a; padding-left: 10px;">
+                  <div style="font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Courier New', monospace; font-size: 40px; font-weight: 900; letter-spacing: 12px; color: #0f172a; padding-left: 12px;">
                     ${otp}
                   </div>
                 </div>
 
-                <p style="margin: 12px 0 0 0; color: #64748b; font-size: 12px;">
-                  ⏱️ This verification code is valid for <strong>10 minutes</strong>.
+                <p style="margin: 12px 0 0 0; color: #64748b; font-size: 12.5px; font-weight: 500;">
+                  ⏳ This security passcode expires in <strong style="color: #EE0979;">10 minutes</strong>.
                 </p>
               </div>
 
-              <!-- Security Warning -->
+              <!-- Security Warning Alert -->
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top: 24px;">
                 <tr>
-                  <td style="background-color: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; padding: 12px 16px;">
-                    <p style="margin: 0; color: #991b1b; font-size: 11.5px; line-height: 1.5;">
-                      <strong>Security Notice:</strong> If you did not initiate this request, someone may be trying to access your account. Please ignore this email or reach out to security@dleaf.com immediately.
+                  <td style="background-color: #fff1f2; border-left: 4px solid #f43f5e; border-radius: 8px; padding: 14px 18px;">
+                    <p style="margin: 0; color: #9f1239; font-size: 12px; line-height: 1.55;">
+                      <strong>Security Tip:</strong> Never share this code with anyone. Dleaf CRM employees will never ask for your verification code or password. If you did not make this request, please safely disregard this email.
                     </p>
                   </td>
                 </tr>
@@ -98,14 +113,14 @@ function generateOtpHtml(toEmail: string, otp: string, purpose: 'signin' | 'sign
             </td>
           </tr>
 
-          <!-- Footer -->
+          <!-- Footer with Brand Credentials -->
           <tr>
-            <td style="background-color: #f1f5f9; padding: 20px 36px; border-top: 1px solid #e2e8f0; text-align: center;">
-              <p style="margin: 0 0 6px 0; color: #64748b; font-size: 11.5px;">
-                Dleaf Global Solutions &bull; Enterprise Cloud CRM
+            <td style="background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%); padding: 22px 38px; border-top: 1px solid #f1f5f9; text-align: center;">
+              <p style="margin: 0 0 6px 0; color: #475569; font-size: 12px; font-weight: 600;">
+                <span style="color: #0f172a; font-weight: 800;">Dleaf CRM</span> &bull; Cloud Enterprise Workspace
               </p>
-              <p style="margin: 0; color: #94a3b8; font-size: 10.5px;">
-                Automated Transactional Mailer &bull; Powered by ZeptoMail HTTPS Engine
+              <p style="margin: 0; color: #94a3b8; font-size: 11px;">
+                Secured by Zoho CPaaS &bull; https://dleafcrm.dleaftech.com
               </p>
             </td>
           </tr>
