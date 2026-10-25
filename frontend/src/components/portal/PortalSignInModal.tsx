@@ -381,11 +381,14 @@ export const PortalSignInModal: React.FC = () => {
         </button>
 
         {/* -------------------------------------------------------------
-            LEFT PANEL: Deep Forest (#153B2E) Enterprise Security Showcase
+            LEFT PANEL: Brand Dark Navy (#0F172A) Enterprise Security Showcase with Gradient accents
         -------------------------------------------------------------- */}
-        <div className="hidden md:flex flex-col justify-between md:w-5/12 bg-[#153B2E] p-8 border-b md:border-b-0 md:border-r border-[#1D4C3C] text-white">
+        <div className="hidden md:flex flex-col justify-between md:w-5/12 bg-[#0F172A] p-8 border-b md:border-b-0 md:border-r border-white/10 text-white relative overflow-hidden">
+          {/* Subtle logo gradient background glow */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#FF6A00]/20 via-[#EE0979]/20 to-[#7928CA]/20 blur-3xl rounded-full pointer-events-none" />
+
           {/* Top Brand Identity */}
-          <div className="space-y-6">
+          <div className="space-y-6 relative z-10">
             <div className="flex items-center gap-2.5">
               <img
                 src="/logo.png"
@@ -398,32 +401,32 @@ export const PortalSignInModal: React.FC = () => {
               <h3 className="text-xl font-black text-white tracking-tight leading-snug">
                 Zero-Trust Security & Seamless Email Verification
               </h3>
-              <p className="text-xs text-[#C4D5C2] mt-2 leading-relaxed">
+              <p className="text-xs text-slate-300 mt-2 leading-relaxed">
                 Sign in and account registrations are strictly verified via transactional Email OTP dispatched securely through Enterprise Email API.
               </p>
             </div>
 
             {/* Feature Highlights */}
             <div className="space-y-3 pt-2">
-              <div className="flex items-start gap-3 p-3 rounded-2xl bg-[#123327] border border-[#1D4C3C]">
-                <div className="w-8 h-8 rounded-xl bg-[#E5EFE4] text-[#3F7657] flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3 p-3 rounded-2xl bg-white/5 border border-white/10">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF6A00] to-[#EE0979] text-white flex items-center justify-center shrink-0 shadow-xs">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="text-xs font-bold text-white">Mandatory Email OTP</div>
-                  <div className="text-[11px] text-[#C4D5C2] mt-0.5">
+                  <div className="text-[11px] text-slate-300 mt-0.5">
                     Guaranteed verification with 6-digit one-time passcode per session.
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-3 rounded-2xl bg-[#123327] border border-[#1D4C3C]">
-                <div className="w-8 h-8 rounded-xl bg-[#E5EFE4] text-[#16845B] flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3 p-3 rounded-2xl bg-white/5 border border-white/10">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#EE0979] to-[#7928CA] text-white flex items-center justify-center shrink-0 shadow-xs">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="text-xs font-bold text-white">Enterprise Cloud Delivery</div>
-                  <div className="text-[11px] text-[#C4D5C2] mt-0.5">
+                  <div className="text-[11px] text-slate-300 mt-0.5">
                     High deliverability with 256-bit TLS encryption on all notifications.
                   </div>
                 </div>
@@ -460,8 +463,8 @@ export const PortalSignInModal: React.FC = () => {
           <div>
             {/* Top Switcher (Only visible in 'credentials' step) */}
             {step === 'credentials' && (
-              <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-[#D8E3D6]">
-                <div className="flex bg-[#F5F8F3] p-1 rounded-2xl border border-[#D8E3D6] w-full max-w-xs shadow-inner">
+              <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-[#F1D5E4]">
+                <div className="flex bg-[#FFF8FA] p-1 rounded-2xl border border-[#F1D5E4] w-full max-w-xs shadow-inner">
                   <button
                     type="button"
                     onClick={() => {
@@ -471,8 +474,8 @@ export const PortalSignInModal: React.FC = () => {
                     }}
                     className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
                       activeTab === 'signin'
-                        ? 'bg-[#3F7657] text-white shadow-xs'
-                        : 'text-[#47574B] hover:text-[#17251D]'
+                        ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs'
+                        : 'text-slate-600 hover:text-[#EE0979]'
                     }`}
                   >
                     <LogIn className="w-3.5 h-3.5" />
@@ -488,8 +491,8 @@ export const PortalSignInModal: React.FC = () => {
                     }}
                     className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
                       activeTab === 'signup'
-                        ? 'bg-[#3F7657] text-white shadow-xs'
-                        : 'text-[#47574B] hover:text-[#17251D]'
+                        ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs'
+                        : 'text-slate-600 hover:text-[#EE0979]'
                     }`}
                   >
                     <UserPlus className="w-3.5 h-3.5" />
@@ -802,17 +805,17 @@ export const PortalSignInModal: React.FC = () => {
 
                 {/* Header Icon & Info */}
                 <div className="text-center space-y-2">
-                  <div className="w-14 h-14 rounded-2xl bg-[#E5EFE4] text-[#3F7657] border border-[#D8E3D6] flex items-center justify-center mx-auto shadow-sm">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FF6A00]/15 via-[#EE0979]/15 to-[#7928CA]/15 text-[#EE0979] border border-[#F1D5E4] flex items-center justify-center mx-auto shadow-sm">
                     <Mail className="w-7 h-7" />
                   </div>
-                  <h2 className="text-xl font-extrabold text-[#17251D] tracking-tight">
+                  <h2 className="text-xl font-extrabold text-[#0F172A] tracking-tight">
                     Enter Verification Code
                   </h2>
-                  <p className="text-xs text-[#47574B] max-w-sm mx-auto leading-relaxed">
+                  <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
                     A 6-digit one-time security passcode was sent to your registered email address:
                   </p>
                   <div className="inline-block mt-1">
-                    <span className="font-semibold text-[#153B2E] bg-[#E5EFE4] border border-[#D8E3D6] px-3.5 py-1 rounded-full text-xs shadow-inner">
+                    <span className="font-semibold text-[#EE0979] bg-[#FFF1F7] border border-[#F1D5E4] px-3.5 py-1 rounded-full text-xs shadow-inner">
                       {otpTargetEmail}
                     </span>
                   </div>
@@ -834,7 +837,7 @@ export const PortalSignInModal: React.FC = () => {
                         onChange={(e) => handleOtpDigitChange(idx, e.target.value)}
                         onKeyDown={(e) => handleOtpKeyDown(idx, e)}
                         onPaste={handleOtpPaste}
-                        className="w-11 h-13 sm:w-12 sm:h-14 text-center text-xl sm:text-2xl font-mono font-bold bg-[#F5F8F3] border-2 border-[#D8E3D6] rounded-2xl text-[#17251D] focus:outline-hidden focus:border-[#3F7657] focus:ring-2 focus:ring-[#3F7657]/20 transition"
+                        className="w-11 h-13 sm:w-12 sm:h-14 text-center text-xl sm:text-2xl font-mono font-bold bg-[#FFF8FA] border-2 border-[#F1D5E4] rounded-2xl text-[#0F172A] focus:outline-hidden focus:border-[#EE0979] focus:ring-2 focus:ring-[#EE0979]/20 transition"
                       />
                     ))}
                   </div>
@@ -845,7 +848,7 @@ export const PortalSignInModal: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isLoading || otpCode.join('').length !== 6}
-                    className="w-full py-3.5 bg-[#3F7657] hover:bg-[#336147] active:scale-[0.99] text-white font-bold text-xs rounded-xl shadow-md shadow-[#3F7657]/25 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full py-3.5 bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-[0.99] text-white font-bold text-xs rounded-xl shadow-md shadow-[#EE0979]/25 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     {isLoading ? (
                       <>

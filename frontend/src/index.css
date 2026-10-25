@@ -2,18 +2,24 @@
 
 @layer base {
   :root {
-    --primary: #3F7657;
-    --primary-hover: #336147;
-    --primary-active: #274C37;
-    --logo-sage: #738F70;
-    --deep-forest: #153B2E;
-    --main-bg: #F5F8F3;
+    /* Brand Theme - Vibrant Logo Palette */
+    --brand-orange: #FF6A00;
+    --brand-pink: #EE0979;
+    --brand-purple: #7928CA;
+    --brand-violet: #8A2387;
+    --brand-dark: #0F172A;
+
+    /* Primary Semantic Tokens mapped to Logo Gradient */
+    --primary: #EE0979;
+    --primary-hover: #D8066C;
+    --primary-active: #B5045B;
+    
+    --main-bg: #FAFAFC;
     --card-bg: #FFFFFF;
-    --light-sage: #E5EFE4;
-    --heading-text: #17251D;
-    --body-text: #47574B;
-    --border-color: #D8E3D6;
-    --success-green: #16845B;
+    --light-tint: #FFF1F7;
+    --heading-text: #0F172A;
+    --body-text: #475569;
+    --border-color: #F1D5E4;
   }
 
   body {
@@ -21,19 +27,38 @@
   }
 }
 
-/* Helper color classes matching exact palette */
-.bg-primary-green { background-color: #3F7657 !important; }
-.bg-deep-forest { background-color: #153B2E !important; }
-.bg-main-bg { background-color: #F5F8F3 !important; }
-.bg-light-sage { background-color: #E5EFE4 !important; }
+/* Vibrant Brand Gradient Utilities matching DleafCRM Logo */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #FF6A00 0%, #EE0979 50%, #7928CA 100%) !important;
+}
 
-.text-primary-green { color: #3F7657 !important; }
-.text-heading { color: #17251D !important; }
-.text-body { color: #47574B !important; }
-.text-deep-forest { color: #153B2E !important; }
+.bg-brand-gradient-h {
+  background: linear-gradient(90deg, #FF6A00 0%, #EE0979 50%, #8A2387 100%) !important;
+}
 
-.border-theme { border-color: #D8E3D6 !important; }
-.border-primary-green { border-color: #3F7657 !important; }
+.text-brand-gradient {
+  background: linear-gradient(135deg, #FF6A00 0%, #EE0979 50%, #7928CA 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.border-brand-gradient {
+  border-color: #EE0979 !important;
+}
+
+/* Helper color classes backwards-compatible & refreshed */
+.bg-primary-green { background: linear-gradient(135deg, #FF6A00 0%, #EE0979 50%, #7928CA 100%) !important; }
+.bg-deep-forest { background-color: #0F172A !important; }
+.bg-main-bg { background-color: #FAFAFC !important; }
+.bg-light-sage { background-color: #FFF1F7 !important; }
+
+.text-primary-green { color: #EE0979 !important; }
+.text-heading { color: #0F172A !important; }
+.text-body { color: #475569 !important; }
+.text-deep-forest { color: #7928CA !important; }
+
+.border-theme { border-color: #F1D5E4 !important; }
+.border-primary-green { border-color: #EE0979 !important; }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -41,14 +66,14 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5F8F3;
+  background: #FAFAFC;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3F7657;
+  background: linear-gradient(180deg, #FF6A00, #EE0979, #7928CA);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #153B2E;
+  background: #7928CA;
 }
 
 /* Hide scrollbar utility */

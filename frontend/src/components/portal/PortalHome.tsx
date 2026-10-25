@@ -66,18 +66,18 @@ export const PortalHome: React.FC = () => {
       {/* =========================================================================
           SECTION 1: HERO SECTION - Split Layout with Nature Landscape Background & Dashboard Mockup
       ========================================================================== */}
-      <section className="relative pt-8 pb-16 px-4 sm:px-8 lg:px-12 overflow-hidden bg-[#F4F7F2]">
+      <section className="relative pt-8 pb-16 px-4 sm:px-8 lg:px-12 overflow-hidden bg-[#FAFAFC]">
 
         {/* Full-bleed Nature Hills Background with Soft Glass Overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src="/hero_hills.jpg"
             alt="Rolling Green Hills Landscape"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center opacity-85"
           />
           {/* Subtle gradient vignette to keep text ultra crisp while revealing nature hills */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/92 via-white/80 to-white/40 backdrop-blur-[2px]" />
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#F5F8F3] via-[#F5F8F3]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/50 backdrop-blur-[2px]" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#FAFAFC] via-[#FAFAFC]/80 to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto">
@@ -89,25 +89,25 @@ export const PortalHome: React.FC = () => {
             <div className="lg:col-span-5 space-y-6 text-left">
 
               {/* Clean Trust Pill Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md border border-[#D8E3D6] px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#153B2E] shadow-2xs">
-                <span className="w-2 h-2 rounded-full bg-[#3F7657] animate-pulse" />
+              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979] animate-pulse" />
                 <span className="tracking-tight text-[11.5px] font-bold">Smart Business Growth Platform</span>
               </div>
 
               {/* Main Heading: Work faster. Think better. Automate everything. */}
-              <h1 className="text-3xl sm:text-4xl md:text-[50px] font-normal text-black tracking-[-0.035em] leading-[1.08] select-none">
+              <h1 className="text-3xl sm:text-4xl md:text-[50px] font-normal text-slate-900 tracking-[-0.035em] leading-[1.08] select-none">
                 Work faster. Think better.<br />
-                Automate <span className="text-[#3F7657] font-semibold">everything.</span>
+                Automate <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent font-bold">everything.</span>
               </h1>
 
               {/* Conversional Subtitle */}
-              <p className="text-[14px] sm:text-[15px] text-[#47574B] font-normal leading-relaxed max-w-lg">
+              <p className="text-[14px] sm:text-[15px] text-slate-600 font-normal leading-relaxed max-w-lg">
                 The all-in-one CRM to capture high-value leads, automate pipeline deals, and accelerate team revenue with Zia AI intelligence.
               </p>
 
               {/* Conversional Email Capture + Free Trial Form */}
               <form onSubmit={handleCtaSubmit} className="pt-1 max-w-md">
-                <div className="flex flex-col sm:flex-row items-stretch gap-2 p-1.5 bg-white rounded-2xl sm:rounded-full border border-[#D8E3D6] shadow-sm hover:border-[#3F7657] transition focus-within:border-[#3F7657] focus-within:ring-2 focus-within:ring-[#3F7657]/15">
+                <div className="flex flex-col sm:flex-row items-stretch gap-2 p-1.5 bg-white rounded-2xl sm:rounded-full border border-[#F1D5E4] shadow-sm hover:border-[#EE0979] transition focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20">
                   <div className="flex-1 flex items-center pl-3.5 pr-2 py-1.5">
                     <Mail className="w-4 h-4 text-slate-400 shrink-0 mr-2" />
                     <input
@@ -120,7 +120,7 @@ export const PortalHome: React.FC = () => {
                   </div>
                   <button
                     type="submit"
-                    className="bg-[#153B2E] hover:bg-[#0F221B] active:scale-95 text-white font-semibold text-xs sm:text-sm px-6 py-2.5 rounded-xl sm:rounded-full transition shadow-sm hover:shadow-md inline-flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
+                    className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs sm:text-sm px-6 py-2.5 rounded-xl sm:rounded-full transition shadow-md shadow-[#EE0979]/30 inline-flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
                   >
                     <span>Start Free Trial</span>
                     <ArrowRight className="w-4 h-4" />
@@ -129,26 +129,26 @@ export const PortalHome: React.FC = () => {
               </form>
 
               {/* Clean Micro Trust Indicators + PDF User Guide CTA */}
-              <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-[12px] text-[#47574B] font-medium pt-1">
+              <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-[12px] text-slate-600 font-medium pt-1">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#3F7657]" />
+                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
                   <span>Free 14-Day Trial</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#3F7657]" />
+                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
                   <span>No Credit Card Needed</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#3F7657]" />
+                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
                   <span>Setup in 2 Minutes</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setIsGuideOpen(true)}
-                  className="flex items-center gap-1.5 text-[#153B2E] font-bold hover:underline cursor-pointer bg-[#E5EFE4] px-2.5 py-1 rounded-full border border-[#D8E3D6]"
+                  className="flex items-center gap-1.5 text-[#EE0979] font-bold hover:underline cursor-pointer bg-[#FFF1F7] px-2.5 py-1 rounded-full border border-[#F1D5E4]"
                   title="View and download full user guide manual"
                 >
-                  <BookOpen className="w-3.5 h-3.5 text-[#3F7657]" />
+                  <BookOpen className="w-3.5 h-3.5 text-[#EE0979]" />
                   <span>Download User Guide (PDF)</span>
                 </button>
               </div>

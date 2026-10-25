@@ -148,16 +148,16 @@ export const Sidebar: React.FC = () => {
   ];
 
   return (
-    <aside className="w-60 bg-[#e6f0e1] border-r border-[#d2dfcd] text-[#2c4033] flex flex-col shrink-0 select-none overflow-y-auto no-scrollbar">
+    <aside className="w-60 bg-[#FAFAFD] border-r border-[#F1D5E4] text-slate-700 flex flex-col shrink-0 select-none overflow-y-auto no-scrollbar">
       
       {/* ----------------- Dleaf CRM Primary Top Items ----------------- */}
-      <div className="p-2 space-y-0.5 border-b border-[#d2dfcd]/80 bg-[#dfeadd]">
+      <div className="p-2 space-y-0.5 border-b border-[#F1D5E4] bg-white">
         <button
           onClick={() => setActiveModule('home')}
           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
             activeModule === 'home'
-              ? 'bg-[#3F7657] text-white shadow-xs'
-              : 'text-[#2c4033] hover:bg-[#d8e7d2]'
+              ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
+              : 'text-slate-700 hover:bg-[#FFF1F7] hover:text-[#EE0979]'
           }`}
         >
           <div className="flex items-center gap-2.5">
@@ -170,15 +170,15 @@ export const Sidebar: React.FC = () => {
           onClick={() => setActiveModule('workqueue')}
           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
             activeModule === 'workqueue'
-              ? 'bg-[#3F7657] text-white shadow-xs'
-              : 'text-[#2c4033] hover:bg-[#d8e7d2]'
+              ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
+              : 'text-slate-700 hover:bg-[#FFF1F7] hover:text-[#EE0979]'
           }`}
         >
           <div className="flex items-center gap-2.5">
             <ListTodo className="w-4 h-4" />
             <span>Workqueue</span>
           </div>
-          <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-[#153B2E] text-white">
+          <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white">
             {pendingTasksCount}
           </span>
         </button>
@@ -187,8 +187,8 @@ export const Sidebar: React.FC = () => {
           onClick={() => setActiveModule('reports')}
           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
             activeModule === 'reports'
-              ? 'bg-[#3F7657] text-white shadow-xs'
-              : 'text-[#2c4033] hover:bg-[#d8e7d2]'
+              ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
+              : 'text-slate-700 hover:bg-[#FFF1F7] hover:text-[#EE0979]'
           }`}
         >
           <div className="flex items-center gap-2.5">
@@ -201,8 +201,8 @@ export const Sidebar: React.FC = () => {
           onClick={() => setActiveModule('analytics')}
           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
             activeModule === 'analytics'
-              ? 'bg-[#3F7657] text-white shadow-xs'
-              : 'text-[#2c4033] hover:bg-[#d8e7d2]'
+              ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
+              : 'text-slate-700 hover:bg-[#FFF1F7] hover:text-[#EE0979]'
           }`}
         >
           <div className="flex items-center gap-2.5">
@@ -215,31 +215,31 @@ export const Sidebar: React.FC = () => {
           onClick={() => setActiveModule('mcpserver')}
           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
             activeModule === 'mcpserver'
-              ? 'bg-[#3F7657] text-white shadow-xs'
-              : 'text-[#2c4033] hover:bg-[#d8e7d2]'
+              ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
+              : 'text-slate-700 hover:bg-[#FFF1F7] hover:text-[#EE0979]'
           }`}
         >
           <div className="flex items-center gap-2.5">
-            <Cpu className="w-4 h-4 text-[#3F7657]" />
+            <Cpu className="w-4 h-4 text-[#EE0979]" />
             <span>MCP Server</span>
           </div>
-          <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-[#153B2E] text-white">
+          <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white">
             Active
           </span>
         </button>
       </div>
 
       {/* ----------------- CRM Teamspace Dropdown & Search (As in Dleaf Screenshot) ----------------- */}
-      <div className="px-3 py-2.5 border-b border-[#d2dfcd] bg-[#dbe8d5]">
+      <div className="px-3 py-2.5 border-b border-[#F1D5E4] bg-[#FFF8FA]">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-1.5">
-            <span className="w-5 h-5 rounded-md bg-[#153B2E] text-white font-bold text-[10px] flex items-center justify-center">
+            <span className="w-5 h-5 rounded-md bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white font-bold text-[10px] flex items-center justify-center shadow-xs">
               CT
             </span>
-            <span className="text-xs font-bold text-[#17251D]">CRM Teamspace</span>
-            <ChevronDown className="w-3.5 h-3.5 text-[#4e6a57]" />
+            <span className="text-xs font-bold text-[#0F172A]">CRM Teamspace</span>
+            <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
           </div>
-          <span className="text-[11px] text-[#4e6a57] font-extrabold cursor-pointer">•••</span>
+          <span className="text-[11px] text-slate-400 font-extrabold cursor-pointer">•••</span>
         </div>
 
         {/* In-Sidebar Search Filter */}
@@ -290,14 +290,14 @@ export const Sidebar: React.FC = () => {
                         onClick={() => setActiveModule(item.id)}
                         className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all group ${
                           isActive
-                            ? 'bg-[#3F7657] text-white font-semibold shadow-xs'
-                            : 'text-[#2c4033] hover:bg-[#d8e7d2] hover:text-[#17251D]'
+                            ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white font-bold shadow-xs'
+                            : 'text-slate-700 hover:bg-[#FFF1F7] hover:text-[#EE0979]'
                         }`}
                       >
                         <div className="flex items-center gap-2.5 truncate">
                           <Icon
                             className={`w-4 h-4 shrink-0 transition-transform group-hover:scale-110 ${
-                              isActive ? 'text-white' : 'text-[#4e6a57]'
+                              isActive ? 'text-white' : 'text-slate-500'
                             }`}
                           />
                           <span className="truncate">{item.label}</span>
@@ -305,7 +305,7 @@ export const Sidebar: React.FC = () => {
                         {item.badge !== undefined && (
                           <span
                             className={`text-[10px] font-bold px-1.5 py-0.2 rounded-full text-white shrink-0 ${
-                              item.badgeColor || 'bg-[#3F7657]'
+                              item.badgeColor || 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979]'
                             }`}
                           >
                             {item.badge}
@@ -322,14 +322,14 @@ export const Sidebar: React.FC = () => {
       </div>
 
       {/* User profile & Direct Logout Button */}
-      <div className="p-2.5 m-2 bg-[#dce8d6] rounded-xl border border-[#cdddc7] space-y-2">
+      <div className="p-2.5 m-2 bg-[#FFF8FA] rounded-xl border border-[#F1D5E4] space-y-2">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-[#3F7657] text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">
+          <div className="w-7 h-7 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">
             {currentUser?.avatar || 'A'}
           </div>
           <div className="truncate flex-1">
-            <div className="text-xs font-semibold text-[#17251D] truncate">{currentUser?.name || 'Aman Kumar'}</div>
-            <div className="text-[10px] text-[#4e6a57] truncate">{currentUser?.email || 'aman@Dleaf.com'}</div>
+            <div className="text-xs font-semibold text-[#0F172A] truncate">{currentUser?.name || 'Aman Kumar'}</div>
+            <div className="text-[10px] text-slate-500 truncate">{currentUser?.email || 'aman@Dleaf.com'}</div>
           </div>
         </div>
 

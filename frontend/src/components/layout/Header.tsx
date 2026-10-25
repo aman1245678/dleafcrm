@@ -86,15 +86,15 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <div className="z-30 select-none shrink-0 relative bg-[#e6f0e1]">
-      {/* Main Top Header - Matching Sidebar Theme #e6f0e1 */}
-      <header className="h-15 bg-[#e6f0e1] text-[#17251D] flex items-center justify-between px-3 md:px-5 border-b border-[#d2dfcd] shadow-xs">
+    <div className="z-30 select-none shrink-0 relative bg-white">
+      {/* Main Top Header - Matching Logo Theme */}
+      <header className="h-15 bg-white text-[#0F172A] flex items-center justify-between px-3 md:px-5 border-b border-[#F1D5E4] shadow-xs">
         {/* Left side: Brand Logo + Quick Navigation */}
         <div className="flex items-center gap-3 md:gap-4">
           {/* Logo Section - Prominent, Clear, and Nicely Sized */}
           <div
             onClick={() => setActiveModule('home')}
-            className="flex items-center gap-2.5 group cursor-pointer pr-3 md:pr-4 border-r border-[#d2dfcd] hover:opacity-95 transition"
+            className="flex items-center gap-2.5 group cursor-pointer pr-3 md:pr-4 border-r border-[#F1D5E4] hover:opacity-95 transition"
             title="CRM Home"
           >
             {/* Logo Container with optimized size & visibility */}
@@ -113,8 +113,8 @@ export const Header: React.FC = () => {
               onClick={() => setActiveModule('home')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                 activeModule === 'home'
-                  ? 'bg-[#3F7657] text-white shadow-xs'
-                  : 'text-[#2c4033] hover:text-[#17251D] hover:bg-[#d8e7d2]'
+                  ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
+                  : 'text-slate-700 hover:text-[#EE0979] hover:bg-[#FFF1F7]'
               }`}
             >
               Home
@@ -123,8 +123,8 @@ export const Header: React.FC = () => {
               onClick={() => setActiveModule('reports')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                 activeModule === 'reports'
-                  ? 'bg-[#3F7657] text-white shadow-xs'
-                  : 'text-[#2c4033] hover:text-[#17251D] hover:bg-[#d8e7d2]'
+                  ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
+                  : 'text-slate-700 hover:text-[#EE0979] hover:bg-[#FFF1F7]'
               }`}
             >
               Reports
@@ -133,8 +133,8 @@ export const Header: React.FC = () => {
               onClick={() => setActiveModule('analytics')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                 activeModule === 'analytics'
-                  ? 'bg-[#3F7657] text-white shadow-xs'
-                  : 'text-[#2c4033] hover:text-[#17251D] hover:bg-[#d8e7d2]'
+                  ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
+                  : 'text-slate-700 hover:text-[#EE0979] hover:bg-[#FFF1F7]'
               }`}
             >
               Analytics
