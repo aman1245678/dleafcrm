@@ -141,16 +141,20 @@ export async function dispatchEmailOtp(
   console.log(`🔑 [OTP CODE]: ${otp} (Purpose: ${purpose.toUpperCase()})`);
   console.log(`======================================================\n`);
 
-  // 1. Attempt ZeptoMail HTTPS API
-  if (token) {
+  // Clean auth header token - ensure no double 'Zoho-enczapikey' prefix
+  const rawToken = token.replace(/^Zoho-enczapikey\s+/i, '').trim();
+  const authHeader = `Zoho-enczapikey ${rawToken}`;
+
+  // 1. Attempt ZeptoMail / Zoho CPaaS HTTPS API
+  if (rawToken) {
     try {
-      console.log(`🚀 [ZeptoMail HTTPS] Dispatching verification email via ${apiUrl}...`);
+      console.log(`🚀 [ZeptoMail / Zoho CPaaS HTTPS] Dispatching verification email via ${apiUrl}...`);
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': `Zoho-enczapikey ${token}`,
+          'Authorization': authHeader,
         },
         body: JSON.stringify({
           from: {
