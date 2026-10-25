@@ -83,10 +83,10 @@ export const Sidebar: React.FC = () => {
     {
       title: 'Sales',
       items: [
-        { id: 'leads', label: 'Leads', icon: Users, badge: leads.length, badgeColor: 'bg-[#3F7657]' },
+        { id: 'leads', label: 'Leads', icon: Users, badge: leads.length, badgeColor: 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979]' },
         { id: 'contacts', label: 'Contacts', icon: UserCheck },
         { id: 'accounts', label: 'Accounts', icon: Building2 },
-        { id: 'deals', label: 'Deals', icon: DollarSign, badge: deals.length, badgeColor: 'bg-[#153B2E]' },
+        { id: 'deals', label: 'Deals', icon: DollarSign, badge: deals.length, badgeColor: 'bg-[#0F172A]' },
         { id: 'forecasts', label: 'Forecasts', icon: TrendingUp },
         { id: 'documents', label: 'Documents', icon: FolderOpen },
         { id: 'campaigns', label: 'Campaigns', icon: Megaphone },
@@ -122,13 +122,13 @@ export const Sidebar: React.FC = () => {
     {
       title: 'Integrations',
       items: [
-        { id: 'salesinbox', label: 'SalesInbox', icon: Mail, badge: unreadMails > 0 ? unreadMails : undefined, badgeColor: 'bg-emerald-600' },
+        { id: 'salesinbox', label: 'SalesInbox', icon: Mail, badge: unreadMails > 0 ? unreadMails : undefined, badgeColor: 'bg-[#EE0979]' },
         { id: 'social', label: 'Social', icon: Share2 },
         { id: 'visits', label: 'Visits', icon: Globe },
         { id: 'services', label: 'Services', icon: Wrench },
         { id: 'projects', label: 'Projects', icon: FolderKanban },
         { id: 'automation', label: 'Automations', icon: Zap },
-        { id: 'mcpserver', label: 'MCP Server AI', icon: Cpu, badge: 'Live', badgeColor: 'bg-[#153B2E]' },
+        { id: 'mcpserver', label: 'MCP Server AI', icon: Cpu, badge: 'Live', badgeColor: 'bg-[#0F172A]' },
       ],
     },
     {
@@ -138,7 +138,7 @@ export const Sidebar: React.FC = () => {
         (currentUser.email.toLowerCase().trim() === 'aman.kumar@dleaftech.com' ||
          currentUser.role === ('SUPER_ADMIN' as any))
           ? [
-              { id: 'superadmin' as const, label: 'Super Admin', icon: ShieldCheck, badge: 'Owner', badgeColor: 'bg-[#3F7657]' },
+              { id: 'superadmin' as const, label: 'Super Admin', icon: ShieldCheck, badge: 'Owner', badgeColor: 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979]' },
               { id: 'dataadmin' as const, label: 'Data Admin', icon: Database },
             ]
           : []),
@@ -244,19 +244,19 @@ export const Sidebar: React.FC = () => {
 
         {/* In-Sidebar Search Filter */}
         <div className="relative">
-          <Search className="w-3.5 h-3.5 text-[#4e6a57] absolute left-2.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchFilter}
             onChange={(e) => setSearchFilter(e.target.value)}
             placeholder="Search modules..."
-            className="w-full pl-8 pr-2.5 py-1 bg-white/70 border border-[#c5d7be] rounded-lg text-xs text-[#17251D] placeholder-[#5c7a65] focus:outline-hidden focus:border-[#3F7657] transition"
+            className="w-full pl-8 pr-2.5 py-1 bg-white/70 border border-[#F1D5E4] rounded-lg text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979] transition"
           />
         </div>
       </div>
 
       {/* ----------------- Navigation Groups (Sales, Activities, Inventory, Support, Integrations, Admin) ----------------- */}
-      <div className="py-2 px-2 flex-1 divide-y divide-[#d2dfcd]/70 space-y-2.5">
+      <div className="py-2 px-2 flex-1 divide-y divide-[#F1D5E4]/70 space-y-2.5">
         {sections.map((section, idx) => {
           const isCollapsed = collapsedSections[section.title];
           const visibleItems = section.items.filter((item) =>
@@ -269,13 +269,13 @@ export const Sidebar: React.FC = () => {
             <div key={section.title} className={idx > 0 ? "pt-2 space-y-0.5" : "space-y-0.5"}>
               <button
                 onClick={() => toggleSection(section.title)}
-                className="w-full flex items-center justify-between px-2 py-1 text-[11px] font-bold tracking-wider text-[#4e6a57] uppercase hover:text-[#17251D] transition"
+                className="w-full flex items-center justify-between px-2 py-1 text-[11px] font-bold tracking-wider text-slate-500 uppercase hover:text-[#EE0979] transition"
               >
                 <span>{section.title}</span>
                 {isCollapsed ? (
-                  <ChevronRight className="w-3 h-3 text-[#4e6a57]" />
+                  <ChevronRight className="w-3 h-3 text-slate-400" />
                 ) : (
-                  <ChevronDown className="w-3 h-3 text-[#4e6a57]" />
+                  <ChevronDown className="w-3 h-3 text-slate-400" />
                 )}
               </button>
 
@@ -346,7 +346,7 @@ export const Sidebar: React.FC = () => {
       </div>
 
       {/* Footer: IMAP sync indicator */}
-      <div className="px-3 py-1.5 text-[10px] text-[#4e6a57] flex items-center justify-between border-t border-[#d2dfcd]">
+      <div className="px-3 py-1.5 text-[10px] text-slate-500 flex items-center justify-between border-t border-[#F1D5E4]">
         <span className="flex items-center gap-1.5">
           <span className={`w-1.5 h-1.5 rounded-full ${imapConfig.isConnected ? 'bg-emerald-600 animate-pulse' : 'bg-rose-500'}`}></span>
           IMAP Sync

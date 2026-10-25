@@ -301,11 +301,11 @@ const CRMAppContainer: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#e6f0e1] font-sans antialiased select-none">
+    <div className="flex flex-col h-screen w-screen overflow-hidden bg-[#F8FAFC] font-sans antialiased select-none">
       <Header />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
-        <main className="flex-1 flex flex-col overflow-hidden bg-[#e6f0e1] relative">
+        <main className="flex-1 flex flex-col overflow-hidden bg-[#F8FAFC] relative">
           {renderWorkspaceModule()}
         </main>
       </div>

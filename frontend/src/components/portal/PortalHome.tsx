@@ -833,84 +833,90 @@ export const PortalHome: React.FC = () => {
       {/* =========================================================================
           SECTION 9: COMPACT ENTERPRISE FOOTER (Crisp White Background)
       ========================================================================== */}
-      <footer className="bg-white text-[#47574B] text-xs pt-8 pb-5 px-4 sm:px-8 lg:px-12 border-t border-[#D8E3D6]">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-6 mb-6">
-          <div className="col-span-2 space-y-2.5">
+      <footer className="bg-[#0F172A] text-slate-400 text-xs pt-10 pb-6 px-4 sm:px-8 lg:px-12 border-t border-white/10">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+          <div className="col-span-2 space-y-3">
             <div className="flex items-center gap-2">
               <img
-                src="/logo1.png"
-                alt="Dleaf CRM Logo"
-                className="h-10 w-auto max-w-[220px] object-contain"
+                src="/logo1.png?v=20"
+                alt="DleafCRM"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('logo.png')) {
+                    target.src = '/logo.png?v=20';
+                  }
+                }}
+                className="h-10 sm:h-11 w-auto max-w-[220px] object-contain"
               />
             </div>
-            <p className="font-editorial-body text-[11.5px] text-[#47574B] leading-relaxed max-w-xs">
+            <p className="font-editorial-body text-[11.5px] text-slate-400 leading-relaxed max-w-xs">
               Next-generation enterprise CRM uniting omnichannel sales, Zia AI deal intelligence, and Indian statutory compliance.
             </p>
-            <div className="flex items-center gap-2 text-[#47574B] pt-1">
-              <a href="#" className="w-6 h-6 rounded-md bg-[#F5F8F3] border border-[#D8E3D6] hover:bg-[#3F7657] hover:text-white flex items-center justify-center transition">
-                <Linkedin className="w-3 h-3" />
+            <div className="flex items-center gap-2 pt-1">
+              <a href="#" className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 hover:bg-[#EE0979] hover:text-white text-slate-300 flex items-center justify-center transition">
+                <Linkedin className="w-3.5 h-3.5" />
               </a>
-              <a href="#" className="w-6 h-6 rounded-md bg-[#F5F8F3] border border-[#D8E3D6] hover:bg-[#3F7657] hover:text-white flex items-center justify-center transition">
-                <Twitter className="w-3 h-3" />
+              <a href="#" className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 hover:bg-[#EE0979] hover:text-white text-slate-300 flex items-center justify-center transition">
+                <Twitter className="w-3.5 h-3.5" />
               </a>
-              <a href="#" className="w-6 h-6 rounded-md bg-[#F5F8F3] border border-[#D8E3D6] hover:bg-[#3F7657] hover:text-white flex items-center justify-center transition">
-                <Youtube className="w-3 h-3" />
+              <a href="#" className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 hover:bg-[#EE0979] hover:text-white text-slate-300 flex items-center justify-center transition">
+                <Youtube className="w-3.5 h-3.5" />
               </a>
-              <a href="#" className="w-6 h-6 rounded-md bg-[#F5F8F3] border border-[#D8E3D6] hover:bg-[#3F7657] hover:text-white flex items-center justify-center transition">
-                <Facebook className="w-3 h-3" />
+              <a href="#" className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 hover:bg-[#EE0979] hover:text-white text-slate-300 flex items-center justify-center transition">
+                <Facebook className="w-3.5 h-3.5" />
               </a>
-              <a href="#" className="w-6 h-6 rounded-md bg-[#F5F8F3] border border-[#D8E3D6] hover:bg-[#3F7657] hover:text-white flex items-center justify-center transition">
-                <Instagram className="w-3 h-3" />
+              <a href="#" className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 hover:bg-[#EE0979] hover:text-white text-slate-300 flex items-center justify-center transition">
+                <Instagram className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
 
           <div>
-            <div className="font-editorial font-bold text-[#17251D] text-xs mb-2">Platform</div>
-            <ul className="space-y-1.5 text-[11px] font-editorial-body">
-              <li onClick={() => setPortalPage('features')} className="hover:text-[#3F7657] cursor-pointer">Deals Kanban</li>
-              <li onClick={() => setPortalPage('features')} className="hover:text-[#3F7657] cursor-pointer">Lead Scoring</li>
-              <li onClick={() => setPortalPage('features')} className="hover:text-[#3F7657] cursor-pointer">Zia AI Engine</li>
-              <li onClick={() => setPortalPage('features')} className="hover:text-[#3F7657] cursor-pointer">SalesInbox</li>
-              <li onClick={() => setPortalPage('features')} className="hover:text-[#3F7657] cursor-pointer">CPQ & Invoices</li>
+            <div className="font-editorial font-bold text-white text-xs mb-3 uppercase tracking-wider">Platform</div>
+            <ul className="space-y-2 text-[11px] font-editorial-body text-slate-400">
+              <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">Deals Kanban</li>
+              <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">Lead Scoring</li>
+              <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">Zia AI Engine</li>
+              <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">SalesInbox</li>
+              <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">CPQ & Invoices</li>
             </ul>
           </div>
 
           <div>
-            <div className="font-editorial font-bold text-[#17251D] text-xs mb-2">Solutions</div>
-            <ul className="space-y-1.5 text-[11px] font-editorial-body">
-              <li onClick={() => setPortalPage('platform')} className="hover:text-[#3F7657] cursor-pointer">Startups</li>
-              <li onClick={() => setPortalPage('platform')} className="hover:text-[#3F7657] cursor-pointer">SMEs & Mid-Market</li>
-              <li onClick={() => setPortalPage('platform')} className="hover:text-[#3F7657] cursor-pointer">Enterprise Cloud</li>
-              <li onClick={() => setPortalPage('platform')} className="hover:text-[#3F7657] cursor-pointer">Telephony & WhatsApp</li>
+            <div className="font-editorial font-bold text-white text-xs mb-3 uppercase tracking-wider">Solutions</div>
+            <ul className="space-y-2 text-[11px] font-editorial-body text-slate-400">
+              <li onClick={() => setPortalPage('platform')} className="hover:text-[#EE0979] transition cursor-pointer">Startups</li>
+              <li onClick={() => setPortalPage('platform')} className="hover:text-[#EE0979] transition cursor-pointer">SMEs & Mid-Market</li>
+              <li onClick={() => setPortalPage('platform')} className="hover:text-[#EE0979] transition cursor-pointer">Enterprise Cloud</li>
+              <li onClick={() => setPortalPage('platform')} className="hover:text-[#EE0979] transition cursor-pointer">Telephony & WhatsApp</li>
             </ul>
           </div>
 
           <div>
-            <div className="font-editorial font-bold text-[#17251D] text-xs mb-2">Resources</div>
-            <ul className="space-y-1.5 text-[11px] font-editorial-body">
-              <li onClick={() => setPortalPage('resources')} className="hover:text-[#3F7657] cursor-pointer">Documentation</li>
-              <li onClick={() => setPortalPage('resources')} className="hover:text-[#3F7657] cursor-pointer">API Reference</li>
-              <li onClick={() => setPortalPage('customers')} className="hover:text-[#3F7657] cursor-pointer">Customer Stories</li>
-              <li onClick={() => setPortalPage('resources')} className="hover:text-[#3F7657] cursor-pointer">Webinars</li>
+            <div className="font-editorial font-bold text-white text-xs mb-3 uppercase tracking-wider">Resources</div>
+            <ul className="space-y-2 text-[11px] font-editorial-body text-slate-400">
+              <li onClick={() => setPortalPage('resources')} className="hover:text-[#EE0979] transition cursor-pointer">Documentation</li>
+              <li onClick={() => setPortalPage('resources')} className="hover:text-[#EE0979] transition cursor-pointer">API Reference</li>
+              <li onClick={() => setPortalPage('customers')} className="hover:text-[#EE0979] transition cursor-pointer">Customer Stories</li>
+              <li onClick={() => setPortalPage('resources')} className="hover:text-[#EE0979] transition cursor-pointer">Webinars</li>
             </ul>
           </div>
 
-          <div className="col-span-2 md:col-span-1 space-y-2">
-            <div className="font-editorial font-bold text-[#17251D] text-xs">Newsletter</div>
-            <p className="font-editorial-body text-[10.5px] text-[#47574B]">Monthly CRM strategy & product releases.</p>
-            <form onSubmit={handleNewsletterSubmit} className="flex items-center rounded-lg bg-[#F5F8F3] border border-[#D8E3D6] p-0.5">
+          <div className="col-span-2 md:col-span-1 space-y-2.5">
+            <div className="font-editorial font-bold text-white text-xs uppercase tracking-wider">Newsletter</div>
+            <p className="font-editorial-body text-[10.5px] text-slate-400">Monthly CRM strategy & product releases.</p>
+            <form onSubmit={handleNewsletterSubmit} className="flex items-center rounded-xl bg-white/5 border border-white/10 p-1 focus-within:border-[#EE0979] transition">
               <input
                 type="email"
                 required
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Email..."
-                className="w-full px-2 py-1 bg-transparent text-[#17251D] text-[11px] placeholder:text-slate-400 focus:outline-none"
+                className="w-full px-2.5 py-1 bg-transparent text-white text-[11px] placeholder:text-slate-500 focus:outline-none"
               />
               <button
                 type="submit"
-                className="bg-[#3F7657] hover:bg-[#274C37] text-white p-1 rounded transition cursor-pointer shrink-0"
+                className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 text-white p-1.5 rounded-lg transition cursor-pointer shrink-0"
               >
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
@@ -918,16 +924,16 @@ export const PortalHome: React.FC = () => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto pt-4 border-t border-[#D8E3D6] flex flex-col sm:flex-row items-center justify-between gap-2 text-[10.5px] text-[#47574B] font-editorial">
+        <div className="max-w-7xl mx-auto pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[10.5px] text-slate-400 font-editorial">
           <div>
             © 2026 Dleaf Technologies Pvt. Ltd. All rights reserved.
           </div>
           <div className="flex items-center gap-3">
-            <span className="hover:text-[#3F7657] cursor-pointer">Privacy Policy</span>
+            <span className="hover:text-[#EE0979] transition cursor-pointer">Privacy Policy</span>
             <span>•</span>
-            <span className="hover:text-[#3F7657] cursor-pointer">Terms of Service</span>
+            <span className="hover:text-[#EE0979] transition cursor-pointer">Terms of Service</span>
             <span>•</span>
-            <span className="hover:text-[#3F7657] cursor-pointer">Security Compliance</span>
+            <span className="hover:text-[#EE0979] transition cursor-pointer">Security Compliance</span>
           </div>
         </div>
       </footer>

@@ -100,9 +100,15 @@ export const Header: React.FC = () => {
             {/* Logo Container with optimized size & visibility */}
             <div className="relative flex items-center justify-center shrink-0">
               <img
-                src="/logo1.png"
-                alt="DleafCRM Logo"
-                className="h-10 sm:h-11 md:h-12 w-auto max-w-[250px] object-contain transition-transform group-hover:scale-[1.02]"
+                src="/logo1.png?v=20"
+                alt="DleafCRM"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('logo.png')) {
+                    target.src = '/logo.png?v=20';
+                  }
+                }}
+                className="h-10 sm:h-11 md:h-12 w-auto max-w-[250px] object-contain transition-transform group-hover:scale-[1.02] block"
               />
             </div>
           </div>
@@ -143,11 +149,11 @@ export const Header: React.FC = () => {
               onClick={() => setActiveModule('mcpserver')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 ${
                 activeModule === 'mcpserver'
-                  ? 'bg-[#3F7657] text-white shadow-xs'
-                  : 'text-[#153B2E] bg-[#dce8d6] hover:bg-[#d4e4cd] border border-[#cdddc7]'
+                  ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
+                  : 'text-[#EE0979] bg-[#FFF1F7] hover:bg-[#FCE7F3] border border-[#F1D5E4]'
               }`}
             >
-              <Cpu className="w-3.5 h-3.5 text-[#3F7657]" />
+              <Cpu className="w-3.5 h-3.5 text-[#EE0979]" />
               <span>MCP Server</span>
             </button>
           </nav>
@@ -157,13 +163,13 @@ export const Header: React.FC = () => {
         <div className="flex-1 max-w-md mx-3">
           <button
             onClick={() => setIsGlobalSearchOpen(true)}
-            className="w-full flex items-center justify-between px-3.5 py-1.5 bg-[#f0f6ec] hover:bg-[#f5faf2] border border-[#d2dfcd] rounded-lg text-[#4e6a57] text-xs transition-all shadow-xs group focus:outline-none focus:ring-2 focus:ring-[#3F7657]/20"
+            className="w-full flex items-center justify-between px-3.5 py-1.5 bg-[#F8FAFC] hover:bg-[#FFF8FA] border border-[#F1D5E4] rounded-lg text-slate-500 text-xs transition-all shadow-xs group focus:outline-none focus:ring-2 focus:ring-[#EE0979]/20"
           >
             <div className="flex items-center gap-2">
-              <Search className="w-3.5 h-3.5 text-[#4e6a57] group-hover:text-[#3F7657] transition-colors" />
-              <span className="font-normal text-[#2c4033] truncate">Search Deals, Leads, Contacts, Accounts...</span>
+              <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#EE0979] transition-colors" />
+              <span className="font-normal text-slate-700 truncate">Search Deals, Leads, Contacts, Accounts...</span>
             </div>
-            <kbd className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] bg-[#dce8d6] text-[#2c4033] font-semibold rounded border border-[#cdddc7] shadow-xs">
+            <kbd className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] bg-white text-slate-600 font-semibold rounded border border-[#F1D5E4] shadow-xs">
               ⌘K
             </kbd>
           </button>
@@ -175,7 +181,7 @@ export const Header: React.FC = () => {
           <div className="relative">
             <button
               onClick={() => setIsQuickAddOpen(!isQuickAddOpen)}
-              className="w-8 h-8 rounded-lg bg-[#3F7657] hover:bg-[#336147] text-white flex items-center justify-center transition shadow-xs active:scale-95"
+              className="w-8 h-8 rounded-lg bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 text-white flex items-center justify-center transition shadow-xs active:scale-95 cursor-pointer"
               title="Quick Create Deal, Lead, Task"
             >
               <Plus className="w-4 h-4" />
@@ -346,16 +352,16 @@ export const Header: React.FC = () => {
           {/* Live Subscription / Trial Status Indicator for Client */}
           <button
             onClick={() => crm?.setIsSubscriptionModalOpen?.(true)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#E5EFE4] hover:bg-[#d8e7d2] text-[#153B2E] border border-[#D8E3D6] text-xs font-bold transition shadow-xs cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#FFF1F7] hover:bg-[#FCE7F3] text-[#EE0979] border border-[#F1D5E4] text-xs font-bold transition shadow-xs cursor-pointer"
             title="Subscription & Plan Status"
           >
-            <Timer className="w-3.5 h-3.5 text-[#3F7657]" />
+            <Timer className="w-3.5 h-3.5 text-[#EE0979]" />
             <span className="hidden md:inline">
               {crm?.subscription?.planStatus === 'active'
                 ? `${crm?.subscription?.planName || 'Enterprise'} (Active)`
                 : 'Free Trial (14 Days)'}
             </span>
-            <span className="text-[10px] bg-[#3F7657] text-white px-1.5 py-0.2 rounded font-extrabold uppercase">
+            <span className="text-[10px] bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white px-1.5 py-0.2 rounded font-extrabold uppercase">
               Upgrade
             </span>
           </button>
@@ -363,10 +369,10 @@ export const Header: React.FC = () => {
           {/* User Guide PDF Manual Button */}
           <button
             onClick={() => setIsUserGuideOpen(true)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#F5F8F3] hover:bg-[#E5EFE4] text-[#153B2E] border border-[#D8E3D6] text-xs font-bold transition shadow-xs cursor-pointer active:scale-95"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#FFF1F7] hover:bg-[#FCE7F3] text-[#EE0979] border border-[#F1D5E4] text-xs font-bold transition shadow-xs cursor-pointer active:scale-95"
             title="Download & View Full English User Guide Manual (PDF)"
           >
-            <BookOpen className="w-3.5 h-3.5 text-[#3F7657]" />
+            <BookOpen className="w-3.5 h-3.5 text-[#EE0979]" />
             <span className="hidden lg:inline">User Guide (PDF)</span>
           </button>
 
@@ -375,7 +381,7 @@ export const Header: React.FC = () => {
             onClick={() => setActiveModule('setup')}
             className={`w-8 h-8 rounded-lg flex items-center justify-center transition border shadow-xs ${
               activeModule === 'setup'
-                ? 'bg-[#738F70] text-white border-[#738F70]'
+                ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white border-transparent'
                 : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200'
             }`}
             title="CRM Setup & Customization"
@@ -386,10 +392,10 @@ export const Header: React.FC = () => {
           {/* Public Website / Landing Portal Button */}
           <button
             onClick={() => setAppMode('portal')}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#F2F6F2] hover:bg-[#E2EDE0] text-[#5F7A5D] border border-[#C4D5C2] text-xs font-bold transition shadow-xs cursor-pointer active:scale-95"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#FFF8FA] hover:bg-[#FFF1F7] text-slate-700 hover:text-[#EE0979] border border-[#F1D5E4] text-xs font-bold transition shadow-xs cursor-pointer active:scale-95"
             title="Switch to Public Landing Page & Portal"
           >
-            <Globe className="w-3.5 h-3.5" />
+            <Globe className="w-3.5 h-3.5 text-[#EE0979]" />
             <span className="hidden lg:inline">Public Website</span>
           </button>
 
@@ -513,8 +519,8 @@ export const Header: React.FC = () => {
         </div>
       </header>
 
-      {/* Attractive Multi-Color Gradient Bottom Lining Underneath Header */}
-      <div className="h-[3px] w-full bg-gradient-to-r from-[#153B2E] via-[#3F7657] via-[#738F70] via-emerald-600 to-[#153B2E] relative overflow-hidden shadow-xs">
+      {/* Attractive Brand Multi-Color Gradient Bottom Lining Underneath Header */}
+      <div className="h-[3px] w-full bg-gradient-to-r from-[#FF6A00] via-[#EE0979] via-[#7928CA] to-[#0F172A] relative overflow-hidden shadow-xs">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-pulse opacity-80 pointer-events-none" />
       </div>
 

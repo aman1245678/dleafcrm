@@ -58,19 +58,19 @@ export const WorkqueueModule: React.FC = () => {
     <div className="flex-1 flex flex-col h-full bg-[#f4f7f4] overflow-hidden font-sans">
       
       {/* ----------------- Top Header Bar ----------------- */}
-      <div className="bg-white border-b border-[#D8E3D6] px-6 py-3.5 flex items-center justify-between shrink-0 shadow-xs">
+      <div className="bg-white border-b border-[#F1D5E4] px-6 py-3.5 flex items-center justify-between shrink-0 shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-[#E5EFE4] text-[#153B2E] flex items-center justify-center font-bold shadow-xs">
-            <ListTodo className="w-5 h-5 text-[#3F7657]" />
+          <div className="w-9 h-9 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center font-bold shadow-xs">
+            <ListTodo className="w-5 h-5 text-[#EE0979]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="font-bold text-lg text-[#17251D]">Workqueue</h1>
-              <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#E5EFE4] text-[#153B2E] border border-[#D8E3D6]">
+              <h1 className="font-bold text-lg text-[#0F172A]">Workqueue</h1>
+              <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#FFF1F7] text-[#EE0979] border border-[#F1D5E4]">
                 Smart Action Engine
               </span>
             </div>
-            <p className="text-xs text-[#526456]">
+            <p className="text-xs text-slate-500">
               Prioritized queue for tasks, follow-up calls, meetings, and lead cadences
             </p>
           </div>
@@ -84,21 +84,21 @@ export const WorkqueueModule: React.FC = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search workqueue items..."
-              className="pl-8 pr-3 py-1.5 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#3F7657] w-56 transition"
+              className="pl-8 pr-3 py-1.5 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979] w-56 transition"
             />
           </div>
 
           <button
             onClick={handleRefresh}
-            className="p-2 rounded-xl bg-[#F5F8F3] hover:bg-[#E5EFE4] border border-[#D8E3D6] text-[#2c4033] transition cursor-pointer"
+            className="p-2 rounded-xl bg-[#FFF8FA] hover:bg-[#FFF1F7] border border-[#F1D5E4] text-slate-700 transition cursor-pointer"
             title="Refresh Workqueue"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-[#3F7657]' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-[#EE0979]' : ''}`} />
           </button>
 
           <button
             onClick={() => setIsCreateTaskOpen(true)}
-            className="bg-[#153B2E] hover:bg-[#0F221B] active:scale-95 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition shadow-xs flex items-center gap-1.5 cursor-pointer"
+            className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition shadow-xs flex items-center gap-1.5 cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Create Task</span>
@@ -110,19 +110,19 @@ export const WorkqueueModule: React.FC = () => {
       <div className="flex-1 flex overflow-hidden">
         
         {/* Left Sub-Navigation Panel (Dleaf Workqueue Left Nav) */}
-        <div className="w-72 bg-white border-r border-[#D8E3D6] flex flex-col shrink-0 overflow-y-auto p-4 space-y-6">
+        <div className="w-72 bg-white border-r border-[#F1D5E4] flex flex-col shrink-0 overflow-y-auto p-4 space-y-6">
           
           {/* Section 1: My Open Activity */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-[#17251D] uppercase tracking-wider">My Open Activity</span>
+              <span className="text-xs font-bold text-[#0F172A] uppercase tracking-wider">My Open Activity</span>
             </div>
 
             {/* Time Filter Dropdown */}
             <select
               value={timeFilter}
               onChange={(e) => setTimeFilter(e.target.value as any)}
-              className="w-full mb-3 px-3 py-2 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs font-semibold text-[#17251D] focus:outline-hidden focus:border-[#3F7657] cursor-pointer"
+              className="w-full mb-3 px-3 py-2 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs font-semibold text-[#0F172A] focus:outline-hidden focus:border-[#EE0979] cursor-pointer"
             >
               <option value="today_overdue">Today & Overdue</option>
               <option value="today">Today Only</option>
@@ -135,15 +135,15 @@ export const WorkqueueModule: React.FC = () => {
                 onClick={() => setActiveCategory('tasks')}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
                   activeCategory === 'tasks'
-                    ? 'bg-[#E5EFE4] text-[#153B2E] border-l-4 border-[#3F7657]'
-                    : 'text-slate-600 hover:bg-[#F5F8F3]'
+                    ? 'bg-[#FFF1F7] text-[#EE0979] border-l-4 border-[#EE0979] font-bold'
+                    : 'text-slate-600 hover:bg-[#FFF8FA]'
                 }`}
               >
                 <div className="flex items-center gap-2">
-                  <CheckSquare className="w-4 h-4 text-[#3F7657]" />
+                  <CheckSquare className="w-4 h-4 text-[#EE0979]" />
                   <span>Tasks</span>
                 </div>
-                <span className="px-2 py-0.5 rounded-full bg-white border border-[#D8E3D6] text-[11px] font-bold text-[#153B2E]">
+                <span className="px-2 py-0.5 rounded-full bg-white border border-[#F1D5E4] text-[11px] font-bold text-[#EE0979]">
                   {todayTasks.length}
                 </span>
               </button>
@@ -152,15 +152,15 @@ export const WorkqueueModule: React.FC = () => {
                 onClick={() => setActiveCategory('meetings')}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
                   activeCategory === 'meetings'
-                    ? 'bg-[#E5EFE4] text-[#153B2E] border-l-4 border-[#3F7657]'
-                    : 'text-slate-600 hover:bg-[#F5F8F3]'
+                    ? 'bg-[#FFF1F7] text-[#EE0979] border-l-4 border-[#EE0979] font-bold'
+                    : 'text-slate-600 hover:bg-[#FFF8FA]'
                 }`}
               >
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-purple-600" />
                   <span>Meetings</span>
                 </div>
-                <span className="px-2 py-0.5 rounded-full bg-white border border-[#D8E3D6] text-[11px] font-bold text-slate-600">
+                <span className="px-2 py-0.5 rounded-full bg-white border border-[#F1D5E4] text-[11px] font-bold text-slate-600">
                   2
                 </span>
               </button>
@@ -169,15 +169,15 @@ export const WorkqueueModule: React.FC = () => {
                 onClick={() => setActiveCategory('calls')}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
                   activeCategory === 'calls'
-                    ? 'bg-[#E5EFE4] text-[#153B2E] border-l-4 border-[#3F7657]'
-                    : 'text-slate-600 hover:bg-[#F5F8F3]'
+                    ? 'bg-[#FFF1F7] text-[#EE0979] border-l-4 border-[#EE0979] font-bold'
+                    : 'text-slate-600 hover:bg-[#FFF8FA]'
                 }`}
               >
                 <div className="flex items-center gap-2">
-                  <PhoneCall className="w-4 h-4 text-emerald-600" />
+                  <PhoneCall className="w-4 h-4 text-[#FF6A00]" />
                   <span>Calls</span>
                 </div>
-                <span className="px-2 py-0.5 rounded-full bg-white border border-[#D8E3D6] text-[11px] font-bold text-slate-600">
+                <span className="px-2 py-0.5 rounded-full bg-white border border-[#F1D5E4] text-[11px] font-bold text-slate-600">
                   4
                 </span>
               </button>
@@ -185,15 +185,15 @@ export const WorkqueueModule: React.FC = () => {
           </div>
 
           {/* Section 2: My Jobs */}
-          <div className="pt-4 border-t border-[#D8E3D6]">
-            <span className="text-xs font-bold text-[#17251D] uppercase tracking-wider block mb-2">My Jobs</span>
+          <div className="pt-4 border-t border-[#F1D5E4]">
+            <span className="text-xs font-bold text-[#0F172A] uppercase tracking-wider block mb-2">My Jobs</span>
             <div className="space-y-1">
-              <div className="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-[#F5F8F3] transition cursor-pointer">
+              <div className="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-[#FFF8FA] transition cursor-pointer">
                 <div className="flex items-center gap-2">
-                  <Workflow className="w-4 h-4 text-[#3F7657]" />
+                  <Workflow className="w-4 h-4 text-[#EE0979]" />
                   <span>Blueprint Transitions</span>
                 </div>
-                <span className="px-2 py-0.5 rounded-full bg-white border border-[#D8E3D6] text-[11px] font-bold text-slate-600">
+                <span className="px-2 py-0.5 rounded-full bg-white border border-[#F1D5E4] text-[11px] font-bold text-slate-600">
                   1
                 </span>
               </div>
@@ -201,12 +201,12 @@ export const WorkqueueModule: React.FC = () => {
           </div>
 
           {/* Section 3: My Workqueue Cadences */}
-          <div className="pt-4 border-t border-[#D8E3D6]">
+          <div className="pt-4 border-t border-[#F1D5E4]">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-[#17251D] uppercase tracking-wider">My Workqueue</span>
+              <span className="text-xs font-bold text-[#0F172A] uppercase tracking-wider">My Workqueue</span>
               <button
                 onClick={() => setIsCreateLeadOpen(true)}
-                className="text-[#3F7657] hover:text-[#153B2E] p-1 rounded-sm"
+                className="text-[#EE0979] hover:text-[#0F172A] p-1 rounded-sm"
                 title="Add to queue"
               >
                 <Plus className="w-3.5 h-3.5" />
@@ -218,7 +218,7 @@ export const WorkqueueModule: React.FC = () => {
               <button
                 onClick={() => setActiveCategory('leads')}
                 className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl transition cursor-pointer ${
-                  activeCategory === 'leads' ? 'bg-[#E5EFE4] text-[#153B2E] font-bold' : 'text-slate-600 hover:bg-[#F5F8F3]'
+                  activeCategory === 'leads' ? 'bg-[#FFF1F7] text-[#EE0979] font-bold' : 'text-slate-600 hover:bg-[#FFF8FA]'
                 }`}
               >
                 <div className="flex items-center gap-2 truncate">
@@ -232,7 +232,7 @@ export const WorkqueueModule: React.FC = () => {
               <button
                 onClick={() => setActiveCategory('contacts')}
                 className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl transition cursor-pointer ${
-                  activeCategory === 'contacts' ? 'bg-[#E5EFE4] text-[#153B2E] font-bold' : 'text-slate-600 hover:bg-[#F5F8F3]'
+                  activeCategory === 'contacts' ? 'bg-[#FFF1F7] text-[#EE0979] font-bold' : 'text-slate-600 hover:bg-[#FFF8FA]'
                 }`}
               >
                 <div className="flex items-center gap-2 truncate">
@@ -249,9 +249,9 @@ export const WorkqueueModule: React.FC = () => {
         <div className="flex-1 flex flex-col overflow-hidden bg-white">
           
           {/* Subheader Title & Filter bar */}
-          <div className="px-6 py-3 border-b border-[#D8E3D6] flex items-center justify-between bg-white shrink-0">
+          <div className="px-6 py-3 border-b border-[#F1D5E4] flex items-center justify-between bg-white shrink-0">
             <div className="flex items-center gap-2.5">
-              <h2 className="font-bold text-base text-[#17251D] capitalize">
+              <h2 className="font-bold text-base text-[#0F172A] capitalize">
                 {activeCategory === 'tasks'
                   ? 'Open Tasks'
                   : activeCategory === 'meetings'
@@ -262,14 +262,14 @@ export const WorkqueueModule: React.FC = () => {
                   ? 'Workqueue Leads Cadence'
                   : 'Target Contacts'}
               </h2>
-              <span className="text-xs text-[#526456]">
+              <span className="text-xs text-slate-500">
                 ({activeCategory === 'tasks' ? todayTasks.length : activeCategory === 'leads' ? openLeads.length : 4} items pending)
               </span>
             </div>
 
-            <div className="flex items-center gap-3 text-xs text-[#526456]">
+            <div className="flex items-center gap-3 text-xs text-slate-500">
               <div className="flex items-center gap-1.5">
-                <Filter className="w-3.5 h-3.5 text-[#3F7657]" />
+                <Filter className="w-3.5 h-3.5 text-[#EE0979]" />
                 <span className="font-semibold text-slate-700">Filter Applied:</span>
                 <span>Active Workspace Queue</span>
               </div>
@@ -281,7 +281,7 @@ export const WorkqueueModule: React.FC = () => {
             {activeCategory === 'tasks' && (
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="border-b border-[#D8E3D6] bg-[#F5F8F3] text-[#47574B] font-bold text-[11px] uppercase tracking-wider">
+                  <tr className="border-b border-[#F1D5E4] bg-[#FFF8FA] text-slate-700 font-bold text-[11px] uppercase tracking-wider">
                     <th className="py-3 px-4 w-10 text-center">Done</th>
                     <th className="py-3 px-4">Subject</th>
                     <th className="py-3 px-4">Due Date</th>
@@ -291,24 +291,23 @@ export const WorkqueueModule: React.FC = () => {
                     <th className="py-3 px-4 text-right">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#D8E3D6]">
+                <tbody className="divide-y divide-[#F1D5E4]">
                   {todayTasks.map((task) => {
-                    const isLate = true;
                     return (
-                      <tr key={task.id} className="hover:bg-[#F9FCF8] transition group">
+                      <tr key={task.id} className="hover:bg-[#FFF8FA] transition group">
                         <td className="py-3.5 px-4 text-center">
                           <button
                             onClick={() => toggleTaskStatus(task.id)}
-                            className="cursor-pointer text-slate-300 hover:text-[#3F7657] transition"
+                            className="cursor-pointer text-slate-300 hover:text-[#EE0979] transition"
                           >
                             {task.status === 'Completed' ? (
-                              <CheckCircle2 className="w-4 h-4 text-[#3F7657]" />
+                              <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
                             ) : (
-                              <div className="w-4 h-4 rounded-sm border-2 border-slate-300 hover:border-[#3F7657]" />
+                              <div className="w-4 h-4 rounded-sm border-2 border-slate-300 hover:border-[#EE0979]" />
                             )}
                           </button>
                         </td>
-                        <td className="py-3.5 px-4 font-semibold text-[#17251D]">
+                        <td className="py-3.5 px-4 font-semibold text-[#0F172A]">
                           <div className="flex items-center gap-2">
                             <span>{task.subject}</span>
                           </div>
@@ -351,7 +350,7 @@ export const WorkqueueModule: React.FC = () => {
                         <td className="py-3.5 px-4 text-right">
                           <button
                             onClick={() => toggleTaskStatus(task.id)}
-                            className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-[#E5EFE4] hover:bg-[#3F7657] hover:text-white text-[#153B2E] transition cursor-pointer"
+                            className="text-xs font-bold px-3 py-1 rounded-lg bg-[#FFF1F7] hover:bg-gradient-to-r hover:from-[#FF6A00] hover:to-[#EE0979] hover:text-white text-[#EE0979] border border-[#F1D5E4] transition cursor-pointer"
                           >
                             Mark Done
                           </button>
@@ -369,21 +368,21 @@ export const WorkqueueModule: React.FC = () => {
                   <div
                     key={lead.id}
                     onClick={() => setActiveModule('leads')}
-                    className="p-4 rounded-xl border border-[#D8E3D6] hover:border-[#3F7657] bg-[#F9FCF8] flex items-center justify-between cursor-pointer transition shadow-2xs hover:shadow-xs"
+                    className="p-4 rounded-xl border border-[#F1D5E4] hover:border-[#EE0979] bg-[#FFF8FA] flex items-center justify-between cursor-pointer transition shadow-2xs hover:shadow-xs"
                   >
                     <div>
-                      <div className="text-sm font-bold text-[#17251D]">
+                      <div className="text-sm font-bold text-[#0F172A]">
                         {lead.firstName} {lead.lastName}
                       </div>
-                      <div className="text-xs text-[#526456] mt-0.5">
+                      <div className="text-xs text-slate-500 mt-0.5">
                         {lead.company} • {lead.phone} • {lead.email}
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#E5EFE4] text-[#153B2E]">
+                      <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#FFF1F7] text-[#EE0979] border border-[#F1D5E4]">
                         {lead.leadStatus}
                       </span>
-                      <ArrowRight className="w-4 h-4 text-[#3F7657]" />
+                      <ArrowRight className="w-4 h-4 text-[#EE0979]" />
                     </div>
                   </div>
                 ))}
@@ -392,7 +391,7 @@ export const WorkqueueModule: React.FC = () => {
 
             {activeCategory === 'meetings' && (
               <div className="p-6 text-center text-slate-500">
-                <Calendar className="w-12 h-12 text-[#3F7657] mx-auto mb-2 opacity-50" />
+                <Calendar className="w-12 h-12 text-[#EE0979] mx-auto mb-2 opacity-50" />
                 <h3 className="font-bold text-slate-800">2 Meetings Scheduled Today</h3>
                 <p className="text-xs mt-1">Enterprise Solution Demo & Technical Integration Review</p>
               </div>
@@ -400,7 +399,7 @@ export const WorkqueueModule: React.FC = () => {
 
             {activeCategory === 'calls' && (
               <div className="p-6 text-center text-slate-500">
-                <PhoneCall className="w-12 h-12 text-emerald-600 mx-auto mb-2 opacity-50" />
+                <PhoneCall className="w-12 h-12 text-[#FF6A00] mx-auto mb-2 opacity-50" />
                 <h3 className="font-bold text-slate-800">4 Follow-Up Phone Calls In Queue</h3>
                 <p className="text-xs mt-1">Click to launch in-browser VoIP Softphone Dialer</p>
               </div>
@@ -412,13 +411,13 @@ export const WorkqueueModule: React.FC = () => {
                   <div
                     key={c.id}
                     onClick={() => setActiveModule('contacts')}
-                    className="p-3.5 rounded-xl border border-[#D8E3D6] hover:border-[#3F7657] bg-white flex items-center justify-between cursor-pointer transition shadow-2xs"
+                    className="p-3.5 rounded-xl border border-[#F1D5E4] hover:border-[#EE0979] bg-white flex items-center justify-between cursor-pointer transition shadow-2xs"
                   >
                     <div>
                       <div className="text-xs font-bold text-slate-900">{c.firstName} {c.lastName}</div>
                       <div className="text-[11px] text-slate-500">{c.phone} • {c.email}</div>
                     </div>
-                    <span className="text-[11px] text-[#3F7657] font-semibold">View Contact →</span>
+                    <span className="text-[11px] text-[#EE0979] font-semibold">View Contact →</span>
                   </div>
                 ))}
               </div>
@@ -426,7 +425,7 @@ export const WorkqueueModule: React.FC = () => {
           </div>
 
           {/* Footer stats */}
-          <div className="px-6 py-2.5 bg-[#F5F8F3] border-t border-[#D8E3D6] flex items-center justify-between text-xs text-[#526456]">
+          <div className="px-6 py-2.5 bg-[#FFF8FA] border-t border-[#F1D5E4] flex items-center justify-between text-xs text-slate-500">
             <span>Total Records: {activeCategory === 'tasks' ? todayTasks.length : openLeads.length}</span>
             <span>Dleaf CRM Enterprise Workqueue Protocol Active</span>
           </div>
