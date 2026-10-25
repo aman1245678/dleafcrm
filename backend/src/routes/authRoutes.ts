@@ -441,8 +441,8 @@ router.post('/signup', async (req, res) => {
 // -------------------------------------------------------------
 router.post('/signin', async (req, res) => {
   try {
-    const { emailOrPhone, password, otp } = req.body;
-    const input = (emailOrPhone || '').trim().toLowerCase();
+    const { emailOrPhone, email, identifier, password, otp } = req.body;
+    const input = (emailOrPhone || email || identifier || '').trim().toLowerCase();
 
     if (!input) {
       return res.status(400).json({ success: false, message: 'Please enter your work email or phone number.' });
