@@ -85,201 +85,137 @@ export const PortalHome: React.FC = () => {
     <div className="flex-1 flex flex-col bg-[#F8FAFC] overflow-x-hidden font-sans text-[#0F172A]">
 
       {/* =========================================================================
-          SECTION 1: HERO SECTION - Matching Exact DleafCRM Design & Abstract Gradient Blob
+          SECTION 1: HERO SECTION - Exact Match to User Provided Reference Image
       ========================================================================== */}
-      <section className="relative pt-10 sm:pt-14 pb-16 px-4 sm:px-8 lg:px-12 overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#FFF8FA] to-[#F8FAFC]">
+      <section className="relative pt-8 sm:pt-12 pb-16 px-4 sm:px-8 lg:px-14 overflow-hidden bg-white">
 
-        {/* Abstract Colorful Blobs & Soft Wave Background (Matches user uploaded media) */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Exact Abstract Gradient Blob Background from /background.png */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
           <img
-            src="/hero-blob-bg.png"
-            alt="Abstract Colorful Blobs Background"
-            className="absolute top-0 right-0 w-[850px] lg:w-[1050px] max-w-none opacity-90 object-contain translate-x-12 -translate-y-8"
+            src="/background.png"
+            alt="DleafCRM Abstract Background"
+            className="w-full h-full object-cover object-right-top opacity-95"
           />
-          <div className="absolute top-20 right-80 w-72 h-72 rounded-full bg-gradient-to-tr from-[#FF6A00]/20 via-[#EE0979]/20 to-[#7928CA]/20 blur-3xl" />
-          <div className="absolute -bottom-10 left-10 w-96 h-96 rounded-full bg-gradient-to-br from-[#7928CA]/10 via-[#EE0979]/10 to-transparent blur-3xl" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto">
 
-          {/* Top Hero Grid: Horizontal Full-Width Flow */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Top Hero Grid: 2 Columns Matching Exact Reference Image */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[460px]">
 
-            {/* ----------------- LEFT: Compact Horizontal Flow (7 cols) ----------------- */}
-            <div className="lg:col-span-7 space-y-4 text-left">
+            {/* ----------------- LEFT COLUMN: Exact Copy & Form (7 cols) ----------------- */}
+            <div className="lg:col-span-7 space-y-5 text-left">
 
-              {/* Clean Trust Pill Badge */}
+              {/* Exact Pill Badge: "• Smart Business Growth Platform" */}
               <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3.5 py-1 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979]" />
+                <span className="w-2 h-2 rounded-full bg-[#EE0979]" />
                 <span className="tracking-tight text-[11.5px] font-bold text-slate-800">Smart Business Growth Platform</span>
               </div>
 
-              {/* Main Heading: Horizontal Wide Headline */}
-              <div className="relative">
-                <div className="absolute -top-5 right-20 text-[#FF6A00] hidden sm:flex gap-1 select-none">
-                  <span className="w-1 h-3 bg-[#FF6A00] rounded-full rotate-[-25deg]" />
-                  <span className="w-1 h-3.5 bg-[#FF6A00] rounded-full -translate-y-1" />
-                  <span className="w-1 h-3 bg-[#FF6A00] rounded-full rotate-[25deg]" />
-                </div>
+              {/* Exact Main Heading:
+                  "Work faster. Think better.
+                   Automate everything." with "everything." in vibrant orange-to-pink gradient
+              */}
+              <h1 className="text-3xl sm:text-4xl lg:text-[50px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.12]">
+                Work faster. Think better.<br />
+                Automate{' '}
+                <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent">
+                  everything.
+                </span>
+              </h1>
 
-                <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-black text-slate-900 tracking-[-0.035em] leading-[1.12] select-none">
-                  Work faster. Think better.{' '}
-                  <span className="whitespace-nowrap">
-                    Automate{' '}
-                    <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent underline decoration-[#EE0979]/30 decoration-wavy decoration-2">
-                      everything.
-                    </span>
-                  </span>
-                </h1>
-              </div>
-
-              {/* Conversional Subtitle */}
-              <p className="text-[13.5px] sm:text-[14.5px] text-slate-600 font-normal leading-relaxed max-w-xl">
+              {/* Exact Subtitle:
+                  "The all-in-one CRM to capture high-value leads, automate pipeline deals, and accelerate team revenue with Zia AI intelligence."
+              */}
+              <p className="text-sm sm:text-[14.5px] text-slate-600 font-normal leading-relaxed max-w-xl">
                 The all-in-one CRM to capture high-value leads, automate pipeline deals, and accelerate team revenue with DleafAI intelligence.
               </p>
 
-              {/* DleafAI Interactive Prompt Box (Compact & Horizontal) */}
-              <div className="pt-1 max-w-xl">
-                <form
-                  onSubmit={handleAiPromptSubmit}
-                  className="p-1.5 sm:p-2 bg-white/95 backdrop-blur-md rounded-2xl border border-[#F1D5E4] shadow-[0_8px_25px_rgba(238,9,121,0.08)] hover:border-[#EE0979] focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20 transition-all"
+              {/* Exact Input Form:
+                  [ ✉ Enter your work email... ]  [ Start Free Trial -> ]
+              */}
+              <form
+                onSubmit={handleCtaSubmit}
+                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 max-w-lg pt-1"
+              >
+                <div className="relative flex-1">
+                  <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="email"
+                    value={ctaEmail}
+                    onChange={(e) => setCtaEmail(e.target.value)}
+                    placeholder="Enter your work email..."
+                    className="w-full pl-10 pr-3.5 py-2.5 bg-white/95 backdrop-blur-sm rounded-full border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979] shadow-xs"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full transition shadow-md shadow-[#EE0979]/25 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
                 >
-                  <div className="flex items-center justify-between px-2 pb-1 border-b border-slate-100">
-                    <span className="flex items-center gap-1.5 text-[11px] font-bold text-[#EE0979]">
-                      <Sparkles className="w-3.5 h-3.5 fill-current animate-pulse" />
-                      <span>DleafAI Assistant</span>
-                    </span>
-                    <span className="text-[9.5px] bg-[#FFF1F7] text-[#EE0979] px-2 py-0.2 rounded-full font-bold">
-                      GPT-4o Powered
-                    </span>
-                  </div>
+                  <span>Start Free Trial</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </form>
 
-                  <div className="flex items-center gap-2 pt-1.5">
-                    <div className="flex-1 flex items-center pl-2 min-w-0">
-                      <Bot className="w-4 h-4 text-slate-400 shrink-0 mr-2" />
-                      <input
-                        type="text"
-                        value={aiPrompt}
-                        onChange={(e) => setAiPrompt(e.target.value)}
-                        placeholder="Ask DleafAI to analyze pipeline, draft emails, find leads..."
-                        className="w-full bg-transparent text-xs sm:text-[13px] text-slate-800 placeholder-slate-400 focus:outline-hidden"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-4 py-2 rounded-xl transition shadow-md shadow-[#EE0979]/25 inline-flex items-center gap-1.5 cursor-pointer shrink-0"
-                    >
-                      <span>Ask AI</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </form>
-
-                {/* Quick AI Prompt Suggestions Chips */}
-                <div className="flex flex-wrap items-center gap-1.5 pt-2">
-                  <span className="text-[10px] text-slate-400 font-medium">Try:</span>
-                  {[
-                    '📊 Pipeline forecast',
-                    '🎯 Score hot leads',
-                    '✉️ Draft outreach',
-                  ].map((chip) => (
-                    <button
-                      key={chip}
-                      type="button"
-                      onClick={() => handleQuickPromptClick(chip.slice(2).trim())}
-                      className="text-[10.5px] font-medium bg-white hover:bg-[#FFF1F7] text-slate-600 hover:text-[#EE0979] border border-[#F1D5E4] hover:border-[#EE0979] px-2.5 py-0.5 rounded-full transition shadow-2xs cursor-pointer"
-                    >
-                      {chip}
-                    </button>
-                  ))}
+              {/* Exact Trust Checklist:
+                  ✔ Free 14-Day Trial   ✔ No Credit Card Needed   ✔ Setup in 2 Minutes
+              */}
+              <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-slate-600 font-medium pt-1">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
+                  <span>Free 14-Day Trial</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
+                  <span>No Credit Card Needed</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
+                  <span>Setup in 2 Minutes</span>
                 </div>
               </div>
 
-              {/* Clean Micro Trust Indicators + PDF User Guide CTA */}
-              <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-[11.5px] text-slate-600 font-medium pt-1">
-                <div className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
-                  <span>Free 14-Day Trial</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
-                  <span>No Credit Card</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
-                  <span>Setup in 2 Min</span>
-                </div>
+              {/* Exact Download User Guide (PDF) Button */}
+              <div className="pt-1">
                 <button
                   type="button"
                   onClick={() => setIsGuideOpen(true)}
-                  className="inline-flex items-center gap-1 text-[#EE0979] font-bold hover:underline cursor-pointer bg-[#FFF1F7] hover:bg-[#FCE7F3] px-2.5 py-1 rounded-full border border-[#F1D5E4] text-[11px] transition shadow-2xs"
+                  className="inline-flex items-center gap-1.5 text-[#EE0979] font-bold hover:underline cursor-pointer bg-white/90 hover:bg-[#FFF1F7] px-3.5 py-1.5 rounded-full border border-[#F1D5E4] text-xs transition shadow-2xs"
                 >
-                  <BookOpen className="w-3 h-3 text-[#EE0979]" />
-                  <span>User Guide (PDF)</span>
+                  <BookOpen className="w-3.5 h-3.5 text-[#EE0979]" />
+                  <span>Download User Guide (PDF)</span>
                 </button>
               </div>
 
             </div>
 
-            {/* ----------------- RIGHT: Sleek DleafAI Live Intelligence Card (5 cols) ----------------- */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] shadow-[0_15px_40px_rgba(238,9,121,0.12)] p-4 text-left space-y-3">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#FF6A00] to-[#EE0979] text-white flex items-center justify-center font-bold text-xs shadow-xs">
-                      AI
+            {/* ----------------- RIGHT COLUMN: Exact Hero Card "Dleaf Ai Assistant" (5 cols) ----------------- */}
+            <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
+              <div className="w-full max-w-md bg-white/90 backdrop-blur-md rounded-3xl border border-white/80 shadow-[0_20px_50px_rgba(238,9,121,0.12)] p-6 sm:p-8 flex items-center gap-5 sm:gap-6">
+                
+                {/* Custom Sparkle Emblem Icon matching reference */}
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center relative shrink-0 p-3">
+                  <div className="w-full h-full relative flex items-center justify-center">
+                    {/* Multi-color gradient four-point star */}
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 relative flex items-center justify-center">
+                      <div className="absolute inset-0 bg-gradient-to-tr from-[#FF6A00] via-[#EE0979] to-[#7928CA] rounded-sm transform rotate-45 scale-75" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#7928CA] via-[#EE0979] to-[#FF6A00] rounded-sm transform scale-75" />
+                      <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 text-white relative z-10" />
                     </div>
-                    <div>
-                      <h4 className="font-bold text-xs text-[#0F172A] leading-tight">DleafAI Intelligence Hub</h4>
-                      <p className="text-[10px] text-emerald-600 font-medium">● Autonomous Agent Live</p>
-                    </div>
-                  </div>
-                  <span className="text-[10px] bg-[#FFF1F7] text-[#EE0979] px-2 py-0.5 rounded-full font-bold">
-                    Real-time
-                  </span>
-                </div>
-
-                {/* AI Insight Messages */}
-                <div className="space-y-2 text-xs">
-                  <div className="p-2.5 rounded-xl bg-[#F8FAFC] border border-slate-100">
-                    <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1">
-                      <span className="font-bold text-[#EE0979]">Pipeline Recommendation</span>
-                      <span>Just now</span>
-                    </div>
-                    <p className="text-[11.5px] text-slate-700 leading-snug">
-                      Deal <strong className="text-slate-900">"Nexus Cloud Infrastructure"</strong> is at 75% win probability. Send proposal follow-up today to secure <strong className="text-emerald-600">₹4,20,000</strong>.
-                    </p>
-                  </div>
-
-                  <div className="p-2.5 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4]/60">
-                    <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1">
-                      <span className="font-bold text-[#7928CA]">High-Value Lead Alert</span>
-                      <span>2m ago</span>
-                    </div>
-                    <p className="text-[11.5px] text-slate-700 leading-snug">
-                      <strong className="text-slate-900">Rohan Mehta</strong> (Acme Corp) opened pricing contract twice. Lead score increased to <strong className="text-[#EE0979]">94/100</strong>.
-                    </p>
+                    {/* Small orange secondary sparkle */}
+                    <span className="absolute bottom-0 left-0 w-2 h-2 text-[#FF6A00] text-xs">✦</span>
+                    {/* Small purple top sparkle */}
+                    <span className="absolute top-0 right-0 w-2 h-2 text-[#7928CA] text-xs">✦</span>
                   </div>
                 </div>
 
-                {/* Quick Action Button */}
-                <div className="pt-1">
-                  <button
-                    onClick={() => {
-                      if (isAuthenticated) {
-                        setAppMode('workspace');
-                        setIsZiaOpen(true);
-                      } else {
-                        setIsPortalSignInOpen(true);
-                      }
-                    }}
-                    className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-[#0F172A] via-[#1E293B] to-[#0F172A] hover:opacity-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-sm cursor-pointer"
-                  >
-                    <Sparkles className="w-3.5 h-3.5 text-[#EE0979]" />
-                    <span>Launch Full DleafAI Workspace</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                {/* Big Bold Title: "Dleaf Ai Assistant" with "Ai" in pink/orange */}
+                <div className="flex-1">
+                  <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-black tracking-tight text-[#0F172A] leading-tight">
+                    Dleaf <span className="text-[#EE0979]">Ai</span> Assistant
+                  </h2>
                 </div>
+
               </div>
             </div>
 
