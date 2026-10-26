@@ -102,66 +102,67 @@ export const PortalHome: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto">
 
-          {/* Top Hero Grid: Left Copy & CTA | Right Live Interactive Dashboard Frame */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          {/* Top Hero Grid: Horizontal Full-Width Flow */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
-            {/* ----------------- LEFT COLUMN: Headline + Form + Micro Trust Badges (5 cols) ----------------- */}
-            <div className="lg:col-span-5 space-y-6 text-left">
+            {/* ----------------- LEFT: Compact Horizontal Flow (7 cols) ----------------- */}
+            <div className="lg:col-span-7 space-y-4 text-left">
 
               {/* Clean Trust Pill Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-4 py-1.5 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
+              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3.5 py-1 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
                 <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979]" />
-                <span className="tracking-tight text-[12px] font-bold text-slate-800">Smart Business Growth Platform</span>
+                <span className="tracking-tight text-[11.5px] font-bold text-slate-800">Smart Business Growth Platform</span>
               </div>
 
-              {/* Main Heading: Work faster. Think better. Automate everything. */}
+              {/* Main Heading: Horizontal Wide Headline */}
               <div className="relative">
-                {/* Sunburst decorative rays icon */}
-                <div className="absolute -top-6 right-16 sm:right-28 text-[#FF6A00] hidden sm:flex gap-1 select-none">
-                  <span className="w-1 h-3.5 bg-[#FF6A00] rounded-full rotate-[-25deg]" />
-                  <span className="w-1 h-4 bg-[#FF6A00] rounded-full -translate-y-1" />
-                  <span className="w-1 h-3.5 bg-[#FF6A00] rounded-full rotate-[25deg]" />
+                <div className="absolute -top-5 right-20 text-[#FF6A00] hidden sm:flex gap-1 select-none">
+                  <span className="w-1 h-3 bg-[#FF6A00] rounded-full rotate-[-25deg]" />
+                  <span className="w-1 h-3.5 bg-[#FF6A00] rounded-full -translate-y-1" />
+                  <span className="w-1 h-3 bg-[#FF6A00] rounded-full rotate-[25deg]" />
                 </div>
 
-                <h1 className="text-4xl sm:text-5xl md:text-[54px] font-black text-slate-900 tracking-[-0.035em] leading-[1.08] select-none">
-                  Work faster. Think better.<br />
-                  Automate{' '}
-                  <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent underline decoration-[#EE0979]/30 decoration-wavy decoration-2">
-                    everything.
+                <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-black text-slate-900 tracking-[-0.035em] leading-[1.12] select-none">
+                  Work faster. Think better.{' '}
+                  <span className="whitespace-nowrap">
+                    Automate{' '}
+                    <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent underline decoration-[#EE0979]/30 decoration-wavy decoration-2">
+                      everything.
+                    </span>
                   </span>
                 </h1>
               </div>
 
               {/* Conversional Subtitle */}
-              <p className="text-[14px] sm:text-[15px] text-slate-600 font-normal leading-relaxed max-w-lg">
+              <p className="text-[13.5px] sm:text-[14.5px] text-slate-600 font-normal leading-relaxed max-w-xl">
                 The all-in-one CRM to capture high-value leads, automate pipeline deals, and accelerate team revenue with DleafAI intelligence.
               </p>
 
-              {/* DleafAI Interactive Prompt Box (Replaces email form) */}
-              <div className="pt-1 max-w-lg">
+              {/* DleafAI Interactive Prompt Box (Compact & Horizontal) */}
+              <div className="pt-1 max-w-xl">
                 <form
                   onSubmit={handleAiPromptSubmit}
-                  className="p-2 sm:p-2.5 bg-white/95 backdrop-blur-md rounded-2xl border border-[#F1D5E4] shadow-[0_10px_30px_rgba(238,9,121,0.08)] hover:border-[#EE0979] focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20 transition-all"
+                  className="p-1.5 sm:p-2 bg-white/95 backdrop-blur-md rounded-2xl border border-[#F1D5E4] shadow-[0_8px_25px_rgba(238,9,121,0.08)] hover:border-[#EE0979] focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20 transition-all"
                 >
-                  <div className="flex items-center gap-2 px-2 pb-1.5 border-b border-slate-100">
+                  <div className="flex items-center justify-between px-2 pb-1 border-b border-slate-100">
                     <span className="flex items-center gap-1.5 text-[11px] font-bold text-[#EE0979]">
                       <Sparkles className="w-3.5 h-3.5 fill-current animate-pulse" />
                       <span>DleafAI Assistant</span>
                     </span>
-                    <span className="text-[10px] bg-[#FFF1F7] text-[#EE0979] px-2 py-0.2 rounded-full font-bold">
+                    <span className="text-[9.5px] bg-[#FFF1F7] text-[#EE0979] px-2 py-0.2 rounded-full font-bold">
                       GPT-4o Powered
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2 pt-2">
-                    <div className="flex-1 flex items-center pl-2">
+                  <div className="flex items-center gap-2 pt-1.5">
+                    <div className="flex-1 flex items-center pl-2 min-w-0">
                       <Bot className="w-4 h-4 text-slate-400 shrink-0 mr-2" />
                       <input
                         type="text"
                         value={aiPrompt}
                         onChange={(e) => setAiPrompt(e.target.value)}
                         placeholder="Ask DleafAI to analyze pipeline, draft emails, find leads..."
-                        className="w-full bg-transparent text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-hidden"
+                        className="w-full bg-transparent text-xs sm:text-[13px] text-slate-800 placeholder-slate-400 focus:outline-hidden"
                       />
                     </div>
                     <button
@@ -175,7 +176,7 @@ export const PortalHome: React.FC = () => {
                 </form>
 
                 {/* Quick AI Prompt Suggestions Chips */}
-                <div className="flex flex-wrap items-center gap-1.5 pt-2.5">
+                <div className="flex flex-wrap items-center gap-1.5 pt-2">
                   <span className="text-[10px] text-slate-400 font-medium">Try:</span>
                   {[
                     '📊 Pipeline forecast',
@@ -194,57 +195,92 @@ export const PortalHome: React.FC = () => {
                 </div>
               </div>
 
-              {/* Clean Micro Trust Indicators */}
-              <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-[12px] text-slate-600 font-medium pt-1">
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
+              {/* Clean Micro Trust Indicators + PDF User Guide CTA */}
+              <div className="flex flex-wrap items-center gap-y-2 gap-x-4 text-[11.5px] text-slate-600 font-medium pt-1">
+                <div className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
                   <span>Free 14-Day Trial</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
-                  <span>No Credit Card Needed</span>
+                <div className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
+                  <span>No Credit Card</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
-                  <span>Setup in 2 Minutes</span>
+                <div className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
+                  <span>Setup in 2 Min</span>
                 </div>
-              </div>
-
-              {/* Download User Guide PDF Button */}
-              <div className="pt-0.5">
                 <button
                   type="button"
                   onClick={() => setIsGuideOpen(true)}
-                  className="inline-flex items-center gap-2 text-[#EE0979] font-bold hover:underline cursor-pointer bg-[#FFF1F7] hover:bg-[#FCE7F3] px-3.5 py-1.5 rounded-full border border-[#F1D5E4] text-xs transition active:scale-95 shadow-2xs"
-                  title="View and download full user guide manual"
+                  className="inline-flex items-center gap-1 text-[#EE0979] font-bold hover:underline cursor-pointer bg-[#FFF1F7] hover:bg-[#FCE7F3] px-2.5 py-1 rounded-full border border-[#F1D5E4] text-[11px] transition shadow-2xs"
                 >
-                  <BookOpen className="w-3.5 h-3.5 text-[#EE0979]" />
-                  <span>Download User Guide (PDF)</span>
+                  <BookOpen className="w-3 h-3 text-[#EE0979]" />
+                  <span>User Guide (PDF)</span>
                 </button>
               </div>
 
             </div>
 
-            {/* ----------------- RIGHT COLUMN: Exact Reference CRM Dashboard with Floating Badge & Hand-written Tag (7 cols) ----------------- */}
-            <div className="lg:col-span-7 relative">
+            {/* ----------------- RIGHT: Sleek DleafAI Live Intelligence Card (5 cols) ----------------- */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] shadow-[0_15px_40px_rgba(238,9,121,0.12)] p-4 text-left space-y-3">
+                <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#FF6A00] to-[#EE0979] text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                      AI
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-xs text-[#0F172A] leading-tight">DleafAI Intelligence Hub</h4>
+                      <p className="text-[10px] text-emerald-600 font-medium">● Autonomous Agent Live</p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] bg-[#FFF1F7] text-[#EE0979] px-2 py-0.5 rounded-full font-bold">
+                    Real-time
+                  </span>
+                </div>
 
-              {/* Decorative Hand-drawn Arrow & "All-in-One CRM Dashboard" Label */}
-              <div className="absolute -top-7 right-6 sm:right-12 z-20 hidden sm:flex items-center gap-1.5 text-[#7928CA] font-bold text-xs sm:text-sm italic select-none">
-                <svg className="w-6 h-6 stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 17l9.2-9.2M17 17V8H8" />
-                </svg>
-                <span className="font-semibold tracking-wide">All-in-One CRM Dashboard</span>
+                {/* AI Insight Messages */}
+                <div className="space-y-2 text-xs">
+                  <div className="p-2.5 rounded-xl bg-[#F8FAFC] border border-slate-100">
+                    <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1">
+                      <span className="font-bold text-[#EE0979]">Pipeline Recommendation</span>
+                      <span>Just now</span>
+                    </div>
+                    <p className="text-[11.5px] text-slate-700 leading-snug">
+                      Deal <strong className="text-slate-900">"Nexus Cloud Infrastructure"</strong> is at 75% win probability. Send proposal follow-up today to secure <strong className="text-emerald-600">₹4,20,000</strong>.
+                    </p>
+                  </div>
+
+                  <div className="p-2.5 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4]/60">
+                    <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1">
+                      <span className="font-bold text-[#7928CA]">High-Value Lead Alert</span>
+                      <span>2m ago</span>
+                    </div>
+                    <p className="text-[11.5px] text-slate-700 leading-snug">
+                      <strong className="text-slate-900">Rohan Mehta</strong> (Acme Corp) opened pricing contract twice. Lead score increased to <strong className="text-[#EE0979]">94/100</strong>.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Quick Action Button */}
+                <div className="pt-1">
+                  <button
+                    onClick={() => {
+                      if (isAuthenticated) {
+                        setAppMode('workspace');
+                        setIsZiaOpen(true);
+                      } else {
+                        setIsPortalSignInOpen(true);
+                      }
+                    }}
+                    className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-[#0F172A] via-[#1E293B] to-[#0F172A] hover:opacity-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-sm cursor-pointer"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#EE0979]" />
+                    <span>Launch Full DleafAI Workspace</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
-
-              {/* Dot Grid Accents */}
-              <div className="absolute -left-6 -bottom-6 w-20 h-20 opacity-30 pointer-events-none hidden sm:grid grid-cols-4 gap-2">
-                {Array.from({ length: 16 }).map((_, i) => (
-                  <span key={i} className="w-1.5 h-1.5 rounded-full bg-[#7928CA]" />
-                ))}
-              </div>
-
-
-
             </div>
 
           </div>
