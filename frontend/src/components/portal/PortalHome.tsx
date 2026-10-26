@@ -64,41 +64,52 @@ export const PortalHome: React.FC = () => {
     <div className="flex-1 flex flex-col bg-[#F8FAFC] overflow-x-hidden font-sans text-[#0F172A]">
 
       {/* =========================================================================
-          SECTION 1: HERO SECTION - Split Layout with Nature Landscape Background & Dashboard Mockup
+          SECTION 1: HERO SECTION - Matching Exact DleafCRM Design & Abstract Gradient Blob
       ========================================================================== */}
-      <section className="relative pt-8 pb-16 px-4 sm:px-8 lg:px-12 overflow-hidden bg-[#FAFAFC]">
+      <section className="relative pt-10 sm:pt-14 pb-16 px-4 sm:px-8 lg:px-12 overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#FFF8FA] to-[#F8FAFC]">
 
-        {/* Full-bleed Nature Hills Background with Soft Glass Overlay */}
-        <div className="absolute inset-0 z-0">
+        {/* Abstract Colorful Blobs & Soft Wave Background (Matches user uploaded media) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <img
-            src="/hero_hills.jpg"
-            alt="Rolling Green Hills Landscape"
-            className="w-full h-full object-cover object-center opacity-85"
+            src="/hero-blob-bg.png"
+            alt="Abstract Colorful Blobs Background"
+            className="absolute top-0 right-0 w-[850px] lg:w-[1050px] max-w-none opacity-90 object-contain translate-x-12 -translate-y-8"
           />
-          {/* Subtle gradient vignette to keep text ultra crisp while revealing nature hills */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/50 backdrop-blur-[2px]" />
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#FAFAFC] via-[#FAFAFC]/80 to-transparent" />
+          <div className="absolute top-20 right-80 w-72 h-72 rounded-full bg-gradient-to-tr from-[#FF6A00]/20 via-[#EE0979]/20 to-[#7928CA]/20 blur-3xl" />
+          <div className="absolute -bottom-10 left-10 w-96 h-96 rounded-full bg-gradient-to-br from-[#7928CA]/10 via-[#EE0979]/10 to-transparent blur-3xl" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto">
 
           {/* Top Hero Grid: Left Copy & CTA | Right Live Interactive Dashboard Frame */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
 
-            {/* ----------------- LEFT COLUMN: Clean & Conversional Headline + Direct Lead Capture (5 cols) ----------------- */}
+            {/* ----------------- LEFT COLUMN: Headline + Form + Micro Trust Badges (5 cols) ----------------- */}
             <div className="lg:col-span-5 space-y-6 text-left">
 
               {/* Clean Trust Pill Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979] animate-pulse" />
-                <span className="tracking-tight text-[11.5px] font-bold">Smart Business Growth Platform</span>
+              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-4 py-1.5 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979]" />
+                <span className="tracking-tight text-[12px] font-bold text-slate-800">Smart Business Growth Platform</span>
               </div>
 
               {/* Main Heading: Work faster. Think better. Automate everything. */}
-              <h1 className="text-3xl sm:text-4xl md:text-[50px] font-normal text-slate-900 tracking-[-0.035em] leading-[1.08] select-none">
-                Work faster. Think better.<br />
-                Automate <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent font-bold">everything.</span>
-              </h1>
+              <div className="relative">
+                {/* Sunburst decorative rays icon */}
+                <div className="absolute -top-6 right-16 sm:right-28 text-[#FF6A00] hidden sm:flex gap-1 select-none">
+                  <span className="w-1 h-3.5 bg-[#FF6A00] rounded-full rotate-[-25deg]" />
+                  <span className="w-1 h-4 bg-[#FF6A00] rounded-full -translate-y-1" />
+                  <span className="w-1 h-3.5 bg-[#FF6A00] rounded-full rotate-[25deg]" />
+                </div>
+
+                <h1 className="text-4xl sm:text-5xl md:text-[54px] font-black text-slate-900 tracking-[-0.035em] leading-[1.08] select-none">
+                  Work faster. Think better.<br />
+                  Automate{' '}
+                  <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent underline decoration-[#EE0979]/30 decoration-wavy decoration-2">
+                    everything.
+                  </span>
+                </h1>
+              </div>
 
               {/* Conversional Subtitle */}
               <p className="text-[14px] sm:text-[15px] text-slate-600 font-normal leading-relaxed max-w-lg">
@@ -107,7 +118,7 @@ export const PortalHome: React.FC = () => {
 
               {/* Conversional Email Capture + Free Trial Form */}
               <form onSubmit={handleCtaSubmit} className="pt-1 max-w-md">
-                <div className="flex flex-col sm:flex-row items-stretch gap-2 p-1.5 bg-white rounded-2xl sm:rounded-full border border-[#F1D5E4] shadow-sm hover:border-[#EE0979] transition focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20">
+                <div className="flex flex-col sm:flex-row items-stretch gap-2 p-1.5 bg-white rounded-2xl sm:rounded-full border border-[#F1D5E4] shadow-md hover:border-[#EE0979] transition focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20">
                   <div className="flex-1 flex items-center pl-3.5 pr-2 py-1.5">
                     <Mail className="w-4 h-4 text-slate-400 shrink-0 mr-2" />
                     <input
@@ -128,7 +139,7 @@ export const PortalHome: React.FC = () => {
                 </div>
               </form>
 
-              {/* Clean Micro Trust Indicators + PDF User Guide CTA */}
+              {/* Clean Micro Trust Indicators */}
               <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-[12px] text-slate-600 font-medium pt-1">
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
@@ -142,10 +153,14 @@ export const PortalHome: React.FC = () => {
                   <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
                   <span>Setup in 2 Minutes</span>
                 </div>
+              </div>
+
+              {/* Download User Guide PDF Button */}
+              <div className="pt-0.5">
                 <button
                   type="button"
                   onClick={() => setIsGuideOpen(true)}
-                  className="flex items-center gap-1.5 text-[#EE0979] font-bold hover:underline cursor-pointer bg-[#FFF1F7] px-2.5 py-1 rounded-full border border-[#F1D5E4]"
+                  className="inline-flex items-center gap-2 text-[#EE0979] font-bold hover:underline cursor-pointer bg-[#FFF1F7] hover:bg-[#FCE7F3] px-3.5 py-1.5 rounded-full border border-[#F1D5E4] text-xs transition active:scale-95 shadow-2xs"
                   title="View and download full user guide manual"
                 >
                   <BookOpen className="w-3.5 h-3.5 text-[#EE0979]" />
@@ -155,22 +170,50 @@ export const PortalHome: React.FC = () => {
 
             </div>
 
-            {/* ----------------- RIGHT COLUMN: Ultra-Clean Professional CRM Showcase (7 cols) ----------------- */}
+            {/* ----------------- RIGHT COLUMN: Exact Reference CRM Dashboard with Floating Badge & Hand-written Tag (7 cols) ----------------- */}
             <div className="lg:col-span-7 relative">
+
+              {/* Decorative Hand-drawn Arrow & "All-in-One CRM Dashboard" Label */}
+              <div className="absolute -top-7 right-6 sm:right-12 z-20 hidden sm:flex items-center gap-1.5 text-[#7928CA] font-bold text-xs sm:text-sm italic select-none">
+                <svg className="w-6 h-6 stroke-current fill-none" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17l9.2-9.2M17 17V8H8" />
+                </svg>
+                <span className="font-semibold tracking-wide">All-in-One CRM Dashboard</span>
+              </div>
+
+              {/* Dot Grid Accents */}
+              <div className="absolute -left-6 -bottom-6 w-20 h-20 opacity-30 pointer-events-none hidden sm:grid grid-cols-4 gap-2">
+                {Array.from({ length: 16 }).map((_, i) => (
+                  <span key={i} className="w-1.5 h-1.5 rounded-full bg-[#7928CA]" />
+                ))}
+              </div>
 
               {/* Main Professional CRM Display Frame with Sleek Shadow */}
               <div
                 onClick={() => setAppMode('workspace')}
-                className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 shadow-2xl bg-white hover:shadow-3xl transition duration-500 cursor-pointer group"
+                className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-[#F1D5E4]/80 shadow-[0_20px_50px_rgba(238,9,121,0.15)] bg-white hover:shadow-[0_25px_60px_rgba(238,9,121,0.22)] transition-all duration-500 cursor-pointer group"
               >
-                {/* Ultra High Resolution Professional CRM Interface Image */}
+                {/* Clean Browser Chrome Bar */}
+                <div className="bg-[#F8FAFC] border-b border-slate-100 px-4 py-2 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-400" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+                  </div>
+                  <div className="px-3 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] text-slate-500 font-mono flex items-center gap-1 shadow-2xs">
+                    <span className="text-[#EE0979]">https://</span>dleafcrm.dleaftech.com
+                  </div>
+                  <span className="text-[10px] font-bold text-[#EE0979] bg-[#FFF1F7] px-2 py-0.5 rounded-full">
+                    Live Demo
+                  </span>
+                </div>
+
+                {/* Ultra High Resolution Professional CRM Interface Image (Exact Screenshot) */}
                 <img
-                  src="/crm_dashboard_preview.jpg"
+                  src="/hero-crm-dashboard.png"
                   alt="Dleaf CRM Professional Software Interface Preview"
                   className="w-full h-auto object-cover object-top block transition-transform duration-700 group-hover:scale-[1.01]"
                 />
-
-
               </div>
 
             </div>
@@ -239,51 +282,32 @@ export const PortalHome: React.FC = () => {
           </div>
 
           {/* ----------------- ENTERPRISE TRUST LOGOS & METRICS STRIP ----------------- */}
-          <div className="mt-10 pt-8 border-t border-slate-200/80">
-            <div className="text-center text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-5">
-              Trusted by 25,000+ Businesses Worldwide
+          <div className="mt-14 pt-8 border-t border-slate-200/80">
+            <div className="text-center text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-6">
+              TRUSTED BY 25,000+ BUSINESSES WORLDWIDE
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-6 px-2 opacity-80">
-              {/* Brand Logos */}
-              <div className="flex flex-wrap items-center gap-6 sm:gap-8 font-semibold text-slate-600 text-xs sm:text-sm tracking-tight">
-                <span className="hover:text-slate-900 transition cursor-default">Microsoft</span>
-                <span className="hover:text-slate-900 transition cursor-default">amazon</span>
-                <span className="hover:text-slate-900 transition cursor-default font-bold">Google</span>
-                <span className="hover:text-slate-900 transition cursor-default">TATA</span>
-                <span className="hover:text-slate-900 transition cursor-default">Infosys</span>
-                <span className="hover:text-slate-900 transition cursor-default">wipro</span>
-                <span className="hover:text-slate-900 transition cursor-default font-mono">IBM</span>
-                <span className="hover:text-slate-900 transition cursor-default font-light">accenture</span>
-                <span className="hover:text-slate-900 transition cursor-default font-bold">Deloitte.</span>
-                <span className="hover:text-slate-900 transition cursor-default font-bold">HCL</span>
-              </div>
-
-              {/* Trust Metric Counters */}
-              <div className="flex items-center gap-6 text-left border-l border-slate-300 pl-6">
-                <div>
-                  <div className="text-xs sm:text-sm font-black text-slate-900">25,000+</div>
-                  <div className="text-[10px] text-slate-500 font-medium">Active Businesses</div>
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-black text-slate-900">99.9%</div>
-                  <div className="text-[10px] text-slate-500 font-medium">Uptime</div>
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-black text-slate-900">120+</div>
-                  <div className="text-[10px] text-slate-500 font-medium">Countries</div>
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-black text-slate-900">4.9/5</div>
-                  <div className="text-[10px] text-slate-500 font-medium">Customer Rating</div>
-                </div>
-              </div>
+            <div className="flex flex-wrap items-center justify-center sm:justify-between gap-6 sm:gap-8 px-4 opacity-80 font-bold text-slate-700 text-sm sm:text-base tracking-tight select-none">
+              <span className="hover:text-slate-900 transition cursor-default font-black text-lg">amazon</span>
+              <span className="hover:text-slate-900 transition cursor-default flex items-center gap-1.5 font-semibold">
+                <span className="grid grid-cols-2 gap-0.5 w-3 h-3">
+                  <span className="bg-[#f25022]"></span>
+                  <span className="bg-[#7fba00]"></span>
+                  <span className="bg-[#00a4ef]"></span>
+                  <span className="bg-[#ffb900]"></span>
+                </span>
+                Microsoft
+              </span>
+              <span className="hover:text-slate-900 transition cursor-default font-bold text-base">Google</span>
+              <span className="hover:text-slate-900 transition cursor-default font-black text-[#0668E1]">∞ Meta</span>
+              <span className="hover:text-slate-900 transition cursor-default font-bold">Spotify</span>
+              <span className="hover:text-slate-900 transition cursor-default font-serif font-black text-[#FA0F00]">A Adobe</span>
+              <span className="hover:text-slate-900 transition cursor-default font-bold text-[#96bf48]">shopify</span>
+              <span className="hover:text-slate-900 transition cursor-default font-black">slack</span>
             </div>
-
           </div>
 
         </div>
-
       </section>
 
       {/* =========================================================================
