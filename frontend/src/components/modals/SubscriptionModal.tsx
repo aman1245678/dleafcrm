@@ -58,7 +58,7 @@ const PLANS: PlanOption[] = [
       'In-Browser VoIP Softphone Dialer (WebRTC)',
       'WhatsApp Business Cloud Integration',
       'Inventory Management (Quotes & Invoices)',
-      'Autonomous Deal Win Prediction by Zia AI',
+      'Autonomous Deal Win Prediction by DleafAI',
       'Priority 24/7 SLA Support',
     ],
   },
@@ -207,7 +207,7 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
               <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl">
                 {reason === 'gate'
                   ? 'CRM access requires an active commercial plan. Please subscribe using Razorpay to unlock pipeline deals, leads, VoIP, and WhatsApp.'
-                  : 'Scale your team capacity with higher contacts, autonomous Zia AI intelligence, and multi-agent softphones.'}
+                  : 'Scale your team capacity with higher contacts, autonomous DleafAI intelligence, and multi-agent softphones.'}
               </p>
             </div>
           </div>

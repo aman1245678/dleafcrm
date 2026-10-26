@@ -136,7 +136,7 @@ export const VisitsModule: React.FC = () => {
     },
     {
       title: 'AI Smart Routing & Bot Triggers',
-      description: 'Let Zia Bot qualify inquiries 24/7 and route VIP enterprise deals straight to active account managers.',
+      description: 'Let DleafAI Bot qualify inquiries 24/7 and route VIP enterprise deals straight to active account managers.',
     }
   ];
 
@@ -698,7 +698,7 @@ export const VisitsModule: React.FC = () => {
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
             <div className="text-xs font-bold text-slate-800">Automated Bot Rules</div>
             <p className="text-[11px] text-slate-500 leading-snug">
-              Visitors spending over 3 minutes on Pricing or Deals pages automatically receive a personalized Zia chat invitation.
+              Visitors spending over 3 minutes on Pricing or Deals pages automatically receive a personalized DleafAI chat invitation.
             </p>
           </div>
 

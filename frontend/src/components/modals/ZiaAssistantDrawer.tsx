@@ -6,10 +6,10 @@ export const ZiaAssistantDrawer: React.FC = () => {
   const { isZiaOpen, setIsZiaOpen, deals, leads, moveDealStage, setSelectedDealForDetail } = useCRM();
 
   const [query, setQuery] = useState('');
-  const [chatLog, setChatLog] = useState<Array<{ sender: 'user' | 'zia'; text: string }>>([
+  const [chatLog, setChatLog] = useState<Array<{ sender: 'user' | 'dleafai'; text: string }>>([
     {
-      sender: 'zia',
-      text: 'Hello Aman! I am Zia, your Dleaf sales intelligence engine. I noticed "Benton" has high win probability (88%) based on recent customer response time. Would you like me to suggest the next best action?',
+      sender: 'dleafai',
+      text: 'Hello Aman! I am DleafAI, your Dleaf sales intelligence engine. I noticed "Benton" has high win probability (88%) based on recent customer response time. Would you like me to suggest the next best action?',
     },
   ]);
 
@@ -30,7 +30,7 @@ export const ZiaAssistantDrawer: React.FC = () => {
       } else if (userText.toLowerCase().includes('revenue') || userText.toLowerCase().includes('target')) {
         reply = "You are currently pacing at 112% of Q3 target and 65% of Q4 target. Closing 'Benton' will add ₹2,50,000 to this month's revenue.";
       }
-      setChatLog((prev) => [...prev, { sender: 'zia', text: reply }]);
+      setChatLog((prev) => [...prev, { sender: 'dleafai', text: reply }]);
     }, 700);
   };
 
@@ -44,7 +44,7 @@ export const ZiaAssistantDrawer: React.FC = () => {
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="font-bold text-sm">Zia Sales Intelligence</h3>
+              <h3 className="font-bold text-sm">DleafAI Sales Intelligence</h3>
               <p className="text-[11px] text-amber-100">Dleaf AI Assistant • Dleaf Core</p>
             </div>
           </div>
@@ -60,7 +60,7 @@ export const ZiaAssistantDrawer: React.FC = () => {
         <div className="p-3 bg-amber-50/70 border-b border-amber-200 text-xs space-y-2">
           <span className="font-bold text-[10px] uppercase text-amber-900 tracking-wider flex items-center gap-1">
             <TrendingUp className="w-3.5 h-3.5 text-amber-700" />
-            <span>Zia Predictions & Anomalies</span>
+            <span>DleafAI Predictions & Anomalies</span>
           </span>
           <div className="p-2.5 bg-white rounded-lg border border-amber-200 shadow-2xs">
             <div className="flex items-center justify-between">
@@ -110,7 +110,7 @@ export const ZiaAssistantDrawer: React.FC = () => {
         <form onSubmit={handleSend} className="p-3 border-t bg-white flex gap-2">
           <input
             type="text"
-            placeholder="Ask Zia about deals, targets, forecasts..."
+            placeholder="Ask DleafAI about deals, targets, forecasts..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="flex-1 px-3 py-2 border rounded-lg text-xs focus:outline-hidden focus:border-amber-500"

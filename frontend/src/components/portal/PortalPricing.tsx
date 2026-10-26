@@ -76,7 +76,7 @@ export const PortalPricing: React.FC = () => {
       highlight: false,
       badge: 'FULL SUITE',
       features: [
-        'Zia AI Autonomous Agent Engine',
+        'DleafAI Autonomous Agent Engine',
         'Canvas Design Studio (WYSIWYG layout builder)',
         'Developer MCP Server (Model Context Protocol JSON-RPC)',
         'Multi-Currency Live FX Conversion',
@@ -96,7 +96,7 @@ export const PortalPricing: React.FC = () => {
       highlight: false,
       features: [
         'Everything in Enterprise tier',
-        'Zia Voice of Customer & Predictive Analytics',
+        'DleafAI Voice of Customer & Predictive Analytics',
         'Custom AI fine-tuned models',
         'Dedicated PostgreSQL DB instance replication',
         '50 GB High-Speed Cloud Storage per user',
@@ -121,7 +121,7 @@ export const PortalPricing: React.FC = () => {
     },
     {
       q: 'Is there a free trial available for the Enterprise features?',
-      a: 'Yes! We offer a full-featured 15-day free trial of Dleaf CRM Enterprise Edition with no credit card required. You get access to the 8-stage Kanban board, VoIP Softphone, WhatsApp Business drawer, and Zia AI.',
+      a: 'Yes! We offer a full-featured 15-day free trial of Dleaf CRM Enterprise Edition with no credit card required. You get access to the 8-stage Kanban board, VoIP Softphone, WhatsApp Business drawer, and DleafAI.',
     },
     {
       q: 'Does Dleaf CRM support Indian GST (18%) and multi-currency?',
@@ -378,7 +378,7 @@ export const PortalPricing: React.FC = () => {
 
               <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
                 <div>
-                  <div className="text-xs font-bold text-slate-900">Include Zia AI Token Pack</div>
+                  <div className="text-xs font-bold text-slate-900">Include DleafAI Token Pack</div>
                   <div className="text-[11px] text-slate-500">Autonomous deal win scoring & prediction</div>
                 </div>
                 <input
@@ -413,7 +413,7 @@ export const PortalPricing: React.FC = () => {
                   </div>
                   {includeZiaAi && (
                     <div className="flex justify-between text-purple-300">
-                      <span>Zia AI Intelligence:</span>
+                      <span>DleafAI Intelligence:</span>
                       <span>{currency === 'INR' ? `₹${calculatedZia.toLocaleString()}` : `$${calculatedZia}`}</span>
                     </div>
                   )}

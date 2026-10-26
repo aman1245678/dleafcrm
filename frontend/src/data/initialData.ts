@@ -1173,7 +1173,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   },
   {
     id: 'prod-2',
-    name: 'Zia AI & MCP Server Connectivity Engine',
+    name: 'DleafAI & MCP Server Connectivity Engine',
     productCode: 'DL-AI-MCP',
     category: 'Subscription',
     unitPrice: 15000,
@@ -1226,7 +1226,7 @@ export const INITIAL_QUOTES: Quote[] = [
     createdTime: '2026-10-08 15:30',
     items: [
       { id: 'qi-1', productId: 'prod-1', productName: 'Dleaf CRM Enterprise Edition (Annual)', quantity: 5, listPrice: 35000, discountPercent: 10, total: 157500 },
-      { id: 'qi-2', productId: 'prod-2', productName: 'Zia AI & MCP Server Connectivity Engine', quantity: 1, listPrice: 15000, discountPercent: 0, total: 15000 },
+      { id: 'qi-2', productId: 'prod-2', productName: 'DleafAI & MCP Server Connectivity Engine', quantity: 1, listPrice: 15000, discountPercent: 0, total: 15000 },
       { id: 'qi-3', productId: 'prod-3', productName: 'Enterprise Onboarding & Migration Service', quantity: 1, listPrice: 50000, discountPercent: 0, total: 50000 },
     ]
   }
@@ -1249,7 +1249,7 @@ export const INITIAL_INVOICES: Invoice[] = [
     createdTime: '2026-10-01 09:00',
     items: [
       { id: 'ii-1', productId: 'prod-1', productName: 'Dleaf CRM Enterprise Edition (Annual)', quantity: 2, listPrice: 35000, discountPercent: 0, total: 70000 },
-      { id: 'ii-2', productId: 'prod-2', productName: 'Zia AI & MCP Server Connectivity Engine', quantity: 2, listPrice: 15000, discountPercent: 0, total: 30000 },
+      { id: 'ii-2', productId: 'prod-2', productName: 'DleafAI & MCP Server Connectivity Engine', quantity: 2, listPrice: 15000, discountPercent: 0, total: 30000 },
     ]
   },
   {
@@ -1401,7 +1401,7 @@ VP Operations`,
     from: 'pooja.sharma@Dleaf.com',
     fromName: 'Pooja Sharma',
     to: 'aman@Dleaf.com',
-    subject: 'Q4 Pipeline Targets & Zia AI Model Integration',
+    subject: 'Q4 Pipeline Targets & DleafAI Model Integration',
     snippet: 'Hey Aman, sharing the updated forecasting metrics and MCP tools configuration...',
     body: `Hey Aman,
 

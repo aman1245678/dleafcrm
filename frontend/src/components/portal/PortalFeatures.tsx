@@ -26,7 +26,7 @@ export const PortalFeatures: React.FC = () => {
 
   const categories = [
     { id: 'SFA', label: 'Sales Force Automation (SFA)', icon: Briefcase },
-    { id: 'AI', label: 'Artificial Intelligence (Zia AI)', icon: Sparkles },
+    { id: 'AI', label: 'Artificial Intelligence (DleafAI)', icon: Sparkles },
     { id: 'Lead management', label: 'Lead Management & Capture', icon: Users },
     { id: 'Process management', label: 'Process Management & Blueprint', icon: Layers },
     { id: 'Customization', label: 'Customization & Canvas Studio', icon: Settings },
@@ -71,7 +71,7 @@ export const PortalFeatures: React.FC = () => {
       ],
     },
     AI: {
-      title: 'Zia AI & Autonomous Agent Architecture',
+      title: 'DleafAI & Autonomous Agent Architecture',
       subtitle: 'Enterprise machine intelligence for predictions, anomaly alerts, and conversational copilot assistance.',
       items: [
         {

@@ -249,11 +249,11 @@ export const Header: React.FC = () => {
             )}
           </div>
 
-          {/* Zia Intelligence Trigger */}
+          {/* DleafAI Intelligence Trigger */}
           <button
             onClick={() => setIsZiaOpen(true)}
             className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-amber-600 flex items-center justify-center transition border border-slate-200 shadow-xs"
-            title="Zia Sales Intelligence"
+            title="DleafAI Sales Intelligence"
           >
             <Sparkles className="w-4 h-4" />
           </button>

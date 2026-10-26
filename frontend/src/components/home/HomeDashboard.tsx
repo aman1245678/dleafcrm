@@ -122,10 +122,10 @@ export const HomeDashboard: React.FC = () => {
               <td>Drag-and-drop custom report builder, automated scheduled email reports.</td>
             </tr>
             <tr>
-              <td><strong>Developer MCP Server & Zia AI</strong></td>
+              <td><strong>Developer MCP Server & DleafAI</strong></td>
               <td class="badge-progress">In Progress</td>
               <td><strong>50%</strong></td>
-              <td>Model Context Protocol tool schema, interactive JSON-RPC playground, Zia assistant drawer.</td>
+              <td>Model Context Protocol tool schema, interactive JSON-RPC playground, DleafAI assistant drawer.</td>
               <td>Production WebSocket bridge to autonomous external AI agents, custom prompt fine-tuning.</td>
             </tr>
             <tr>
@@ -488,7 +488,7 @@ export const HomeDashboard: React.FC = () => {
 
         </div>
 
-        {/* ROW 3: Recent Leads | Upcoming Tasks | AI Assistant Zia Copilot (Exact Match to Reference) */}
+        {/* ROW 3: Recent Leads | Upcoming Tasks | AI Assistant DleafAI Copilot (Exact Match to Reference) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           
           {/* Box 1: Recent Leads */}

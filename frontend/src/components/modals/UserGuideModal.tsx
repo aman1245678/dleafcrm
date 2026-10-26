@@ -111,7 +111,7 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
                   What is Dleaf CRM?
                 </h3>
                 <p className="text-xs text-slate-600">
-                  Dleaf CRM is an enterprise-grade Sales & Business Management Suite designed to replicate the power of Zoho CRM and Salesforce with Indian business workflows, GST CPQ quotation engine, autonomous Zia AI intelligence, WhatsApp business messaging, and VoIP softphone dialer.
+                  Dleaf CRM is an enterprise-grade Sales & Business Management Suite designed to replicate the power of Zoho CRM and Salesforce with Indian business workflows, GST CPQ quotation engine, autonomous DleafAI intelligence, WhatsApp business messaging, and VoIP softphone dialer.
                 </p>
               </div>
 

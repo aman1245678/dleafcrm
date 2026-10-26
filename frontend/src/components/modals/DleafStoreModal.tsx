@@ -79,7 +79,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
       isPopular: true,
       features: [
         'Professional +',
-        'AI Zia Assistant',
+        'AI DleafAI Assistant',
         'Anomalies detection',
         'Territory Management',
         'Custom Functions',

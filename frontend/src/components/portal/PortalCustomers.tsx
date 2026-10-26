@@ -54,7 +54,7 @@ export const PortalCustomers: React.FC = () => {
       industry: 'tech',
       logo: 'CMT',
       quote:
-        'The Model Context Protocol (MCP) server integration allowed us to connect our in-house autonomous AI agent directly to the CRM deals database. Zia AI predictions are uncannily accurate.',
+        'The Model Context Protocol (MCP) server integration allowed us to connect our in-house autonomous AI agent directly to the CRM deals database. DleafAI predictions are uncannily accurate.',
       author: 'Devendra Joshi',
       title: 'Founder & CTO',
       metrics: '4.2x Faster Prospecting',

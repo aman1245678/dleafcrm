@@ -73,7 +73,7 @@ export const PortalFreeTools: React.FC = () => {
     { title: 'CRM', desc: 'Convert leads, close deals', icon: Briefcase },
     { title: 'Desk', desc: 'Resolve support tickets', icon: Headphones },
     { title: 'Bigin', desc: 'Simple small business CRM', icon: Zap },
-    { title: 'Zia Agents', desc: 'Build and deploy AI agents for free', icon: Bot },
+    { title: 'DleafAI Agents', desc: 'Build and deploy AI agents for free', icon: Bot },
     { title: 'Campaigns', desc: 'Run effective email campaigns', icon: Mail },
     { title: 'PageSense', desc: 'Optimize website conversions', icon: LineChart },
     { title: 'FSM', desc: 'Manage field service operations', icon: Smartphone },

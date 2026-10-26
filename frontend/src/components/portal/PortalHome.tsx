@@ -243,33 +243,7 @@ export const PortalHome: React.FC = () => {
                 ))}
               </div>
 
-              {/* Main Professional CRM Display Frame with Sleek Shadow */}
-              <div
-                onClick={() => setAppMode('workspace')}
-                className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-[#F1D5E4]/80 shadow-[0_20px_50px_rgba(238,9,121,0.15)] bg-white hover:shadow-[0_25px_60px_rgba(238,9,121,0.22)] transition-all duration-500 cursor-pointer group"
-              >
-                {/* Clean Browser Chrome Bar */}
-                <div className="bg-[#F8FAFC] border-b border-slate-100 px-4 py-2 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-rose-400" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-                  </div>
-                  <div className="px-3 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] text-slate-500 font-mono flex items-center gap-1 shadow-2xs">
-                    <span className="text-[#EE0979]">https://</span>dleafcrm.dleaftech.com
-                  </div>
-                  <span className="text-[10px] font-bold text-[#EE0979] bg-[#FFF1F7] px-2 py-0.5 rounded-full">
-                    Live Demo
-                  </span>
-                </div>
 
-                {/* Ultra High Resolution Professional CRM Interface Image (Exact Screenshot) */}
-                <img
-                  src="/hero-crm-dashboard.png"
-                  alt="Dleaf CRM Professional Software Interface Preview"
-                  className="w-full h-auto object-cover object-top block transition-transform duration-700 group-hover:scale-[1.01]"
-                />
-              </div>
 
             </div>
 
@@ -402,7 +376,7 @@ export const PortalHome: React.FC = () => {
               {
                 icon: Sparkles,
                 color: 'text-[#FF6A00] bg-[#FFF8FA]',
-                title: 'Zia AI Intelligence',
+                title: 'DleafAI Intelligence',
                 desc: 'Smart churn alerts, deal win predictions & AI email drafts.',
                 tag: 'AI Powered'
               },
@@ -509,7 +483,7 @@ export const PortalHome: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          SECTION 4: COMPACT DUAL-PANEL SHOWCASE (Interactive Pipeline + Zia AI)
+          SECTION 4: COMPACT DUAL-PANEL SHOWCASE (Interactive Pipeline + DleafAI)
       ========================================================================== */}
       <section className="py-8 px-4 sm:px-8 lg:px-12 bg-[#FAFAFD] border-b border-[#F1D5E4]">
         <div className="max-w-7xl mx-auto space-y-6">
@@ -631,7 +605,7 @@ export const PortalHome: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Panel: Zia AI Copilot + Softphone (5 Cols) */}
+            {/* Right Panel: DleafAI Copilot + Softphone (5 Cols) */}
             <div className="lg:col-span-5 bg-gradient-to-br from-white via-white to-[#FFF1F7] p-4 sm:p-5 rounded-2xl border border-[#F1D5E4] shadow-xs flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100">
@@ -639,7 +613,7 @@ export const PortalHome: React.FC = () => {
                     <div className="w-6 h-6 rounded-lg bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center">
                       <Sparkles className="w-3.5 h-3.5" />
                     </div>
-                    <span className="font-editorial font-bold text-sm text-[#0F172A]">Zia AI Copilot & Voice Dialer</span>
+                    <span className="font-editorial font-bold text-sm text-[#0F172A]">DleafAI Copilot & Voice Dialer</span>
                   </div>
                   <span className="text-[10px] font-bold text-[#EE0979] bg-[#FFF1F7] border border-[#F1D5E4] px-2 py-0.5 rounded-full">
                     Active Agent
@@ -651,7 +625,7 @@ export const PortalHome: React.FC = () => {
                   <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
                     <div className="flex items-center gap-1.5 text-slate-500 text-[10.5px] font-editorial font-semibold">
                       <Bot className="w-3.5 h-3.5 text-[#EE0979]" />
-                      <span>Zia Opportunity Detection</span>
+                      <span>DleafAI Opportunity Detection</span>
                     </div>
                     <p className="font-editorial-body text-slate-700 mt-1 leading-snug">
                       "Tata Consumer deal win probability jumped from 65% to 92% after CXO engagement. Immediate action: Send CPQ quote before 4 PM."
@@ -682,7 +656,7 @@ export const PortalHome: React.FC = () => {
                   onClick={() => setIsZiaOpen(true)}
                   className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition font-editorial cursor-pointer shadow-xs"
                 >
-                  Ask Zia AI
+                  Ask DleafAI
                 </button>
               </div>
             </div>
@@ -775,7 +749,7 @@ export const PortalHome: React.FC = () => {
                 rating: 5
               },
               {
-                quote: "The Zia AI lead scoring model alone saved our SDRs 12 hours every week by prioritizing the deals most likely to close.",
+                quote: "The DleafAI lead scoring model alone saved our SDRs 12 hours every week by prioritizing the deals most likely to close.",
                 author: "Ananya Deshmukh",
                 role: "Revenue Operations, FinSecure",
                 rating: 5
@@ -827,8 +801,8 @@ export const PortalHome: React.FC = () => {
                 a: "Yes. Dleaf CRM offers a comprehensive free plan for small teams with unlimited contact records and visual deal pipeline."
               },
               {
-                q: "How does Zia AI help sales reps close faster?",
-                a: "Zia continuously analyzes email response sentiment, buyer activity frequency, and past win history to suggest the next best action."
+                q: "How does DleafAI help sales reps close faster?",
+                a: "DleafAI continuously analyzes email response sentiment, buyer activity frequency, and past win history to suggest the next best action."
               },
               {
                 q: "Can we import existing CRM and CSV data?",
@@ -929,7 +903,7 @@ export const PortalHome: React.FC = () => {
               />
             </div>
             <p className="font-editorial-body text-[11.5px] text-slate-400 leading-relaxed max-w-xs">
-              Next-generation enterprise CRM uniting omnichannel sales, Zia AI deal intelligence, and Indian statutory compliance.
+              Next-generation enterprise CRM uniting omnichannel sales, DleafAI deal intelligence, and Indian statutory compliance.
             </p>
             <div className="flex items-center gap-2 pt-1">
               <a href="#" className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 hover:bg-[#EE0979] hover:text-white text-slate-300 flex items-center justify-center transition">
@@ -955,7 +929,7 @@ export const PortalHome: React.FC = () => {
             <ul className="space-y-2 text-[11px] font-editorial-body text-slate-400">
               <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">Deals Kanban</li>
               <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">Lead Scoring</li>
-              <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">Zia AI Engine</li>
+              <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">DleafAI Engine</li>
               <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">SalesInbox</li>
               <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">CPQ & Invoices</li>
             </ul>
