@@ -183,19 +183,6 @@ export const Sidebar: React.FC = () => {
           </span>
         </button>
 
-        <button
-          onClick={() => setActiveModule('reports')}
-          className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
-            activeModule === 'reports'
-              ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
-              : 'text-slate-700 hover:bg-[#FFF1F7] hover:text-[#EE0979]'
-          }`}
-        >
-          <div className="flex items-center gap-2.5">
-            <PieChart className="w-4 h-4" />
-            <span>Reports</span>
-          </div>
-        </button>
 
         <button
           onClick={() => setActiveModule('analytics')}

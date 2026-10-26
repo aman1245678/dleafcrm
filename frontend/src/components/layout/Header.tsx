@@ -126,16 +126,6 @@ export const Header: React.FC = () => {
               Home
             </button>
             <button
-              onClick={() => setActiveModule('reports')}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
-                activeModule === 'reports'
-                  ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
-                  : 'text-slate-700 hover:text-[#EE0979] hover:bg-[#FFF1F7]'
-              }`}
-            >
-              Reports
-            </button>
-            <button
               onClick={() => setActiveModule('analytics')}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                 activeModule === 'analytics'
