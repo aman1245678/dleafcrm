@@ -85,9 +85,9 @@ export const PortalHome: React.FC = () => {
     <div className="flex-1 flex flex-col bg-[#F8FAFC] overflow-x-hidden font-sans text-[#0F172A]">
 
       {/* =========================================================================
-          SECTION 1: HERO SECTION - Exact Match to User Provided Reference Image
+          SECTION 1: HERO SECTION - Compact, Balanced & Interactive Dleaf Ai Card
       ========================================================================== */}
-      <section className="relative pt-8 sm:pt-12 pb-16 px-4 sm:px-8 lg:px-14 overflow-hidden bg-white">
+      <section className="relative pt-3 sm:pt-6 pb-8 sm:pb-10 px-4 sm:px-8 lg:px-12 overflow-hidden bg-white">
 
         {/* Exact Abstract Gradient Blob Background from /background.png */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
@@ -100,23 +100,20 @@ export const PortalHome: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto">
 
-          {/* Top Hero Grid: 2 Columns Matching Exact Reference Image */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[460px]">
+          {/* Top Hero Grid: 2 Columns Matching Reference Image */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
 
-            {/* ----------------- LEFT COLUMN: Exact Copy & Form (7 cols) ----------------- */}
-            <div className="lg:col-span-7 space-y-5 text-left">
+            {/* ----------------- LEFT COLUMN: Compact Copy & Form (7 cols) ----------------- */}
+            <div className="lg:col-span-7 space-y-3.5 text-left">
 
               {/* Exact Pill Badge: "• Smart Business Growth Platform" */}
-              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3.5 py-1 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
+              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3 py-0.5 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
                 <span className="w-2 h-2 rounded-full bg-[#EE0979]" />
-                <span className="tracking-tight text-[11.5px] font-bold text-slate-800">Smart Business Growth Platform</span>
+                <span className="tracking-tight text-[11px] font-bold text-slate-800">Smart Business Growth Platform</span>
               </div>
 
-              {/* Exact Main Heading:
-                  "Work faster. Think better.
-                   Automate everything." with "everything." in vibrant orange-to-pink gradient
-              */}
-              <h1 className="text-3xl sm:text-4xl lg:text-[50px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.12]">
+              {/* Compact Main Heading */}
+              <h1 className="text-2xl sm:text-3xl lg:text-[38px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.15]">
                 Work faster. Think better.<br />
                 Automate{' '}
                 <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent">
@@ -124,96 +121,132 @@ export const PortalHome: React.FC = () => {
                 </span>
               </h1>
 
-              {/* Exact Subtitle:
-                  "The all-in-one CRM to capture high-value leads, automate pipeline deals, and accelerate team revenue with Zia AI intelligence."
-              */}
-              <p className="text-sm sm:text-[14.5px] text-slate-600 font-normal leading-relaxed max-w-xl">
+              {/* Subtitle */}
+              <p className="text-xs sm:text-[13.5px] text-slate-600 font-normal leading-relaxed max-w-lg">
                 The all-in-one CRM to capture high-value leads, automate pipeline deals, and accelerate team revenue with DleafAI intelligence.
               </p>
 
-              {/* Exact Input Form:
-                  [ ✉ Enter your work email... ]  [ Start Free Trial -> ]
-              */}
+              {/* Email Form */}
               <form
                 onSubmit={handleCtaSubmit}
-                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 max-w-lg pt-1"
+                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 max-w-md pt-0.5"
               >
                 <div className="relative flex-1">
-                  <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Mail className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
                     type="email"
                     value={ctaEmail}
                     onChange={(e) => setCtaEmail(e.target.value)}
                     placeholder="Enter your work email..."
-                    className="w-full pl-10 pr-3.5 py-2.5 bg-white/95 backdrop-blur-sm rounded-full border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979] shadow-xs"
+                    className="w-full pl-9 pr-3 py-2 bg-white/95 backdrop-blur-sm rounded-full border border-slate-200 text-xs sm:text-[13px] text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979] shadow-xs"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full transition shadow-md shadow-[#EE0979]/25 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
+                  className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-4 py-2 rounded-full transition shadow-md shadow-[#EE0979]/25 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
                 >
                   <span>Start Free Trial</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </form>
 
-              {/* Exact Trust Checklist:
-                  ✔ Free 14-Day Trial   ✔ No Credit Card Needed   ✔ Setup in 2 Minutes
-              */}
-              <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-slate-600 font-medium pt-1">
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
+              {/* Trust Checklist */}
+              <div className="flex flex-wrap items-center gap-y-1.5 gap-x-4 text-[11px] text-slate-600 font-medium pt-0.5">
+                <div className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
                   <span>Free 14-Day Trial</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
+                <div className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
                   <span>No Credit Card Needed</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
+                <div className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
                   <span>Setup in 2 Minutes</span>
                 </div>
               </div>
 
-              {/* Exact Download User Guide (PDF) Button */}
-              <div className="pt-1">
+              {/* Download User Guide Button */}
+              <div className="pt-0.5">
                 <button
                   type="button"
                   onClick={() => setIsGuideOpen(true)}
-                  className="inline-flex items-center gap-1.5 text-[#EE0979] font-bold hover:underline cursor-pointer bg-white/90 hover:bg-[#FFF1F7] px-3.5 py-1.5 rounded-full border border-[#F1D5E4] text-xs transition shadow-2xs"
+                  className="inline-flex items-center gap-1.5 text-[#EE0979] font-bold hover:underline cursor-pointer bg-white/90 hover:bg-[#FFF1F7] px-3 py-1 rounded-full border border-[#F1D5E4] text-[11px] transition shadow-2xs"
                 >
-                  <BookOpen className="w-3.5 h-3.5 text-[#EE0979]" />
+                  <BookOpen className="w-3 h-3 text-[#EE0979]" />
                   <span>Download User Guide (PDF)</span>
                 </button>
               </div>
 
             </div>
 
-            {/* ----------------- RIGHT COLUMN: Exact Hero Card "Dleaf Ai Assistant" (5 cols) ----------------- */}
+            {/* ----------------- RIGHT COLUMN: Interactive Dleaf Ai Assistant Card (5 cols) ----------------- */}
             <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
-              <div className="w-full max-w-md bg-white/90 backdrop-blur-md rounded-3xl border border-white/80 shadow-[0_20px_50px_rgba(238,9,121,0.12)] p-6 sm:p-8 flex items-center gap-5 sm:gap-6">
+              <div className="w-full max-w-md bg-white/95 backdrop-blur-md rounded-2xl border border-white/80 shadow-[0_12px_35px_rgba(238,9,121,0.12)] p-4 sm:p-5 flex flex-col gap-3">
                 
-                {/* Custom Sparkle Emblem Icon matching reference */}
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white shadow-md border border-slate-100 flex items-center justify-center relative shrink-0 p-3">
-                  <div className="w-full h-full relative flex items-center justify-center">
-                    {/* Multi-color gradient four-point star */}
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 relative flex items-center justify-center">
+                {/* Header: Sparkle Icon + Title */}
+                <div className="flex items-center gap-3.5">
+                  <div className="w-12 h-12 rounded-xl bg-white shadow-xs border border-slate-100 flex items-center justify-center relative shrink-0 p-2">
+                    <div className="w-full h-full relative flex items-center justify-center">
                       <div className="absolute inset-0 bg-gradient-to-tr from-[#FF6A00] via-[#EE0979] to-[#7928CA] rounded-sm transform rotate-45 scale-75" />
                       <div className="absolute inset-0 bg-gradient-to-br from-[#7928CA] via-[#EE0979] to-[#FF6A00] rounded-sm transform scale-75" />
-                      <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 text-white relative z-10" />
+                      <Sparkles className="w-5 h-5 text-white relative z-10" />
                     </div>
-                    {/* Small orange secondary sparkle */}
-                    <span className="absolute bottom-0 left-0 w-2 h-2 text-[#FF6A00] text-xs">✦</span>
-                    {/* Small purple top sparkle */}
-                    <span className="absolute top-0 right-0 w-2 h-2 text-[#7928CA] text-xs">✦</span>
                   </div>
+
+                  <div className="flex-1">
+                    <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#0F172A] leading-tight">
+                      Dleaf <span className="text-[#EE0979]">Ai</span> Assistant
+                    </h2>
+                    <p className="text-[10px] text-slate-500 font-medium">Ask anything or automate workflows live</p>
+                  </div>
+
+                  <span className="text-[9.5px] bg-[#FFF1F7] text-[#EE0979] px-2 py-0.5 rounded-full font-bold shrink-0">
+                    Active
+                  </span>
                 </div>
 
-                {/* Big Bold Title: "Dleaf Ai Assistant" with "Ai" in pink/orange */}
-                <div className="flex-1">
-                  <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-black tracking-tight text-[#0F172A] leading-tight">
-                    Dleaf <span className="text-[#EE0979]">Ai</span> Assistant
-                  </h2>
+                {/* Interactive Working AI Prompt Box */}
+                <form
+                  onSubmit={handleAiPromptSubmit}
+                  className="p-1.5 bg-[#F8FAFC] rounded-xl border border-[#F1D5E4] hover:border-[#EE0979] focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20 transition-all"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <Bot className="w-3.5 h-3.5 text-[#EE0979] shrink-0 ml-1.5" />
+                    <input
+                      type="text"
+                      value={aiPrompt}
+                      onChange={(e) => setAiPrompt(e.target.value)}
+                      placeholder="Ask AI: 'Summarize deals', 'Draft email'..."
+                      className="w-full bg-transparent text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden py-1"
+                    />
+                    <button
+                      type="submit"
+                      className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 active:scale-95 text-white font-bold text-[11px] px-3 py-1 rounded-lg transition shadow-xs flex items-center gap-1 shrink-0 cursor-pointer"
+                    >
+                      <span>Ask</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </button>
+                  </div>
+                </form>
+
+                {/* Quick AI Prompts */}
+                <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+                  <span className="text-[10px] text-slate-400 font-medium">Quick:</span>
+                  {[
+                    '📊 Pipeline forecast',
+                    '🎯 Score hot leads',
+                    '✉️ Draft outreach',
+                  ].map((chip) => (
+                    <button
+                      key={chip}
+                      type="button"
+                      onClick={() => handleQuickPromptClick(chip.slice(2).trim())}
+                      className="text-[10px] font-medium bg-white hover:bg-[#FFF1F7] text-slate-600 hover:text-[#EE0979] border border-slate-200 hover:border-[#EE0979] px-2 py-0.5 rounded-full transition shadow-2xs cursor-pointer"
+                    >
+                      {chip}
+                    </button>
+                  ))}
                 </div>
 
               </div>
