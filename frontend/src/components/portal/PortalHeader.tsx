@@ -12,6 +12,8 @@ import {
   Lock,
   Leaf,
   BookOpen,
+  Menu,
+  X,
 } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
 import { UserGuideModal } from '../modals/UserGuideModal';
@@ -30,10 +32,12 @@ export const PortalHeader: React.FC = () => {
 
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   const handleNavClick = (page: 'home' | 'features' | 'pricing' | 'platform' | 'customers' | 'resources' | 'free-tools') => {
     setPortalPage(page);
     setActiveDropdown(null);
+    setIsMobileNavOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -199,11 +203,11 @@ export const PortalHeader: React.FC = () => {
           </button>
         </nav>
 
-        {/* Right: Search, Start Free Trial, CRM Workspace */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        {/* Right: Search, Start Free Trial, CRM Workspace, Mobile Hamburger */}
+        <div className="flex items-center gap-1.5 sm:gap-3">
           <button
             onClick={() => setIsPortalSignInOpen(true)}
-            className="text-slate-600 hover:text-[#EE0979] p-1.5 rounded-full hover:bg-[#FFF1F7] transition cursor-pointer"
+            className="hidden sm:flex text-slate-600 hover:text-[#EE0979] p-1.5 rounded-full hover:bg-[#FFF1F7] transition cursor-pointer"
             title="Search"
           >
             <Search className="w-4 h-4" />
@@ -218,10 +222,10 @@ export const PortalHeader: React.FC = () => {
                 setIsPortalSignInOpen(true);
               }
             }}
-            className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-4 sm:px-5 py-2 rounded-full transition shadow-md shadow-[#EE0979]/25 flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+            className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-3 sm:px-5 py-2 rounded-full transition shadow-md shadow-[#EE0979]/25 flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
           >
-            <span>{isAuthenticated ? 'Go to CRM Workspace' : 'Start Free Trial'}</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span className="text-[11px] sm:text-xs">{isAuthenticated ? 'CRM App' : 'Free Trial'}</span>
+            <ArrowRight className="w-3.5 h-3.5 hidden sm:inline" />
           </button>
 
           {/* CRM Workspace Dark Navy Button with purple badge */}
@@ -233,13 +237,101 @@ export const PortalHeader: React.FC = () => {
                 setIsPortalSignInOpen(true);
               }
             }}
-            className="bg-[#0F172A] hover:bg-[#1E293B] active:scale-95 text-white font-semibold text-xs px-3 sm:px-3.5 py-2 rounded-lg transition shadow-xs flex items-center gap-1.5 cursor-pointer whitespace-nowrap border border-white/10"
+            className="hidden sm:flex bg-[#0F172A] hover:bg-[#1E293B] active:scale-95 text-white font-semibold text-xs px-3 sm:px-3.5 py-2 rounded-lg transition shadow-xs items-center gap-1.5 cursor-pointer whitespace-nowrap border border-white/10"
           >
             <Grid className="w-3.5 h-3.5 text-[#EE0979]" />
-            <span className="hidden sm:inline">CRM Workspace</span>
+            <span>CRM Workspace</span>
+          </button>
+
+          {/* Mobile Hamburger Toggle Button */}
+          <button
+            onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
+            className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-[#EE0979] hover:bg-[#FFF1F7] transition cursor-pointer"
+            title="Toggle Menu"
+            aria-label="Toggle Menu"
+          >
+            {isMobileNavOpen ? <X className="w-5 h-5 text-[#EE0979]" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Drawer / Dropdown */}
+      {isMobileNavOpen && (
+        <div className="lg:hidden bg-white border-b border-[#F1D5E4] px-4 py-3 shadow-xl space-y-2 animate-in fade-in slide-in-from-top-2">
+          <nav className="flex flex-col space-y-1 text-sm font-semibold text-[#0F172A]">
+            <button
+              onClick={() => handleNavClick('home')}
+              className={`w-full text-left px-3 py-2 rounded-lg transition ${portalPage === 'home' ? 'bg-[#FFF1F7] text-[#EE0979]' : 'hover:bg-slate-50'}`}
+            >
+              Home
+            </button>
+            <button
+              onClick={() => handleNavClick('features')}
+              className={`w-full text-left px-3 py-2 rounded-lg transition ${portalPage === 'features' ? 'bg-[#FFF1F7] text-[#EE0979]' : 'hover:bg-slate-50'}`}
+            >
+              Products & Modules
+            </button>
+            <button
+              onClick={() => handleNavClick('platform')}
+              className={`w-full text-left px-3 py-2 rounded-lg transition ${portalPage === 'platform' ? 'bg-[#FFF1F7] text-[#EE0979]' : 'hover:bg-slate-50'}`}
+            >
+              Solutions
+            </button>
+            <button
+              onClick={() => handleNavClick('customers')}
+              className={`w-full text-left px-3 py-2 rounded-lg transition ${portalPage === 'customers' ? 'bg-[#FFF1F7] text-[#EE0979]' : 'hover:bg-slate-50'}`}
+            >
+              Customers & Case Studies
+            </button>
+            <button
+              onClick={() => handleNavClick('pricing')}
+              className={`w-full text-left px-3 py-2 rounded-lg transition ${portalPage === 'pricing' ? 'bg-[#FFF1F7] text-[#EE0979]' : 'hover:bg-slate-50'}`}
+            >
+              Pricing & Plans
+            </button>
+            <button
+              onClick={() => handleNavClick('resources')}
+              className={`w-full text-left px-3 py-2 rounded-lg transition ${portalPage === 'resources' ? 'bg-[#FFF1F7] text-[#EE0979]' : 'hover:bg-slate-50'}`}
+            >
+              Resources & Documentation
+            </button>
+            <button
+              onClick={() => handleNavClick('free-tools')}
+              className={`w-full text-left px-3 py-2 rounded-lg transition ${portalPage === 'free-tools' ? 'bg-[#FFF1F7] text-[#EE0979]' : 'hover:bg-slate-50'}`}
+            >
+              Free Tools
+            </button>
+          </nav>
+
+          <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
+            <button
+              onClick={() => {
+                setIsMobileNavOpen(false);
+                setIsGuideOpen(true);
+              }}
+              className="w-full py-2 px-3 rounded-lg bg-[#FFF8FA] border border-[#F1D5E4] text-[#EE0979] font-bold text-xs flex items-center justify-center gap-1.5"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Download User Guide (PDF)</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setIsMobileNavOpen(false);
+                if (isAuthenticated) {
+                  setAppMode('workspace');
+                } else {
+                  setIsPortalSignInOpen(true);
+                }
+              }}
+              className="w-full py-2.5 rounded-lg bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-[#EE0979]/30"
+            >
+              <Grid className="w-4 h-4" />
+              <span>{isAuthenticated ? 'Open CRM Workspace' : 'Sign In / Start Free Trial'}</span>
+            </button>
+          </div>
+        </div>
+      )}
       <UserGuideModal isOpen={isGuideOpen} onClose={() => setIsGuideOpen(false)} />
     </header>
   );

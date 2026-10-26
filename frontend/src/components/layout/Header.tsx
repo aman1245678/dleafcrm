@@ -26,6 +26,8 @@ import {
   Timer,
   CreditCard,
   BookOpen,
+  Menu,
+  X,
 } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
 import { DleafProfileDrawer } from '../modals/DleafProfileDrawer';
@@ -62,6 +64,9 @@ export const Header: React.FC = () => {
   const setAppMode = crm?.setAppMode || (() => {});
   const logout = crm?.logout || (async () => {});
 
+  const isMobileSidebarOpen = crm?.isMobileSidebarOpen || false;
+  const setIsMobileSidebarOpen = crm?.setIsMobileSidebarOpen || (() => {});
+
   const [isQuickAddOpen, setIsQuickAddOpen] = useState(false);
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -88,13 +93,23 @@ export const Header: React.FC = () => {
   return (
     <div className="z-30 select-none shrink-0 relative bg-white">
       {/* Main Top Header - Matching Logo Theme */}
-      <header className="h-15 bg-white text-[#0F172A] flex items-center justify-between px-3 md:px-5 border-b border-[#F1D5E4] shadow-xs">
-        {/* Left side: Brand Logo + Quick Navigation */}
-        <div className="flex items-center gap-3 md:gap-4">
+      <header className="h-14 sm:h-15 bg-white text-[#0F172A] flex items-center justify-between px-2 sm:px-3 md:px-5 border-b border-[#F1D5E4] shadow-xs">
+        {/* Left side: Hamburger Toggle + Brand Logo + Quick Navigation */}
+        <div className="flex items-center gap-1.5 sm:gap-3 md:gap-4 shrink-0">
+          {/* Mobile Sidebar Hamburger Toggle */}
+          <button
+            onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
+            className="md:hidden p-2 rounded-lg text-slate-700 hover:text-[#EE0979] hover:bg-[#FFF1F7] transition cursor-pointer"
+            title="Toggle Menu"
+            aria-label="Toggle Menu"
+          >
+            {isMobileSidebarOpen ? <X className="w-5 h-5 text-[#EE0979]" /> : <Menu className="w-5 h-5" />}
+          </button>
+
           {/* Logo Section - Prominent, Clear, and Nicely Sized */}
           <div
             onClick={() => setActiveModule('home')}
-            className="flex items-center gap-2.5 group cursor-pointer pr-3 md:pr-4 border-r border-[#F1D5E4] hover:opacity-95 transition"
+            className="flex items-center gap-2 group cursor-pointer pr-2 sm:pr-3 md:pr-4 border-r border-[#F1D5E4] hover:opacity-95 transition"
             title="CRM Home"
           >
             {/* Logo Container with optimized size & visibility */}
@@ -108,7 +123,7 @@ export const Header: React.FC = () => {
                     target.src = '/logo.png?v=20';
                   }
                 }}
-                className="h-10 sm:h-11 md:h-12 w-auto max-w-[250px] object-contain transition-transform group-hover:scale-[1.02] block"
+                className="h-8 sm:h-10 md:h-12 w-auto max-w-[130px] sm:max-w-[180px] md:max-w-[250px] object-contain transition-transform group-hover:scale-[1.02] block"
               />
             </div>
           </div>
@@ -150,14 +165,17 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Middle: Universal Search */}
-        <div className="flex-1 max-w-xs md:max-w-sm mx-2 min-w-0">
+        <div className="flex-1 max-w-xs md:max-w-sm mx-1 sm:mx-2 min-w-0">
           <button
             onClick={() => setIsGlobalSearchOpen(true)}
-            className="w-full flex items-center justify-between px-3 py-1.5 bg-[#F8FAFC] hover:bg-[#FFF8FA] border border-[#F1D5E4] rounded-lg text-slate-500 text-xs transition-all shadow-xs group focus:outline-none focus:ring-2 focus:ring-[#EE0979]/20"
+            className="w-full flex items-center justify-between px-2.5 sm:px-3 py-1.5 bg-[#F8FAFC] hover:bg-[#FFF8FA] border border-[#F1D5E4] rounded-lg text-slate-500 text-xs transition-all shadow-xs group focus:outline-none focus:ring-2 focus:ring-[#EE0979]/20"
           >
             <div className="flex items-center gap-2 min-w-0">
               <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#EE0979] shrink-0 transition-colors" />
-              <span className="font-normal text-slate-700 truncate">Search Deals, Leads, Contacts...</span>
+              <span className="font-normal text-slate-700 truncate text-[11px] sm:text-xs">
+                <span className="hidden sm:inline">Search Deals, Leads, Contacts...</span>
+                <span className="sm:hidden">Search CRM...</span>
+              </span>
             </div>
             <kbd className="hidden 2xl:inline-block px-1.5 py-0.5 text-[10px] bg-white text-slate-600 font-semibold rounded border border-[#F1D5E4] shadow-xs shrink-0">
               ⌘K
@@ -166,7 +184,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Right side: Quick Add, Notifications, Communication & Profile */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           {/* Quick Add (+) */}
           <div className="relative">
             <button
@@ -317,7 +335,7 @@ export const Header: React.FC = () => {
           {/* VoIP Call Button - Safely uses isVoipActive without crashing */}
           <button
             onClick={() => setIsVoipModalOpen(true)}
-            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition shadow-xs ${
+            className={`hidden sm:flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition shadow-xs ${
               isVoipActive
                 ? 'bg-[#EE0979] text-white border-pink-600 animate-pulse'
                 : 'bg-slate-100 hover:bg-slate-200 text-[#D8086C] border-slate-200'
@@ -332,7 +350,7 @@ export const Header: React.FC = () => {
           {/* WhatsApp / SMS Messenger */}
           <button
             onClick={() => setIsWhatsAppModalOpen(true)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-[#D8086C] border border-slate-200 text-xs font-semibold transition shadow-xs"
+            className="hidden sm:flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-[#D8086C] border border-slate-200 text-xs font-semibold transition shadow-xs"
             title="Open WhatsApp Business & SMS Messenger"
           >
             <MessageSquare className="w-3.5 h-3.5" />

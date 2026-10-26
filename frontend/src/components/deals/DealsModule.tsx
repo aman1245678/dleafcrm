@@ -38,7 +38,7 @@ export const DealsModule: React.FC = () => {
   } = useCRM();
 
   const [viewMode, setViewMode] = useState<'kanban' | 'list'>('kanban');
-  const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(true);
+  const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(() => typeof window !== 'undefined' ? window.innerWidth >= 1024 : false);
   const [filterSearch, setFilterSearch] = useState('');
   const [globalSearch, setGlobalSearch] = useState('');
 
@@ -253,20 +253,28 @@ export const DealsModule: React.FC = () => {
       </div>
 
       {/* Main Workspace (Filter Drawer + Kanban View) */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden relative">
         {/* Left Filter Drawer (Exact Dleaf CRM 3 Accordions) */}
         {isFilterPanelOpen && (
-          <aside className="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 text-xs overflow-y-auto">
+          <aside className="fixed inset-y-0 left-0 z-40 lg:static lg:z-auto w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 text-xs overflow-y-auto shadow-2xl lg:shadow-none animate-in slide-in-from-left duration-200">
             <div className="p-2.5 border-b border-slate-200 bg-slate-50/50 flex items-center justify-between">
               <span className="font-semibold text-slate-700 text-[11px]">Filter Deals by</span>
-              {Object.values(activeFilters).some(Boolean) && (
+              <div className="flex items-center gap-2">
+                {Object.values(activeFilters).some(Boolean) && (
+                  <button
+                    onClick={() => setActiveFilters({})}
+                    className="text-[10px] text-blue-600 hover:underline"
+                  >
+                    Clear All
+                  </button>
+                )}
                 <button
-                  onClick={() => setActiveFilters({})}
-                  className="text-[10px] text-blue-600 hover:underline"
+                  onClick={() => setIsFilterPanelOpen(false)}
+                  className="lg:hidden text-slate-400 hover:text-slate-600 p-0.5"
                 >
-                  Clear All
+                  <X className="w-4 h-4" />
                 </button>
-              )}
+              </div>
             </div>
 
             {/* Filter Search Input */}

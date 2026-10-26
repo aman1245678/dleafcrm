@@ -42,6 +42,7 @@ import {
   BookOpen,
   ShoppingCart,
   Lightbulb,
+  X,
 } from 'lucide-react';
 import { useCRM, NavigationModule } from '../../context/CRMContext';
 
@@ -59,9 +60,28 @@ interface NavSection {
 }
 
 export const Sidebar: React.FC = () => {
-  const { activeModule, setActiveModule, deals, leads, tasks, emails, imapConfig, logout, currentUser } = useCRM();
+  const {
+    activeModule,
+    setActiveModule,
+    deals,
+    leads,
+    tasks,
+    emails,
+    imapConfig,
+    logout,
+    currentUser,
+    isMobileSidebarOpen,
+    setIsMobileSidebarOpen,
+  } = useCRM();
   const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>({});
   const [searchFilter, setSearchFilter] = useState('');
+
+  const handleNavClick = (mod: NavigationModule) => {
+    setActiveModule(mod);
+    if (setIsMobileSidebarOpen) {
+      setIsMobileSidebarOpen(false);
+    }
+  };
 
   const toggleSection = (title: string) => {
     setCollapsedSections((prev) => ({ ...prev, [title]: !prev[title] }));
@@ -147,13 +167,26 @@ export const Sidebar: React.FC = () => {
     },
   ];
 
-  return (
-    <aside className="w-60 bg-[#FAFAFD] border-r border-[#F1D5E4] text-slate-700 flex flex-col shrink-0 select-none overflow-y-auto no-scrollbar">
-      
+  const sidebarInner = (
+    <div className="w-64 sm:w-60 h-full bg-[#FAFAFD] border-r border-[#F1D5E4] text-slate-700 flex flex-col shrink-0 select-none overflow-y-auto no-scrollbar">
+      {/* Mobile drawer header with Close (X) button */}
+      <div className="md:hidden p-3 bg-white border-b border-[#F1D5E4] flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <img src="/logo1.png?v=20" alt="DleafCRM" className="h-7 w-auto object-contain" />
+        </div>
+        <button
+          onClick={() => setIsMobileSidebarOpen(false)}
+          className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition cursor-pointer"
+          title="Close Navigation"
+        >
+          <X className="w-5 h-5 text-slate-600" />
+        </button>
+      </div>
+
       {/* ----------------- Dleaf CRM Primary Top Items ----------------- */}
       <div className="p-2 space-y-0.5 border-b border-[#F1D5E4] bg-white">
         <button
-          onClick={() => setActiveModule('home')}
+          onClick={() => handleNavClick('home')}
           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
             activeModule === 'home'
               ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
@@ -167,7 +200,7 @@ export const Sidebar: React.FC = () => {
         </button>
 
         <button
-          onClick={() => setActiveModule('workqueue')}
+          onClick={() => handleNavClick('workqueue')}
           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
             activeModule === 'workqueue'
               ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
@@ -183,9 +216,8 @@ export const Sidebar: React.FC = () => {
           </span>
         </button>
 
-
         <button
-          onClick={() => setActiveModule('analytics')}
+          onClick={() => handleNavClick('analytics')}
           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
             activeModule === 'analytics'
               ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
@@ -199,7 +231,7 @@ export const Sidebar: React.FC = () => {
         </button>
 
         <button
-          onClick={() => setActiveModule('mcpserver')}
+          onClick={() => handleNavClick('mcpserver')}
           className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
             activeModule === 'mcpserver'
               ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white shadow-xs font-bold'
@@ -274,7 +306,7 @@ export const Sidebar: React.FC = () => {
                     return (
                       <button
                         key={item.id}
-                        onClick={() => setActiveModule(item.id)}
+                        onClick={() => handleNavClick(item.id)}
                         className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all group ${
                           isActive
                             ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white font-bold shadow-xs'
@@ -340,6 +372,32 @@ export const Sidebar: React.FC = () => {
         </span>
         <span className="font-mono">v4.5 Live</span>
       </div>
-    </aside>
+    </div>
+  );
+
+  return (
+    <>
+      {/* Desktop Persistent Sidebar */}
+      <aside className="hidden md:flex h-full shrink-0">
+        {sidebarInner}
+      </aside>
+
+      {/* Mobile Slide-over Drawer with Backdrop */}
+      {isMobileSidebarOpen && (
+        <div className="fixed inset-0 z-50 md:hidden flex animate-in fade-in duration-200">
+          {/* Backdrop Blur Overlay */}
+          <div
+            onClick={() => setIsMobileSidebarOpen(false)}
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
+            aria-hidden="true"
+          />
+
+          {/* Drawer content sliding in from left */}
+          <div className="relative z-10 w-64 max-w-[85vw] h-full shadow-2xl animate-in slide-in-from-left duration-250">
+            {sidebarInner}
+          </div>
+        </div>
+      )}
+    </>
   );
 };

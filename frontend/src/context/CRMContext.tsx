@@ -132,6 +132,8 @@ interface CRMContextType {
   setIsCreateTaskOpen: (open: boolean) => void;
   leadToConvert: Lead | null;
   setLeadToConvert: (lead: Lead | null) => void;
+  isMobileSidebarOpen: boolean;
+  setIsMobileSidebarOpen: (open: boolean) => void;
 
   // User Management & Security (Admin / Manager / Agent)
   currentUser: CRMUser;
@@ -335,6 +337,7 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [isCreateAccountOpen, setIsCreateAccountOpen] = useState(false);
   const [isCreateTaskOpen, setIsCreateTaskOpen] = useState(false);
   const [leadToConvert, setLeadToConvert] = useState<Lead | null>(null);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // Public Portal state (loads first as requested)
   const [appMode, setAppMode] = useState<'portal' | 'workspace'>('portal');
@@ -1340,6 +1343,8 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         refreshSubscription,
         isSubscriptionModalOpen,
         setIsSubscriptionModalOpen,
+        isMobileSidebarOpen,
+        setIsMobileSidebarOpen,
       }}
     >
       {children}
