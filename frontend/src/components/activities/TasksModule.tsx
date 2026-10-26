@@ -212,7 +212,7 @@ export const TasksModule: React.FC = () => {
             </button>
             <button
               onClick={() => setIsCreateTaskOpen(true)}
-              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-1.5 py-1.5 rounded-r border-l border-[#265342] cursor-pointer"
+              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-1.5 py-1.5 rounded-r border-l border-[#334155] cursor-pointer"
             >
               <ChevronDown className="w-3 h-3" />
             </button>
@@ -340,7 +340,7 @@ export const TasksModule: React.FC = () => {
                     className="w-68 min-w-[270px] max-w-[270px] bg-[#E8EEF5]/40 rounded flex flex-col shrink-0 max-h-full border border-slate-200 shadow-2xs"
                   >
                     {/* Column Header */}
-                    <div className="p-2 bg-[#D9F2EF] border-b border-pink-100 rounded-t flex items-center justify-between">
+                    <div className="p-2 bg-[#FFF1F7] border-b border-pink-100 rounded-t flex items-center justify-between">
                       <div className="flex items-center gap-1.5 text-xs text-slate-800 font-semibold text-[11px]">
                         <span>{col.label}</span>
                         <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[#EE0979]/10 text-[#BE075E] font-bold">

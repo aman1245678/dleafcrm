@@ -250,7 +250,7 @@ export const SocialModule: React.FC = () => {
           <div className="mt-7">
             <button
               onClick={() => setViewMode('create_brand')}
-              className="px-6 py-2.5 bg-[#EE0979] hover:bg-[#126b4a] active:scale-95 text-white font-semibold text-xs rounded-md shadow-xs transition duration-200 cursor-pointer"
+              className="px-6 py-2.5 bg-[#EE0979] hover:bg-[#EE0979] active:scale-95 text-white font-semibold text-xs rounded-md shadow-xs transition duration-200 cursor-pointer"
             >
               Let's Get Started
             </button>

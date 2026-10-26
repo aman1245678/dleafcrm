@@ -130,7 +130,7 @@ export const MCPServerModule: React.FC = () => {
             <div className="flex items-center gap-2">
               <Terminal className="w-4 h-4 text-[#F1D5E4]" />
               <span className="font-mono font-bold text-white text-[12.5px]">{selectedTool.name}</span>
-              <span className="text-[#A8C2A5] text-[11px]">• Test Arguments & Execution</span>
+              <span className="text-[#94A3B8] text-[11px]">• Test Arguments & Execution</span>
             </div>
             <button
               onClick={handleRun}
@@ -147,26 +147,26 @@ export const MCPServerModule: React.FC = () => {
             <div className="flex-1 flex flex-col p-4 bg-[#0F172A]/60">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[11px] font-mono font-bold text-[#F1D5E4]">JSON Parameters:</span>
-                <span className="text-[10px] text-[#A8C2A5]">Editable JSON payload</span>
+                <span className="text-[10px] text-[#94A3B8]">Editable JSON payload</span>
               </div>
               <textarea
                 value={paramsInput}
                 onChange={(e) => setParamsInput(e.target.value)}
-                className="flex-1 bg-[#0D261D] border border-[#1E293B] rounded-lg p-3.5 font-mono text-xs text-[#FFF1F7] focus:outline-hidden focus:border-[#EE0979] resize-none leading-relaxed shadow-inner"
+                className="flex-1 bg-[#090D16] border border-[#1E293B] rounded-lg p-3.5 font-mono text-xs text-[#FFF1F7] focus:outline-hidden focus:border-[#EE0979] resize-none leading-relaxed shadow-inner"
               />
             </div>
 
             {/* Output Result */}
-            <div className="flex-1 flex flex-col p-4 bg-[#0D261D]">
+            <div className="flex-1 flex flex-col p-4 bg-[#090D16]">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[11px] font-mono font-bold text-[#F1D5E4]">JSON-RPC Response:</span>
-                <span className="text-[10px] text-[#A8C2A5]">Real-time evaluation</span>
+                <span className="text-[10px] text-[#94A3B8]">Real-time evaluation</span>
               </div>
-              <div className="flex-1 bg-[#091A14] border border-[#1E293B] rounded-lg p-3.5 font-mono text-xs overflow-auto text-[#F1D5E4] leading-relaxed shadow-inner no-scrollbar">
+              <div className="flex-1 bg-[#090D16] border border-[#1E293B] rounded-lg p-3.5 font-mono text-xs overflow-auto text-[#F1D5E4] leading-relaxed shadow-inner no-scrollbar">
                 {executionOutput ? (
                   <pre className="text-pink-400">{JSON.stringify(executionOutput, null, 2)}</pre>
                 ) : (
-                  <div className="h-full flex items-center justify-center text-[#88A896] text-xs">
+                  <div className="h-full flex items-center justify-center text-[#64748B] text-xs">
                     Click &quot;Execute Tool&quot; to test real output...
                   </div>
                 )}

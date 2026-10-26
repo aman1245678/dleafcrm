@@ -170,7 +170,7 @@ export const InventoryModule: React.FC = () => {
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="font-bold text-sm text-slate-900">{q.quoteNumber}</span>
-                      <span className="px-2 py-0.5 rounded bg-[#FFF1F7] text-[#374A36] font-semibold text-[10px]">
+                      <span className="px-2 py-0.5 rounded bg-[#FFF1F7] text-[#334155] font-semibold text-[10px]">
                         {q.quoteStage}
                       </span>
                     </div>

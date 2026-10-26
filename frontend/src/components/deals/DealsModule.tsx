@@ -240,7 +240,7 @@ export const DealsModule: React.FC = () => {
             </button>
             <button
               onClick={() => setIsCreateDealOpen(true)}
-              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-1.5 py-1.5 rounded-r border-l border-[#265342] cursor-pointer transition"
+              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-1.5 py-1.5 rounded-r border-l border-[#334155] cursor-pointer transition"
             >
               <ChevronDown className="w-3 h-3" />
             </button>
@@ -422,7 +422,7 @@ export const DealsModule: React.FC = () => {
                     className="w-68 min-w-[270px] max-w-[270px] bg-[#E8EEF5]/40 rounded flex flex-col shrink-0 max-h-full border border-slate-200 shadow-2xs"
                   >
                     {/* Dleaf Stage Column Header with Cyan/Mint Background */}
-                    <div className="p-2 bg-[#D9F2EF] border-b border-pink-100 rounded-t">
+                    <div className="p-2 bg-[#FFF1F7] border-b border-pink-100 rounded-t">
                       <div className="flex items-center justify-between text-xs text-slate-800 font-medium">
                         <span className="truncate font-semibold text-[11px]">
                           {stage.label} {getCircledNumber(stageDeals.length)} - {stage.probability}%

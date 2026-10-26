@@ -78,7 +78,7 @@ export const SetupModule: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {['Deals', 'Leads', 'Contacts', 'Accounts', 'Products', 'Quotes', 'Invoices', 'Cases'].map(
                 (mod) => (
-                  <div key={mod} className="p-3 bg-slate-50 border rounded-lg hover:border-[#8DAA8A] cursor-pointer">
+                  <div key={mod} className="p-3 bg-slate-50 border rounded-lg hover:border-[#94A3B8] cursor-pointer">
                     <h4 className="font-bold text-slate-800">{mod}</h4>
                     <span className="text-[10px] text-slate-400">18 standard, 4 custom fields</span>
                   </div>

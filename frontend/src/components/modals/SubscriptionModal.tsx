@@ -182,7 +182,7 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
       <div className="relative w-full max-w-4xl bg-white border border-[#F1D5E4] rounded-3xl shadow-2xl overflow-hidden my-auto">
         
         {/* Top Header Banner */}
-        <div className="bg-gradient-to-r from-[#0F172A] via-[#0F172A] to-[#264E40] p-6 sm:p-8 text-white relative">
+        <div className="bg-gradient-to-r from-[#0F172A] via-[#0F172A] to-[#334155] p-6 sm:p-8 text-white relative">
           {reason === 'upgrade' && (
             <button
               onClick={onClose}

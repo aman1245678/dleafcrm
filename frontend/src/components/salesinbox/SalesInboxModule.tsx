@@ -116,7 +116,7 @@ export const SalesInboxModule: React.FC = () => {
 
             <button
               onClick={() => setViewMode('config_services')}
-              className="px-5 py-2.5 bg-[#EE0979] hover:bg-[#126b4a] active:scale-95 text-white font-semibold text-xs rounded-md shadow-xs transition cursor-pointer shrink-0"
+              className="px-5 py-2.5 bg-[#EE0979] hover:bg-[#EE0979] active:scale-95 text-white font-semibold text-xs rounded-md shadow-xs transition cursor-pointer shrink-0"
             >
               Configure Now
             </button>

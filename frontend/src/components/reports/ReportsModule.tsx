@@ -118,10 +118,10 @@ The frontend is running smoothly and all changes are compiled and synced.`;
           table { width: 100%; border-collapse: collapse; margin-top: 14px; margin-bottom: 20px; font-size: 9.5pt; }
           th { background-color: #f1f5f9; color: #0f172a; text-align: left; padding: 7px 10px; border: 1px solid #cbd5e1; font-weight: bold; }
           td { padding: 7px 10px; border: 1px solid #cbd5e1; }
-          .badge-completed { color: #059669; font-weight: bold; }
+          .badge-completed { color: #EE0979; font-weight: bold; }
           .badge-progress { color: #d97706; font-weight: bold; }
           .highlight { background-color: #FFF8FA; padding: 14px; border-left: 4px solid #EE0979; margin: 16px 0; border-radius: 4px; }
-          .tag-boost { background-color: #dcfce7; color: #15803d; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 8.5pt; }
+          .tag-boost { background-color: #FFF1F7; color: #EE0979; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 8.5pt; }
           .meta-box { background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px; margin-bottom: 16px; font-size: 10pt; }
         </style>
       </head>
@@ -579,7 +579,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
                       </td>
                       <td className="py-2.5 px-3 text-center text-slate-400">60%</td>
                       <td className="py-2.5 px-3 text-center">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-[#FFF1F7] text-[#374A36] border border-blue-300">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-[#FFF1F7] text-[#334155] border border-blue-300">
                           92%
                         </span>
                       </td>

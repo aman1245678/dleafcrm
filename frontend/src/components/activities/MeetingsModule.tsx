@@ -167,7 +167,7 @@ export const MeetingsModule: React.FC = () => {
             </button>
             <button
               onClick={() => setShowCreateMeetingModal(true)}
-              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-1.5 py-1.5 rounded-r border-l border-[#265342] cursor-pointer"
+              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-1.5 py-1.5 rounded-r border-l border-[#334155] cursor-pointer"
             >
               <ChevronDown className="w-3 h-3" />
             </button>

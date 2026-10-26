@@ -70,7 +70,7 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
       <div className="absolute inset-y-0 right-0 max-w-sm w-full bg-white shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-250">
         
         {/* Top Gradient Banner with User Details */}
-        <div className="relative bg-gradient-to-r from-[#0F172A] via-[#265342] to-[#EE0979] text-white p-5 pb-6">
+        <div className="relative bg-gradient-to-r from-[#0F172A] via-[#334155] to-[#EE0979] text-white p-5 pb-6">
           
           {/* Close X button */}
           <button

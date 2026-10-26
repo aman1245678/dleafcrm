@@ -23,12 +23,12 @@ import {
 
 export const DEAL_STAGES: StageConfig[] = [
   { id: 'Qualification', label: 'Qualification', probability: 10, color: '#0284c7', headerBg: 'bg-[#e0f2fe] border-[#bae6fd] text-[#0369a1]' },
-  { id: 'Needs Analysis', label: 'Needs Analysis', probability: 20, color: '#0d9488', headerBg: 'bg-[#ccfbf1] border-[#99f6e4] text-[#0f766e]' },
+  { id: 'Needs Analysis', label: 'Needs Analysis', probability: 20, color: '#EE0979', headerBg: 'bg-[#FFF1F7] border-[#FFE4EF] text-[#D8086C]' },
   { id: 'Value Proposition', label: 'Value Proposition', probability: 40, color: '#2563eb', headerBg: 'bg-[#dbeafe] border-[#bfdbfe] text-[#1d4ed8]' },
   { id: 'Id. Decision Makers', label: 'Identify Decision Makers', probability: 60, color: '#7c3aed', headerBg: 'bg-[#ede9fe] border-[#ddd6fe] text-[#6d28d9]' },
-  { id: 'Proposal/Price Quote', label: 'Proposal/Price Quote', probability: 75, color: '#059669', headerBg: 'bg-[#d1fae5] border-[#a7f3d0] text-[#047857]' },
+  { id: 'Proposal/Price Quote', label: 'Proposal/Price Quote', probability: 75, color: '#EE0979', headerBg: 'bg-[#FFF1F7] border-[#FFE4EF] text-[#EE0979]' },
   { id: 'Negotiation/Review', label: 'Negotiation/Review', probability: 90, color: '#d97706', headerBg: 'bg-[#fef3c7] border-[#fde68a] text-[#b45309]' },
-  { id: 'Closed Won', label: 'Closed Won', probability: 100, color: '#16a34a', headerBg: 'bg-[#dcfce7] border-[#bbf7d0] text-[#15803d]' },
+  { id: 'Closed Won', label: 'Closed Won', probability: 100, color: '#EE0979', headerBg: 'bg-[#FFF1F7] border-[#FFF1F7] text-[#EE0979]' },
   { id: 'Closed Lost', label: 'Closed Lost', probability: 0, color: '#e11d48', headerBg: 'bg-[#ffe4e6] border-[#fecdd3] text-[#be123c]' },
 ];
 

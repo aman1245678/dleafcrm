@@ -223,7 +223,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
     <div className="fixed inset-0 z-50 overflow-y-auto bg-[#0F172A] select-none text-white flex flex-col font-sans">
       
       {/* Top Bar with URL & Breadcrumbs */}
-      <div className="bg-[#0F172A] border-b border-[#265342] px-6 py-3 flex items-center justify-between shrink-0">
+      <div className="bg-[#0F172A] border-b border-[#334155] px-6 py-3 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
           <button
             onClick={onClose}
@@ -232,7 +232,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
             <ChevronLeft className="w-4 h-4" />
             <span>Back to CRM</span>
           </button>
-          <span className="text-xs text-[#5c7a65]">|</span>
+          <span className="text-xs text-[#64748B]">|</span>
           <span className="text-xs font-bold text-white tracking-wide">
             Dleaf Store • Subscriptions & Editions
           </span>
@@ -244,15 +244,15 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
             1
           </span>
           <span className="font-bold text-white">Plan</span>
-          <span className="text-[#5c7a65]">———</span>
-          <span className="text-[#5c7a65]">Address</span>
-          <span className="text-[#5c7a65]">———</span>
-          <span className="text-[#5c7a65]">Payment</span>
+          <span className="text-[#64748B]">———</span>
+          <span className="text-[#64748B]">Address</span>
+          <span className="text-[#64748B]">———</span>
+          <span className="text-[#64748B]">Payment</span>
         </div>
 
         <button
           onClick={onClose}
-          className="px-3 py-1 bg-[#265342] hover:bg-[#EE0979] text-xs font-semibold rounded border border-[#EE0979] cursor-pointer"
+          className="px-3 py-1 bg-[#334155] hover:bg-[#EE0979] text-xs font-semibold rounded border border-[#EE0979] cursor-pointer"
         >
           Cancel
         </button>
@@ -374,7 +374,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
       </div>
 
       {/* Footer Info */}
-      <div className="border-t border-[#265342] bg-[#0A1712] px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between text-[11px] text-[#FF6A00] gap-2 shrink-0">
+      <div className="border-t border-[#334155] bg-[#0F172A] px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between text-[11px] text-[#FF6A00] gap-2 shrink-0">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1">
             <span>✉️</span>

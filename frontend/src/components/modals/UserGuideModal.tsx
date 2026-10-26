@@ -38,7 +38,7 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
       <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden animate-in fade-in">
         
         {/* Header Bar */}
-        <div className="bg-[#0F172A] text-white px-6 py-4 flex items-center justify-between border-b border-[#265342]">
+        <div className="bg-[#0F172A] text-white px-6 py-4 flex items-center justify-between border-b border-[#334155]">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#EE0979]/40 border border-[#FF6A00]/30 flex items-center justify-center text-pink-400">
               <BookOpen className="w-5 h-5 text-white" />

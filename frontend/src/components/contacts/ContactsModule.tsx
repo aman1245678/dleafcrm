@@ -336,7 +336,7 @@ export const ContactsModule: React.FC = () => {
           <div className="relative flex items-center">
             <button
               onClick={() => setIsCreateContactOpen(true)}
-              className="bg-[#0F172A] hover:bg-[#0F172A] active:scale-95 text-white font-bold text-xs pl-3.5 pr-2 py-2 rounded-l-xl transition shadow-xs flex items-center gap-1.5 cursor-pointer border-r border-[#265342]"
+              className="bg-[#0F172A] hover:bg-[#0F172A] active:scale-95 text-white font-bold text-xs pl-3.5 pr-2 py-2 rounded-l-xl transition shadow-xs flex items-center gap-1.5 cursor-pointer border-r border-[#334155]"
             >
               <Plus className="w-3.5 h-3.5 text-[#FF6A00]" />
               <span>Create Contact</span>

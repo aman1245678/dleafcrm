@@ -225,7 +225,7 @@ export const AutomationSetup: React.FC = () => {
             <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-3">
               <h4 className="font-bold text-xs text-slate-700 uppercase">Process Transition Graph</h4>
               <div className="flex flex-wrap items-center gap-2 text-xs">
-                <span className="px-3 py-1.5 bg-[#FFF1F7] text-[#374A36] rounded font-semibold">Qualification</span>
+                <span className="px-3 py-1.5 bg-[#FFF1F7] text-[#334155] rounded font-semibold">Qualification</span>
                 <ArrowRight className="w-4 h-4 text-slate-400" />
                 <span className="px-3 py-1.5 bg-cyan-100 text-cyan-800 rounded font-semibold">Needs Analysis</span>
                 <ArrowRight className="w-4 h-4 text-slate-400" />
