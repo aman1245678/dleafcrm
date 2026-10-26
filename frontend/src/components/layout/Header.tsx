@@ -150,16 +150,16 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Middle: Universal Search */}
-        <div className="flex-1 max-w-md mx-3">
+        <div className="flex-1 max-w-xs md:max-w-sm mx-2 min-w-0">
           <button
             onClick={() => setIsGlobalSearchOpen(true)}
-            className="w-full flex items-center justify-between px-3.5 py-1.5 bg-[#F8FAFC] hover:bg-[#FFF8FA] border border-[#F1D5E4] rounded-lg text-slate-500 text-xs transition-all shadow-xs group focus:outline-none focus:ring-2 focus:ring-[#EE0979]/20"
+            className="w-full flex items-center justify-between px-3 py-1.5 bg-[#F8FAFC] hover:bg-[#FFF8FA] border border-[#F1D5E4] rounded-lg text-slate-500 text-xs transition-all shadow-xs group focus:outline-none focus:ring-2 focus:ring-[#EE0979]/20"
           >
-            <div className="flex items-center gap-2">
-              <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#EE0979] transition-colors" />
-              <span className="font-normal text-slate-700 truncate">Search Deals, Leads, Contacts, Accounts...</span>
+            <div className="flex items-center gap-2 min-w-0">
+              <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#EE0979] shrink-0 transition-colors" />
+              <span className="font-normal text-slate-700 truncate">Search Deals, Leads, Contacts...</span>
             </div>
-            <kbd className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] bg-white text-slate-600 font-semibold rounded border border-[#F1D5E4] shadow-xs">
+            <kbd className="hidden 2xl:inline-block px-1.5 py-0.5 text-[10px] bg-white text-slate-600 font-semibold rounded border border-[#F1D5E4] shadow-xs shrink-0">
               ⌘K
             </kbd>
           </button>
@@ -339,37 +339,33 @@ export const Header: React.FC = () => {
             <span className="hidden xl:inline">WhatsApp</span>
           </button>
 
-          {/* Live Subscription / Trial Status Indicator for Client */}
+          {/* Live Subscription / Trial Status Indicator for Client - Compact */}
           <button
             onClick={() => crm?.setIsSubscriptionModalOpen?.(true)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#FFF1F7] hover:bg-[#FCE7F3] text-[#EE0979] border border-[#F1D5E4] text-xs font-bold transition shadow-xs cursor-pointer"
+            className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-[#FFF1F7] hover:bg-[#FCE7F3] text-[#EE0979] border border-[#F1D5E4] text-xs font-semibold transition shadow-xs cursor-pointer shrink-0"
             title="Subscription & Plan Status"
           >
-            <Timer className="w-3.5 h-3.5 text-[#EE0979]" />
-            <span className="hidden md:inline">
-              {crm?.subscription?.planStatus === 'active'
-                ? `${crm?.subscription?.planName || 'Enterprise'} (Active)`
-                : 'Free Trial (14 Days)'}
-            </span>
-            <span className="text-[10px] bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white px-1.5 py-0.2 rounded font-extrabold uppercase">
-              Upgrade
+            <span className="w-1.5 h-1.5 rounded-full bg-[#EE0979]"></span>
+            <span className="font-semibold text-[11px] text-[#0F172A] hidden sm:inline">Enterprise</span>
+            <span className="text-[9px] bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white px-1.5 py-0.5 rounded font-bold uppercase">
+              Active
             </span>
           </button>
 
           {/* User Guide PDF Manual Button */}
           <button
             onClick={() => setIsUserGuideOpen(true)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#FFF1F7] hover:bg-[#FCE7F3] text-[#EE0979] border border-[#F1D5E4] text-xs font-bold transition shadow-xs cursor-pointer active:scale-95"
+            className="hidden xl:flex items-center gap-1 px-2 py-1 rounded-lg bg-[#FFF1F7] hover:bg-[#FCE7F3] text-[#EE0979] border border-[#F1D5E4] text-xs font-semibold transition shadow-xs cursor-pointer active:scale-95 shrink-0"
             title="Download & View Full English User Guide Manual (PDF)"
           >
             <BookOpen className="w-3.5 h-3.5 text-[#EE0979]" />
-            <span className="hidden lg:inline">User Guide (PDF)</span>
+            <span className="text-[11px]">User Guide</span>
           </button>
 
           {/* Settings Gear */}
           <button
             onClick={() => setActiveModule('setup')}
-            className={`w-8 h-8 rounded-lg flex items-center justify-center transition border shadow-xs ${
+            className={`w-8 h-8 rounded-lg flex items-center justify-center transition border shadow-xs shrink-0 ${
               activeModule === 'setup'
                 ? 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white border-transparent'
                 : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200'
@@ -382,21 +378,21 @@ export const Header: React.FC = () => {
           {/* Public Website / Landing Portal Button */}
           <button
             onClick={() => setAppMode('portal')}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#FFF8FA] hover:bg-[#FFF1F7] text-slate-700 hover:text-[#EE0979] border border-[#F1D5E4] text-xs font-bold transition shadow-xs cursor-pointer active:scale-95"
+            className="hidden sm:flex items-center gap-1 px-2 py-1 rounded-lg bg-[#FFF8FA] hover:bg-[#FFF1F7] text-slate-700 hover:text-[#EE0979] border border-[#F1D5E4] text-xs font-semibold transition shadow-xs cursor-pointer active:scale-95 shrink-0"
             title="Switch to Public Landing Page & Portal"
           >
             <Globe className="w-3.5 h-3.5 text-[#EE0979]" />
-            <span className="hidden lg:inline">Public Website</span>
+            <span className="text-[11px]">Website</span>
           </button>
 
           {/* User Profile & Role Switcher */}
-          <div className="relative">
+          <div className="relative shrink-0">
             <button
               onClick={() => setIsDleafDrawerOpen(true)}
-              className="flex items-center gap-2 pl-1.5 pr-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 transition shadow-xs cursor-pointer"
+              className="flex items-center gap-1.5 pl-1 pr-2 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 transition shadow-xs cursor-pointer"
             >
               <div
-                className={`w-6 h-6 rounded-full text-white font-bold text-xs flex items-center justify-center shadow-xs ${
+                className={`w-6 h-6 rounded-full text-white font-bold text-xs flex items-center justify-center shadow-xs shrink-0 ${
                   currentUser?.role === 'admin'
                     ? 'bg-[#EE0979]'
                     : currentUser?.role === 'manager'
@@ -406,11 +402,15 @@ export const Header: React.FC = () => {
               >
                 {currentUser?.avatar || 'A'}
               </div>
-              <div className="text-left hidden md:block">
-                <span className="text-xs font-semibold text-slate-800 block leading-tight">{currentUser?.name || 'User'}</span>
-                <span className="text-[9px] text-slate-500 uppercase font-bold leading-tight">{currentUser?.role || 'admin'}</span>
+              <div className="text-left hidden lg:block max-w-[85px]">
+                <span className="text-[11px] font-semibold text-slate-800 block truncate leading-tight">
+                  {currentUser?.name ? currentUser.name.split(' ')[0] : 'User'}
+                </span>
+                <span className="text-[9px] text-[#EE0979] uppercase font-bold leading-tight block">
+                  Admin
+                </span>
               </div>
-              <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
+              <ChevronDown className="w-3 h-3 text-slate-500 shrink-0" />
             </button>
 
             {isUserMenuOpen && (
