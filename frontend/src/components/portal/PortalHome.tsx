@@ -44,6 +44,27 @@ export const PortalHome: React.FC = () => {
   const [ctaEmail, setCtaEmail] = useState('');
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+  const [aiPrompt, setAiPrompt] = useState('');
+
+  const handleAiPromptSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isAuthenticated) {
+      setAppMode('workspace');
+      setIsZiaOpen(true);
+    } else {
+      setIsPortalSignInOpen(true);
+    }
+  };
+
+  const handleQuickPromptClick = (text: string) => {
+    setAiPrompt(text);
+    if (isAuthenticated) {
+      setAppMode('workspace');
+      setIsZiaOpen(true);
+    } else {
+      setIsPortalSignInOpen(true);
+    }
+  };
 
   const handleCtaSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -113,31 +134,65 @@ export const PortalHome: React.FC = () => {
 
               {/* Conversional Subtitle */}
               <p className="text-[14px] sm:text-[15px] text-slate-600 font-normal leading-relaxed max-w-lg">
-                The all-in-one CRM to capture high-value leads, automate pipeline deals, and accelerate team revenue with Zia AI intelligence.
+                The all-in-one CRM to capture high-value leads, automate pipeline deals, and accelerate team revenue with DleafAI intelligence.
               </p>
 
-              {/* Conversional Email Capture + Free Trial Form */}
-              <form onSubmit={handleCtaSubmit} className="pt-1 max-w-md">
-                <div className="flex flex-col sm:flex-row items-stretch gap-2 p-1.5 bg-white rounded-2xl sm:rounded-full border border-[#F1D5E4] shadow-md hover:border-[#EE0979] transition focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20">
-                  <div className="flex-1 flex items-center pl-3.5 pr-2 py-1.5">
-                    <Mail className="w-4 h-4 text-slate-400 shrink-0 mr-2" />
-                    <input
-                      type="email"
-                      value={ctaEmail}
-                      onChange={(e) => setCtaEmail(e.target.value)}
-                      placeholder="Enter your work email..."
-                      className="w-full bg-transparent text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-hidden"
-                    />
+              {/* DleafAI Interactive Prompt Box (Replaces email form) */}
+              <div className="pt-1 max-w-lg">
+                <form
+                  onSubmit={handleAiPromptSubmit}
+                  className="p-2 sm:p-2.5 bg-white/95 backdrop-blur-md rounded-2xl border border-[#F1D5E4] shadow-[0_10px_30px_rgba(238,9,121,0.08)] hover:border-[#EE0979] focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20 transition-all"
+                >
+                  <div className="flex items-center gap-2 px-2 pb-1.5 border-b border-slate-100">
+                    <span className="flex items-center gap-1.5 text-[11px] font-bold text-[#EE0979]">
+                      <Sparkles className="w-3.5 h-3.5 fill-current animate-pulse" />
+                      <span>DleafAI Assistant</span>
+                    </span>
+                    <span className="text-[10px] bg-[#FFF1F7] text-[#EE0979] px-2 py-0.2 rounded-full font-bold">
+                      GPT-4o Powered
+                    </span>
                   </div>
-                  <button
-                    type="submit"
-                    className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs sm:text-sm px-6 py-2.5 rounded-xl sm:rounded-full transition shadow-md shadow-[#EE0979]/30 inline-flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
-                  >
-                    <span>Start Free Trial</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+
+                  <div className="flex items-center gap-2 pt-2">
+                    <div className="flex-1 flex items-center pl-2">
+                      <Bot className="w-4 h-4 text-slate-400 shrink-0 mr-2" />
+                      <input
+                        type="text"
+                        value={aiPrompt}
+                        onChange={(e) => setAiPrompt(e.target.value)}
+                        placeholder="Ask DleafAI to analyze pipeline, draft emails, find leads..."
+                        className="w-full bg-transparent text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-hidden"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-4 py-2 rounded-xl transition shadow-md shadow-[#EE0979]/25 inline-flex items-center gap-1.5 cursor-pointer shrink-0"
+                    >
+                      <span>Ask AI</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </form>
+
+                {/* Quick AI Prompt Suggestions Chips */}
+                <div className="flex flex-wrap items-center gap-1.5 pt-2.5">
+                  <span className="text-[10px] text-slate-400 font-medium">Try:</span>
+                  {[
+                    '📊 Pipeline forecast',
+                    '🎯 Score hot leads',
+                    '✉️ Draft outreach',
+                  ].map((chip) => (
+                    <button
+                      key={chip}
+                      type="button"
+                      onClick={() => handleQuickPromptClick(chip.slice(2).trim())}
+                      className="text-[10.5px] font-medium bg-white hover:bg-[#FFF1F7] text-slate-600 hover:text-[#EE0979] border border-[#F1D5E4] hover:border-[#EE0979] px-2.5 py-0.5 rounded-full transition shadow-2xs cursor-pointer"
+                    >
+                      {chip}
+                    </button>
+                  ))}
                 </div>
-              </form>
+              </div>
 
               {/* Clean Micro Trust Indicators */}
               <div className="flex flex-wrap items-center gap-y-2 gap-x-5 text-[12px] text-slate-600 font-medium pt-1">
