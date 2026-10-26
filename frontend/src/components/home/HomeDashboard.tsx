@@ -582,40 +582,44 @@ export const HomeDashboard: React.FC = () => {
             </div>
           </div>
 
-          {/* Box 3: AI Assistant (Zia) */}
+          {/* Box 3: DleafAI Interactive Prompt Box */}
           <div className="bg-white p-4 rounded-2xl border border-slate-200/90 shadow-2xs flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-1.5">
                   <Sparkles className="w-4 h-4 text-[#EE0979]" />
-                  <h3 className="font-bold text-xs text-[#0F172A]">AI Assistant (Zia)</h3>
+                  <h3 className="font-bold text-xs text-[#0F172A]">DleafAI Prompt</h3>
                 </div>
-                <span className="text-slate-400 text-xs">•••</span>
+                <span className="text-[10px] bg-[#FFF1F7] text-[#EE0979] px-2 py-0.5 rounded-full font-bold">
+                  Active
+                </span>
               </div>
 
+              {/* DleafAI Prompt Input */}
               <div className="mt-2 relative">
                 <input
                   type="text"
-                  placeholder="Ask Zia anything..."
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979]"
+                  placeholder="Ask DleafAI anything..."
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979]"
                 />
-                <button className="absolute right-2.5 top-2 text-[#EE0979] font-bold text-xs">
-                  →
+                <button className="absolute right-2.5 top-2.5 text-[#EE0979] font-bold text-xs hover:scale-110 transition cursor-pointer">
+                  ➔
                 </button>
               </div>
 
+              {/* Quick Prompt Chips */}
               <div className="mt-3 space-y-1.5 text-[11px] text-slate-600">
-                <div className="flex items-center gap-2 p-1 rounded hover:bg-slate-50 cursor-pointer">
-                  <span>📄</span>
-                  <span className="truncate">Summarize today's leads</span>
+                <div className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-[#FFF1F7] hover:text-[#EE0979] cursor-pointer transition">
+                  <span>📊</span>
+                  <span className="truncate">Analyze pipeline & forecast</span>
                 </div>
-                <div className="flex items-center gap-2 p-1 rounded hover:bg-slate-50 cursor-pointer">
+                <div className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-[#FFF1F7] hover:text-[#EE0979] cursor-pointer transition">
                   <span>🎯</span>
-                  <span className="truncate">Show best conversion opportunities</span>
+                  <span className="truncate">Identify best conversion deals</span>
                 </div>
-                <div className="flex items-center gap-2 p-1 rounded hover:bg-slate-50 cursor-pointer">
+                <div className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-[#FFF1F7] hover:text-[#EE0979] cursor-pointer transition">
                   <span>✉️</span>
-                  <span className="truncate">Generate follow-up email</span>
+                  <span className="truncate">Draft client follow-up email</span>
                 </div>
               </div>
             </div>
