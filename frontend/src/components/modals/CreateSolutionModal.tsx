@@ -85,7 +85,7 @@ export const CreateSolutionModal: React.FC<CreateSolutionModalProps> = ({
             </button>
             <button
               onClick={handleSave}
-              className="px-5 py-1.5 text-xs font-semibold text-white bg-[#153B2E] hover:bg-[#3F7657] rounded shadow-xs transition"
+              className="px-5 py-1.5 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#EE0979] rounded shadow-xs transition"
             >
               Save
             </button>

@@ -70,7 +70,7 @@ export const InventoryModule: React.FC = () => {
       <div className="bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between shrink-0 shadow-xs">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <ShoppingBag className="w-5 h-5 text-emerald-600" />
+            <ShoppingBag className="w-5 h-5 text-[#EE0979]" />
             <h1 className="font-bold text-base text-slate-800">Inventory & Billing</h1>
           </div>
 
@@ -78,7 +78,7 @@ export const InventoryModule: React.FC = () => {
             <button
               onClick={() => setActiveTab('products')}
               className={`px-3 py-1 rounded-md transition ${
-                activeTab === 'products' ? 'bg-white text-emerald-700 shadow-2xs' : 'text-slate-600'
+                activeTab === 'products' ? 'bg-white text-[#D8086C] shadow-2xs' : 'text-slate-600'
               }`}
             >
               Products ({products.length})
@@ -86,7 +86,7 @@ export const InventoryModule: React.FC = () => {
             <button
               onClick={() => setActiveTab('quotes')}
               className={`px-3 py-1 rounded-md transition ${
-                activeTab === 'quotes' ? 'bg-white text-emerald-700 shadow-2xs' : 'text-slate-600'
+                activeTab === 'quotes' ? 'bg-white text-[#D8086C] shadow-2xs' : 'text-slate-600'
               }`}
             >
               Quotes ({quotes.length})
@@ -94,7 +94,7 @@ export const InventoryModule: React.FC = () => {
             <button
               onClick={() => setActiveTab('invoices')}
               className={`px-3 py-1 rounded-md transition ${
-                activeTab === 'invoices' ? 'bg-white text-emerald-700 shadow-2xs' : 'text-slate-600'
+                activeTab === 'invoices' ? 'bg-white text-[#D8086C] shadow-2xs' : 'text-slate-600'
               }`}
             >
               Invoices ({invoices.length})
@@ -105,7 +105,7 @@ export const InventoryModule: React.FC = () => {
         {activeTab === 'products' && (
           <button
             onClick={() => setIsAddProductOpen(true)}
-            className="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition"
+            className="flex items-center gap-1.5 bg-[#EE0979] hover:bg-[#D8086C] text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Add Product</span>
@@ -148,7 +148,7 @@ export const InventoryModule: React.FC = () => {
                     <td className="py-2.5 px-3 font-mono text-slate-600">{p.taxPercent}%</td>
                     <td className="py-2.5 px-3 font-mono text-slate-600">{p.inStock}</td>
                     <td className="py-2.5 px-3">
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-[#BE075E]">
                         {p.status}
                       </span>
                     </td>
@@ -170,7 +170,7 @@ export const InventoryModule: React.FC = () => {
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="font-bold text-sm text-slate-900">{q.quoteNumber}</span>
-                      <span className="px-2 py-0.5 rounded bg-[#E2EDE0] text-[#374A36] font-semibold text-[10px]">
+                      <span className="px-2 py-0.5 rounded bg-[#FFF1F7] text-[#374A36] font-semibold text-[10px]">
                         {q.quoteStage}
                       </span>
                     </div>
@@ -180,7 +180,7 @@ export const InventoryModule: React.FC = () => {
                   </div>
                   <div className="text-right">
                     <span className="text-[10px] text-slate-400 block">Grand Total</span>
-                    <span className="font-bold text-base text-emerald-700 font-mono">
+                    <span className="font-bold text-base text-[#D8086C] font-mono">
                       ₹{q.grandTotal.toLocaleString()}
                     </span>
                   </div>
@@ -225,12 +225,12 @@ export const InventoryModule: React.FC = () => {
                 <div className="flex items-center justify-between border-b pb-2.5">
                   <div>
                     <div className="flex items-center gap-2">
-                      <Receipt className="w-4 h-4 text-[#738F70]" />
+                      <Receipt className="w-4 h-4 text-[#EE0979]" />
                       <span className="font-bold text-sm text-slate-900">{inv.invoiceNumber}</span>
                       <span
                         className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                           inv.status === 'Paid'
-                            ? 'bg-emerald-100 text-emerald-800'
+                            ? 'bg-pink-100 text-[#BE075E]'
                             : 'bg-amber-100 text-amber-800'
                         }`}
                       >
@@ -266,7 +266,7 @@ export const InventoryModule: React.FC = () => {
                             });
                           }
                         }}
-                        className="px-2.5 py-1.5 bg-[#F2F6F2] hover:bg-[#E2EDE0] text-[#5F7A5D] border border-[#C4D5C2] rounded font-semibold text-xs flex items-center gap-1.5 transition cursor-pointer"
+                        className="px-2.5 py-1.5 bg-[#FFF8FA] hover:bg-[#FFF1F7] text-[#EE0979] border border-[#F1D5E4] rounded font-semibold text-xs flex items-center gap-1.5 transition cursor-pointer"
                         title="Generate Online Payment Link & QR Code"
                       >
                         <CreditCard className="w-3.5 h-3.5" />
@@ -275,7 +275,7 @@ export const InventoryModule: React.FC = () => {
                       {inv.status !== 'Paid' && (
                         <button
                           onClick={() => markInvoicePaid(inv.id)}
-                          className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-bold text-xs shadow-2xs cursor-pointer"
+                          className="px-3 py-1.5 bg-[#EE0979] hover:bg-[#D8086C] text-white rounded font-bold text-xs shadow-2xs cursor-pointer"
                         >
                           Mark As Paid
                         </button>
@@ -300,7 +300,7 @@ export const InventoryModule: React.FC = () => {
         {activePaymentModal && (
           <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-50 p-4 animate-in fade-in">
             <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center space-y-4 border border-slate-200">
-              <div className="w-12 h-12 bg-[#F2F6F2] text-[#738F70] rounded-full flex items-center justify-center mx-auto">
+              <div className="w-12 h-12 bg-[#FFF8FA] text-[#EE0979] rounded-full flex items-center justify-center mx-auto">
                 <CreditCard className="w-6 h-6" />
               </div>
               <div>
@@ -431,7 +431,7 @@ export const InventoryModule: React.FC = () => {
               </button>
               <button
                 type="submit"
-                className="px-4 py-1.5 bg-emerald-600 text-white rounded font-semibold"
+                className="px-4 py-1.5 bg-[#EE0979] text-white rounded font-semibold"
               >
                 Save Product
               </button>

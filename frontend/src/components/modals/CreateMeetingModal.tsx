@@ -370,7 +370,7 @@ export const CreateMeetingModal: React.FC<CreateMeetingModalProps> = ({
             <button
               type="button"
               onClick={handleSave}
-              className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
+              className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
             >
               Save
             </button>

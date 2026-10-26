@@ -38,7 +38,7 @@ export const ZiaAssistantDrawer: React.FC = () => {
     <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-2xs flex justify-end z-50">
       <div className="w-full max-w-md bg-white h-full shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-right-10 duration-200">
         {/* Drawer Header */}
-        <div className="p-4 bg-gradient-to-r from-[#153B2E] via-[#3F7657] to-emerald-600 text-white flex items-center justify-between shadow-xs">
+        <div className="p-4 bg-gradient-to-r from-[#0F172A] via-[#EE0979] to-[#EE0979] text-white flex items-center justify-between shadow-xs">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
@@ -65,7 +65,7 @@ export const ZiaAssistantDrawer: React.FC = () => {
           <div className="p-2.5 bg-white rounded-lg border border-amber-200 shadow-2xs">
             <div className="flex items-center justify-between">
               <span className="font-bold text-slate-800">Deal: Benton</span>
-              <span className="text-emerald-700 font-bold font-mono">88% Win Chance</span>
+              <span className="text-[#D8086C] font-bold font-mono">88% Win Chance</span>
             </div>
             <p className="text-[11px] text-slate-500 mt-1">
               Customer engaged via IMAP twice within 24 hours. Advancing to &apos;Proposal&apos; recommended.
@@ -96,7 +96,7 @@ export const ZiaAssistantDrawer: React.FC = () => {
               <div
                 className={`max-w-[85%] p-3 rounded-xl leading-relaxed ${
                   msg.sender === 'user'
-                    ? 'bg-[#738F70] text-white rounded-br-none'
+                    ? 'bg-[#EE0979] text-white rounded-br-none'
                     : 'bg-slate-100 text-slate-800 rounded-bl-none'
                 }`}
               >

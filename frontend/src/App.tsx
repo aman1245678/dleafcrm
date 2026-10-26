@@ -118,10 +118,10 @@ const CRMAppContainer: React.FC = () => {
     return (
       <div className="min-h-screen w-full flex flex-col bg-slate-900 text-white font-sans antialiased">
         <PortalHeader />
-        <main className="flex-1 flex items-center justify-center p-6 bg-gradient-to-br from-[#0F221B] via-slate-900 to-[#153B2E]">
+        <main className="flex-1 flex items-center justify-center p-6 bg-gradient-to-br from-[#0F172A] via-slate-900 to-[#0F172A]">
           <div className="bg-white text-slate-800 border border-slate-200 rounded-2xl shadow-2xl p-8 max-w-md w-full text-center space-y-5 animate-in fade-in">
-            <div className="w-14 h-14 rounded-2xl bg-[#F2F6F2] text-[#738F70] flex items-center justify-center mx-auto shadow-md">
-              <ShieldCheck className="w-8 h-8 text-[#738F70]" />
+            <div className="w-14 h-14 rounded-2xl bg-[#FFF8FA] text-[#EE0979] flex items-center justify-center mx-auto shadow-md">
+              <ShieldCheck className="w-8 h-8 text-[#EE0979]" />
             </div>
             <div>
               <h2 className="text-xl font-bold text-slate-900">Sign In to Access CRM Workspace</h2>
@@ -132,7 +132,7 @@ const CRMAppContainer: React.FC = () => {
             <div className="space-y-2 pt-2">
               <button
                 onClick={() => setIsPortalSignInOpen(true)}
-                className="w-full py-2.5 bg-[#738F70] hover:bg-[#5F7A5D] active:scale-95 text-white rounded-xl font-bold text-xs shadow-sm transition flex items-center justify-center gap-1.5 cursor-pointer"
+                className="w-full py-2.5 bg-[#EE0979] hover:bg-[#EE0979] active:scale-95 text-white rounded-xl font-bold text-xs shadow-sm transition flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <span>Sign In / Create Account</span>
               </button>
@@ -162,14 +162,14 @@ const CRMAppContainer: React.FC = () => {
     return (
       <div className="min-h-screen w-full flex flex-col bg-slate-900 text-white font-sans antialiased">
         <PortalHeader />
-        <main className="flex-1 flex items-center justify-center p-6 bg-gradient-to-br from-[#0F221B] via-slate-900 to-[#153B2E]">
+        <main className="flex-1 flex items-center justify-center p-6 bg-gradient-to-br from-[#0F172A] via-slate-900 to-[#0F172A]">
           <div className="bg-white text-slate-800 border border-slate-200 rounded-3xl shadow-2xl p-8 sm:p-10 max-w-lg w-full text-center space-y-6 animate-in fade-in">
-            <div className="w-16 h-16 rounded-3xl bg-[#F5F8F3] text-[#3F7657] border border-[#D8E3D6] flex items-center justify-center mx-auto shadow-md">
-              <Lock className="w-8 h-8 text-[#153B2E]" />
+            <div className="w-16 h-16 rounded-3xl bg-[#FFF8FA] text-[#EE0979] border border-[#F1D5E4] flex items-center justify-center mx-auto shadow-md">
+              <Lock className="w-8 h-8 text-[#0F172A]" />
             </div>
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E5EFE4] text-[#153B2E] text-xs font-bold mb-2">
-                <CreditCard className="w-3.5 h-3.5 text-[#3F7657]" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF1F7] text-[#0F172A] text-xs font-bold mb-2">
+                <CreditCard className="w-3.5 h-3.5 text-[#EE0979]" />
                 <span>Subscription Required</span>
               </div>
               <h2 className="text-2xl font-bold text-slate-900">Unlock Your CRM Workspace</h2>
@@ -178,7 +178,7 @@ const CRMAppContainer: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-[#F5F8F3] border border-[#D8E3D6] text-left space-y-2">
+            <div className="p-4 rounded-2xl bg-[#FFF8FA] border border-[#F1D5E4] text-left space-y-2">
               <div className="text-xs font-bold text-slate-800 uppercase tracking-wider">What's included in your subscription:</div>
               <div className="text-xs text-slate-600 space-y-1">
                 <div>✓ Full Deals Pipeline & Interactive Kanban Board</div>
@@ -191,9 +191,9 @@ const CRMAppContainer: React.FC = () => {
             <div className="space-y-3 pt-2">
               <button
                 onClick={() => setIsSubscriptionModalOpen(true)}
-                className="w-full py-3 bg-[#153B2E] hover:bg-[#0F221B] active:scale-95 text-white rounded-xl font-bold text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 bg-[#0F172A] hover:bg-[#0F172A] active:scale-95 text-white rounded-xl font-bold text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer"
               >
-                <CreditCard className="w-4 h-4 text-[#A3CCA1]" />
+                <CreditCard className="w-4 h-4 text-[#FF6A00]" />
                 <span>Choose Plan & Subscribe with Razorpay</span>
               </button>
               <button

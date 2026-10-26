@@ -29,7 +29,7 @@ export const ConvertLeadModal: React.FC = () => {
         {/* Header */}
         <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-900 text-white">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-pink-600/20 border border-rose-500/40 text-rose-500 flex items-center justify-center">
               <Sparkles className="w-4 h-4" />
             </div>
             <div>
@@ -59,14 +59,14 @@ export const ConvertLeadModal: React.FC = () => {
           {/* Account & Contact Preview Cards */}
           <div className="grid grid-cols-2 gap-2.5">
             <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg flex items-center gap-2">
-              <Building className="w-5 h-5 text-[#738F70] shrink-0" />
+              <Building className="w-5 h-5 text-[#EE0979] shrink-0" />
               <div>
                 <span className="text-[10px] text-slate-400 uppercase font-semibold block">New Account</span>
                 <span className="font-bold text-slate-800 truncate block">{leadToConvert.company}</span>
               </div>
             </div>
             <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg flex items-center gap-2">
-              <User className="w-5 h-5 text-emerald-600 shrink-0" />
+              <User className="w-5 h-5 text-[#EE0979] shrink-0" />
               <div>
                 <span className="text-[10px] text-slate-400 uppercase font-semibold block">New Contact</span>
                 <span className="font-bold text-slate-800 truncate block">
@@ -77,19 +77,19 @@ export const ConvertLeadModal: React.FC = () => {
           </div>
 
           {/* Create Deal Section */}
-          <div className="p-3.5 bg-[#F2F6F2]/60 border border-[#C4D5C2] rounded-lg space-y-3">
+          <div className="p-3.5 bg-[#FFF8FA]/60 border border-[#F1D5E4] rounded-lg space-y-3">
             <label className="flex items-center gap-2 cursor-pointer text-slate-800 font-semibold">
               <input
                 type="checkbox"
                 checked={createDeal}
                 onChange={(e) => setCreateDeal(e.target.checked)}
-                className="rounded text-[#738F70]"
+                className="rounded text-[#EE0979]"
               />
               <span>Create a New Deal for this Account</span>
             </label>
 
             {createDeal && (
-              <div className="space-y-2.5 pt-2 border-t border-[#C4D5C2]/80">
+              <div className="space-y-2.5 pt-2 border-t border-[#F1D5E4]/80">
                 <div>
                   <label className="block text-[11px] font-semibold text-slate-700 mb-1">
                     Deal Name
@@ -99,7 +99,7 @@ export const ConvertLeadModal: React.FC = () => {
                     required
                     value={dealName}
                     onChange={(e) => setDealName(e.target.value)}
-                    className="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded text-xs focus:border-[#738F70]"
+                    className="w-full px-2.5 py-1.5 bg-white border border-slate-300 rounded text-xs focus:border-[#EE0979]"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-2">
@@ -143,7 +143,7 @@ export const ConvertLeadModal: React.FC = () => {
             </button>
             <button
               type="submit"
-              className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-xs flex items-center gap-1.5 transition active:scale-95"
+              className="px-5 py-2 bg-[#EE0979] hover:bg-[#D8086C] text-white rounded-lg text-xs font-semibold shadow-xs flex items-center gap-1.5 transition active:scale-95"
             >
               <CheckCircle2 className="w-4 h-4" />
               <span>Convert Now</span>

@@ -189,7 +189,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
           contact: currentUser?.phone || '+919876543210',
         },
         theme: {
-          color: '#153B2E',
+          color: '#0F172A',
         },
         modal: {
           ondismiss: function () {
@@ -220,14 +220,14 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#0F221B] select-none text-white flex flex-col font-sans">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#0F172A] select-none text-white flex flex-col font-sans">
       
       {/* Top Bar with URL & Breadcrumbs */}
-      <div className="bg-[#153B2E] border-b border-[#265342] px-6 py-3 flex items-center justify-between shrink-0">
+      <div className="bg-[#0F172A] border-b border-[#265342] px-6 py-3 flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
           <button
             onClick={onClose}
-            className="text-[#D8E3D6] hover:text-white flex items-center gap-1.5 text-xs font-semibold cursor-pointer"
+            className="text-[#F1D5E4] hover:text-white flex items-center gap-1.5 text-xs font-semibold cursor-pointer"
           >
             <ChevronLeft className="w-4 h-4" />
             <span>Back to CRM</span>
@@ -240,7 +240,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
 
         {/* Step indicator: Plan -> Address -> Payment */}
         <div className="hidden sm:flex items-center gap-2 text-xs">
-          <span className="w-5 h-5 rounded-full bg-[#3F7657] text-white flex items-center justify-center font-bold text-[10px]">
+          <span className="w-5 h-5 rounded-full bg-[#EE0979] text-white flex items-center justify-center font-bold text-[10px]">
             1
           </span>
           <span className="font-bold text-white">Plan</span>
@@ -252,7 +252,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
 
         <button
           onClick={onClose}
-          className="px-3 py-1 bg-[#265342] hover:bg-[#3F7657] text-xs font-semibold rounded border border-[#3F7657] cursor-pointer"
+          className="px-3 py-1 bg-[#265342] hover:bg-[#EE0979] text-xs font-semibold rounded border border-[#EE0979] cursor-pointer"
         >
           Cancel
         </button>
@@ -271,7 +271,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
             <h1 className="text-2xl sm:text-3xl font-normal text-white">
               Choose the right plan for your business
             </h1>
-            <p className="text-xs text-[#D8E3D6] mt-2">
+            <p className="text-xs text-[#F1D5E4] mt-2">
               Flexible options billed annually or monthly. Scale up anytime with seamless data migration.
             </p>
           </div>
@@ -305,8 +305,8 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
                     disabled={isProcessing}
                     className={`mt-4 w-full py-2 rounded text-xs font-bold transition shadow-xs cursor-pointer ${
                       plan.isPopular
-                        ? 'bg-[#153B2E] hover:bg-[#3F7657] text-white'
-                        : 'border border-[#3F7657] text-[#153B2E] hover:bg-[#E5EFE4]'
+                        ? 'bg-[#0F172A] hover:bg-[#EE0979] text-white'
+                        : 'border border-[#EE0979] text-[#0F172A] hover:bg-[#FFF1F7]'
                     }`}
                   >
                     Upgrade
@@ -334,7 +334,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
                 className="relative bg-white text-slate-800 rounded-xl overflow-hidden shadow-2xl border border-slate-200 transition duration-200 flex flex-col justify-between"
               >
                 {plan.badge && (
-                  <div className="bg-emerald-600 text-white text-[10px] font-extrabold uppercase py-0.5 text-center tracking-wider">
+                  <div className="bg-[#EE0979] text-white text-[10px] font-extrabold uppercase py-0.5 text-center tracking-wider">
                     {plan.badge}
                   </div>
                 )}
@@ -351,7 +351,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
                   <button
                     onClick={() => handleUpgrade(plan)}
                     disabled={isProcessing}
-                    className="mt-4 w-full py-2 rounded text-xs font-bold border border-[#3F7657] text-[#153B2E] hover:bg-[#E5EFE4] transition shadow-xs cursor-pointer"
+                    className="mt-4 w-full py-2 rounded text-xs font-bold border border-[#EE0979] text-[#0F172A] hover:bg-[#FFF1F7] transition shadow-xs cursor-pointer"
                   >
                     {plan.id === 'free' ? 'Current Plan' : 'Upgrade'}
                   </button>
@@ -374,7 +374,7 @@ export const DleafStoreModal: React.FC<DleafStoreModalProps> = ({
       </div>
 
       {/* Footer Info */}
-      <div className="border-t border-[#265342] bg-[#0A1712] px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between text-[11px] text-[#A3CCA1] gap-2 shrink-0">
+      <div className="border-t border-[#265342] bg-[#0A1712] px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between text-[11px] text-[#FF6A00] gap-2 shrink-0">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1">
             <span>✉️</span>

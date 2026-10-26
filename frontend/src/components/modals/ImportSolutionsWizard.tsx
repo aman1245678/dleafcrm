@@ -133,8 +133,8 @@ export const ImportSolutionsWizard: React.FC<ImportSolutionsWizardProps> = ({
             </button>
 
             {selectedFile && (
-              <div className="mt-4 px-3 py-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-md font-medium flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <div className="mt-4 px-3 py-1.5 bg-pink-50 border border-rose-200 text-[#D8086C] rounded-md font-medium flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
                 <span>{selectedFile.name} ({(selectedFile.size / 1024).toFixed(1)} KB)</span>
               </div>
             )}
@@ -198,7 +198,7 @@ export const ImportSolutionsWizard: React.FC<ImportSolutionsWizardProps> = ({
             </button>
             <button
               onClick={handleNext}
-              className="px-5 py-1.5 text-xs font-semibold text-white bg-[#153B2E] hover:bg-[#3F7657] rounded transition shadow-xs"
+              className="px-5 py-1.5 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#EE0979] rounded transition shadow-xs"
             >
               Next
             </button>

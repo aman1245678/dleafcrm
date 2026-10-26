@@ -137,7 +137,7 @@ export const ProjectsModule: React.FC = () => {
           </div>
           <button
             onClick={() => setViewMode('workspace')}
-            className="text-xs text-[#3F7657] font-semibold hover:underline"
+            className="text-xs text-[#EE0979] font-semibold hover:underline"
           >
             Direct to Active Projects
           </button>
@@ -172,10 +172,10 @@ export const ProjectsModule: React.FC = () => {
                     <span className="text-[10px] text-slate-500 font-mono">☰ 📄</span>
                   </div>
                   {/* Green connection wire */}
-                  <div className="w-24 h-12 border-b-2 border-dashed border-emerald-500 rounded-b-full mt-6" />
+                  <div className="w-24 h-12 border-b-2 border-dashed border-pink-600 rounded-b-full mt-6" />
                   <div className="absolute bottom-2 flex items-center gap-1 text-slate-700">
                     <span className="w-6 h-6 rounded-full border border-slate-500 flex items-center justify-center text-[10px]">🔌</span>
-                    <span className="text-emerald-600 font-bold">⚡</span>
+                    <span className="text-[#EE0979] font-bold">⚡</span>
                     <span className="w-6 h-6 rounded-full border border-slate-500 flex items-center justify-center text-[10px]">🔌</span>
                   </div>
                 </div>
@@ -223,7 +223,7 @@ export const ProjectsModule: React.FC = () => {
                   <div className="flex flex-col items-center">
                     <div className="w-16 h-16 rounded-full border-2 border-slate-400 bg-white flex items-center justify-center relative shadow-xs">
                       <Clock className="w-7 h-7 text-slate-400" />
-                      <CheckCircle2 className="w-5 h-5 text-emerald-600 absolute -top-1 -right-1 fill-emerald-100" />
+                      <CheckCircle2 className="w-5 h-5 text-[#EE0979] absolute -top-1 -right-1 fill-pink-100" />
                     </div>
                     <div className="flex items-center gap-2 mt-3">
                       <span className="text-xs">🤝</span>
@@ -244,7 +244,7 @@ export const ProjectsModule: React.FC = () => {
           <div className="space-y-3">
             <button
               onClick={() => setViewMode('setup')}
-              className="px-6 py-2.5 bg-[#16845B] hover:bg-[#126b4a] active:scale-95 text-white font-semibold text-xs rounded-md shadow-xs transition duration-200 cursor-pointer"
+              className="px-6 py-2.5 bg-[#EE0979] hover:bg-[#126b4a] active:scale-95 text-white font-semibold text-xs rounded-md shadow-xs transition duration-200 cursor-pointer"
             >
               Get Started
             </button>
@@ -332,7 +332,7 @@ export const ProjectsModule: React.FC = () => {
                     name="portalConfig"
                     checked={portalConfigOption === 'new_portal'}
                     onChange={() => setPortalConfigOption('new_portal')}
-                    className="text-[#16845B] focus:ring-[#16845B]"
+                    className="text-[#EE0979] focus:ring-[#EE0979]"
                   />
                   <span>Create a new portal with my email id ({userEmail})</span>
                 </label>
@@ -343,7 +343,7 @@ export const ProjectsModule: React.FC = () => {
                     name="portalConfig"
                     checked={portalConfigOption === 'existing_org'}
                     onChange={() => setPortalConfigOption('existing_org')}
-                    className="text-[#16845B] focus:ring-[#16845B]"
+                    className="text-[#EE0979] focus:ring-[#EE0979]"
                   />
                   <span>I already have a Dleaf Projects org with different email id</span>
                 </label>
@@ -354,7 +354,7 @@ export const ProjectsModule: React.FC = () => {
                 <button
                   onClick={handleFinishSetup}
                   disabled={isConfiguring}
-                  className="px-5 py-2 bg-[#153B2E] hover:bg-[#3F7657] disabled:opacity-50 text-white font-semibold text-xs rounded shadow-xs transition cursor-pointer flex items-center gap-2"
+                  className="px-5 py-2 bg-[#0F172A] hover:bg-[#EE0979] disabled:opacity-50 text-white font-semibold text-xs rounded shadow-xs transition cursor-pointer flex items-center gap-2"
                 >
                   {isConfiguring && <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />}
                   <span>{isConfiguring ? 'Connecting...' : 'Authorize & Start Integration'}</span>
@@ -385,13 +385,13 @@ export const ProjectsModule: React.FC = () => {
       {/* Top Header */}
       <div className="px-6 py-3 border-b border-slate-200 bg-white flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#E5EFE4] text-[#153B2E] flex items-center justify-center font-bold text-xs">
-            <FolderKanban className="w-4 h-4 text-[#3F7657]" />
+          <div className="w-8 h-8 rounded-lg bg-[#FFF1F7] text-[#0F172A] flex items-center justify-center font-bold text-xs">
+            <FolderKanban className="w-4 h-4 text-[#EE0979]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-sm font-bold text-slate-800">Projects Workspace</h1>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-pink-100 text-[#BE075E]">
                 Connected to CRM Deals
               </span>
             </div>
@@ -416,7 +416,7 @@ export const ProjectsModule: React.FC = () => {
           </button>
           <button
             onClick={() => setIsNewProjectModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md bg-[#153B2E] text-white hover:bg-[#3F7657] transition cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md bg-[#0F172A] text-white hover:bg-[#EE0979] transition cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Create Project</span>
@@ -431,7 +431,7 @@ export const ProjectsModule: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
           <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
             <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Active Projects</div>
-            <div className="text-2xl font-bold text-[#153B2E] mt-1">{projects.length}</div>
+            <div className="text-2xl font-bold text-[#0F172A] mt-1">{projects.length}</div>
           </div>
           <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
             <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Milestones Due</div>
@@ -439,11 +439,11 @@ export const ProjectsModule: React.FC = () => {
           </div>
           <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
             <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">On-Time Delivery</div>
-            <div className="text-2xl font-bold text-emerald-700 mt-1">96.2%</div>
+            <div className="text-2xl font-bold text-[#D8086C] mt-1">96.2%</div>
           </div>
           <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
             <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">CRM Deal Sync</div>
-            <div className="text-2xl font-bold text-[#3F7657] mt-1">100% Live</div>
+            <div className="text-2xl font-bold text-[#EE0979] mt-1">100% Live</div>
           </div>
         </div>
 
@@ -478,7 +478,7 @@ export const ProjectsModule: React.FC = () => {
                     <td className="px-5 py-3">
                       <div className="font-medium text-slate-800">{p.client}</div>
                       {p.dealName && (
-                        <div className="text-[10px] text-emerald-700 flex items-center gap-1 mt-0.5">
+                        <div className="text-[10px] text-[#D8086C] flex items-center gap-1 mt-0.5">
                           <Link2 className="w-2.5 h-2.5" />
                           <span>{p.dealName}</span>
                         </div>
@@ -489,7 +489,7 @@ export const ProjectsModule: React.FC = () => {
                         p.status === 'In Progress'
                           ? 'bg-sky-100 text-sky-800'
                           : p.status === 'Completed'
-                          ? 'bg-emerald-100 text-emerald-800'
+                          ? 'bg-pink-100 text-[#BE075E]'
                           : 'bg-amber-100 text-amber-800'
                       }`}>
                         {p.status}
@@ -502,7 +502,7 @@ export const ProjectsModule: React.FC = () => {
                         </div>
                         <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                           <div
-                            className="bg-[#3F7657] h-full rounded-full transition-all"
+                            className="bg-[#EE0979] h-full rounded-full transition-all"
                             style={{ width: `${p.progress}%` }}
                           />
                         </div>
@@ -542,7 +542,7 @@ export const ProjectsModule: React.FC = () => {
                   value={newProjectName}
                   onChange={(e) => setNewProjectName(e.target.value)}
                   placeholder="e.g. Enterprise Onboarding & Setup"
-                  className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#153B2E] outline-hidden"
+                  className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#0F172A] outline-hidden"
                 />
               </div>
 
@@ -553,7 +553,7 @@ export const ProjectsModule: React.FC = () => {
                   value={newProjectClient}
                   onChange={(e) => setNewProjectClient(e.target.value)}
                   placeholder="e.g. Acme International"
-                  className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#153B2E] outline-hidden"
+                  className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#0F172A] outline-hidden"
                 />
               </div>
 
@@ -563,7 +563,7 @@ export const ProjectsModule: React.FC = () => {
                   type="date"
                   value={newProjectDue}
                   onChange={(e) => setNewProjectDue(e.target.value)}
-                  className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#153B2E] outline-hidden"
+                  className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#0F172A] outline-hidden"
                 />
               </div>
 
@@ -577,7 +577,7 @@ export const ProjectsModule: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white font-semibold rounded shadow-xs cursor-pointer"
+                  className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white font-semibold rounded shadow-xs cursor-pointer"
                 >
                   Save Project
                 </button>

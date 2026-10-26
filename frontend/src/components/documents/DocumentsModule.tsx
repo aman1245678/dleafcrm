@@ -236,7 +236,7 @@ export const DocumentsModule: React.FC = () => {
                     }}
                     className="w-full px-3 py-1.5 text-left hover:bg-slate-50 flex items-center gap-2 text-slate-700"
                   >
-                    <File className="w-3.5 h-3.5 text-emerald-600" />
+                    <File className="w-3.5 h-3.5 text-[#EE0979]" />
                     <span>Dleaf Sheet</span>
                   </button>
                 </div>
@@ -533,7 +533,7 @@ export const DocumentsModule: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded font-semibold shadow-xs"
+                  className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded font-semibold shadow-xs"
                 >
                   Upload File
                 </button>
@@ -603,7 +603,7 @@ export const DocumentsModule: React.FC = () => {
                     setShowCreateDocModal(false);
                     fetchDocs();
                   }}
-                  className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded font-semibold shadow-xs"
+                  className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded font-semibold shadow-xs"
                 >
                   Save & Publish
                 </button>

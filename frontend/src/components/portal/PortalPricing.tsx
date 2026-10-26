@@ -138,7 +138,7 @@ export const PortalPricing: React.FC = () => {
       {/* Header Banner */}
       <section className="bg-white border-b border-slate-200 py-14 px-4 sm:px-8 text-center">
         <div className="max-w-4xl mx-auto space-y-4">
-          <span className="text-xs font-bold text-[#738F70] uppercase tracking-wider bg-[#F2F6F2] border border-[#C4D5C2] px-3 py-1 rounded-full">
+          <span className="text-xs font-bold text-[#EE0979] uppercase tracking-wider bg-[#FFF8FA] border border-[#F1D5E4] px-3 py-1 rounded-full">
             Transparent Pricing • No Hidden Fees
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -155,12 +155,12 @@ export const PortalPricing: React.FC = () => {
                 onClick={() => setBillingCycle('annual')}
                 className={`px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
                   billingCycle === 'annual'
-                    ? 'bg-[#738F70] text-white shadow-xs'
+                    ? 'bg-[#EE0979] text-white shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 <span>Annual Billing</span>
-                <span className="bg-emerald-400 text-slate-950 text-[10px] font-extrabold px-1.5 py-0.2 rounded-full">
+                <span className="bg-rose-500 text-slate-950 text-[10px] font-extrabold px-1.5 py-0.2 rounded-full">
                   SAVE 34%
                 </span>
               </button>
@@ -168,7 +168,7 @@ export const PortalPricing: React.FC = () => {
                 onClick={() => setBillingCycle('monthly')}
                 className={`px-4 py-2 rounded-lg text-xs font-bold transition ${
                   billingCycle === 'monthly'
-                    ? 'bg-[#738F70] text-white shadow-xs'
+                    ? 'bg-[#EE0979] text-white shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -207,12 +207,12 @@ export const PortalPricing: React.FC = () => {
               key={p.id}
               className={`bg-white rounded-2xl p-6 border transition flex flex-col justify-between relative shadow-xs ${
                 p.highlight
-                  ? 'border-[#738F70] ring-2 ring-blue-600/20 shadow-xl'
+                  ? 'border-[#EE0979] ring-2 ring-blue-600/20 shadow-xl'
                   : 'border-slate-200 hover:border-slate-300'
               }`}
             >
               {p.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#738F70] text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full tracking-wider shadow-xs uppercase">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#EE0979] text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full tracking-wider shadow-xs uppercase">
                   {p.badge}
                 </div>
               )}
@@ -240,7 +240,7 @@ export const PortalPricing: React.FC = () => {
                   <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Features included</div>
                   {p.features.map((feat) => (
                     <div key={feat} className="flex items-start gap-2 text-xs text-slate-700">
-                      <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <Check className="w-4 h-4 text-[#EE0979] shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -297,7 +297,7 @@ export const PortalPricing: React.FC = () => {
                           contact: currentUser?.phone || '+919876543210',
                         },
                         theme: {
-                          color: '#153B2E',
+                          color: '#0F172A',
                         },
                       };
 
@@ -310,8 +310,8 @@ export const PortalPricing: React.FC = () => {
                   }}
                   className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition shadow-xs flex items-center justify-center gap-1.5 cursor-pointer ${
                     p.highlight
-                      ? 'bg-[#153B2E] hover:bg-[#0F221B] text-white shadow-md'
-                      : 'bg-slate-100 hover:bg-[#E5EFE4] text-slate-800'
+                      ? 'bg-[#0F172A] hover:bg-[#0F172A] text-white shadow-md'
+                      : 'bg-slate-100 hover:bg-[#FFF1F7] text-slate-800'
                   }`}
                 >
                   <span>Subscribe Now (Razorpay)</span>
@@ -329,7 +329,7 @@ export const PortalPricing: React.FC = () => {
       <section className="max-w-4xl mx-auto px-4 sm:px-8 mt-16">
         <div className="bg-white rounded-2xl border border-slate-200 shadow-md p-6 sm:p-8">
           <div className="flex items-center gap-3 pb-6 border-b border-slate-100">
-            <div className="w-10 h-10 rounded-xl bg-[#E2EDE0] text-[#5F7A5D] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center">
               <Calculator className="w-5 h-5" />
             </div>
             <div>
@@ -343,7 +343,7 @@ export const PortalPricing: React.FC = () => {
               <div>
                 <div className="flex justify-between items-center text-xs font-bold text-slate-700 mb-2">
                   <span>Number of Sales Reps / Users:</span>
-                  <span className="font-mono text-[#738F70] text-sm">{usersCount} Users</span>
+                  <span className="font-mono text-[#EE0979] text-sm">{usersCount} Users</span>
                 </div>
                 <input
                   type="range"
@@ -363,7 +363,7 @@ export const PortalPricing: React.FC = () => {
               <div>
                 <div className="flex justify-between items-center text-xs font-bold text-slate-700 mb-2">
                   <span>Additional Cloud Storage:</span>
-                  <span className="font-mono text-[#738F70] text-sm">+{extraStorageGb} GB</span>
+                  <span className="font-mono text-[#EE0979] text-sm">+{extraStorageGb} GB</span>
                 </div>
                 <input
                   type="range"
@@ -398,7 +398,7 @@ export const PortalPricing: React.FC = () => {
                   {currency === 'INR' ? `₹${calculatedTotal.toLocaleString()}` : `$${calculatedTotal}`}
                   <span className="text-xs text-slate-400 font-normal"> / month</span>
                 </div>
-                <div className="text-xs text-emerald-400 font-semibold mt-1">
+                <div className="text-xs text-rose-500 font-semibold mt-1">
                   ✓ Includes 15-day trial + VoIP softphone + WhatsApp setup
                 </div>
 
@@ -428,7 +428,7 @@ export const PortalPricing: React.FC = () => {
                     setIsPortalSignInOpen(true);
                   }
                 }}
-                className="mt-6 w-full bg-[#153B2E] hover:bg-[#0F221B] active:scale-95 text-white font-bold py-3 rounded-xl text-xs transition shadow-md cursor-pointer"
+                className="mt-6 w-full bg-[#0F172A] hover:bg-[#0F172A] active:scale-95 text-white font-bold py-3 rounded-xl text-xs transition shadow-md cursor-pointer"
               >
                 {isAuthenticated ? 'Go to CRM Workspace' : 'Sign Up With This Estimate'}
               </button>

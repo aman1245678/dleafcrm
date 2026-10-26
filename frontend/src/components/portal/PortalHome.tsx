@@ -61,7 +61,7 @@ export const PortalHome: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 flex flex-col bg-[#F5F8F3] overflow-x-hidden font-sans text-[#17251D]">
+    <div className="flex-1 flex flex-col bg-[#F8FAFC] overflow-x-hidden font-sans text-[#0F172A]">
 
       {/* =========================================================================
           SECTION 1: HERO SECTION - Split Layout with Nature Landscape Background & Dashboard Mockup
@@ -180,56 +180,56 @@ export const PortalHome: React.FC = () => {
           {/* ----------------- 4 HERO FEATURE PILLARS CARDS (Bottom Ribbon) ----------------- */}
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#D8E3D6] hover:border-[#3F7657] hover:shadow-md transition text-left flex items-start gap-3.5 group">
-              <div className="w-10 h-10 rounded-xl bg-[#E5EFE4] text-[#153B2E] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <Bot className="w-5 h-5 text-[#3F7657]" />
+            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-md transition text-left flex items-start gap-3.5 group">
+              <div className="w-10 h-10 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <Bot className="w-5 h-5 text-[#EE0979]" />
               </div>
               <div>
-                <div className="font-bold text-[#17251D] text-xs sm:text-sm">AI-Powered CRM</div>
-                <div className="text-[11.5px] text-[#47574B] mt-0.5 leading-snug">Smarter tools to automate your workflow.</div>
-                <button onClick={() => setPortalPage('platform')} className="text-[11px] font-bold text-[#3F7657] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
+                <div className="font-bold text-[#0F172A] text-xs sm:text-sm">AI-Powered CRM</div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Smarter tools to automate your workflow.</div>
+                <button onClick={() => setPortalPage('platform')} className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
                   <span>Learn More</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#D8E3D6] hover:border-[#3F7657] hover:shadow-md transition text-left flex items-start gap-3.5 group">
-              <div className="w-10 h-10 rounded-xl bg-[#E5EFE4] text-[#153B2E] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <Zap className="w-5 h-5 text-[#3F7657]" />
+            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-md transition text-left flex items-start gap-3.5 group">
+              <div className="w-10 h-10 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <Zap className="w-5 h-5 text-[#EE0979]" />
               </div>
               <div>
-                <div className="font-bold text-[#17251D] text-xs sm:text-sm">Sales Automation</div>
-                <div className="text-[11.5px] text-[#47574B] mt-0.5 leading-snug">Convert more leads with intelligent automation.</div>
-                <button onClick={() => setPortalPage('features')} className="text-[11px] font-bold text-[#3F7657] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
+                <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Sales Automation</div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Convert more leads with intelligent automation.</div>
+                <button onClick={() => setPortalPage('features')} className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
                   <span>Learn More</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#D8E3D6] hover:border-[#3F7657] hover:shadow-md transition text-left flex items-start gap-3.5 group">
-              <div className="w-10 h-10 rounded-xl bg-[#E5EFE4] text-[#153B2E] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <Users className="w-5 h-5 text-[#3F7657]" />
+            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-md transition text-left flex items-start gap-3.5 group">
+              <div className="w-10 h-10 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <Users className="w-5 h-5 text-[#EE0979]" />
               </div>
               <div>
-                <div className="font-bold text-[#17251D] text-xs sm:text-sm">Customer Insights</div>
-                <div className="text-[11.5px] text-[#47574B] mt-0.5 leading-snug">Understand your customers with powerful analytics.</div>
-                <button onClick={() => setPortalPage('features')} className="text-[11px] font-bold text-[#3F7657] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
+                <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Customer Insights</div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Understand your customers with powerful analytics.</div>
+                <button onClick={() => setPortalPage('features')} className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
                   <span>Learn More</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#D8E3D6] hover:border-[#3F7657] hover:shadow-md transition text-left flex items-start gap-3.5 group">
-              <div className="w-10 h-10 rounded-xl bg-[#E5EFE4] text-[#153B2E] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <Grid className="w-5 h-5 text-[#3F7657]" />
+            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-md transition text-left flex items-start gap-3.5 group">
+              <div className="w-10 h-10 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <Grid className="w-5 h-5 text-[#EE0979]" />
               </div>
               <div>
-                <div className="font-bold text-[#17251D] text-xs sm:text-sm">All-in-One Platform</div>
-                <div className="text-[11.5px] text-[#47574B] mt-0.5 leading-snug">Sales, marketing, service and more — in one place.</div>
-                <button onClick={() => setPortalPage('platform')} className="text-[11px] font-bold text-[#3F7657] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
+                <div className="font-bold text-[#0F172A] text-xs sm:text-sm">All-in-One Platform</div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Sales, marketing, service and more — in one place.</div>
+                <button onClick={() => setPortalPage('platform')} className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
                   <span>Learn More</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
@@ -289,21 +289,21 @@ export const PortalHome: React.FC = () => {
       {/* =========================================================================
           SECTION 2: CORE PLATFORM CAPABILITIES (Compact Grid - Fraunces Editorial Serif)
       ========================================================================== */}
-      <section className="py-7 px-4 sm:px-8 lg:px-12 bg-[#F5F8F3] border-b border-[#D8E3D6]">
+      <section className="py-7 px-4 sm:px-8 lg:px-12 bg-white border-b border-[#F1D5E4]">
         <div className="max-w-7xl mx-auto">
           {/* Section Heading */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-4">
             <div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-[#3F7657] font-editorial">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-[#EE0979] font-editorial">
                 High-Impact Growth Architecture
               </div>
-              <h2 className="text-xl sm:text-2xl lg:text-[28px] font-editorial-heading text-[#17251D] leading-tight">
+              <h2 className="text-xl sm:text-2xl lg:text-[28px] font-editorial-heading text-[#0F172A] leading-tight">
                 Everything required to capture, close, and retain accounts.
               </h2>
             </div>
             <button
               onClick={() => setPortalPage('features')}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#153B2E] hover:text-[#3F7657] font-editorial transition cursor-pointer self-start sm:self-end"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#EE0979] hover:text-[#FF6A00] font-editorial transition cursor-pointer self-start sm:self-end"
             >
               <span>Explore all 24+ modules</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -315,42 +315,42 @@ export const PortalHome: React.FC = () => {
             {[
               {
                 icon: Briefcase,
-                color: 'text-[#3F7657] bg-[#E5EFE4]',
+                color: 'text-[#EE0979] bg-[#FFF1F7]',
                 title: 'Sales Automation',
                 desc: 'Auto-lead routing, scoring & automated follow-up sequences.',
                 tag: 'Core'
               },
               {
                 icon: Sparkles,
-                color: 'text-[#9b1c1c] bg-[#fde8e8]',
+                color: 'text-[#FF6A00] bg-[#FFF8FA]',
                 title: 'Zia AI Intelligence',
                 desc: 'Smart churn alerts, deal win predictions & AI email drafts.',
                 tag: 'AI Powered'
               },
               {
                 icon: PhoneCall,
-                color: 'text-[#16845B] bg-[#E5EFE4]',
+                color: 'text-[#7928CA] bg-[#F5EEFF]',
                 title: 'Omnichannel Hub',
                 desc: 'Unified Twilio telephony, WhatsApp Business & Gmail inbox.',
                 tag: 'Instant'
               },
               {
                 icon: Layers,
-                color: 'text-[#6b21a8] bg-[#f3e8ff]',
+                color: 'text-[#EE0979] bg-[#FFF1F7]',
                 title: 'Deal Blueprints',
                 desc: 'Visual drag-and-drop pipelines with strict stage gates.',
                 tag: 'Workflow'
               },
               {
                 icon: Grid,
-                color: 'text-[#b45309] bg-[#fef3c7]',
+                color: 'text-[#FF6A00] bg-[#FFF8FA]',
                 title: 'No-Code Modules',
                 desc: 'Custom fields, dynamic layouts, and role-based permissions.',
                 tag: 'Custom'
               },
               {
                 icon: TrendingUp,
-                color: 'text-[#0f766e] bg-[#ccfbf1]',
+                color: 'text-[#7928CA] bg-[#F5EEFF]',
                 title: 'Revenue Analytics',
                 desc: 'Cohort analysis, sales velocity, and executive dashboards.',
                 tag: 'Real-time'
@@ -361,7 +361,7 @@ export const PortalHome: React.FC = () => {
                 <div
                   key={idx}
                   onClick={() => setPortalPage('features')}
-                  className="group p-3.5 rounded-xl bg-white border border-[#D8E3D6] hover:border-[#3F7657] hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between"
+                  className="group p-3.5 rounded-xl bg-white border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
@@ -372,14 +372,14 @@ export const PortalHome: React.FC = () => {
                         {card.tag}
                       </span>
                     </div>
-                    <h3 className="font-editorial text-[14px] font-semibold text-[#17251D] group-hover:text-[#3F7657] transition-colors leading-snug">
+                    <h3 className="font-editorial text-[14px] font-semibold text-[#0F172A] group-hover:text-[#EE0979] transition-colors leading-snug">
                       {card.title}
                     </h3>
-                    <p className="font-editorial-body text-[11.5px] text-[#47574B] mt-1 leading-normal line-clamp-2">
+                    <p className="font-editorial-body text-[11.5px] text-slate-600 mt-1 leading-normal line-clamp-2">
                       {card.desc}
                     </p>
                   </div>
-                  <div className="pt-2.5 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-[#153B2E] group-hover:text-[#3F7657]">
+                  <div className="pt-2.5 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-[#EE0979] group-hover:text-[#FF6A00]">
                     <span>Learn more</span>
                     <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                   </div>
@@ -391,23 +391,23 @@ export const PortalHome: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          SECTION 3: STATS STRIP (Ultra-compact Forest Green Banner)
+          SECTION 3: STATS STRIP (Brand Dark Navy with Gradient Accents)
       ========================================================================== */}
-      <section className="py-4 px-4 sm:px-8 lg:px-12 bg-[#153B2E] text-white">
+      <section className="py-5 px-4 sm:px-8 lg:px-12 bg-[#0F172A] text-white border-b border-white/10">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 items-center text-center">
           <div className="flex items-center justify-center gap-3">
-            <Users className="w-5 h-5 text-[#738F70] shrink-0" />
+            <Users className="w-5 h-5 text-[#FF6A00] shrink-0" />
             <div className="text-left">
               <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">250,000+</div>
-              <div className="font-editorial text-[11px] text-[#D8E3D6]">Businesses Worldwide</div>
+              <div className="font-editorial text-[11px] text-slate-400">Businesses Worldwide</div>
             </div>
           </div>
 
           <div className="flex items-center justify-center gap-3">
-            <Globe className="w-5 h-5 text-[#738F70] shrink-0" />
+            <Globe className="w-5 h-5 text-[#EE0979] shrink-0" />
             <div className="text-left">
               <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">180+</div>
-              <div className="font-editorial text-[11px] text-[#D8E3D6]">Countries Active</div>
+              <div className="font-editorial text-[11px] text-slate-400">Countries Active</div>
             </div>
           </div>
 
@@ -415,15 +415,15 @@ export const PortalHome: React.FC = () => {
             <Star className="w-5 h-5 text-amber-400 fill-amber-400 shrink-0" />
             <div className="text-left">
               <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">4.9 / 5.0</div>
-              <div className="font-editorial text-[11px] text-[#D8E3D6]">G2 & Gartner Review Rating</div>
+              <div className="font-editorial text-[11px] text-slate-400">G2 & Gartner Review Rating</div>
             </div>
           </div>
 
           <div className="flex items-center justify-center gap-3">
-            <Shield className="w-5 h-5 text-[#738F70] shrink-0" />
+            <Shield className="w-5 h-5 text-[#7928CA] shrink-0" />
             <div className="text-left">
               <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">99.99%</div>
-              <div className="font-editorial text-[11px] text-[#D8E3D6]">Enterprise Cloud SLA</div>
+              <div className="font-editorial text-[11px] text-slate-400">Enterprise Cloud SLA</div>
             </div>
           </div>
         </div>
@@ -432,18 +432,18 @@ export const PortalHome: React.FC = () => {
       {/* =========================================================================
           SECTION 4: COMPACT DUAL-PANEL SHOWCASE (Interactive Pipeline + Zia AI)
       ========================================================================== */}
-      <section className="py-8 px-4 sm:px-8 lg:px-12 bg-[#F5F8F3] border-b border-[#D8E3D6]">
+      <section className="py-8 px-4 sm:px-8 lg:px-12 bg-[#FAFAFD] border-b border-[#F1D5E4]">
         <div className="max-w-7xl mx-auto space-y-6">
 
           {/* Section Header */}
           <div className="max-w-3xl">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#3F7657] font-editorial">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#EE0979] font-editorial">
               Precision Sales Architecture
             </span>
-            <h2 className="text-2xl sm:text-3xl font-editorial-heading text-[#17251D] mt-0.5 leading-tight">
+            <h2 className="text-2xl sm:text-3xl font-editorial-heading text-[#0F172A] mt-0.5 leading-tight">
               The Free CRM With Unlimited Growth Potential
             </h2>
-            <p className="font-editorial-body text-[13.5px] text-[#47574B] mt-1.5 leading-relaxed">
+            <p className="font-editorial-body text-[13.5px] text-slate-600 mt-1.5 leading-relaxed">
               Don’t let budget constraints limit your growth. Dleaf CRM brings all your customer data, revenue pipelines, and AI insights together — making it seamless to create remarkable customer experiences without data migration headaches.
             </p>
           </div>
@@ -452,16 +452,16 @@ export const PortalHome: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
 
             {/* Left Panel: Real-time Deals Pipeline (7 Cols) */}
-            <div className="lg:col-span-7 bg-white p-4 sm:p-5 rounded-2xl border border-[#D8E3D6] shadow-xs flex flex-col justify-between">
+            <div className="lg:col-span-7 bg-white p-4 sm:p-5 rounded-2xl border border-[#F1D5E4] shadow-xs flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#3F7657]" />
-                    <span className="font-editorial font-bold text-sm text-[#17251D]">Multi-Stage Visual Deal Pipeline</span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979]" />
+                    <span className="font-editorial font-bold text-sm text-[#0F172A]">Multi-Stage Visual Deal Pipeline</span>
                   </div>
                   <button
                     onClick={() => setAppMode('workspace')}
-                    className="text-xs font-semibold text-[#3F7657] hover:text-[#153B2E] font-editorial flex items-center gap-1 cursor-pointer"
+                    className="text-xs font-semibold text-[#EE0979] hover:text-[#FF6A00] font-editorial flex items-center gap-1 cursor-pointer"
                   >
                     <span>Launch Live Kanban</span>
                     <ArrowRight className="w-3 h-3" />
@@ -471,19 +471,19 @@ export const PortalHome: React.FC = () => {
                 {/* 3 Compact Stages */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-3.5">
                   {/* Stage 1 */}
-                  <div className="bg-[#F8FAF7] p-2.5 rounded-xl border border-[#E5EFE4] space-y-2">
+                  <div className="bg-[#FFF8FA] p-2.5 rounded-xl border border-[#F1D5E4] space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="font-editorial text-[11px] font-bold text-slate-800">Qualification</span>
                       <span className="text-[10px] font-semibold text-slate-500 bg-white px-1.5 py-0.5 rounded border border-slate-200">10%</span>
                     </div>
-                    <div className="text-[11px] font-bold text-[#153B2E] font-editorial">₹14,50,000</div>
+                    <div className="text-[11px] font-bold text-[#EE0979] font-editorial">₹14,50,000</div>
 
                     <div className="bg-white p-2.5 rounded-lg border border-slate-200/90 shadow-2xs space-y-1">
                       <div className="font-editorial text-xs font-bold text-slate-900 leading-tight">Cloud ERP Upgrade</div>
                       <div className="font-editorial-body text-[10.5px] text-slate-500">Apex Global Logistics</div>
                       <div className="flex items-center justify-between pt-1">
-                        <span className="text-xs font-bold text-[#3F7657]">₹8,50,000</span>
-                        <span className="text-[9px] bg-emerald-50 text-emerald-800 px-1.5 py-0.2 rounded font-medium">Hot Lead</span>
+                        <span className="text-xs font-bold text-[#EE0979]">₹8,50,000</span>
+                        <span className="text-[9px] bg-[#FFF1F7] text-[#EE0979] px-1.5 py-0.2 rounded font-bold">Hot Lead</span>
                       </div>
                     </div>
 
@@ -491,44 +491,44 @@ export const PortalHome: React.FC = () => {
                       <div className="font-editorial text-xs font-bold text-slate-900 leading-tight">Telephony Setup</div>
                       <div className="font-editorial-body text-[10.5px] text-slate-500">FinSecure Capital</div>
                       <div className="flex items-center justify-between pt-1">
-                        <span className="text-xs font-bold text-[#3F7657]">₹6,00,000</span>
+                        <span className="text-xs font-bold text-[#EE0979]">₹6,00,000</span>
                         <span className="text-[9px] bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded">Follow-up</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Stage 2 */}
-                  <div className="bg-[#F8FAF7] p-2.5 rounded-xl border border-[#E5EFE4] space-y-2">
+                  <div className="bg-[#FFF8FA] p-2.5 rounded-xl border border-[#F1D5E4] space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="font-editorial text-[11px] font-bold text-slate-800">Proposal / CPQ</span>
                       <span className="text-[10px] font-semibold text-slate-500 bg-white px-1.5 py-0.5 rounded border border-slate-200">60%</span>
                     </div>
-                    <div className="text-[11px] font-bold text-[#153B2E] font-editorial">₹32,00,000</div>
+                    <div className="text-[11px] font-bold text-[#EE0979] font-editorial">₹32,00,000</div>
 
-                    <div className="bg-white p-2.5 rounded-lg border border-emerald-300 shadow-2xs space-y-1">
+                    <div className="bg-white p-2.5 rounded-lg border border-[#F1D5E4] shadow-2xs space-y-1">
                       <div className="font-editorial text-xs font-bold text-slate-900 leading-tight">Omnichannel Suite</div>
                       <div className="font-editorial-body text-[10.5px] text-slate-500">Tata Consumer Ltd</div>
                       <div className="flex items-center justify-between pt-1">
-                        <span className="text-xs font-bold text-[#3F7657]">₹32,00,000</span>
-                        <span className="text-[9px] bg-emerald-100 text-emerald-900 px-1.5 py-0.2 rounded font-bold">92% Win Prob</span>
+                        <span className="text-xs font-bold text-[#EE0979]">₹32,00,000</span>
+                        <span className="text-[9px] bg-[#FFF1F7] text-[#EE0979] px-1.5 py-0.2 rounded font-bold">92% Win Prob</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Stage 3 */}
-                  <div className="bg-[#E5EFE4]/60 p-2.5 rounded-xl border border-[#3F7657]/30 space-y-2">
+                  <div className="bg-[#FFF1F7] p-2.5 rounded-xl border border-[#F1D5E4] space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-editorial text-[11px] font-bold text-[#153B2E]">Closed Won</span>
-                      <span className="text-[10px] font-bold text-white bg-[#3F7657] px-1.5 py-0.5 rounded">100%</span>
+                      <span className="font-editorial text-[11px] font-bold text-[#EE0979]">Closed Won</span>
+                      <span className="text-[10px] font-bold text-white bg-gradient-to-r from-[#FF6A00] to-[#EE0979] px-1.5 py-0.5 rounded">100%</span>
                     </div>
-                    <div className="text-[11px] font-bold text-[#153B2E] font-editorial">₹45,00,000</div>
+                    <div className="text-[11px] font-bold text-[#EE0979] font-editorial">₹45,00,000</div>
 
-                    <div className="bg-white p-2.5 rounded-lg border border-[#3F7657]/40 shadow-2xs space-y-1">
+                    <div className="bg-white p-2.5 rounded-lg border border-[#F1D5E4] shadow-2xs space-y-1">
                       <div className="font-editorial text-xs font-bold text-slate-900 leading-tight">Global Sales Cloud</div>
                       <div className="font-editorial-body text-[10.5px] text-slate-500">Mahindra Tech</div>
                       <div className="flex items-center justify-between pt-1">
-                        <span className="text-xs font-bold text-[#3F7657]">₹45,00,000</span>
-                        <span className="text-[9px] bg-[#153B2E] text-white px-1.5 py-0.2 rounded font-bold">Closed</span>
+                        <span className="text-xs font-bold text-[#EE0979]">₹45,00,000</span>
+                        <span className="text-[9px] bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white px-1.5 py-0.2 rounded font-bold">Closed</span>
                       </div>
                     </div>
                   </div>
@@ -536,33 +536,33 @@ export const PortalHome: React.FC = () => {
               </div>
 
               {/* Bottom Feature Bullets */}
-              <div className="mt-3.5 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#47574B] font-editorial">
+              <div className="mt-3.5 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-600 font-editorial">
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#3F7657]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
                   1-Click Lead Conversion
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#3F7657]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
                   Dynamic INR Currency Summary
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#3F7657]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
                   Built-in GST Quotes & Invoices
                 </span>
               </div>
             </div>
 
             {/* Right Panel: Zia AI Copilot + Softphone (5 Cols) */}
-            <div className="lg:col-span-5 bg-gradient-to-br from-white via-white to-[#E5EFE4]/40 p-4 sm:p-5 rounded-2xl border border-[#D8E3D6] shadow-xs flex flex-col justify-between">
+            <div className="lg:col-span-5 bg-gradient-to-br from-white via-white to-[#FFF1F7] p-4 sm:p-5 rounded-2xl border border-[#F1D5E4] shadow-xs flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center">
+                    <div className="w-6 h-6 rounded-lg bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center">
                       <Sparkles className="w-3.5 h-3.5" />
                     </div>
-                    <span className="font-editorial font-bold text-sm text-[#17251D]">Zia AI Copilot & Voice Dialer</span>
+                    <span className="font-editorial font-bold text-sm text-[#0F172A]">Zia AI Copilot & Voice Dialer</span>
                   </div>
-                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-bold text-[#EE0979] bg-[#FFF1F7] border border-[#F1D5E4] px-2 py-0.5 rounded-full">
                     Active Agent
                   </span>
                 </div>
@@ -571,7 +571,7 @@ export const PortalHome: React.FC = () => {
                 <div className="mt-3 space-y-2">
                   <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
                     <div className="flex items-center gap-1.5 text-slate-500 text-[10.5px] font-editorial font-semibold">
-                      <Bot className="w-3.5 h-3.5 text-[#3F7657]" />
+                      <Bot className="w-3.5 h-3.5 text-[#EE0979]" />
                       <span>Zia Opportunity Detection</span>
                     </div>
                     <p className="font-editorial-body text-slate-700 mt-1 leading-snug">
@@ -580,28 +580,28 @@ export const PortalHome: React.FC = () => {
                   </div>
 
                   {/* Softphone Dialer Widget Mock */}
-                  <div className="p-2.5 rounded-xl bg-[#153B2E] text-white flex items-center justify-between">
+                  <div className="p-2.5 rounded-xl bg-[#0F172A] text-white flex items-center justify-between border border-white/10">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-full bg-[#3F7657] flex items-center justify-center animate-pulse">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979] flex items-center justify-center animate-pulse">
                         <PhoneCall className="w-4 h-4 text-white" />
                       </div>
                       <div>
                         <div className="font-editorial text-xs font-bold text-white">Calling Rajesh Kumar</div>
-                        <div className="text-[10.5px] text-[#D8E3D6]">VP Procurement • +91 98201 44210</div>
+                        <div className="text-[10.5px] text-slate-400">VP Procurement • +91 98201 44210</div>
                       </div>
                     </div>
-                    <div className="text-[11px] font-mono text-emerald-300">01:42</div>
+                    <div className="text-[11px] font-mono text-[#EE0979]">01:42</div>
                   </div>
                 </div>
               </div>
 
               <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                <p className="font-editorial-body text-[11px] text-[#47574B]">
+                <p className="font-editorial-body text-[11px] text-slate-500">
                   Auto-transcribes calls into CRM meeting notes.
                 </p>
                 <button
                   onClick={() => setIsZiaOpen(true)}
-                  className="bg-[#153B2E] hover:bg-[#3F7657] text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition font-editorial cursor-pointer"
+                  className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition font-editorial cursor-pointer shadow-xs"
                 >
                   Ask Zia AI
                 </button>
@@ -616,48 +616,48 @@ export const PortalHome: React.FC = () => {
       {/* =========================================================================
           SECTION 5: ENTERPRISE COMPARISON & ROI (Compact Table Style)
       ========================================================================== */}
-      <section className="py-8 px-4 sm:px-8 lg:px-12 bg-white border-b border-[#D8E3D6]">
+      <section className="py-8 px-4 sm:px-8 lg:px-12 bg-white border-b border-[#F1D5E4]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-6">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#3F7657] font-editorial">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#EE0979] font-editorial">
               Modern Value Equation
             </span>
-            <h2 className="text-2xl sm:text-3xl font-editorial-heading text-[#17251D] mt-0.5">
+            <h2 className="text-2xl sm:text-3xl font-editorial-heading text-[#0F172A] mt-0.5">
               Why High-Growth Teams Replace Legacy CRMs
             </h2>
-            <p className="font-editorial-body text-xs sm:text-sm text-[#47574B] mt-1">
+            <p className="font-editorial-body text-xs sm:text-sm text-slate-600 mt-1">
               Zero seat bloat, instant cloud activation, and integrated Indian compliance.
             </p>
           </div>
 
           {/* Compact Feature Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
-            <div className="p-4 rounded-xl bg-[#F5F8F3] border border-[#D8E3D6] space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-[#E5EFE4] text-[#3F7657] flex items-center justify-center">
+            <div className="p-4 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center">
                 <Rocket className="w-4 h-4" />
               </div>
-              <h3 className="font-editorial text-base font-bold text-[#17251D]">Instant 1-Day Go-Live</h3>
-              <p className="font-editorial-body text-xs text-[#47574B] leading-relaxed">
+              <h3 className="font-editorial text-base font-bold text-[#0F172A]">Instant 1-Day Go-Live</h3>
+              <p className="font-editorial-body text-xs text-slate-600 leading-relaxed">
                 Migrate leads, accounts, and contact histories from Salesforce, HubSpot, or Excel sheets in minutes with automated column mapping.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#F5F8F3] border border-[#D8E3D6] space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-[#E5EFE4] text-[#3F7657] flex items-center justify-center">
+            <div className="p-4 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center">
                 <Sliders className="w-4 h-4" />
               </div>
-              <h3 className="font-editorial text-base font-bold text-[#17251D]">Customizable Workflows</h3>
-              <p className="font-editorial-body text-xs text-[#47574B] leading-relaxed">
+              <h3 className="font-editorial text-base font-bold text-[#0F172A]">Customizable Workflows</h3>
+              <p className="font-editorial-body text-xs text-slate-600 leading-relaxed">
                 Design custom validation rules, approval escalations, SLA alerts, and multi-tier discount approval limits with zero code.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#F5F8F3] border border-[#D8E3D6] space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-[#E5EFE4] text-[#3F7657] flex items-center justify-center">
+            <div className="p-4 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center">
                 <Shield className="w-4 h-4" />
               </div>
-              <h3 className="font-editorial text-base font-bold text-[#17251D]">SOC-2 & ISO 27001 Security</h3>
-              <p className="font-editorial-body text-xs text-[#47574B] leading-relaxed">
+              <h3 className="font-editorial text-base font-bold text-[#0F172A]">SOC-2 & ISO 27001 Security</h3>
+              <p className="font-editorial-body text-xs text-slate-600 leading-relaxed">
                 Bank-grade 256-bit AES encryption at rest and in transit, IP whitelisting, session audit logs, and granular role hierarchies.
               </p>
             </div>
@@ -668,10 +668,10 @@ export const PortalHome: React.FC = () => {
       {/* =========================================================================
           SECTION 6: CLIENT LOGOS & TESTIMONIALS (Clean, Gapless Social Proof)
       ========================================================================== */}
-      <section className="py-7 px-4 sm:px-8 lg:px-12 bg-[#F5F8F3] border-b border-[#D8E3D6]">
+      <section className="py-7 px-4 sm:px-8 lg:px-12 bg-[#FAFAFD] border-b border-[#F1D5E4]">
         <div className="max-w-7xl mx-auto">
           {/* Logo Strip */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-[#D8E3D6]">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-[#F1D5E4]">
             <span className="font-editorial text-xs font-bold uppercase tracking-wider text-slate-500 shrink-0">
               Trusted by 25,000+ Enterprises
             </span>
@@ -708,17 +708,17 @@ export const PortalHome: React.FC = () => {
                 rating: 5
               }
             ].map((t, i) => (
-              <div key={i} className="p-4 rounded-xl bg-white border border-[#D8E3D6] shadow-2xs space-y-2">
+              <div key={i} className="p-4 rounded-xl bg-white border border-[#F1D5E4] shadow-2xs space-y-2">
                 <div className="flex items-center gap-1">
                   {[...Array(t.rating)].map((_, idx) => (
                     <Star key={idx} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
                   ))}
                 </div>
-                <p className="font-editorial-body text-xs text-[#17251D] leading-relaxed italic">
+                <p className="font-editorial-body text-xs text-[#0F172A] leading-relaxed italic">
                   "{t.quote}"
                 </p>
                 <div className="pt-2 border-t border-slate-100">
-                  <div className="font-editorial text-xs font-bold text-[#153B2E]">{t.author}</div>
+                  <div className="font-editorial text-xs font-bold text-[#EE0979]">{t.author}</div>
                   <div className="font-editorial-body text-[10.5px] text-slate-500">{t.role}</div>
                 </div>
               </div>
@@ -730,13 +730,13 @@ export const PortalHome: React.FC = () => {
       {/* =========================================================================
           SECTION 7: COMPACT FAQ ACCORDION (Answers Buyers Ask First)
       ========================================================================== */}
-      <section className="py-7 px-4 sm:px-8 lg:px-12 bg-white border-b border-[#D8E3D6]">
+      <section className="py-7 px-4 sm:px-8 lg:px-12 bg-white border-b border-[#F1D5E4]">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-5">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#3F7657] font-editorial">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#EE0979] font-editorial">
               Frequently Asked Questions
             </span>
-            <h2 className="text-xl sm:text-2xl font-editorial-heading text-[#17251D] mt-0.5">
+            <h2 className="text-xl sm:text-2xl font-editorial-heading text-[#0F172A] mt-0.5">
               Everything you need to know before starting.
             </h2>
           </div>
@@ -760,11 +760,11 @@ export const PortalHome: React.FC = () => {
                 a: "Yes. Built-in CPQ quotes and invoices automatically calculate CGST, SGST, IGST, and apply HSN codes."
               }
             ].map((faq, idx) => (
-              <div key={idx} className="p-3.5 rounded-xl bg-[#F5F8F3] border border-[#D8E3D6] space-y-1">
-                <div className="font-editorial text-xs sm:text-sm font-bold text-[#153B2E]">
+              <div key={idx} className="p-3.5 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-1">
+                <div className="font-editorial text-xs sm:text-sm font-bold text-[#0F172A]">
                   {faq.q}
                 </div>
-                <div className="font-editorial-body text-[11.5px] text-[#47574B] leading-normal">
+                <div className="font-editorial-body text-[11.5px] text-slate-600 leading-normal">
                   {faq.a}
                 </div>
               </div>
@@ -774,19 +774,19 @@ export const PortalHome: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          SECTION 8: ULTRA-COMPACT CONVERSION BANNER (Deep Forest Clean Finish)
+          SECTION 8: ULTRA-COMPACT CONVERSION BANNER (Brand Dark Navy with Gradient CTA)
       ========================================================================== */}
-      <section className="py-8 px-4 sm:px-8 lg:px-12 bg-[#153B2E] text-white relative overflow-hidden">
+      <section className="py-8 px-4 sm:px-8 lg:px-12 bg-[#0F172A] text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
           <div className="space-y-1.5 text-center lg:text-left max-w-xl">
-            <div className="inline-flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full text-[10.5px] font-semibold text-[#D8E3D6]">
-              <Sparkles className="w-3 h-3 text-emerald-400" />
+            <div className="inline-flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full text-[10.5px] font-semibold text-slate-300">
+              <Sparkles className="w-3 h-3 text-[#EE0979]" />
               <span>Instant Setup in 60 Seconds</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-editorial-heading text-white tracking-tight leading-tight">
               Ready to scale your business with Dleaf CRM?
             </h2>
-            <p className="font-editorial-body text-xs sm:text-sm text-[#D8E3D6] leading-relaxed">
+            <p className="font-editorial-body text-xs sm:text-sm text-slate-400 leading-relaxed">
               Start your 15-day free enterprise trial today. No credit card required.
             </p>
           </div>
@@ -799,30 +799,30 @@ export const PortalHome: React.FC = () => {
                 value={ctaEmail}
                 onChange={(e) => setCtaEmail(e.target.value)}
                 placeholder="Enter work email address..."
-                className="w-full sm:w-72 px-4 py-2.5 bg-white text-slate-900 rounded-xl text-xs placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#3F7657] shadow-sm font-editorial-body"
+                className="w-full sm:w-72 px-4 py-2.5 bg-white text-slate-900 rounded-xl text-xs placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#EE0979] shadow-sm font-editorial-body"
               />
               <button
                 type="submit"
-                className="w-full sm:w-auto bg-[#3F7657] hover:bg-[#274C37] active:scale-95 text-white font-editorial font-bold text-xs px-5 py-2.5 rounded-xl transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
+                className="w-full sm:w-auto bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 active:scale-95 text-white font-editorial font-bold text-xs px-5 py-2.5 rounded-xl transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
               >
                 <span>Start Free Trial</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </form>
 
-            <div className="flex flex-wrap items-center justify-center gap-3 text-[10.5px] text-[#D8E3D6] font-editorial">
+            <div className="flex flex-wrap items-center justify-center gap-3 text-[10.5px] text-slate-400 font-editorial">
               <span className="flex items-center gap-1">
-                <Check className="w-3 h-3 text-emerald-400" />
+                <Check className="w-3 h-3 text-[#EE0979]" />
                 No credit card needed
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
-                <Check className="w-3 h-3 text-emerald-400" />
+                <Check className="w-3 h-3 text-[#EE0979]" />
                 Full 15-day access
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
-                <Check className="w-3 h-3 text-emerald-400" />
+                <Check className="w-3 h-3 text-[#EE0979]" />
                 Cancel anytime
               </span>
             </div>

@@ -112,7 +112,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
         <title>Dleaf CRM - Daily Sprint Progress Report (${currentDate})</title>
         <style>
           body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #1e293b; margin: 40px; }
-          h1 { color: #0f172a; font-size: 20pt; border-bottom: 2px solid #738F70; padding-bottom: 6px; }
+          h1 { color: #0f172a; font-size: 20pt; border-bottom: 2px solid #EE0979; padding-bottom: 6px; }
           h2 { color: #1e40af; font-size: 14pt; margin-top: 24px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px; }
           h3 { color: #334155; font-size: 12pt; margin-top: 16px; }
           table { width: 100%; border-collapse: collapse; margin-top: 14px; margin-bottom: 20px; font-size: 9.5pt; }
@@ -120,7 +120,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
           td { padding: 7px 10px; border: 1px solid #cbd5e1; }
           .badge-completed { color: #059669; font-weight: bold; }
           .badge-progress { color: #d97706; font-weight: bold; }
-          .highlight { background-color: #F2F6F2; padding: 14px; border-left: 4px solid #738F70; margin: 16px 0; border-radius: 4px; }
+          .highlight { background-color: #FFF8FA; padding: 14px; border-left: 4px solid #EE0979; margin: 16px 0; border-radius: 4px; }
           .tag-boost { background-color: #dcfce7; color: #15803d; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 8.5pt; }
           .meta-box { background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px; margin-bottom: 16px; font-size: 10pt; }
         </style>
@@ -286,7 +286,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
       <div className="bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between shrink-0 shadow-xs">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <PieChart className="w-5 h-5 text-[#3F7657]" />
+            <PieChart className="w-5 h-5 text-[#EE0979]" />
             <h1 className="font-bold text-base text-slate-800">Reports & Analytics Engine</h1>
           </div>
 
@@ -295,7 +295,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
               onClick={() => setSelectedReport('executive')}
               className={`px-3 py-1 rounded-md transition flex items-center gap-1.5 ${
                 selectedReport === 'executive'
-                  ? 'bg-[#3F7657] text-white shadow-xs font-bold'
+                  ? 'bg-[#EE0979] text-white shadow-xs font-bold'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -305,7 +305,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
             <button
               onClick={() => setSelectedReport('pipeline')}
               className={`px-3 py-1 rounded-md transition ${
-                selectedReport === 'pipeline' ? 'bg-[#3F7657] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
+                selectedReport === 'pipeline' ? 'bg-[#EE0979] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Pipeline Health
@@ -313,7 +313,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
             <button
               onClick={() => setSelectedReport('conversion')}
               className={`px-3 py-1 rounded-md transition ${
-                selectedReport === 'conversion' ? 'bg-[#3F7657] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
+                selectedReport === 'conversion' ? 'bg-[#EE0979] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Lead Conversions
@@ -321,7 +321,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
             <button
               onClick={() => setSelectedReport('invoices')}
               className={`px-3 py-1 rounded-md transition ${
-                selectedReport === 'invoices' ? 'bg-[#3F7657] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
+                selectedReport === 'invoices' ? 'bg-[#EE0979] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Revenue Invoices
@@ -334,7 +334,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
             <>
               <button
                 onClick={handleCopyManagerText}
-                className="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition active:scale-95"
+                className="flex items-center gap-1.5 bg-[#EE0979] hover:bg-[#D8086C] text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition active:scale-95"
                 title="Copy formatted summary to send directly to your manager on WhatsApp or Email"
               >
                 {copiedText ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5" />}
@@ -343,7 +343,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
 
               <button
                 onClick={exportWordDoc}
-                className="flex items-center gap-1.5 bg-[#738F70] hover:bg-[#5F7A5D] text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition active:scale-95"
+                className="flex items-center gap-1.5 bg-[#EE0979] hover:bg-[#EE0979] text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition active:scale-95"
                 title="Download updated Word (.doc) report for management"
               >
                 <FileText className="w-3.5 h-3.5" />
@@ -354,7 +354,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
             <>
               <button
                 onClick={exportWordDoc}
-                className="flex items-center gap-1.5 bg-[#738F70] hover:bg-[#5F7A5D] text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition active:scale-95"
+                className="flex items-center gap-1.5 bg-[#EE0979] hover:bg-[#EE0979] text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition active:scale-95"
                 title="Download complete Word (.doc) report for management"
               >
                 <FileText className="w-3.5 h-3.5" />
@@ -380,11 +380,11 @@ The frontend is running smoothly and all changes are compiled and synced.`;
             <div className="bg-white border border-slate-200/80 rounded-xl p-3.5 shadow-2xs flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-4 text-xs text-slate-700">
                 <div className="flex items-center gap-1.5 font-medium">
-                  <Calendar className="w-4 h-4 text-[#738F70]" />
+                  <Calendar className="w-4 h-4 text-[#EE0979]" />
                   <span><strong>Date:</strong> {currentDate}</span>
                 </div>
                 <div className="flex items-center gap-1.5 font-medium">
-                  <Clock className="w-4 h-4 text-emerald-600" />
+                  <Clock className="w-4 h-4 text-[#EE0979]" />
                   <span><strong>Time Logged:</strong> {workingShift}</span>
                 </div>
                 <div className="flex items-center gap-1.5 bg-slate-100 text-slate-700 px-2.5 py-1 rounded-md font-mono text-[11px]">
@@ -393,8 +393,8 @@ The frontend is running smoothly and all changes are compiled and synced.`;
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1 text-[11px] font-bold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                  <Sparkles className="w-3 h-3 text-emerald-600" />
+                <span className="inline-flex items-center gap-1 text-[11px] font-bold bg-pink-100 text-[#BE075E] px-2.5 py-0.5 rounded-full border border-rose-200">
+                  <Sparkles className="w-3 h-3 text-[#EE0979]" />
                   Overall: 76% (+8% Today)
                 </span>
               </div>
@@ -402,45 +402,45 @@ The frontend is running smoothly and all changes are compiled and synced.`;
 
             {/* Top KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-3.5">
-              <div className="bg-gradient-to-br from-[#3F7657] to-[#153B2E] text-white rounded-xl p-4 shadow-sm relative overflow-hidden">
+              <div className="bg-gradient-to-br from-[#EE0979] to-[#0F172A] text-white rounded-xl p-4 shadow-sm relative overflow-hidden">
                 <div className="absolute right-[-10px] bottom-[-10px] w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none" />
-                <div className="flex items-center justify-between text-xs text-emerald-100 font-semibold mb-1">
+                <div className="flex items-center justify-between text-xs text-pink-100 font-semibold mb-1">
                   <span>Overall Project Progress</span>
                   <span className="bg-white/20 text-white px-2 py-0.5 rounded-full text-[10px] font-bold">+8% Today</span>
                 </div>
                 <div className="text-3xl font-extrabold tracking-tight mt-1">85%</div>
                 <div className="mt-2.5 w-full bg-black/20 rounded-full h-2 overflow-hidden">
-                  <div className="bg-emerald-300 h-2 rounded-full transition-all duration-1000" style={{ width: '85%' }} />
+                  <div className="bg-pink-400 h-2 rounded-full transition-all duration-1000" style={{ width: '85%' }} />
                 </div>
-                <p className="text-[11px] text-emerald-100/90 mt-2">Up from 76% (10:30 AM – 7:00 PM shift)</p>
+                <p className="text-[11px] text-pink-100/90 mt-2">Up from 76% (10:30 AM – 7:00 PM shift)</p>
               </div>
 
-              <div className="bg-white border border-[#D8E3D6] rounded-xl p-4 shadow-xs relative overflow-hidden">
+              <div className="bg-white border border-[#F1D5E4] rounded-xl p-4 shadow-xs relative overflow-hidden">
                 <div className="flex items-center justify-between text-xs text-slate-500 font-semibold mb-1">
                   <span className="flex items-center gap-1.5 text-slate-700">
-                    <PhoneCall className="w-3.5 h-3.5 text-[#3F7657]" />
+                    <PhoneCall className="w-3.5 h-3.5 text-[#EE0979]" />
                     Communication & VoIP
                   </span>
-                  <span className="bg-[#E5EFE4] text-[#153B2E] px-2 py-0.5 rounded-full text-[10px] font-bold">+8% Today</span>
+                  <span className="bg-[#FFF1F7] text-[#0F172A] px-2 py-0.5 rounded-full text-[10px] font-bold">+8% Today</span>
                 </div>
                 <div className="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">88%</div>
                 <div className="mt-2.5 w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-                  <div className="bg-[#3F7657] h-2 rounded-full" style={{ width: '88%' }} />
+                  <div className="bg-[#EE0979] h-2 rounded-full" style={{ width: '88%' }} />
                 </div>
                 <p className="text-[11px] text-slate-500 mt-2">Softphone, header call timer & WhatsApp</p>
               </div>
 
-              <div className="bg-white border border-emerald-200 rounded-xl p-4 shadow-xs relative overflow-hidden">
+              <div className="bg-white border border-rose-200 rounded-xl p-4 shadow-xs relative overflow-hidden">
                 <div className="flex items-center justify-between text-xs text-slate-500 font-semibold mb-1">
                   <span className="flex items-center gap-1.5 text-slate-700">
-                    <Briefcase className="w-3.5 h-3.5 text-emerald-600" />
+                    <Briefcase className="w-3.5 h-3.5 text-[#EE0979]" />
                     Deals Pipeline
                   </span>
-                  <span className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full text-[10px] font-bold">Stable</span>
+                  <span className="bg-pink-100 text-[#D8086C] px-2 py-0.5 rounded-full text-[10px] font-bold">Stable</span>
                 </div>
                 <div className="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">85%</div>
                 <div className="mt-2.5 w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-                  <div className="bg-emerald-600 h-2 rounded-full" style={{ width: '85%' }} />
+                  <div className="bg-[#EE0979] h-2 rounded-full" style={{ width: '85%' }} />
                 </div>
                 <p className="text-[11px] text-slate-500 mt-2">8-Stage Kanban, ₹ totals & probabilities</p>
               </div>
@@ -465,12 +465,12 @@ The frontend is running smoothly and all changes are compiled and synced.`;
             <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
               <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                  <CheckCircle2 className="w-5 h-5 text-[#EE0979]" />
                   <h2 className="text-sm font-bold text-slate-900">
                     Today's Deliverables & Accomplishments (Sprint: 9:00 AM – 6:30 PM)
                   </h2>
                 </div>
-                <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                <span className="text-xs font-semibold text-[#D8086C] bg-pink-50 px-2.5 py-0.5 rounded-full border border-rose-200">
                   9.5 Hours Shift Completed
                 </span>
               </div>
@@ -478,24 +478,24 @@ The frontend is running smoothly and all changes are compiled and synced.`;
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mt-3.5">
                 <div className="bg-slate-50 p-3 rounded-lg border border-slate-200/80">
                   <div className="flex items-center gap-2 text-xs font-bold text-slate-900">
-                    <span className="w-5 h-5 rounded-full bg-[#E2EDE0] text-[#5F7A5D] flex items-center justify-center text-[11px]">1</span>
+                    <span className="w-5 h-5 rounded-full bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center text-[11px]">1</span>
                     <span>Executive Header & Brand Architecture</span>
                   </div>
                   <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
                     Upgraded header to crisp white (<code>bg-white</code>), added accent gradient border, integrated high-resolution <strong>`logo.png`</strong> with responsive dimensions, and streamlined global search.
                   </p>
-                  <div className="mt-2 text-[11px] font-bold text-[#738F70]">Progress: 60% ➔ 92%</div>
+                  <div className="mt-2 text-[11px] font-bold text-[#EE0979]">Progress: 60% ➔ 92%</div>
                 </div>
 
                 <div className="bg-slate-50 p-3 rounded-lg border border-slate-200/80">
                   <div className="flex items-center gap-2 text-xs font-bold text-slate-900">
-                    <span className="w-5 h-5 rounded-full bg-[#E5EFE4] text-[#153B2E] flex items-center justify-center text-[11px]">2</span>
+                    <span className="w-5 h-5 rounded-full bg-[#FFF1F7] text-[#0F172A] flex items-center justify-center text-[11px]">2</span>
                     <span>VoIP Softphone Engine & Call Timer</span>
                   </div>
                   <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
                     Hardened VoIP dialer against undefined runtime states with optional chaining. Enabled <strong>live in-header call duration counter</strong>, DTMF pad, and automatic call logging to lead timelines.
                   </p>
-                  <div className="mt-2 text-[11px] font-bold text-[#3F7657]">Progress: 80% ➔ 88%</div>
+                  <div className="mt-2 text-[11px] font-bold text-[#EE0979]">Progress: 80% ➔ 88%</div>
                 </div>
 
                 <div className="bg-slate-50 p-3 rounded-lg border border-slate-200/80">
@@ -512,9 +512,9 @@ The frontend is running smoothly and all changes are compiled and synced.`;
             </div>
 
             {/* Quick Action / Copy Alert Banner */}
-            <div className="bg-gradient-to-r from-emerald-50 via-teal-50 to-blue-50 border border-emerald-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+            <div className="bg-gradient-to-r from-pink-50 via-pink-50 to-blue-50 border border-rose-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                <div className="w-9 h-9 rounded-lg bg-[#EE0979] text-white flex items-center justify-center shrink-0 shadow-xs">
                   <TrendingUp className="w-5 h-5" />
                 </div>
                 <div>
@@ -527,7 +527,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
               <div className="flex items-center gap-2 shrink-0">
                 <button
                   onClick={handleCopyManagerText}
-                  className="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition active:scale-95"
+                  className="flex items-center gap-1.5 bg-[#EE0979] hover:bg-[#D8086C] text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition active:scale-95"
                 >
                   {copiedText ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5" />}
                   <span>{copiedText ? 'Copied to Clipboard!' : 'Copy Report Message'}</span>
@@ -536,7 +536,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
                   onClick={exportWordDoc}
                   className="flex items-center gap-1.5 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-3 py-1.5 rounded-lg text-xs font-semibold shadow-2xs transition"
                 >
-                  <FileText className="w-3.5 h-3.5 text-[#738F70]" />
+                  <FileText className="w-3.5 h-3.5 text-[#EE0979]" />
                   <span>Download .doc</span>
                 </button>
               </div>
@@ -546,7 +546,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
             <div className="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
               <div className="p-3.5 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Layers className="w-4 h-4 text-[#738F70]" />
+                  <Layers className="w-4 h-4 text-[#EE0979]" />
                   <span className="font-bold text-slate-800 text-xs uppercase tracking-wider">
                     Core Modules Progress & Verification Audit Table
                   </span>
@@ -570,58 +570,58 @@ The frontend is running smoothly and all changes are compiled and synced.`;
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {/* Header Suite */}
-                    <tr className="bg-[#F2F6F2]/40 hover:bg-[#F2F6F2]/70 transition">
+                    <tr className="bg-[#FFF8FA]/40 hover:bg-[#FFF8FA]/70 transition">
                       <td className="py-2.5 px-3.5 font-bold text-slate-900">
                         <div>
                           <span>Header & Brand Identity Suite</span>
-                          <span className="block text-[10px] text-[#5F7A5D] font-medium">Built Today</span>
+                          <span className="block text-[10px] text-[#EE0979] font-medium">Built Today</span>
                         </div>
                       </td>
                       <td className="py-2.5 px-3 text-center text-slate-400">60%</td>
                       <td className="py-2.5 px-3 text-center">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-[#E2EDE0] text-[#374A36] border border-blue-300">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-[#FFF1F7] text-[#374A36] border border-blue-300">
                           92%
                         </span>
                       </td>
-                      <td className="py-2.5 px-3 text-center font-bold text-[#738F70]">+32%</td>
+                      <td className="py-2.5 px-3 text-center font-bold text-[#EE0979]">+32%</td>
                       <td className="py-2.5 px-3.5 text-slate-700">
                         Crisp pure white header, vibrant multi-tone bottom gradient line, visible compact logo.png, action buttons.
                       </td>
-                      <td className="py-2.5 px-3.5 text-emerald-700 font-bold">Completed</td>
+                      <td className="py-2.5 px-3.5 text-[#D8086C] font-bold">Completed</td>
                     </tr>
 
                     {/* Communication */}
-                    <tr className="bg-[#E5EFE4]/40 hover:bg-[#E5EFE4]/70 transition">
+                    <tr className="bg-[#FFF1F7]/40 hover:bg-[#FFF1F7]/70 transition">
                       <td className="py-2.5 px-3.5 font-bold text-slate-900">
                         <div>
                           <span>Communication Hub (VoIP & WhatsApp)</span>
-                          <span className="block text-[10px] text-[#153B2E] font-medium">Enhanced Today</span>
+                          <span className="block text-[10px] text-[#0F172A] font-medium">Enhanced Today</span>
                         </div>
                       </td>
                       <td className="py-2.5 px-3 text-center text-slate-400">80%</td>
                       <td className="py-2.5 px-3 text-center">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-[#E5EFE4] text-[#153B2E] border border-[#D8E3D6]">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-[#FFF1F7] text-[#0F172A] border border-[#F1D5E4]">
                           88%
                         </span>
                       </td>
-                      <td className="py-2.5 px-3 text-center font-bold text-[#3F7657]">+8%</td>
+                      <td className="py-2.5 px-3 text-center font-bold text-[#EE0979]">+8%</td>
                       <td className="py-2.5 px-3.5 text-slate-700">
                         VoIP Softphone with live header call timer counter, WhatsApp Business quick reply templates, SalesInbox 4-way email split.
                       </td>
-                      <td className="py-2.5 px-3.5 text-emerald-700 font-bold">Completed</td>
+                      <td className="py-2.5 px-3.5 text-[#D8086C] font-bold">Completed</td>
                     </tr>
 
                     {/* Deals */}
-                    <tr className="bg-emerald-50/40 hover:bg-emerald-50/70 transition">
+                    <tr className="bg-pink-50/40 hover:bg-pink-50/70 transition">
                       <td className="py-2.5 px-3.5 font-bold text-slate-900">
                         <div>
                           <span>Deals & Sales Pipeline Management</span>
-                          <span className="block text-[10px] text-emerald-700 font-medium">Core Sales Flow</span>
+                          <span className="block text-[10px] text-[#D8086C] font-medium">Core Sales Flow</span>
                         </div>
                       </td>
                       <td className="py-2.5 px-3 text-center text-slate-400">85%</td>
                       <td className="py-2.5 px-3 text-center">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-pink-100 text-[#BE075E] border border-pink-400">
                           85%
                         </span>
                       </td>
@@ -629,7 +629,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
                       <td className="py-2.5 px-3.5 text-slate-700">
                         8-stage interactive visual Kanban board, stage revenue summaries in ₹ (INR), probability calculations, deal detail drawer.
                       </td>
-                      <td className="py-2.5 px-3.5 text-emerald-700 font-bold">Completed</td>
+                      <td className="py-2.5 px-3.5 text-[#D8086C] font-bold">Completed</td>
                     </tr>
 
                     {/* Reports */}
@@ -650,7 +650,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
                       <td className="py-2.5 px-3.5 text-slate-700">
                         Manager Status Report tab, 1-click clipboard formatter, Word (.doc) export generator, pipeline & invoice CSV exports.
                       </td>
-                      <td className="py-2.5 px-3.5 text-emerald-700 font-bold">Completed</td>
+                      <td className="py-2.5 px-3.5 text-[#D8086C] font-bold">Completed</td>
                     </tr>
 
                     {/* Leads */}
@@ -685,14 +685,14 @@ The frontend is running smoothly and all changes are compiled and synced.`;
             <div className="bg-slate-900 text-white rounded-xl p-4 shadow-sm">
               <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                 <div className="flex items-center gap-2">
-                  <MessageSquare className="w-4 h-4 text-emerald-400" />
+                  <MessageSquare className="w-4 h-4 text-rose-500" />
                   <span className="font-bold text-xs uppercase tracking-wider text-slate-200">
                     मैनेजर को भेजने के लिए रेडी टेक्स्ट (WhatsApp / Email Format)
                   </span>
                 </div>
                 <button
                   onClick={handleCopyManagerText}
-                  className="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded-md text-xs font-semibold transition"
+                  className="flex items-center gap-1.5 bg-[#EE0979] hover:bg-pink-600 text-white px-3 py-1 rounded-md text-xs font-semibold transition"
                 >
                   {copiedText ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                   <span>{copiedText ? 'Copied!' : 'Copy Text'}</span>
@@ -738,7 +738,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
                         <td className="py-2 px-3 text-slate-600">{d.accountName}</td>
                         <td className="py-2 px-3">{d.stage} ({d.probability}%)</td>
                         <td className="py-2 px-3 font-bold font-mono">₹{d.amount.toLocaleString()}</td>
-                        <td className="py-2 px-3 font-mono text-[#738F70]">₹{d.expectedRevenue.toLocaleString()}</td>
+                        <td className="py-2 px-3 font-mono text-[#EE0979]">₹{d.expectedRevenue.toLocaleString()}</td>
                         <td className="py-2 px-3 text-slate-600">{d.owner}</td>
                       </tr>
                     ))}
@@ -767,7 +767,7 @@ The frontend is running smoothly and all changes are compiled and synced.`;
                         <td className="py-2 px-3 font-bold">{l.score}</td>
                         <td className="py-2 px-3">
                           {l.isConverted ? (
-                            <span className="text-emerald-700 font-bold">Yes (Converted)</span>
+                            <span className="text-[#D8086C] font-bold">Yes (Converted)</span>
                           ) : (
                             <span className="text-slate-400">No</span>
                           )}

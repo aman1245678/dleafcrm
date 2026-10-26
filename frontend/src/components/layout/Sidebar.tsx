@@ -348,7 +348,7 @@ export const Sidebar: React.FC = () => {
       {/* Footer: IMAP sync indicator */}
       <div className="px-3 py-1.5 text-[10px] text-slate-500 flex items-center justify-between border-t border-[#F1D5E4]">
         <span className="flex items-center gap-1.5">
-          <span className={`w-1.5 h-1.5 rounded-full ${imapConfig.isConnected ? 'bg-emerald-600 animate-pulse' : 'bg-rose-500'}`}></span>
+          <span className={`w-1.5 h-1.5 rounded-full ${imapConfig.isConnected ? 'bg-[#EE0979] animate-pulse' : 'bg-rose-500'}`}></span>
           IMAP Sync
         </span>
         <span className="font-mono">v4.5 Live</span>

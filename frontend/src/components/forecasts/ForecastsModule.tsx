@@ -270,7 +270,7 @@ export const ForecastsModule: React.FC = () => {
               <button
                 type="button"
                 onClick={handleSaveFiscalSettings}
-                className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
+                className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
               >
                 Save
               </button>
@@ -344,10 +344,10 @@ export const ForecastsModule: React.FC = () => {
 
             <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-2xs">
               <span className="text-xs text-slate-500 block">Closed Won Achieved</span>
-              <div className="text-lg font-bold text-emerald-700 mt-1 font-mono">
+              <div className="text-lg font-bold text-[#D8086C] mt-1 font-mono">
                 {formatCurrency(totalAchieved)}
               </div>
-              <span className="text-[11px] text-emerald-600 mt-0.5 block">{achievementPercent}% Quota Completed</span>
+              <span className="text-[11px] text-[#EE0979] mt-0.5 block">{achievementPercent}% Quota Completed</span>
             </div>
 
             <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-2xs">
@@ -403,7 +403,7 @@ export const ForecastsModule: React.FC = () => {
                       <td className="py-3 px-4 font-mono font-bold text-slate-900">
                         {formatCurrency(q.targetAmount)}
                       </td>
-                      <td className="py-3 px-4 font-mono text-emerald-700 font-semibold">
+                      <td className="py-3 px-4 font-mono text-[#D8086C] font-semibold">
                         {formatCurrency(q.achievedAmount)}
                       </td>
                       <td className="py-3 px-4 font-mono text-blue-700">
@@ -418,7 +418,7 @@ export const ForecastsModule: React.FC = () => {
                             <div
                               className={`h-1.5 rounded-full ${
                                 percent >= 100
-                                  ? 'bg-emerald-500'
+                                  ? 'bg-pink-600'
                                   : percent > 50
                                   ? 'bg-blue-500'
                                   : 'bg-amber-500'
@@ -577,7 +577,7 @@ export const ForecastsModule: React.FC = () => {
             {/* Primary Action Button: "Configure Now" */}
             <button
               onClick={() => setShowConfigModal(true)}
-              className="px-6 py-2 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
+              className="px-6 py-2 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
             >
               Configure Now
             </button>
@@ -630,7 +630,7 @@ export const ForecastsModule: React.FC = () => {
                   />
                   {/* Colored Triangle icon */}
                   <div className="w-5 h-5 flex items-center justify-center">
-                    <div className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[14px] border-b-emerald-500"></div>
+                    <div className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[14px] border-b-pink-600"></div>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-xs">Top down</h4>
@@ -772,7 +772,7 @@ export const ForecastsModule: React.FC = () => {
             <button
               type="button"
               onClick={handleSaveConfig}
-              className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
+              className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
             >
               Save
             </button>

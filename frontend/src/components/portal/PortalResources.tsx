@@ -73,7 +73,7 @@ export const PortalResources: React.FC = () => {
       {/* Top Banner */}
       <section className="bg-white border-b border-slate-200 py-14 px-4 sm:px-8 text-center">
         <div className="max-w-4xl mx-auto space-y-4">
-          <span className="text-xs font-bold text-[#738F70] uppercase tracking-wider bg-[#F2F6F2] border border-[#C4D5C2] px-3 py-1 rounded-full">
+          <span className="text-xs font-bold text-[#EE0979] uppercase tracking-wider bg-[#FFF8FA] border border-[#F1D5E4] px-3 py-1 rounded-full">
             Knowledge Base & Learning Center
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -106,7 +106,7 @@ export const PortalResources: React.FC = () => {
             <div key={g.title} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs hover:shadow-md transition flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#F2F6F2] text-[#738F70] border border-blue-100 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-[#FFF8FA] text-[#EE0979] border border-blue-100 flex items-center justify-center">
                     <g.icon className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 px-2 py-0.5 rounded">
@@ -114,7 +114,7 @@ export const PortalResources: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="text-[11px] font-bold text-[#738F70] uppercase tracking-wider">{g.category}</div>
+                <div className="text-[11px] font-bold text-[#EE0979] uppercase tracking-wider">{g.category}</div>
                 <h3 className="font-bold text-slate-900 text-base mt-1 leading-snug">{g.title}</h3>
                 <p className="text-xs text-slate-600 mt-2 leading-relaxed">{g.desc}</p>
               </div>
@@ -122,7 +122,7 @@ export const PortalResources: React.FC = () => {
               <div className="mt-6 pt-4 border-t border-slate-100">
                 <button
                   onClick={() => setIsPortalSignInOpen(true)}
-                  className="w-full py-2 bg-slate-50 hover:bg-[#F2F6F2] hover:text-[#738F70] text-slate-700 font-bold text-xs rounded-xl border border-slate-200 transition flex items-center justify-center gap-1.5"
+                  className="w-full py-2 bg-slate-50 hover:bg-[#FFF8FA] hover:text-[#EE0979] text-slate-700 font-bold text-xs rounded-xl border border-slate-200 transition flex items-center justify-center gap-1.5"
                 >
                   <span>Read Article</span>
                   <ArrowRight className="w-3.5 h-3.5" />

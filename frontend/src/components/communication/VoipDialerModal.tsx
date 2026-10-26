@@ -58,12 +58,12 @@ export const VoipDialerModal: React.FC = () => {
         {/* Softphone Top Header */}
         <div className="bg-slate-900 text-white p-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white shadow-xs">
+            <div className="w-8 h-8 rounded-lg bg-[#EE0979] flex items-center justify-center text-white shadow-xs">
               <PhoneCall className="w-4 h-4" />
             </div>
             <div>
               <h3 className="font-bold text-sm text-white">VoIP Telephony Softphone</h3>
-              <p className="text-[10px] text-emerald-400 font-mono">WebRTC PBX • Online & Ready</p>
+              <p className="text-[10px] text-rose-500 font-mono">WebRTC PBX • Online & Ready</p>
             </div>
           </div>
           <button
@@ -77,12 +77,12 @@ export const VoipDialerModal: React.FC = () => {
         {/* ACTIVE CALL SCREEN */}
         {voipCall.active ? (
           <div className="p-6 text-center space-y-5 bg-gradient-to-b from-slate-900 to-slate-800 text-white">
-            <div className="w-20 h-20 rounded-full bg-slate-700/80 border-2 border-emerald-400 mx-auto flex items-center justify-center shadow-lg relative">
+            <div className="w-20 h-20 rounded-full bg-slate-700/80 border-2 border-rose-500 mx-auto flex items-center justify-center shadow-lg relative">
               <User className="w-10 h-10 text-slate-200" />
               {voipCall.status === 'connected' && (
                 <span className="absolute -top-1 -right-1 flex h-4 w-4">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-pink-600"></span>
                 </span>
               )}
             </div>
@@ -90,11 +90,11 @@ export const VoipDialerModal: React.FC = () => {
             <div>
               <h4 className="font-bold text-lg text-white">{voipCall.name || 'Direct Call'}</h4>
               <p className="font-mono text-sm text-slate-300 mt-0.5">{voipCall.number}</p>
-              <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-700/60 text-emerald-300">
+              <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-700/60 text-pink-400">
                 {voipCall.status === 'calling' && <span className="animate-pulse">Ringing...</span>}
                 {voipCall.status === 'connected' && (
                   <>
-                    <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span className="w-2 h-2 rounded-full bg-rose-500"></span>
                     <span className="font-mono">{formatDuration(voipCall.duration)}</span>
                   </>
                 )}
@@ -149,7 +149,7 @@ export const VoipDialerModal: React.FC = () => {
                 className="w-full bg-transparent text-xl font-mono font-bold text-slate-900 tracking-wide text-center focus:outline-hidden"
               />
               {callerName && (
-                <p className="text-center text-xs text-[#738F70] font-semibold mt-1">{callerName}</p>
+                <p className="text-center text-xs text-[#EE0979] font-semibold mt-1">{callerName}</p>
               )}
             </div>
 
@@ -197,7 +197,7 @@ export const VoipDialerModal: React.FC = () => {
                   const num = inputNumber || '+91 98201 12345';
                   startVoipCall(num, callerName || 'Quick Dial Prospect');
                 }}
-                className="flex-1 h-12 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition"
+                className="flex-1 h-12 rounded-xl bg-[#EE0979] hover:bg-pink-600 active:scale-95 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition"
               >
                 <Phone className="w-4 h-4" />
                 <span>Call Now</span>
@@ -225,7 +225,7 @@ export const VoipDialerModal: React.FC = () => {
                       </p>
                       <p className="text-[10px] text-slate-400 font-mono">{lead.phone}</p>
                     </div>
-                    <span className="text-[10px] bg-[#F2F6F2] text-[#5F7A5D] px-1.5 py-0.5 rounded font-medium">
+                    <span className="text-[10px] bg-[#FFF8FA] text-[#EE0979] px-1.5 py-0.5 rounded font-medium">
                       Select
                     </span>
                   </div>
@@ -238,7 +238,7 @@ export const VoipDialerModal: React.FC = () => {
         {/* Footer */}
         <div className="bg-slate-50 px-4 py-2 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-500">
           <span>VoIP Gateway: <strong>Twilio/Asterisk</strong></span>
-          <span className="text-emerald-600 font-semibold">HD Voice (Opus)</span>
+          <span className="text-[#EE0979] font-semibold">HD Voice (Opus)</span>
         </div>
       </div>
     </div>

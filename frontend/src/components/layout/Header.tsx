@@ -200,9 +200,9 @@ export const Header: React.FC = () => {
                     setIsQuickAddOpen(false);
                     setIsCreateDealOpen(true);
                   }}
-                  className="w-full px-3 py-2 text-left flex items-center gap-2 hover:bg-[#F2F6F2] hover:text-[#738F70] transition"
+                  className="w-full px-3 py-2 text-left flex items-center gap-2 hover:bg-[#FFF8FA] hover:text-[#EE0979] transition"
                 >
-                  <Briefcase className="w-4 h-4 text-[#738F70]" />
+                  <Briefcase className="w-4 h-4 text-[#EE0979]" />
                   <span className="font-medium">New Deal</span>
                 </button>
                 <button
@@ -210,9 +210,9 @@ export const Header: React.FC = () => {
                     setIsQuickAddOpen(false);
                     setIsCreateLeadOpen(true);
                   }}
-                  className="w-full px-3 py-2 text-left flex items-center gap-2 hover:bg-emerald-50 hover:text-emerald-700 transition"
+                  className="w-full px-3 py-2 text-left flex items-center gap-2 hover:bg-pink-50 hover:text-[#D8086C] transition"
                 >
-                  <Users className="w-4 h-4 text-emerald-600" />
+                  <Users className="w-4 h-4 text-[#EE0979]" />
                   <span className="font-medium">New Lead</span>
                 </button>
                 <button
@@ -220,9 +220,9 @@ export const Header: React.FC = () => {
                     setIsQuickAddOpen(false);
                     setIsCreateContactOpen(true);
                   }}
-                  className="w-full px-3 py-2 text-left flex items-center gap-2 hover:bg-teal-50 hover:text-teal-700 transition"
+                  className="w-full px-3 py-2 text-left flex items-center gap-2 hover:bg-pink-50 hover:text-[#D8086C] transition"
                 >
-                  <UserCheck className="w-4 h-4 text-teal-600" />
+                  <UserCheck className="w-4 h-4 text-[#EE0979]" />
                   <span className="font-medium">New Contact</span>
                 </button>
                 <button
@@ -230,9 +230,9 @@ export const Header: React.FC = () => {
                     setIsQuickAddOpen(false);
                     setIsCreateAccountOpen(true);
                   }}
-                  className="w-full px-3 py-2 text-left flex items-center gap-2 hover:bg-[#E5EFE4] hover:text-[#153B2E] transition"
+                  className="w-full px-3 py-2 text-left flex items-center gap-2 hover:bg-[#FFF1F7] hover:text-[#0F172A] transition"
                 >
-                  <Building className="w-4 h-4 text-[#3F7657]" />
+                  <Building className="w-4 h-4 text-[#EE0979]" />
                   <span className="font-medium">New Account</span>
                 </button>
                 <button
@@ -290,13 +290,13 @@ export const Header: React.FC = () => {
               >
                 <div className="px-3 py-1.5 flex items-center justify-between border-b border-slate-100">
                   <span className="font-bold text-slate-800">Reminders & Alerts</span>
-                  <span className="text-[11px] text-[#738F70] cursor-pointer font-medium hover:underline">
+                  <span className="text-[11px] text-[#EE0979] cursor-pointer font-medium hover:underline">
                     Mark all read
                   </span>
                 </div>
                 <div className="max-h-72 overflow-y-auto divide-y divide-slate-100">
                   <div className="p-3 hover:bg-slate-50 transition flex items-start gap-2.5">
-                    <div className="w-7 h-7 rounded-full bg-[#E2EDE0] text-[#738F70] flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-7 h-7 rounded-full bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0 mt-0.5">
                       <Clock className="w-3.5 h-3.5" />
                     </div>
                     <div>
@@ -309,7 +309,7 @@ export const Header: React.FC = () => {
                   </div>
                   {unreadEmailsCount > 0 && (
                     <div className="p-3 hover:bg-slate-50 transition flex items-start gap-2.5">
-                      <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="w-7 h-7 rounded-full bg-pink-100 text-[#EE0979] flex items-center justify-center shrink-0 mt-0.5">
                         <CheckCircle className="w-3.5 h-3.5" />
                       </div>
                       <div>
@@ -329,20 +329,20 @@ export const Header: React.FC = () => {
             onClick={() => setIsVoipModalOpen(true)}
             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition shadow-xs ${
               isVoipActive
-                ? 'bg-emerald-600 text-white border-emerald-500 animate-pulse'
-                : 'bg-slate-100 hover:bg-slate-200 text-emerald-700 border-slate-200'
+                ? 'bg-[#EE0979] text-white border-pink-600 animate-pulse'
+                : 'bg-slate-100 hover:bg-slate-200 text-[#D8086C] border-slate-200'
             }`}
             title="Open In-Browser VoIP Softphone Dialer"
           >
             <Phone className="w-3.5 h-3.5" />
             <span className="hidden xl:inline">{isVoipActive ? 'Calling...' : 'VoIP Call'}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-pink-600 animate-ping"></span>
           </button>
 
           {/* WhatsApp / SMS Messenger */}
           <button
             onClick={() => setIsWhatsAppModalOpen(true)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-emerald-700 border border-slate-200 text-xs font-semibold transition shadow-xs"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-[#D8086C] border border-slate-200 text-xs font-semibold transition shadow-xs"
             title="Open WhatsApp Business & SMS Messenger"
           >
             <MessageSquare className="w-3.5 h-3.5" />
@@ -408,10 +408,10 @@ export const Header: React.FC = () => {
               <div
                 className={`w-6 h-6 rounded-full text-white font-bold text-xs flex items-center justify-center shadow-xs ${
                   currentUser?.role === 'admin'
-                    ? 'bg-[#16845B]'
+                    ? 'bg-[#EE0979]'
                     : currentUser?.role === 'manager'
                     ? 'bg-purple-600'
-                    : 'bg-emerald-600'
+                    : 'bg-[#EE0979]'
                 }`}
               >
                 {currentUser?.avatar || 'A'}
@@ -435,10 +435,10 @@ export const Header: React.FC = () => {
                     <span
                       className={`px-2 py-0.5 font-bold text-[10px] rounded uppercase ${
                         currentUser?.role === 'admin'
-                          ? 'bg-[#E2EDE0] text-[#5F7A5D]'
+                          ? 'bg-[#FFF1F7] text-[#EE0979]'
                           : currentUser?.role === 'manager'
                           ? 'bg-purple-100 text-purple-700'
-                          : 'bg-emerald-100 text-emerald-700'
+                          : 'bg-pink-100 text-[#D8086C]'
                       }`}
                     >
                       {currentUser?.role === 'admin'
@@ -455,12 +455,12 @@ export const Header: React.FC = () => {
                       setIsUserMenuOpen(false);
                       crm?.setIsSubscriptionModalOpen?.(true);
                     }}
-                    className="w-full px-3 py-2 text-left hover:bg-[#F2F6F2] text-[#153B2E] flex items-center gap-2 font-bold"
+                    className="w-full px-3 py-2 text-left hover:bg-[#FFF8FA] text-[#0F172A] flex items-center gap-2 font-bold"
                   >
-                    <CreditCard className="w-4 h-4 text-[#3F7657]" />
+                    <CreditCard className="w-4 h-4 text-[#EE0979]" />
                     <div className="flex-1 flex items-center justify-between">
                       <span>Subscription & Razorpay</span>
-                      <span className="text-[10px] bg-[#E5EFE4] text-[#153B2E] px-1.5 py-0.5 rounded font-extrabold uppercase">
+                      <span className="text-[10px] bg-[#FFF1F7] text-[#0F172A] px-1.5 py-0.5 rounded font-extrabold uppercase">
                         {crm?.subscription?.planName || 'Active'}
                       </span>
                     </div>

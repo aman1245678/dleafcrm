@@ -369,12 +369,12 @@ export const PortalSignInModal: React.FC = () => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 overflow-y-auto bg-slate-950/70 backdrop-blur-xs animate-in fade-in duration-200">
       {/* Modal Container */}
-      <div className="relative w-full max-w-4xl bg-white border border-[#D8E3D6] rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row my-auto">
+      <div className="relative w-full max-w-4xl bg-white border border-[#F1D5E4] rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row my-auto">
         
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-[#F5F8F3] hover:bg-[#E5EFE4] text-[#47574B] hover:text-[#17251D] flex items-center justify-center transition border border-[#D8E3D6] cursor-pointer shadow-xs"
+          className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-[#FFF8FA] hover:bg-[#FFF1F7] text-[#64748B] hover:text-[#0F172A] flex items-center justify-center transition border border-[#F1D5E4] cursor-pointer shadow-xs"
           title="Close dialog"
         >
           <X className="w-4 h-4" />
@@ -432,13 +432,13 @@ export const PortalSignInModal: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-3 rounded-2xl bg-[#123327] border border-[#1D4C3C]">
-                <div className="w-8 h-8 rounded-xl bg-[#E5EFE4] text-[#3F7657] flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3 p-3 rounded-2xl bg-[#0F172A] border border-[#1E293B]">
+                <div className="w-8 h-8 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0">
                   <Zap className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="text-xs font-bold text-white">Mobile Optional</div>
-                  <div className="text-[11px] text-[#C4D5C2] mt-0.5">
+                  <div className="text-[11px] text-[#F1D5E4] mt-0.5">
                     Phone number is fully optional during sign up. Work email is all you need.
                   </div>
                 </div>
@@ -447,9 +447,9 @@ export const PortalSignInModal: React.FC = () => {
           </div>
 
           {/* Bottom Security Footer Badge */}
-          <div className="pt-6 border-t border-[#1D4C3C] flex items-center justify-between text-[11px] text-[#C4D5C2]">
-            <span className="flex items-center gap-1.5 text-[#16845B] font-semibold">
-              <span className="w-2 h-2 rounded-full bg-[#16845B] animate-pulse" />
+          <div className="pt-6 border-t border-[#1E293B] flex items-center justify-between text-[11px] text-[#F1D5E4]">
+            <span className="flex items-center gap-1.5 text-[#EE0979] font-semibold">
+              <span className="w-2 h-2 rounded-full bg-[#EE0979] animate-pulse" />
               Auth Gateway Active
             </span>
             <span>Version 4.2 &bull; TLS 1.3</span>
@@ -459,7 +459,7 @@ export const PortalSignInModal: React.FC = () => {
         {/* -------------------------------------------------------------
             RIGHT PANEL: Crisp Professional Clean Form (Card White)
         -------------------------------------------------------------- */}
-        <div className="flex-1 p-6 sm:p-8 flex flex-col justify-between bg-white text-[#17251D]">
+        <div className="flex-1 p-6 sm:p-8 flex flex-col justify-between bg-white text-[#0F172A]">
           <div>
             {/* Top Switcher (Only visible in 'credentials' step) */}
             {step === 'credentials' && (
@@ -512,8 +512,8 @@ export const PortalSignInModal: React.FC = () => {
 
             {/* Success Message Alert */}
             {successMessage && (
-              <div className="mb-5 p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-start gap-2.5 animate-in fade-in shadow-xs">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              <div className="mb-5 p-3.5 rounded-2xl bg-pink-50 border border-rose-200 text-[#BE075E] text-xs flex items-start gap-2.5 animate-in fade-in shadow-xs">
+                <CheckCircle2 className="w-4 h-4 text-[#EE0979] shrink-0 mt-0.5" />
                 <div className="leading-relaxed flex-1">{successMessage}</div>
               </div>
             )}
@@ -524,10 +524,10 @@ export const PortalSignInModal: React.FC = () => {
             {step === 'credentials' && activeTab === 'signin' && (
               <form onSubmit={handleSignInSubmit} className="space-y-4">
                 <div>
-                  <h2 className="text-xl font-black text-[#17251D] tracking-tight">
+                  <h2 className="text-xl font-black text-[#0F172A] tracking-tight">
                     Sign in to your CRM Account
                   </h2>
-                  <p className="text-xs text-[#47574B] mt-1">
+                  <p className="text-xs text-[#64748B] mt-1">
                     Enter your work email and password. An Email OTP will be sent to complete login.
                   </p>
                 </div>
@@ -535,11 +535,11 @@ export const PortalSignInModal: React.FC = () => {
                 <div className="space-y-3 pt-2">
                   {/* Email Input */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#17251D] mb-1.5">
+                    <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">
                       Corporate Work Email
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#738F70]">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#EE0979]">
                         <Mail className="w-4 h-4" />
                       </div>
                       <input
@@ -548,18 +548,18 @@ export const PortalSignInModal: React.FC = () => {
                         value={signInEmail}
                         onChange={(e) => setSignInEmail(e.target.value)}
                         placeholder="you@company.com"
-                        className="w-full pl-10 pr-4 py-2.5 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-[#17251D] placeholder:text-slate-400 focus:outline-hidden focus:border-[#3F7657] focus:ring-2 focus:ring-[#3F7657]/20 transition shadow-inner"
+                        className="w-full pl-10 pr-4 py-2.5 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-[#0F172A] placeholder:text-slate-400 focus:outline-hidden focus:border-[#EE0979] focus:ring-2 focus:ring-[#EE0979]/20 transition shadow-inner"
                       />
                     </div>
                   </div>
 
                   {/* Password Input */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#17251D] mb-1.5">
+                    <label className="block text-xs font-semibold text-[#0F172A] mb-1.5">
                       Password
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#738F70]">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#EE0979]">
                         <Lock className="w-4 h-4" />
                       </div>
                       <input
@@ -568,12 +568,12 @@ export const PortalSignInModal: React.FC = () => {
                         value={signInPassword}
                         onChange={(e) => setSignInPassword(e.target.value)}
                         placeholder="Enter your account password"
-                        className="w-full pl-10 pr-10 py-2.5 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-[#17251D] placeholder:text-slate-400 focus:outline-hidden focus:border-[#3F7657] focus:ring-2 focus:ring-[#3F7657]/20 transition shadow-inner"
+                        className="w-full pl-10 pr-10 py-2.5 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-[#0F172A] placeholder:text-slate-400 focus:outline-hidden focus:border-[#EE0979] focus:ring-2 focus:ring-[#EE0979]/20 transition shadow-inner"
                       />
                       <button
                         type="button"
                         onClick={() => setShowSignInPassword(!showSignInPassword)}
-                        className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-[#738F70] hover:text-[#17251D] transition cursor-pointer"
+                        className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-[#EE0979] hover:text-[#0F172A] transition cursor-pointer"
                       >
                         {showSignInPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
@@ -582,8 +582,8 @@ export const PortalSignInModal: React.FC = () => {
                 </div>
 
                 {/* Email OTP Notice */}
-                <div className="p-3 bg-[#E5EFE4] border border-[#D8E3D6] rounded-xl text-[11px] text-[#153B2E] flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-[#3F7657] shrink-0" />
+                <div className="p-3 bg-[#FFF1F7] border border-[#F1D5E4] rounded-xl text-[11px] text-[#0F172A] flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-[#EE0979] shrink-0" />
                   <span>
                     Email OTP verification is <strong>strictly mandatory</strong>. You will receive a 6-digit code on your email to sign in.
                   </span>
@@ -593,7 +593,7 @@ export const PortalSignInModal: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3 bg-[#3F7657] hover:bg-[#336147] active:scale-[0.99] text-white font-bold text-xs rounded-xl shadow-md shadow-[#3F7657]/25 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 mt-4"
+                  className="w-full py-3 bg-[#EE0979] hover:bg-[#D8086C] active:scale-[0.99] text-white font-bold text-xs rounded-xl shadow-md shadow-[#EE0979]/25 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 mt-4"
                 >
                   {isLoading ? (
                     <>
@@ -617,10 +617,10 @@ export const PortalSignInModal: React.FC = () => {
             {step === 'credentials' && activeTab === 'signup' && (
               <form onSubmit={handleSignUpSubmit} className="space-y-3.5">
                 <div>
-                  <h2 className="text-xl font-black text-[#17251D] tracking-tight">
+                  <h2 className="text-xl font-black text-[#0F172A] tracking-tight">
                     Create your Enterprise CRM Account
                   </h2>
-                  <p className="text-xs text-[#47574B] mt-0.5">
+                  <p className="text-xs text-[#64748B] mt-0.5">
                     Register with work email. Verification OTP will be sent to activate your workspace.
                   </p>
                 </div>
@@ -628,11 +628,11 @@ export const PortalSignInModal: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#17251D] mb-1">
+                    <label className="block text-xs font-semibold text-[#0F172A] mb-1">
                       Full Name
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#738F70]">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#EE0979]">
                         <User className="w-3.5 h-3.5" />
                       </div>
                       <input
@@ -641,18 +641,18 @@ export const PortalSignInModal: React.FC = () => {
                         value={signUpName}
                         onChange={(e) => setSignUpName(e.target.value)}
                         placeholder="John Doe"
-                        className="w-full pl-9 pr-3 py-2 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-[#17251D] placeholder:text-slate-400 focus:outline-hidden focus:border-[#3F7657] focus:ring-2 focus:ring-[#3F7657]/20 transition shadow-inner"
+                        className="w-full pl-9 pr-3 py-2 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-[#0F172A] placeholder:text-slate-400 focus:outline-hidden focus:border-[#EE0979] focus:ring-2 focus:ring-[#EE0979]/20 transition shadow-inner"
                       />
                     </div>
                   </div>
 
                   {/* Company Name */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#17251D] mb-1">
+                    <label className="block text-xs font-semibold text-[#0F172A] mb-1">
                       Company Name
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#738F70]">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#EE0979]">
                         <Building2 className="w-3.5 h-3.5" />
                       </div>
                       <input
@@ -660,18 +660,18 @@ export const PortalSignInModal: React.FC = () => {
                         value={signUpCompany}
                         onChange={(e) => setSignUpCompany(e.target.value)}
                         placeholder="Acme Corp"
-                        className="w-full pl-9 pr-3 py-2 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-[#17251D] placeholder:text-slate-400 focus:outline-hidden focus:border-[#3F7657] focus:ring-2 focus:ring-[#3F7657]/20 transition shadow-inner"
+                        className="w-full pl-9 pr-3 py-2 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-[#0F172A] placeholder:text-slate-400 focus:outline-hidden focus:border-[#EE0979] focus:ring-2 focus:ring-[#EE0979]/20 transition shadow-inner"
                       />
                     </div>
                   </div>
 
                   {/* Work Email */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#17251D] mb-1">
+                    <label className="block text-xs font-semibold text-[#0F172A] mb-1">
                       Corporate Work Email
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#738F70]">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#EE0979]">
                         <Mail className="w-3.5 h-3.5" />
                       </div>
                       <input
@@ -680,18 +680,18 @@ export const PortalSignInModal: React.FC = () => {
                         value={signUpEmail}
                         onChange={(e) => setSignUpEmail(e.target.value)}
                         placeholder="john@acmecorp.com"
-                        className="w-full pl-9 pr-3 py-2 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-[#17251D] placeholder:text-slate-400 focus:outline-hidden focus:border-[#3F7657] focus:ring-2 focus:ring-[#3F7657]/20 transition shadow-inner"
+                        className="w-full pl-9 pr-3 py-2 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-[#0F172A] placeholder:text-slate-400 focus:outline-hidden focus:border-[#EE0979] focus:ring-2 focus:ring-[#EE0979]/20 transition shadow-inner"
                       />
                     </div>
                   </div>
 
                   {/* Mobile Number - EXPLICITLY OPTIONAL AS REQUESTED */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#17251D] mb-1">
-                      Mobile Number <span className="text-[#738F70] font-normal text-[10.5px]">(Optional)</span>
+                    <label className="block text-xs font-semibold text-[#0F172A] mb-1">
+                      Mobile Number <span className="text-[#EE0979] font-normal text-[10.5px]">(Optional)</span>
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#738F70]">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#EE0979]">
                         <Phone className="w-3.5 h-3.5" />
                       </div>
                       <input
@@ -699,18 +699,18 @@ export const PortalSignInModal: React.FC = () => {
                         value={signUpPhone}
                         onChange={(e) => setSignUpPhone(e.target.value)}
                         placeholder="+91 98765 43210 (Optional)"
-                        className="w-full pl-9 pr-3 py-2 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-[#17251D] placeholder:text-slate-400 focus:outline-hidden focus:border-[#3F7657] focus:ring-2 focus:ring-[#3F7657]/20 transition shadow-inner"
+                        className="w-full pl-9 pr-3 py-2 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-[#0F172A] placeholder:text-slate-400 focus:outline-hidden focus:border-[#EE0979] focus:ring-2 focus:ring-[#EE0979]/20 transition shadow-inner"
                       />
                     </div>
                   </div>
 
                   {/* Password */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#17251D] mb-1">
+                    <label className="block text-xs font-semibold text-[#0F172A] mb-1">
                       Create Password
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#738F70]">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#EE0979]">
                         <Lock className="w-3.5 h-3.5" />
                       </div>
                       <input
@@ -720,12 +720,12 @@ export const PortalSignInModal: React.FC = () => {
                         value={signUpPassword}
                         onChange={(e) => setSignUpPassword(e.target.value)}
                         placeholder="Min 5 characters"
-                        className="w-full pl-9 pr-8 py-2 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-[#17251D] placeholder:text-slate-400 focus:outline-hidden focus:border-[#3F7657] focus:ring-2 focus:ring-[#3F7657]/20 transition shadow-inner"
+                        className="w-full pl-9 pr-8 py-2 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-[#0F172A] placeholder:text-slate-400 focus:outline-hidden focus:border-[#EE0979] focus:ring-2 focus:ring-[#EE0979]/20 transition shadow-inner"
                       />
                       <button
                         type="button"
                         onClick={() => setShowSignUpPassword(!showSignUpPassword)}
-                        className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-[#738F70] hover:text-[#17251D] transition"
+                        className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-[#EE0979] hover:text-[#0F172A] transition"
                       >
                         {showSignUpPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                       </button>
@@ -734,11 +734,11 @@ export const PortalSignInModal: React.FC = () => {
 
                   {/* Confirm Password */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#17251D] mb-1">
+                    <label className="block text-xs font-semibold text-[#0F172A] mb-1">
                       Confirm Password
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#738F70]">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#EE0979]">
                         <Lock className="w-3.5 h-3.5" />
                       </div>
                       <input
@@ -747,7 +747,7 @@ export const PortalSignInModal: React.FC = () => {
                         value={signUpConfirmPassword}
                         onChange={(e) => setSignUpConfirmPassword(e.target.value)}
                         placeholder="Re-type password"
-                        className="w-full pl-9 pr-3 py-2 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-[#17251D] placeholder:text-slate-400 focus:outline-hidden focus:border-[#3F7657] focus:ring-2 focus:ring-[#3F7657]/20 transition shadow-inner"
+                        className="w-full pl-9 pr-3 py-2 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-[#0F172A] placeholder:text-slate-400 focus:outline-hidden focus:border-[#EE0979] focus:ring-2 focus:ring-[#EE0979]/20 transition shadow-inner"
                       />
                     </div>
                   </div>
@@ -760,9 +760,9 @@ export const PortalSignInModal: React.FC = () => {
                     id="terms-check"
                     checked={agreeTerms}
                     onChange={(e) => setAgreeTerms(e.target.checked)}
-                    className="w-4 h-4 rounded text-[#3F7657] bg-[#F5F8F3] border-[#D8E3D6] focus:ring-0 cursor-pointer"
+                    className="w-4 h-4 rounded text-[#EE0979] bg-[#FFF8FA] border-[#F1D5E4] focus:ring-0 cursor-pointer"
                   />
-                  <label htmlFor="terms-check" className="text-[11px] text-[#47574B] cursor-pointer select-none">
+                  <label htmlFor="terms-check" className="text-[11px] text-[#64748B] cursor-pointer select-none">
                     I agree to DleafCRM's Enterprise Terms of Service and Privacy Policy.
                   </label>
                 </div>
@@ -771,7 +771,7 @@ export const PortalSignInModal: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3 bg-[#3F7657] hover:bg-[#336147] active:scale-[0.99] text-white font-bold text-xs rounded-xl shadow-md shadow-[#3F7657]/25 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full py-3 bg-[#EE0979] hover:bg-[#D8086C] active:scale-[0.99] text-white font-bold text-xs rounded-xl shadow-md shadow-[#EE0979]/25 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   {isLoading ? (
                     <>
@@ -797,7 +797,7 @@ export const PortalSignInModal: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setStep('credentials')}
-                  className="inline-flex items-center gap-1 text-xs text-[#47574B] hover:text-[#17251D] font-medium transition cursor-pointer mb-2"
+                  className="inline-flex items-center gap-1 text-xs text-[#64748B] hover:text-[#0F172A] font-medium transition cursor-pointer mb-2"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   <span>Back to {activeTab === 'signin' ? 'Sign In' : 'Sign Up'}</span>
@@ -868,17 +868,17 @@ export const PortalSignInModal: React.FC = () => {
                   </button>
 
                   {/* Resend OTP Section */}
-                  <div className="text-center text-xs text-[#47574B]">
+                  <div className="text-center text-xs text-[#64748B]">
                     {resendCooldown > 0 ? (
                       <span>
-                        Resend code in <strong className="text-[#17251D]">{resendCooldown}s</strong>
+                        Resend code in <strong className="text-[#0F172A]">{resendCooldown}s</strong>
                       </span>
                     ) : (
                       <button
                         type="button"
                         onClick={handleResendOtp}
                         disabled={isLoading}
-                        className="text-[#3F7657] hover:text-[#153B2E] font-semibold transition cursor-pointer flex items-center gap-1 mx-auto"
+                        className="text-[#EE0979] hover:text-[#0F172A] font-semibold transition cursor-pointer flex items-center gap-1 mx-auto"
                       >
                         <RefreshCw className="w-3.5 h-3.5" />
                         <span>Didn't receive code? Resend Code</span>
@@ -891,9 +891,9 @@ export const PortalSignInModal: React.FC = () => {
           </div>
 
           {/* Footer Security Note */}
-          <div className="pt-6 mt-6 border-t border-[#D8E3D6] flex items-center justify-between text-[11px] text-[#47574B]">
+          <div className="pt-6 mt-6 border-t border-[#F1D5E4] flex items-center justify-between text-[11px] text-[#64748B]">
             <div className="flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-[#16845B]" />
+              <Shield className="w-3.5 h-3.5 text-[#EE0979]" />
               <span>Encrypted via Enterprise Cloud Delivery</span>
             </div>
             <span>Dleaf Cloud</span>

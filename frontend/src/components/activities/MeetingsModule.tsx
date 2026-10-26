@@ -131,8 +131,8 @@ export const MeetingsModule: React.FC = () => {
             onClick={() => setIsFilterPanelOpen(!isFilterPanelOpen)}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs border transition cursor-pointer ${
               isFilterPanelOpen
-                ? 'bg-[#E5EFE4] border-[#3F7657] text-[#153B2E] font-medium'
-                : 'bg-white border-[#D8E3D6] text-[#47574B] hover:bg-[#F5F8F3]'
+                ? 'bg-[#FFF1F7] border-[#EE0979] text-[#0F172A] font-medium'
+                : 'bg-white border-[#F1D5E4] text-[#64748B] hover:bg-[#FFF8FA]'
             }`}
           >
             <Filter className="w-3 h-3" />
@@ -161,13 +161,13 @@ export const MeetingsModule: React.FC = () => {
           <div className="inline-flex rounded shadow-xs">
             <button
               onClick={() => setShowCreateMeetingModal(true)}
-              className="bg-[#153B2E] hover:bg-[#3F7657] text-white px-3 py-1.5 rounded-l text-xs font-semibold flex items-center gap-1 cursor-pointer"
+              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-3 py-1.5 rounded-l text-xs font-semibold flex items-center gap-1 cursor-pointer"
             >
               <span>Create Meeting</span>
             </button>
             <button
               onClick={() => setShowCreateMeetingModal(true)}
-              className="bg-[#153B2E] hover:bg-[#3F7657] text-white px-1.5 py-1.5 rounded-r border-l border-[#265342] cursor-pointer"
+              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-1.5 py-1.5 rounded-r border-l border-[#265342] cursor-pointer"
             >
               <ChevronDown className="w-3 h-3" />
             </button>

@@ -40,7 +40,7 @@ export const DataAdminModule: React.FC = () => {
       <div className="bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between shrink-0 shadow-xs">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <Database className="w-5 h-5 text-[#3F7657]" />
+            <Database className="w-5 h-5 text-[#EE0979]" />
             <h1 className="font-bold text-base text-slate-800">Data Administration & Governance</h1>
           </div>
 
@@ -48,7 +48,7 @@ export const DataAdminModule: React.FC = () => {
             <button
               onClick={() => setActiveTab('audit')}
               className={`px-3 py-1 rounded-md transition ${
-                activeTab === 'audit' ? 'bg-[#3F7657] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
+                activeTab === 'audit' ? 'bg-[#EE0979] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Audit Logs ({auditLogs.length})
@@ -56,7 +56,7 @@ export const DataAdminModule: React.FC = () => {
             <button
               onClick={() => setActiveTab('import')}
               className={`px-3 py-1 rounded-md transition ${
-                activeTab === 'import' ? 'bg-[#3F7657] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
+                activeTab === 'import' ? 'bg-[#EE0979] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Import CSV Wizard
@@ -64,7 +64,7 @@ export const DataAdminModule: React.FC = () => {
             <button
               onClick={() => setActiveTab('backup')}
               className={`px-3 py-1 rounded-md transition ${
-                activeTab === 'backup' ? 'bg-[#3F7657] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
+                activeTab === 'backup' ? 'bg-[#EE0979] text-white shadow-2xs font-bold' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Backups & Disaster Recovery
@@ -120,15 +120,15 @@ export const DataAdminModule: React.FC = () => {
               Upload existing customer lists from CSV, XLSX, or Salesforce exports. Automatic field mapping connects First Name, Email, Company, Phone, and Revenue fields.
             </p>
 
-            <div className="border-2 border-dashed border-slate-300 rounded-xl p-8 text-center space-y-2 hover:border-[#3F7657] transition">
+            <div className="border-2 border-dashed border-slate-300 rounded-xl p-8 text-center space-y-2 hover:border-[#EE0979] transition">
               <Upload className="w-8 h-8 text-slate-400 mx-auto" />
               <p className="font-semibold text-slate-700">Drag & Drop CSV file here, or browse</p>
               <p className="text-[11px] text-slate-400">Supports UTF-8 CSV, Tab-Delimited, and Excel workbooks</p>
             </div>
 
             {importStatus && (
-              <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <div className="p-3 bg-pink-50 border border-rose-200 text-[#BE075E] rounded-lg flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#EE0979] shrink-0" />
                 <span>{importStatus}</span>
               </div>
             )}
@@ -136,7 +136,7 @@ export const DataAdminModule: React.FC = () => {
             <div className="flex justify-end gap-2 pt-2">
               <button
                 onClick={simulateCSVImport}
-                className="px-4 py-2 bg-[#3F7657] hover:bg-[#336147] text-white rounded-lg font-semibold text-xs transition cursor-pointer active:scale-95"
+                className="px-4 py-2 bg-[#EE0979] hover:bg-[#D8086C] text-white rounded-lg font-semibold text-xs transition cursor-pointer active:scale-95"
               >
                 Run Sample CSV Import
               </button>
@@ -155,7 +155,7 @@ export const DataAdminModule: React.FC = () => {
             <div className="p-4 bg-slate-50 rounded-lg space-y-2">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-slate-800">Primary PostgreSQL Instance</span>
-                <span className="text-emerald-700 font-bold">Healthy (0.8ms latency)</span>
+                <span className="text-[#D8086C] font-bold">Healthy (0.8ms latency)</span>
               </div>
               <div className="text-[11px] text-slate-500">
                 Total Records: {deals.length + leads.length + contacts.length + accounts.length} items

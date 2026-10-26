@@ -59,7 +59,7 @@ export const PortalFreeTools: React.FC = () => {
     const sigHtml = `
       <div style="font-family: Arial, sans-serif; font-size: 13px; color: #1e293b; line-height: 1.4;">
         <strong style="font-size: 15px; color: #0f172a;">${sigName}</strong><br>
-        <span style="color: #738F70; font-weight: 600;">${sigTitle}</span> | ${sigCompany}<br>
+        <span style="color: #EE0979; font-weight: 600;">${sigTitle}</span> | ${sigCompany}<br>
         📞 ${sigPhone} | ✉️ ${sigEmail}<br>
         <span style="font-size: 11px; color: #64748b;">Powered by Dleaf CRM Suite</span>
       </div>
@@ -85,7 +85,7 @@ export const PortalFreeTools: React.FC = () => {
       {/* Top Banner */}
       <section className="bg-white border-b border-slate-200 py-14 px-4 sm:px-8 text-center">
         <div className="max-w-4xl mx-auto space-y-4">
-          <span className="text-xs font-bold text-[#738F70] uppercase tracking-wider bg-[#F2F6F2] border border-[#C4D5C2] px-3 py-1 rounded-full">
+          <span className="text-xs font-bold text-[#EE0979] uppercase tracking-wider bg-[#FFF8FA] border border-[#F1D5E4] px-3 py-1 rounded-full">
             100% Free Forever • No Sign-up Required
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -100,7 +100,7 @@ export const PortalFreeTools: React.FC = () => {
             <button
               onClick={() => setActiveTool('roi')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
-                activeTool === 'roi' ? 'bg-[#738F70] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                activeTool === 'roi' ? 'bg-[#EE0979] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               <Calculator className="w-3.5 h-3.5" />
@@ -110,7 +110,7 @@ export const PortalFreeTools: React.FC = () => {
             <button
               onClick={() => setActiveTool('commission')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
-                activeTool === 'commission' ? 'bg-[#738F70] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                activeTool === 'commission' ? 'bg-[#EE0979] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               <TrendingUp className="w-3.5 h-3.5" />
@@ -120,7 +120,7 @@ export const PortalFreeTools: React.FC = () => {
             <button
               onClick={() => setActiveTool('signature')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
-                activeTool === 'signature' ? 'bg-[#738F70] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                activeTool === 'signature' ? 'bg-[#EE0979] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               <Mail className="w-3.5 h-3.5" />
@@ -130,7 +130,7 @@ export const PortalFreeTools: React.FC = () => {
             <button
               onClick={() => setActiveTool('leadScore')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
-                activeTool === 'leadScore' ? 'bg-[#738F70] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                activeTool === 'leadScore' ? 'bg-[#EE0979] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               <Zap className="w-3.5 h-3.5" />
@@ -156,7 +156,7 @@ export const PortalFreeTools: React.FC = () => {
                   <div>
                     <div className="flex justify-between text-xs font-bold text-slate-700 mb-2">
                       <span>Sales Team Size:</span>
-                      <span className="text-[#738F70] font-mono text-sm">{teamSize} Reps</span>
+                      <span className="text-[#EE0979] font-mono text-sm">{teamSize} Reps</span>
                     </div>
                     <input
                       type="range"
@@ -171,7 +171,7 @@ export const PortalFreeTools: React.FC = () => {
                   <div>
                     <div className="flex justify-between text-xs font-bold text-slate-700 mb-2">
                       <span>Current Monthly Closed Deals:</span>
-                      <span className="text-[#738F70] font-mono text-sm">{monthlyDeals} Deals/month</span>
+                      <span className="text-[#EE0979] font-mono text-sm">{monthlyDeals} Deals/month</span>
                     </div>
                     <input
                       type="range"
@@ -186,7 +186,7 @@ export const PortalFreeTools: React.FC = () => {
                   <div>
                     <div className="flex justify-between text-xs font-bold text-slate-700 mb-2">
                       <span>Average Deal Size (INR ₹):</span>
-                      <span className="text-[#738F70] font-mono text-sm">₹{avgDealVal.toLocaleString()}</span>
+                      <span className="text-[#EE0979] font-mono text-sm">₹{avgDealVal.toLocaleString()}</span>
                     </div>
                     <input
                       type="range"
@@ -203,13 +203,13 @@ export const PortalFreeTools: React.FC = () => {
                 {/* ROI Output Card */}
                 <div className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between shadow-lg">
                   <div>
-                    <div className="text-xs text-emerald-400 font-bold uppercase tracking-wider">Projected Revenue Gain</div>
+                    <div className="text-xs text-rose-500 font-bold uppercase tracking-wider">Projected Revenue Gain</div>
                     <div className="text-3xl sm:text-4xl font-extrabold mt-2 text-white">
                       ₹{calculatedAnnualGain.toLocaleString()}
                       <span className="text-xs text-slate-400 font-normal"> / year</span>
                     </div>
                     <div className="text-xs text-blue-200 mt-2">
-                      Estimated 3-Year ROI: <strong className="text-emerald-400 text-sm font-bold">{calculated3YrRoi}%</strong>
+                      Estimated 3-Year ROI: <strong className="text-rose-500 text-sm font-bold">{calculated3YrRoi}%</strong>
                     </div>
 
                     <div className="mt-6 pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-300">
@@ -219,7 +219,7 @@ export const PortalFreeTools: React.FC = () => {
                       </div>
                       <div className="flex justify-between">
                         <span>Monthly Incremental Revenue:</span>
-                        <span className="text-emerald-400 font-bold">₹{calculatedMonthlyGain.toLocaleString()}</span>
+                        <span className="text-rose-500 font-bold">₹{calculatedMonthlyGain.toLocaleString()}</span>
                       </div>
                     </div>
                   </div>
@@ -232,7 +232,7 @@ export const PortalFreeTools: React.FC = () => {
                         setIsPortalSignInOpen(true);
                       }
                     }}
-                    className="mt-6 w-full py-3 bg-[#153B2E] hover:bg-[#0F221B] text-white font-bold text-xs rounded-xl transition cursor-pointer"
+                    className="mt-6 w-full py-3 bg-[#0F172A] hover:bg-[#0F172A] text-white font-bold text-xs rounded-xl transition cursor-pointer"
                   >
                     {isAuthenticated ? 'Open in CRM Workspace' : 'Unlock This Growth with 15-Day Free Trial'}
                   </button>
@@ -285,13 +285,13 @@ export const PortalFreeTools: React.FC = () => {
                 <div className="bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between">
                   <div>
                     <div className="text-xs text-blue-300 font-bold uppercase tracking-wider">Total Commission Payout</div>
-                    <div className="text-3xl font-extrabold mt-2 text-emerald-400">
+                    <div className="text-3xl font-extrabold mt-2 text-rose-500">
                       ₹{commissionEarned.toLocaleString()}
                     </div>
                     <div className="text-xs text-slate-300 mt-2">
                       Quota Attainment: <strong className="text-white text-sm">{attainmentPct}%</strong>
                       {attainmentPct >= 100 && (
-                        <span className="ml-2 bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded">
+                        <span className="ml-2 bg-pink-600/20 text-pink-400 text-[10px] font-bold px-2 py-0.5 rounded">
                           Quota Achieved 🎯
                         </span>
                       )}
@@ -300,7 +300,7 @@ export const PortalFreeTools: React.FC = () => {
 
                   <button
                     onClick={() => setAppMode('workspace')}
-                    className="mt-6 w-full py-2.5 bg-[#738F70] hover:bg-[#738F70] text-white font-bold text-xs rounded-xl transition"
+                    className="mt-6 w-full py-2.5 bg-[#EE0979] hover:bg-[#EE0979] text-white font-bold text-xs rounded-xl transition"
                   >
                     Track Real Quotas in CRM Workspace
                   </button>
@@ -371,7 +371,7 @@ export const PortalFreeTools: React.FC = () => {
                     <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-3">Live Signature Preview</div>
                     <div className="p-4 bg-white rounded-lg border border-slate-200">
                       <div className="text-base font-bold text-slate-900">{sigName}</div>
-                      <div className="text-xs font-semibold text-[#738F70]">{sigTitle}</div>
+                      <div className="text-xs font-semibold text-[#EE0979]">{sigTitle}</div>
                       <div className="text-xs text-slate-600">{sigCompany}</div>
                       <div className="text-xs text-slate-500 mt-2">
                         📞 {sigPhone} &nbsp;|&nbsp; ✉️ {sigEmail}
@@ -384,7 +384,7 @@ export const PortalFreeTools: React.FC = () => {
 
                   <button
                     onClick={handleCopySignature}
-                    className="mt-4 w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
+                    className="mt-4 w-full py-2.5 bg-[#EE0979] hover:bg-[#D8086C] text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
                   >
                     {copiedSig ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                     <span>{copiedSig ? 'HTML Signature Copied!' : 'Copy HTML Signature'}</span>
@@ -448,7 +448,7 @@ export const PortalFreeTools: React.FC = () => {
                   <div>
                     <div className="text-xs text-blue-300 font-bold uppercase tracking-wider">Automated Lead Score</div>
                     <div className="text-4xl font-extrabold mt-2 text-white flex items-baseline gap-2">
-                      <span className={totalLeadScore >= 75 ? 'text-emerald-400' : 'text-blue-400'}>
+                      <span className={totalLeadScore >= 75 ? 'text-rose-500' : 'text-blue-400'}>
                         {totalLeadScore}
                       </span>
                       <span className="text-xs text-slate-400">/ 100</span>
@@ -458,7 +458,7 @@ export const PortalFreeTools: React.FC = () => {
                       <div className="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
                         <div
                           className={`h-2.5 rounded-full transition-all duration-500 ${
-                            totalLeadScore >= 75 ? 'bg-emerald-400' : 'bg-[#738F70]'
+                            totalLeadScore >= 75 ? 'bg-rose-500' : 'bg-[#EE0979]'
                           }`}
                           style={{ width: `${totalLeadScore}%` }}
                         />
@@ -483,7 +483,7 @@ export const PortalFreeTools: React.FC = () => {
 
                   <button
                     onClick={() => setAppMode('workspace')}
-                    className="mt-6 w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition"
+                    className="mt-6 w-full py-2.5 bg-[#EE0979] hover:bg-pink-600 text-white font-bold text-xs rounded-xl transition"
                   >
                     View Leads Pipeline in CRM
                   </button>
@@ -505,7 +505,7 @@ export const PortalFreeTools: React.FC = () => {
               key={t.title}
               className="p-4 bg-white rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-xs transition"
             >
-              <div className="w-8 h-8 rounded-lg bg-[#F2F6F2] text-[#738F70] flex items-center justify-center mb-2">
+              <div className="w-8 h-8 rounded-lg bg-[#FFF8FA] text-[#EE0979] flex items-center justify-center mb-2">
                 <t.icon className="w-4 h-4" />
               </div>
               <div className="font-bold text-xs text-slate-900">{t.title}</div>

@@ -110,7 +110,7 @@ export const CreateTaskModal: React.FC = () => {
             <button
               type="button"
               onClick={() => handleSave(false)}
-              className="px-5 py-1 text-xs font-semibold text-white bg-[#153B2E] hover:bg-[#3F7657] rounded transition shadow-xs cursor-pointer"
+              className="px-5 py-1 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#EE0979] rounded transition shadow-xs cursor-pointer"
             >
               Save
             </button>
@@ -256,7 +256,7 @@ export const CreateTaskModal: React.FC = () => {
                     type="button"
                     onClick={() => setReminder(!reminder)}
                     className={`w-9 h-5 rounded-full transition relative p-0.5 cursor-pointer ${
-                      reminder ? 'bg-[#153B2E]' : 'bg-slate-300'
+                      reminder ? 'bg-[#0F172A]' : 'bg-slate-300'
                     }`}
                   >
                     <div
@@ -276,7 +276,7 @@ export const CreateTaskModal: React.FC = () => {
                     type="button"
                     onClick={() => setRepeat(!repeat)}
                     className={`w-9 h-5 rounded-full transition relative p-0.5 cursor-pointer ${
-                      repeat ? 'bg-[#153B2E]' : 'bg-slate-300'
+                      repeat ? 'bg-[#0F172A]' : 'bg-slate-300'
                     }`}
                   >
                     <div

@@ -84,12 +84,12 @@ export const GlobalSearchModal: React.FC = () => {
                       setActiveModule('deals');
                       setIsGlobalSearchOpen(false);
                     }}
-                    className="p-2 rounded-lg hover:bg-[#F2F6F2] cursor-pointer flex items-center justify-between group transition"
+                    className="p-2 rounded-lg hover:bg-[#FFF8FA] cursor-pointer flex items-center justify-between group transition"
                   >
                     <div className="flex items-center gap-2.5">
-                      <DollarSign className="w-4 h-4 text-[#738F70]" />
+                      <DollarSign className="w-4 h-4 text-[#EE0979]" />
                       <div>
-                        <span className="font-bold text-slate-800 group-hover:text-[#738F70]">
+                        <span className="font-bold text-slate-800 group-hover:text-[#EE0979]">
                           {deal.name}
                         </span>
                         <span className="text-slate-400 ml-2">({deal.accountName})</span>
@@ -119,18 +119,18 @@ export const GlobalSearchModal: React.FC = () => {
                       setActiveModule('leads');
                       setIsGlobalSearchOpen(false);
                     }}
-                    className="p-2 rounded-lg hover:bg-[#E5EFE4] cursor-pointer flex items-center justify-between group transition"
+                    className="p-2 rounded-lg hover:bg-[#FFF1F7] cursor-pointer flex items-center justify-between group transition"
                   >
                     <div className="flex items-center gap-2.5">
-                      <Users className="w-4 h-4 text-[#3F7657]" />
+                      <Users className="w-4 h-4 text-[#EE0979]" />
                       <div>
-                        <span className="font-bold text-slate-800 group-hover:text-[#3F7657]">
+                        <span className="font-bold text-slate-800 group-hover:text-[#EE0979]">
                           {lead.firstName} {lead.lastName}
                         </span>
                         <span className="text-slate-400 ml-2">({lead.company})</span>
                       </div>
                     </div>
-                    <span className="text-emerald-700 font-bold">Score: {lead.score}</span>
+                    <span className="text-[#D8086C] font-bold">Score: {lead.score}</span>
                   </div>
                 ))}
               </div>

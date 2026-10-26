@@ -111,7 +111,7 @@ export const CreateDealModal: React.FC = () => {
             <button
               type="button"
               onClick={() => handleSave(false)}
-              className="px-5 py-1 text-xs font-semibold text-white bg-[#153B2E] hover:bg-[#3F7657] rounded transition shadow-xs cursor-pointer"
+              className="px-5 py-1 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#EE0979] rounded transition shadow-xs cursor-pointer"
             >
               Save
             </button>

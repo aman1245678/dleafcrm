@@ -219,7 +219,7 @@ export const InventorySectionModule: React.FC<InventorySectionModuleProps> = ({ 
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowCreateModal(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs transition"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Create</span>
@@ -254,13 +254,13 @@ export const InventorySectionModule: React.FC<InventorySectionModuleProps> = ({ 
               <div className="flex items-center justify-center gap-2.5 pt-2">
                 <button
                   onClick={() => setShowCreateModal(true)}
-                  className="px-4 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs transition"
+                  className="px-4 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition"
                 >
                   Create
                 </button>
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="px-4 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs transition"
+                  className="px-4 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition"
                 >
                   Import
                 </button>
@@ -280,7 +280,7 @@ export const InventorySectionModule: React.FC<InventorySectionModuleProps> = ({ 
                   <div className="w-9 h-9 rounded-lg bg-red-100/70 text-red-500 flex items-center justify-center font-bold text-base shadow-2xs">
                     E
                   </div>
-                  <div className="w-9 h-9 rounded-lg bg-emerald-100/70 text-emerald-600 flex items-center justify-center font-bold text-base shadow-2xs">
+                  <div className="w-9 h-9 rounded-lg bg-pink-100/70 text-[#EE0979] flex items-center justify-center font-bold text-base shadow-2xs">
                     ₹
                   </div>
                   <div className="w-9 h-9 rounded-lg bg-amber-100/70 text-amber-600 flex items-center justify-center font-bold text-base shadow-2xs">
@@ -310,7 +310,7 @@ export const InventorySectionModule: React.FC<InventorySectionModuleProps> = ({ 
               <div className="text-center pt-2">
                 <button
                   onClick={() => setShowCreateModal(true)}
-                  className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded text-xs shadow-xs transition"
+                  className="px-5 py-2 bg-[#EE0979] hover:bg-[#D8086C] text-white font-semibold rounded text-xs shadow-xs transition"
                 >
                   {config.sideBanner.cta}
                 </button>
@@ -469,7 +469,7 @@ export const InventorySectionModule: React.FC<InventorySectionModuleProps> = ({ 
               </button>
               <button
                 onClick={handleCreate}
-                className="px-4 py-1.5 text-xs font-semibold text-white bg-[#153B2E] hover:bg-[#3F7657] rounded shadow-xs"
+                className="px-4 py-1.5 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#EE0979] rounded shadow-xs"
               >
                 Save
               </button>

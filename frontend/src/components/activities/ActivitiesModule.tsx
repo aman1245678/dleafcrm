@@ -298,13 +298,13 @@ export const ActivitiesModule: React.FC = () => {
             <div className="inline-flex rounded shadow-xs">
               <button
                 onClick={() => setIsCreateTaskOpen(true)}
-                className="bg-[#153B2E] hover:bg-[#3F7657] text-white px-3 py-1.5 rounded-l text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-3 py-1.5 rounded-l text-xs font-semibold flex items-center gap-1 cursor-pointer"
               >
                 <span>Create Task</span>
               </button>
               <button
                 onClick={() => setIsCreateTaskOpen(true)}
-                className="bg-[#153B2E] hover:bg-[#3F7657] text-white px-1.5 py-1.5 rounded-r border-l border-[#265342] cursor-pointer"
+                className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-1.5 py-1.5 rounded-r border-l border-[#265342] cursor-pointer"
               >
                 <ChevronDown className="w-3 h-3" />
               </button>
@@ -313,13 +313,13 @@ export const ActivitiesModule: React.FC = () => {
             <div className="inline-flex rounded shadow-xs">
               <button
                 onClick={() => setShowCreateMeetingModal(true)}
-                className="bg-[#153B2E] hover:bg-[#3F7657] text-white px-3 py-1.5 rounded-l text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-3 py-1.5 rounded-l text-xs font-semibold flex items-center gap-1 cursor-pointer"
               >
                 <span>Create Meeting</span>
               </button>
               <button
                 onClick={() => setShowCreateMeetingModal(true)}
-                className="bg-[#153B2E] hover:bg-[#3F7657] text-white px-1.5 py-1.5 rounded-r border-l border-[#265342] cursor-pointer"
+                className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-1.5 py-1.5 rounded-r border-l border-[#265342] cursor-pointer"
               >
                 <ChevronDown className="w-3 h-3" />
               </button>
@@ -452,10 +452,10 @@ export const ActivitiesModule: React.FC = () => {
                     className="w-68 min-w-[270px] max-w-[270px] bg-[#E8EEF5]/40 rounded flex flex-col shrink-0 max-h-full border border-slate-200 shadow-2xs"
                   >
                     {/* Column Header */}
-                    <div className="p-2 bg-[#D9F2EF] border-b border-teal-100 rounded-t flex items-center justify-between">
+                    <div className="p-2 bg-[#D9F2EF] border-b border-pink-100 rounded-t flex items-center justify-between">
                       <div className="flex items-center gap-1.5 text-xs text-slate-800 font-semibold text-[11px]">
                         <span>{col.label}</span>
-                        <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-teal-600/10 text-teal-800 font-bold">
+                        <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[#EE0979]/10 text-[#BE075E] font-bold">
                           {colTasks.length}
                         </span>
                       </div>

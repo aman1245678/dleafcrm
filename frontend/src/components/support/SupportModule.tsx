@@ -144,7 +144,7 @@ export const SupportModule: React.FC = () => {
                 </p>
 
                 {c.solution && (
-                  <div className="p-2 bg-emerald-50 rounded border border-emerald-100 text-[11px] text-emerald-800">
+                  <div className="p-2 bg-pink-50 rounded border border-pink-100 text-[11px] text-[#BE075E]">
                     <span className="font-bold block">Resolution / KB Solution:</span>
                     {c.solution}
                   </div>

@@ -38,9 +38,9 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
       <div className="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden animate-in fade-in">
         
         {/* Header Bar */}
-        <div className="bg-[#153B2E] text-white px-6 py-4 flex items-center justify-between border-b border-[#265342]">
+        <div className="bg-[#0F172A] text-white px-6 py-4 flex items-center justify-between border-b border-[#265342]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#3F7657]/40 border border-[#A3CCA1]/30 flex items-center justify-center text-emerald-300">
+            <div className="w-10 h-10 rounded-xl bg-[#EE0979]/40 border border-[#FF6A00]/30 flex items-center justify-center text-pink-400">
               <BookOpen className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -48,11 +48,11 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
                 <h2 className="text-base sm:text-lg font-bold text-white tracking-tight">
                   Dleaf CRM Enterprise User Guide & Manual
                 </h2>
-                <span className="text-[10px] bg-[#3F7657] text-white font-extrabold px-2 py-0.5 rounded uppercase">
+                <span className="text-[10px] bg-[#EE0979] text-white font-extrabold px-2 py-0.5 rounded uppercase">
                   v4.2 English
                 </span>
               </div>
-              <p className="text-xs text-[#C4D5C2] mt-0.5">
+              <p className="text-xs text-[#F1D5E4] mt-0.5">
                 Complete walkthrough, pipeline automation, Indian GST billing, and plan activation guide.
               </p>
             </div>
@@ -61,7 +61,7 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrintPdf}
-              className="px-3.5 py-1.5 bg-[#3F7657] hover:bg-[#336147] active:scale-95 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition shadow-sm cursor-pointer"
+              className="px-3.5 py-1.5 bg-[#EE0979] hover:bg-[#D8086C] active:scale-95 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 transition shadow-sm cursor-pointer"
               title="Download or Print PDF Manual"
             >
               <Download className="w-3.5 h-3.5" />
@@ -77,7 +77,7 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
         </div>
 
         {/* Navigation Tabs */}
-        <div className="bg-[#F5F8F3] border-b border-[#D8E3D6] px-6 py-2 flex items-center gap-1.5 overflow-x-auto text-xs font-semibold">
+        <div className="bg-[#FFF8FA] border-b border-[#F1D5E4] px-6 py-2 flex items-center gap-1.5 overflow-x-auto text-xs font-semibold">
           {[
             { id: 'overview', label: '1. Platform Overview' },
             { id: 'sales', label: '2. Leads & Contacts' },
@@ -91,8 +91,8 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
               onClick={() => setActiveSection(tab.id as any)}
               className={`px-3 py-1.5 rounded-lg transition whitespace-nowrap cursor-pointer ${
                 activeSection === tab.id
-                  ? 'bg-[#153B2E] text-white shadow-xs'
-                  : 'text-[#47574B] hover:text-[#17251D] hover:bg-[#E5EFE4]'
+                  ? 'bg-[#0F172A] text-white shadow-xs'
+                  : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#FFF1F7]'
               }`}
             >
               {tab.label}
@@ -105,9 +105,9 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
           
           {activeSection === 'overview' && (
             <div className="space-y-4">
-              <div className="p-4 rounded-2xl bg-[#F5F8F3] border border-[#D8E3D6] space-y-2">
-                <h3 className="text-base font-bold text-[#153B2E] flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#3F7657]" />
+              <div className="p-4 rounded-2xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-2">
+                <h3 className="text-base font-bold text-[#0F172A] flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[#EE0979]" />
                   What is Dleaf CRM?
                 </h3>
                 <p className="text-xs text-slate-600">
@@ -117,8 +117,8 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="p-4 rounded-xl border border-slate-200 bg-white shadow-2xs space-y-1.5">
-                  <div className="font-bold text-[#153B2E] flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <div className="font-bold text-[#0F172A] flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
                     Centralized Customer Database
                   </div>
                   <p className="text-xs text-slate-500">
@@ -126,8 +126,8 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
                   </p>
                 </div>
                 <div className="p-4 rounded-xl border border-slate-200 bg-white shadow-2xs space-y-1.5">
-                  <div className="font-bold text-[#153B2E] flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <div className="font-bold text-[#0F172A] flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
                     Multi-Tenant Security & OTP
                   </div>
                   <p className="text-xs text-slate-500">
@@ -140,7 +140,7 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
 
           {activeSection === 'sales' && (
             <div className="space-y-4">
-              <h3 className="text-base font-bold text-[#153B2E]">How to Manage Leads & Contacts</h3>
+              <h3 className="text-base font-bold text-[#0F172A]">How to Manage Leads & Contacts</h3>
               <ol className="list-decimal pl-5 space-y-3 text-xs text-slate-600">
                 <li>
                   <strong className="text-slate-800">Creating Leads:</strong> Click the <strong>+</strong> Quick Create icon on the top header or navigate to <strong>Sales &gt; Leads</strong> and click <em>Create Lead</em>. Enter company name, phone, email, and estimated deal value.
@@ -157,7 +157,7 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
 
           {activeSection === 'deals' && (
             <div className="space-y-4">
-              <h3 className="text-base font-bold text-[#153B2E]">Deals Pipeline & Visual Kanban Board</h3>
+              <h3 className="text-base font-bold text-[#0F172A]">Deals Pipeline & Visual Kanban Board</h3>
               <p className="text-xs text-slate-600">
                 The visual 8-stage Kanban Board empowers your sales reps to drag and drop deals across milestones:
               </p>
@@ -166,17 +166,17 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
                 <div className="p-2.5 rounded-lg bg-blue-50 border border-blue-200 text-blue-700">2. Needs Analysis (20%)</div>
                 <div className="p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-700">3. Proposal / Quote (40%)</div>
                 <div className="p-2.5 rounded-lg bg-purple-50 border border-purple-200 text-purple-700">4. Negotiation (70%)</div>
-                <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700">5. Closed Won (100%)</div>
+                <div className="p-2.5 rounded-lg bg-pink-50 border border-rose-200 text-[#D8086C]">5. Closed Won (100%)</div>
                 <div className="p-2.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-700">6. Closed Lost (0%)</div>
                 <div className="p-2.5 rounded-lg bg-slate-100 border border-slate-300 text-slate-600">7. On Hold</div>
-                <div className="p-2.5 rounded-lg bg-[#E5EFE4] border border-[#D8E3D6] text-[#153B2E]">8. Follow Up</div>
+                <div className="p-2.5 rounded-lg bg-[#FFF1F7] border border-[#F1D5E4] text-[#0F172A]">8. Follow Up</div>
               </div>
             </div>
           )}
 
           {activeSection === 'inventory' && (
             <div className="space-y-4">
-              <h3 className="text-base font-bold text-[#153B2E]">Indian GST CPQ Quotes & Invoicing</h3>
+              <h3 className="text-base font-bold text-[#0F172A]">Indian GST CPQ Quotes & Invoicing</h3>
               <p className="text-xs text-slate-600">
                 Generate client-ready GST PDF quotations in seconds:
               </p>
@@ -191,10 +191,10 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
 
           {activeSection === 'comms' && (
             <div className="space-y-4">
-              <h3 className="text-base font-bold text-[#153B2E]">WhatsApp Cloud & VoIP Softphone</h3>
+              <h3 className="text-base font-bold text-[#0F172A]">WhatsApp Cloud & VoIP Softphone</h3>
               <div className="space-y-3 text-xs text-slate-600">
-                <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
-                  <strong className="text-emerald-900 block mb-1">WhatsApp Cloud Messenger:</strong>
+                <div className="p-3 bg-pink-50 border border-rose-200 rounded-xl">
+                  <strong className="text-[#0F172A] block mb-1">WhatsApp Cloud Messenger:</strong>
                   Click on any phone number next to a lead or contact, or tap the WhatsApp button in the top navigation to send templated WhatsApp messages directly to clients with live communication logs.
                 </div>
                 <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl">
@@ -207,13 +207,13 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
 
           {activeSection === 'billing' && (
             <div className="space-y-4">
-              <h3 className="text-base font-bold text-[#153B2E]">Trial Period & Subscription Activation</h3>
+              <h3 className="text-base font-bold text-[#0F172A]">Trial Period & Subscription Activation</h3>
               <div className="space-y-3 text-xs text-slate-600">
                 <p>
                   Every new organization receives a <strong>14-Day Full Feature Free Trial</strong> upon account registration. During the trial, all CRM pipelines, automation rules, and AI tools are fully active.
                 </p>
-                <div className="p-3.5 rounded-xl bg-[#F5F8F3] border border-[#D8E3D6] space-y-1.5">
-                  <strong className="text-[#153B2E] block">What happens when trial expires?</strong>
+                <div className="p-3.5 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-1.5">
+                  <strong className="text-[#0F172A] block">What happens when trial expires?</strong>
                   <p>
                     When the 14-day trial concludes, access to the CRM workspace is safely locked behind the <strong>Subscription Required Gate</strong>. Your company records, leads, and deals are safely preserved.
                   </p>
@@ -228,13 +228,13 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
         </div>
 
         {/* Modal Footer */}
-        <div className="bg-[#F5F8F3] px-6 py-3 border-t border-[#D8E3D6] flex items-center justify-between">
+        <div className="bg-[#FFF8FA] px-6 py-3 border-t border-[#F1D5E4] flex items-center justify-between">
           <div className="text-[11px] text-slate-500 font-medium">
             Dleaf CRM Enterprise Edition • Dedicated Customer Success & Support Available 24x7
           </div>
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-[#153B2E] hover:bg-[#0F221B] text-white text-xs font-bold rounded-xl transition cursor-pointer"
+            className="px-4 py-2 bg-[#0F172A] hover:bg-[#0F172A] text-white text-xs font-bold rounded-xl transition cursor-pointer"
           >
             Close Guide
           </button>

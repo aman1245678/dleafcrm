@@ -44,7 +44,7 @@ export const IMAPConfigModal: React.FC = () => {
         {/* Top Header */}
         <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#E2EDE0] text-[#738F70] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center">
               <Mail className="w-4 h-4" />
             </div>
             <div>
@@ -69,7 +69,7 @@ export const IMAPConfigModal: React.FC = () => {
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
               placeholder="e.g. Aman"
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:border-[#738F70] text-xs"
+              className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:border-[#EE0979] text-xs"
             />
           </div>
 
@@ -80,7 +80,7 @@ export const IMAPConfigModal: React.FC = () => {
               value={emailAddress}
               onChange={(e) => setEmailAddress(e.target.value)}
               placeholder="hello@nexwapi.com"
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:border-[#738F70] text-xs"
+              className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:border-[#EE0979] text-xs"
             />
           </div>
 
@@ -91,7 +91,7 @@ export const IMAPConfigModal: React.FC = () => {
               value={appPassword}
               onChange={(e) => setAppPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:border-[#738F70] text-xs tracking-wider"
+              className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-hidden focus:border-[#EE0979] text-xs tracking-wider"
             />
             <p className="text-[11px] text-slate-400 mt-1">
               Encrypted TLS/SSL tunnel. Never exposed in plain text.
@@ -134,7 +134,7 @@ export const IMAPConfigModal: React.FC = () => {
                 type="checkbox"
                 checked={useSsl}
                 onChange={(e) => setUseSsl(e.target.checked)}
-                className="rounded text-[#738F70]"
+                className="rounded text-[#EE0979]"
               />
               <span>Enable SSL/TLS Encryption (Recommended)</span>
             </label>
@@ -146,8 +146,8 @@ export const IMAPConfigModal: React.FC = () => {
           </div>
 
           {testResult === 'success' && (
-            <div className="p-2.5 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg flex items-center gap-2 text-xs">
-              <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+            <div className="p-2.5 bg-pink-50 border border-rose-200 text-[#BE075E] rounded-lg flex items-center gap-2 text-xs">
+              <CheckCircle className="w-4 h-4 text-[#EE0979] shrink-0" />
               <span>IMAP handshake successful! Synchronization active.</span>
             </div>
           )}
@@ -164,7 +164,7 @@ export const IMAPConfigModal: React.FC = () => {
           <button
             onClick={handleTestAndSave}
             disabled={isTesting}
-            className="px-5 py-2 bg-[#738F70] hover:bg-[#5F7A5D] text-white rounded-lg text-xs font-semibold shadow-xs flex items-center gap-2 transition disabled:opacity-75"
+            className="px-5 py-2 bg-[#EE0979] hover:bg-[#EE0979] text-white rounded-lg text-xs font-semibold shadow-xs flex items-center gap-2 transition disabled:opacity-75"
           >
             {isTesting && <RefreshCw className="w-3.5 h-3.5 animate-spin" />}
             <span>{isTesting ? 'Validating TLS...' : 'Configure'}</span>

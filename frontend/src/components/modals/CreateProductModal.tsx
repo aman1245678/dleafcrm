@@ -293,7 +293,7 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
           </button>
           <button
             onClick={handleSave}
-            className="px-5 py-1.5 text-xs font-semibold text-white bg-[#153B2E] hover:bg-[#3F7657] rounded transition shadow-xs"
+            className="px-5 py-1.5 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#EE0979] rounded transition shadow-xs"
           >
             Save
           </button>

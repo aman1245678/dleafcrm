@@ -223,7 +223,7 @@ export const PortalFeatures: React.FC = () => {
       {/* Top Banner */}
       <section className="bg-white border-b border-slate-200 py-12 px-4 sm:px-8">
         <div className="max-w-5xl mx-auto text-center space-y-3">
-          <span className="text-xs font-bold text-[#738F70] uppercase tracking-wider bg-[#F2F6F2] border border-[#C4D5C2] px-3 py-1 rounded-full">
+          <span className="text-xs font-bold text-[#EE0979] uppercase tracking-wider bg-[#FFF8FA] border border-[#F1D5E4] px-3 py-1 rounded-full">
             Dleaf CRM Complete Capabilities Matrix
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -252,7 +252,7 @@ export const PortalFeatures: React.FC = () => {
                 }}
                 className={`w-full text-left px-4 py-3 rounded-xl text-xs font-bold transition flex items-center justify-between ${
                   selectedCat === c.id
-                    ? 'bg-[#738F70] text-white shadow-md'
+                    ? 'bg-[#EE0979] text-white shadow-md'
                     : 'bg-white text-slate-700 hover:bg-slate-200/80 border border-slate-200'
                 }`}
               >
@@ -266,14 +266,14 @@ export const PortalFeatures: React.FC = () => {
 
             {/* Quick Action Card */}
             <div className="mt-6 p-5 bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-2xl shadow-md">
-              <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Test It Live</div>
+              <div className="text-xs font-bold text-rose-500 uppercase tracking-wider">Test It Live</div>
               <h4 className="text-sm font-bold mt-1">Open Live CRM Workspace</h4>
               <p className="text-xs text-slate-300 mt-1 leading-relaxed">
                 Test the 8-stage Kanban board and VoIP softphone directly in the browser applet.
               </p>
               <button
                 onClick={() => setAppMode('workspace')}
-                className="mt-4 w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition"
+                className="mt-4 w-full py-2 bg-[#EE0979] hover:bg-pink-600 text-white font-bold text-xs rounded-lg transition"
               >
                 Launch Workspace
               </button>
@@ -283,7 +283,7 @@ export const PortalFeatures: React.FC = () => {
           {/* Right Detail Pane */}
           <div className="flex-1 space-y-6">
             <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
-              <span className="text-xs font-bold text-[#738F70] uppercase tracking-wider">Module Overview</span>
+              <span className="text-xs font-bold text-[#EE0979] uppercase tracking-wider">Module Overview</span>
               <h2 className="text-2xl font-bold text-slate-900 mt-1">{currentCategoryData.title}</h2>
               <p className="text-slate-600 text-xs sm:text-sm mt-1">{currentCategoryData.subtitle}</p>
 
@@ -297,7 +297,7 @@ export const PortalFeatures: React.FC = () => {
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <h4 className="font-bold text-slate-900 text-sm">{item.name}</h4>
                         {item.tag && (
-                          <span className="bg-[#E2EDE0] text-[#5F7A5D] text-[10px] font-bold px-2 py-0.5 rounded-full">
+                          <span className="bg-[#FFF1F7] text-[#EE0979] text-[10px] font-bold px-2 py-0.5 rounded-full">
                             {item.tag}
                           </span>
                         )}
@@ -306,7 +306,7 @@ export const PortalFeatures: React.FC = () => {
                     </div>
 
                     <div className="mt-4 pt-3 border-t border-slate-200/80 flex items-center justify-between text-[11px]">
-                      <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                      <span className="text-[#D8086C] font-bold bg-pink-50 px-2 py-0.5 rounded border border-rose-200">
                         {item.metrics}
                       </span>
                       <button
@@ -317,7 +317,7 @@ export const PortalFeatures: React.FC = () => {
                             setIsPortalSignInOpen(true);
                           }
                         }}
-                        className="text-[#3F7657] font-bold hover:underline flex items-center gap-1 cursor-pointer"
+                        className="text-[#EE0979] font-bold hover:underline flex items-center gap-1 cursor-pointer"
                       >
                         <span>{isAuthenticated ? 'Open in CRM' : 'Try now'}</span>
                         <ArrowRight className="w-3 h-3" />

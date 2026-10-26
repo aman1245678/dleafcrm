@@ -23,7 +23,7 @@ export const PortalPlatform: React.FC = () => {
       title: 'Industry Verticals',
       desc: 'Pre-packaged industry configurations for Real Estate, Healthcare, Banking, Financial Services, and Manufacturing.',
       icon: Layers,
-      color: 'text-[#738F70] bg-[#F2F6F2] border-[#C4D5C2]',
+      color: 'text-[#EE0979] bg-[#FFF8FA] border-[#F1D5E4]',
     },
     {
       title: 'Module 360 & Data Schema',
@@ -41,7 +41,7 @@ export const PortalPlatform: React.FC = () => {
       title: 'Developer MCP Server & APIs',
       desc: 'Built on the open Model Context Protocol (MCP) standard. Full RESTful endpoints, webhook dispatches, and client SDKs.',
       icon: Code,
-      color: 'text-emerald-600 bg-emerald-50 border-emerald-200',
+      color: 'text-[#EE0979] bg-pink-50 border-rose-200',
     },
     {
       title: 'Enterprise Security & Compliance',
@@ -53,7 +53,7 @@ export const PortalPlatform: React.FC = () => {
       title: 'Mobile Architecture & Offline Caching',
       desc: 'Responsive web application with progressive caching. Instant access to leads and contacts on smartphones and tablets.',
       icon: Smartphone,
-      color: 'text-teal-600 bg-teal-50 border-teal-200',
+      color: 'text-[#EE0979] bg-pink-50 border-rose-200',
     },
   ];
 
@@ -62,7 +62,7 @@ export const PortalPlatform: React.FC = () => {
       {/* Top Banner */}
       <section className="bg-white border-b border-slate-200 py-14 px-4 sm:px-8 text-center">
         <div className="max-w-4xl mx-auto space-y-4">
-          <span className="text-xs font-bold text-[#738F70] uppercase tracking-wider bg-[#F2F6F2] border border-[#C4D5C2] px-3 py-1 rounded-full">
+          <span className="text-xs font-bold text-[#EE0979] uppercase tracking-wider bg-[#FFF8FA] border border-[#F1D5E4] px-3 py-1 rounded-full">
             Enterprise Cloud Foundation
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
@@ -93,7 +93,7 @@ export const PortalPlatform: React.FC = () => {
       <section className="max-w-6xl mx-auto px-4 sm:px-8 mt-14">
         <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="space-y-4 max-w-xl">
-            <span className="bg-emerald-500/20 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            <span className="bg-pink-600/20 text-pink-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
               Autonomous AI Standard
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
@@ -105,7 +105,7 @@ export const PortalPlatform: React.FC = () => {
             <div className="flex items-center gap-3 pt-2">
               <button
                 onClick={() => setAppMode('workspace')}
-                className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-xl transition"
+                className="bg-pink-600 hover:bg-rose-500 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-xl transition"
               >
                 Open MCP Playground in App
               </button>
@@ -113,7 +113,7 @@ export const PortalPlatform: React.FC = () => {
           </div>
 
           <div className="w-full lg:w-96 bg-slate-950 p-4 rounded-2xl border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto shadow-inner">
-            <div className="text-emerald-400">// JSON-RPC Tool Definition</div>
+            <div className="text-rose-500">// JSON-RPC Tool Definition</div>
             <pre className="text-[11px] text-slate-400 mt-2 leading-relaxed">
 {`{
   "name": "crm_get_pipeline_deals",
@@ -126,7 +126,7 @@ export const PortalPlatform: React.FC = () => {
             </pre>
             <div className="mt-3 pt-3 border-t border-slate-800 text-[10px] text-slate-500 flex justify-between">
               <span>Status: Listening on port 3000</span>
-              <span className="text-emerald-400 font-bold">200 OK</span>
+              <span className="text-rose-500 font-bold">200 OK</span>
             </div>
           </div>
         </div>

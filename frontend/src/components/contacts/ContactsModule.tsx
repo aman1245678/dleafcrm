@@ -207,17 +207,17 @@ export const ContactsModule: React.FC = () => {
   const isAllSelected = filteredContacts.length > 0 && selectedContactIds.length === filteredContacts.length;
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-[#f4f7f4] overflow-hidden font-sans">
+    <div className="flex-1 flex flex-col h-full bg-[#F8FAFC] overflow-hidden font-sans">
       
       {/* ----------------- Top Header Toolbar (Screenshot 4 & 5 Dleaf Match) ----------------- */}
-      <div className="bg-white border-b border-[#D8E3D6] px-6 py-3 flex items-center justify-between shrink-0 shadow-2xs">
+      <div className="bg-white border-b border-[#F1D5E4] px-6 py-3 flex items-center justify-between shrink-0 shadow-2xs">
         
         {/* Left: View Switcher (All Contacts with Dropdown) */}
         <div className="flex items-center gap-3 relative">
           <div className="relative">
             <button
               onClick={() => setIsViewDropdownOpen(!isViewDropdownOpen)}
-              className="flex items-center gap-2 text-base font-bold text-[#17251D] hover:text-[#3F7657] transition cursor-pointer"
+              className="flex items-center gap-2 text-base font-bold text-[#0F172A] hover:text-[#EE0979] transition cursor-pointer"
             >
               <span>{selectedView}</span>
               <ChevronDown className="w-4 h-4 text-slate-500" />
@@ -225,7 +225,7 @@ export const ContactsModule: React.FC = () => {
 
             {/* Custom Views Dropdown Popover */}
             {isViewDropdownOpen && (
-              <div className="absolute top-8 left-0 z-50 w-72 bg-white rounded-2xl shadow-xl border border-[#D8E3D6] p-3 animate-in fade-in space-y-3">
+              <div className="absolute top-8 left-0 z-50 w-72 bg-white rounded-2xl shadow-xl border border-[#F1D5E4] p-3 animate-in fade-in space-y-3">
                 <div className="relative">
                   <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
                   <input
@@ -233,7 +233,7 @@ export const ContactsModule: React.FC = () => {
                     value={viewSearchTerm}
                     onChange={(e) => setViewSearchTerm(e.target.value)}
                     placeholder="Search view..."
-                    className="w-full pl-8 pr-3 py-1.5 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#3F7657]"
+                    className="w-full pl-8 pr-3 py-1.5 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979]"
                   />
                 </div>
 
@@ -252,12 +252,12 @@ export const ContactsModule: React.FC = () => {
                         }}
                         className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
                           selectedView === viewName
-                            ? 'bg-[#E5EFE4] text-[#153B2E]'
-                            : 'text-slate-700 hover:bg-[#F5F8F3]'
+                            ? 'bg-[#FFF1F7] text-[#0F172A]'
+                            : 'text-slate-700 hover:bg-[#FFF8FA]'
                         }`}
                       >
                         <span>{viewName}</span>
-                        {selectedView === viewName && <CheckCircle2 className="w-4 h-4 text-[#3F7657]" />}
+                        {selectedView === viewName && <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />}
                       </button>
                     ))}
                 </div>
@@ -265,7 +265,7 @@ export const ContactsModule: React.FC = () => {
             )}
           </div>
 
-          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#E5EFE4] text-[#153B2E] border border-[#D8E3D6]">
+          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#FFF1F7] text-[#0F172A] border border-[#F1D5E4]">
             {filteredContacts.length} Records
           </span>
         </div>
@@ -278,7 +278,7 @@ export const ContactsModule: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search records by name, email, account, phone..."
-            className="pl-8 pr-3 py-1.5 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#3F7657] w-64 lg:w-80 transition"
+            className="pl-8 pr-3 py-1.5 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979] w-64 lg:w-80 transition"
           />
         </div>
 
@@ -289,12 +289,12 @@ export const ContactsModule: React.FC = () => {
             onClick={() => setIsFilterPanelOpen(!isFilterPanelOpen)}
             className={`p-2 rounded-xl border transition cursor-pointer flex items-center gap-1.5 text-xs font-semibold ${
               isFilterPanelOpen
-                ? 'bg-[#E5EFE4] text-[#153B2E] border-[#3F7657]'
-                : 'bg-white text-slate-700 border-[#D8E3D6] hover:bg-[#F5F8F3]'
+                ? 'bg-[#FFF1F7] text-[#0F172A] border-[#EE0979]'
+                : 'bg-white text-slate-700 border-[#F1D5E4] hover:bg-[#FFF8FA]'
             }`}
             title="Toggle Filter Contacts panel"
           >
-            <Filter className="w-3.5 h-3.5 text-[#3F7657]" />
+            <Filter className="w-3.5 h-3.5 text-[#EE0979]" />
             <span className="hidden sm:inline">Filter</span>
           </button>
 
@@ -303,7 +303,7 @@ export const ContactsModule: React.FC = () => {
             onClick={() => {
               setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
             }}
-            className="p-2 rounded-xl bg-white border border-[#D8E3D6] hover:bg-[#F5F8F3] text-slate-700 transition cursor-pointer flex items-center gap-1.5 text-xs font-semibold"
+            className="p-2 rounded-xl bg-white border border-[#F1D5E4] hover:bg-[#FFF8FA] text-slate-700 transition cursor-pointer flex items-center gap-1.5 text-xs font-semibold"
             title="Sort Contacts"
           >
             <ArrowUpDown className="w-3.5 h-3.5 text-slate-500" />
@@ -311,11 +311,11 @@ export const ContactsModule: React.FC = () => {
           </button>
 
           {/* View Mode: List vs Kanban */}
-          <div className="flex items-center bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl p-0.5">
+          <div className="flex items-center bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl p-0.5">
             <button
               onClick={() => setViewMode('list')}
               className={`p-1.5 rounded-lg transition cursor-pointer ${
-                viewMode === 'list' ? 'bg-white text-[#153B2E] shadow-2xs' : 'text-slate-500 hover:text-slate-800'
+                viewMode === 'list' ? 'bg-white text-[#0F172A] shadow-2xs' : 'text-slate-500 hover:text-slate-800'
               }`}
               title="Table List View"
             >
@@ -324,7 +324,7 @@ export const ContactsModule: React.FC = () => {
             <button
               onClick={() => setViewMode('kanban')}
               className={`p-1.5 rounded-lg transition cursor-pointer ${
-                viewMode === 'kanban' ? 'bg-white text-[#153B2E] shadow-2xs' : 'text-slate-500 hover:text-slate-800'
+                viewMode === 'kanban' ? 'bg-white text-[#0F172A] shadow-2xs' : 'text-slate-500 hover:text-slate-800'
               }`}
               title="Kanban Board View"
             >
@@ -336,30 +336,30 @@ export const ContactsModule: React.FC = () => {
           <div className="relative flex items-center">
             <button
               onClick={() => setIsCreateContactOpen(true)}
-              className="bg-[#153B2E] hover:bg-[#0F221B] active:scale-95 text-white font-bold text-xs pl-3.5 pr-2 py-2 rounded-l-xl transition shadow-xs flex items-center gap-1.5 cursor-pointer border-r border-[#265342]"
+              className="bg-[#0F172A] hover:bg-[#0F172A] active:scale-95 text-white font-bold text-xs pl-3.5 pr-2 py-2 rounded-l-xl transition shadow-xs flex items-center gap-1.5 cursor-pointer border-r border-[#265342]"
             >
-              <Plus className="w-3.5 h-3.5 text-[#A3CCA1]" />
+              <Plus className="w-3.5 h-3.5 text-[#FF6A00]" />
               <span>Create Contact</span>
             </button>
             <button
               onClick={() => setIsCreateDropdownOpen(!isCreateDropdownOpen)}
-              className="bg-[#153B2E] hover:bg-[#0F221B] text-white p-2 rounded-r-xl transition cursor-pointer"
+              className="bg-[#0F172A] hover:bg-[#0F172A] text-white p-2 rounded-r-xl transition cursor-pointer"
               title="More creation options"
             >
-              <ChevronDown className="w-3.5 h-3.5 text-[#A3CCA1]" />
+              <ChevronDown className="w-3.5 h-3.5 text-[#FF6A00]" />
             </button>
 
             {/* Create Contact Dropdown */}
             {isCreateDropdownOpen && (
-              <div className="absolute top-10 right-0 z-50 w-48 bg-white rounded-xl shadow-xl border border-[#D8E3D6] py-1.5 animate-in fade-in">
+              <div className="absolute top-10 right-0 z-50 w-48 bg-white rounded-xl shadow-xl border border-[#F1D5E4] py-1.5 animate-in fade-in">
                 <button
                   onClick={() => {
                     setIsCreateContactOpen(true);
                     setIsCreateDropdownOpen(false);
                   }}
-                  className="w-full text-left px-3.5 py-1.5 text-xs text-slate-700 hover:bg-[#F5F8F3] hover:text-[#153B2E] font-medium flex items-center gap-2"
+                  className="w-full text-left px-3.5 py-1.5 text-xs text-slate-700 hover:bg-[#FFF8FA] hover:text-[#0F172A] font-medium flex items-center gap-2"
                 >
-                  <Plus className="w-3.5 h-3.5 text-[#3F7657]" />
+                  <Plus className="w-3.5 h-3.5 text-[#EE0979]" />
                   <span>Create Single Contact</span>
                 </button>
                 <button
@@ -367,9 +367,9 @@ export const ContactsModule: React.FC = () => {
                     alert('Import Contacts: Upload CSV, vCard, or Excel file.');
                     setIsCreateDropdownOpen(false);
                   }}
-                  className="w-full text-left px-3.5 py-1.5 text-xs text-slate-700 hover:bg-[#F5F8F3] hover:text-[#153B2E] font-medium flex items-center gap-2"
+                  className="w-full text-left px-3.5 py-1.5 text-xs text-slate-700 hover:bg-[#FFF8FA] hover:text-[#0F172A] font-medium flex items-center gap-2"
                 >
-                  <Upload className="w-3.5 h-3.5 text-[#3F7657]" />
+                  <Upload className="w-3.5 h-3.5 text-[#EE0979]" />
                   <span>Import Contacts</span>
                 </button>
               </div>
@@ -383,7 +383,7 @@ export const ContactsModule: React.FC = () => {
                 setIsActionMenuOpen(!isActionMenuOpen);
                 setIsPrintSubmenuOpen(false);
               }}
-              className="p-2 rounded-xl bg-white border border-[#D8E3D6] hover:bg-[#F5F8F3] text-slate-700 transition cursor-pointer"
+              className="p-2 rounded-xl bg-white border border-[#F1D5E4] hover:bg-[#FFF8FA] text-slate-700 transition cursor-pointer"
               title="More Contact Options"
             >
               <MoreHorizontal className="w-4 h-4 text-slate-700" />
@@ -391,13 +391,13 @@ export const ContactsModule: React.FC = () => {
 
             {/* Action Menu Popover (Screenshot 5: Mass Delete, Mass Update, Manage Tags, etc.) */}
             {isActionMenuOpen && (
-              <div className="absolute top-10 right-0 z-50 w-56 bg-white rounded-2xl shadow-2xl border border-[#D8E3D6] py-2 animate-in fade-in text-xs text-slate-700">
+              <div className="absolute top-10 right-0 z-50 w-56 bg-white rounded-2xl shadow-2xl border border-[#F1D5E4] py-2 animate-in fade-in text-xs text-slate-700">
                 <button
                   onClick={() => {
                     alert('Mass Delete Contacts: Select records to remove.');
                     setIsActionMenuOpen(false);
                   }}
-                  className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-rose-600 transition"
+                  className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-rose-600 transition"
                 >
                   Mass Delete
                 </button>
@@ -406,7 +406,7 @@ export const ContactsModule: React.FC = () => {
                     alert('Mass Update: Update fields across multiple contacts.');
                     setIsActionMenuOpen(false);
                   }}
-                  className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] transition"
+                  className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] transition"
                 >
                   Mass Update
                 </button>
@@ -415,7 +415,7 @@ export const ContactsModule: React.FC = () => {
                     alert('Manage Tags: Add or reorganize contact tags.');
                     setIsActionMenuOpen(false);
                   }}
-                  className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] transition"
+                  className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] transition"
                 >
                   Manage Tags
                 </button>
@@ -424,7 +424,7 @@ export const ContactsModule: React.FC = () => {
                     alert('Drafts: 0 unsaved contact drafts.');
                     setIsActionMenuOpen(false);
                   }}
-                  className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] transition"
+                  className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] transition"
                 >
                   Drafts
                 </button>
@@ -433,7 +433,7 @@ export const ContactsModule: React.FC = () => {
                     alert('Mass Email: Send customized campaigns to contacts.');
                     setIsActionMenuOpen(false);
                   }}
-                  className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] transition"
+                  className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] transition"
                 >
                   Mass Email
                 </button>
@@ -442,7 +442,7 @@ export const ContactsModule: React.FC = () => {
                     alert('Approve Contacts: No pending contact requests.');
                     setIsActionMenuOpen(false);
                   }}
-                  className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] transition"
+                  className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] transition"
                 >
                   Approve Contacts
                 </button>
@@ -451,7 +451,7 @@ export const ContactsModule: React.FC = () => {
                     alert('Deduplicate Contacts: Scanning duplicate email and phone records.');
                     setIsActionMenuOpen(false);
                   }}
-                  className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] transition"
+                  className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] transition"
                 >
                   Deduplicate Contacts
                 </button>
@@ -460,7 +460,7 @@ export const ContactsModule: React.FC = () => {
                     alert('Add to Campaigns: Link contacts to active marketing drives.');
                     setIsActionMenuOpen(false);
                   }}
-                  className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] transition"
+                  className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] transition"
                 >
                   Add to Campaigns
                 </button>
@@ -469,7 +469,7 @@ export const ContactsModule: React.FC = () => {
                     alert('Create Client Script for Contacts.');
                     setIsActionMenuOpen(false);
                   }}
-                  className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-[#3F7657] font-semibold flex items-center justify-between"
+                  className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-[#EE0979] font-semibold flex items-center justify-between"
                 >
                   <span>Create Client Script</span>
                   <span className="text-amber-500 text-xs">✨</span>
@@ -479,7 +479,7 @@ export const ContactsModule: React.FC = () => {
                     alert('Export Contacts: Downloading list as CSV...');
                     setIsActionMenuOpen(false);
                   }}
-                  className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] transition border-b border-[#E5EFE4]"
+                  className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] transition border-b border-[#FFF1F7]"
                 >
                   Export Contacts
                 </button>
@@ -489,7 +489,7 @@ export const ContactsModule: React.FC = () => {
                     alert('Dleaf Sheet View: Opening live spreadsheet editor.');
                     setIsActionMenuOpen(false);
                   }}
-                  className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] transition mt-1"
+                  className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] transition mt-1"
                 >
                   Dleaf Sheet View
                 </button>
@@ -501,7 +501,7 @@ export const ContactsModule: React.FC = () => {
                   onMouseLeave={() => setIsPrintSubmenuOpen(false)}
                 >
                   <button
-                    className="w-full text-left px-4 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] transition flex items-center justify-between cursor-pointer"
+                    className="w-full text-left px-4 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] transition flex items-center justify-between cursor-pointer"
                   >
                     <span className="flex items-center gap-1">
                       <span>Print View</span>
@@ -512,14 +512,14 @@ export const ContactsModule: React.FC = () => {
 
                   {/* Print View flyout */}
                   {isPrintSubmenuOpen && (
-                    <div className="absolute right-full top-0 mr-1 w-48 bg-white rounded-xl shadow-xl border border-[#D8E3D6] py-1.5 animate-in fade-in">
+                    <div className="absolute right-full top-0 mr-1 w-48 bg-white rounded-xl shadow-xl border border-[#F1D5E4] py-1.5 animate-in fade-in">
                       <button
                         onClick={() => {
                           window.print();
                           setIsActionMenuOpen(false);
                           setIsPrintSubmenuOpen(false);
                         }}
-                        className="w-full text-left px-3.5 py-1.5 text-xs text-slate-700 hover:bg-[#F5F8F3] hover:text-[#153B2E]"
+                        className="w-full text-left px-3.5 py-1.5 text-xs text-slate-700 hover:bg-[#FFF8FA] hover:text-[#0F172A]"
                       >
                         Print Default view
                       </button>
@@ -529,7 +529,7 @@ export const ContactsModule: React.FC = () => {
                           setIsActionMenuOpen(false);
                           setIsPrintSubmenuOpen(false);
                         }}
-                        className="w-full text-left px-3.5 py-1.5 text-xs text-slate-700 hover:bg-[#F5F8F3] hover:text-[#153B2E] flex items-center justify-between"
+                        className="w-full text-left px-3.5 py-1.5 text-xs text-slate-700 hover:bg-[#FFF8FA] hover:text-[#0F172A] flex items-center justify-between"
                       >
                         <span>Print Using Canvas</span>
                         <span className="text-amber-500 text-xs">✨</span>
@@ -548,10 +548,10 @@ export const ContactsModule: React.FC = () => {
         
         {/* LEFT PANEL: Filter Contacts by (Screenshots 1-5 1-to-1) */}
         {isFilterPanelOpen && (
-          <div className="w-72 bg-white border-r border-[#D8E3D6] flex flex-col shrink-0 overflow-y-auto p-3.5 space-y-4 animate-in slide-in-from-left-2 duration-150">
+          <div className="w-72 bg-white border-r border-[#F1D5E4] flex flex-col shrink-0 overflow-y-auto p-3.5 space-y-4 animate-in slide-in-from-left-2 duration-150">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-[#17251D] tracking-wide">
+                <span className="text-xs font-bold text-[#0F172A] tracking-wide">
                   Filter Contacts by
                 </span>
                 {Object.keys(selectedFilters).length > 0 && (
@@ -570,16 +570,16 @@ export const ContactsModule: React.FC = () => {
                   value={filterSearch}
                   onChange={(e) => setFilterSearch(e.target.value)}
                   placeholder="Search filter..."
-                  className="w-full pl-8 pr-2.5 py-1.5 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#3F7657]"
+                  className="w-full pl-8 pr-2.5 py-1.5 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979]"
                 />
               </div>
             </div>
 
             {/* 1. System Defined Filters Accordion (Screenshot 4) */}
-            <div className="border-b border-[#E5EFE4] pb-3">
+            <div className="border-b border-[#FFF1F7] pb-3">
               <button
                 onClick={() => setIsSystemFiltersOpen(!isSystemFiltersOpen)}
-                className="w-full flex items-center justify-between text-xs font-bold text-[#17251D] hover:text-[#3F7657] cursor-pointer py-1"
+                className="w-full flex items-center justify-between text-xs font-bold text-[#0F172A] hover:text-[#EE0979] cursor-pointer py-1"
               >
                 <span className="flex items-center gap-1.5">
                   {isSystemFiltersOpen ? (
@@ -600,13 +600,13 @@ export const ContactsModule: React.FC = () => {
                       return (
                         <label
                           key={sf.id}
-                          className="flex items-center gap-2 text-xs text-slate-700 hover:text-slate-900 cursor-pointer py-1 px-1.5 rounded-lg hover:bg-[#F5F8F3] transition select-none"
+                          className="flex items-center gap-2 text-xs text-slate-700 hover:text-slate-900 cursor-pointer py-1 px-1.5 rounded-lg hover:bg-[#FFF8FA] transition select-none"
                         >
                           <input
                             type="checkbox"
                             checked={isChecked}
                             onChange={() => toggleFilterCheck(sf.id)}
-                            className="w-3.5 h-3.5 rounded-sm border-[#D8E3D6] text-[#3F7657] focus:ring-[#3F7657]"
+                            className="w-3.5 h-3.5 rounded-sm border-[#F1D5E4] text-[#EE0979] focus:ring-[#EE0979]"
                           />
                           <span className="text-[11.5px] font-medium leading-tight">{sf.label}</span>
                         </label>
@@ -617,10 +617,10 @@ export const ContactsModule: React.FC = () => {
             </div>
 
             {/* 2. Filter By Fields Accordion (Screenshots 1, 2, 4, 5) */}
-            <div className="border-b border-[#E5EFE4] pb-3">
+            <div className="border-b border-[#FFF1F7] pb-3">
               <button
                 onClick={() => setIsFieldFiltersOpen(!isFieldFiltersOpen)}
-                className="w-full flex items-center justify-between text-xs font-bold text-[#17251D] hover:text-[#3F7657] cursor-pointer py-1"
+                className="w-full flex items-center justify-between text-xs font-bold text-[#0F172A] hover:text-[#EE0979] cursor-pointer py-1"
               >
                 <span className="flex items-center gap-1.5">
                   {isFieldFiltersOpen ? (
@@ -644,13 +644,13 @@ export const ContactsModule: React.FC = () => {
                       return (
                         <label
                           key={ff.id}
-                          className="flex items-start gap-2 text-xs text-slate-700 hover:text-slate-900 cursor-pointer py-1 px-1.5 rounded-lg hover:bg-[#F5F8F3] transition select-none"
+                          className="flex items-start gap-2 text-xs text-slate-700 hover:text-slate-900 cursor-pointer py-1 px-1.5 rounded-lg hover:bg-[#FFF8FA] transition select-none"
                         >
                           <input
                             type="checkbox"
                             checked={isChecked}
                             onChange={() => toggleFilterCheck(ff.id)}
-                            className="w-3.5 h-3.5 rounded-sm border-[#D8E3D6] text-[#3F7657] focus:ring-[#3F7657] mt-0.5"
+                            className="w-3.5 h-3.5 rounded-sm border-[#F1D5E4] text-[#EE0979] focus:ring-[#EE0979] mt-0.5"
                           />
                           <span className="text-[11px] font-medium leading-tight break-words">{ff.label}</span>
                         </label>
@@ -664,7 +664,7 @@ export const ContactsModule: React.FC = () => {
             <div>
               <button
                 onClick={() => setIsRelatedFiltersOpen(!isRelatedFiltersOpen)}
-                className="w-full flex items-center justify-between text-xs font-bold text-[#17251D] hover:text-[#3F7657] cursor-pointer py-1"
+                className="w-full flex items-center justify-between text-xs font-bold text-[#0F172A] hover:text-[#EE0979] cursor-pointer py-1"
               >
                 <span className="flex items-center gap-1.5">
                   {isRelatedFiltersOpen ? (
@@ -688,13 +688,13 @@ export const ContactsModule: React.FC = () => {
                       return (
                         <label
                           key={rf.id}
-                          className="flex items-start gap-2 text-xs text-slate-700 hover:text-slate-900 cursor-pointer py-1 px-1.5 rounded-lg hover:bg-[#F5F8F3] transition select-none"
+                          className="flex items-start gap-2 text-xs text-slate-700 hover:text-slate-900 cursor-pointer py-1 px-1.5 rounded-lg hover:bg-[#FFF8FA] transition select-none"
                         >
                           <input
                             type="checkbox"
                             checked={isChecked}
                             onChange={() => toggleFilterCheck(rf.id)}
-                            className="w-3.5 h-3.5 rounded-sm border-[#D8E3D6] text-[#3F7657] focus:ring-[#3F7657] mt-0.5"
+                            className="w-3.5 h-3.5 rounded-sm border-[#F1D5E4] text-[#EE0979] focus:ring-[#EE0979] mt-0.5"
                           />
                           <span className="text-[11px] font-medium leading-tight">{rf.label}</span>
                         </label>
@@ -711,7 +711,7 @@ export const ContactsModule: React.FC = () => {
           
           {/* Bulk Selection Bar */}
           {selectedContactIds.length > 0 && (
-            <div className="bg-[#E5EFE4] border-b border-[#D8E3D6] px-6 py-2 flex items-center justify-between text-xs text-[#153B2E] font-semibold animate-in fade-in">
+            <div className="bg-[#FFF1F7] border-b border-[#F1D5E4] px-6 py-2 flex items-center justify-between text-xs text-[#0F172A] font-semibold animate-in fade-in">
               <span>{selectedContactIds.length} contact(s) selected</span>
               <div className="flex items-center gap-2">
                 <button
@@ -739,14 +739,14 @@ export const ContactsModule: React.FC = () => {
           {viewMode === 'list' ? (
             <div className="flex-1 overflow-auto">
               <table className="w-full text-left text-xs border-collapse">
-                <thead className="bg-[#F5F8F3] sticky top-0 border-b border-[#D8E3D6] text-[#47574B] font-bold text-[11px] uppercase tracking-wider select-none z-10">
+                <thead className="bg-[#FFF8FA] sticky top-0 border-b border-[#F1D5E4] text-[#64748B] font-bold text-[11px] uppercase tracking-wider select-none z-10">
                   <tr>
                     <th className="py-3 px-4 w-10 text-center">
                       <input
                         type="checkbox"
                         checked={isAllSelected}
                         onChange={handleSelectAll}
-                        className="w-3.5 h-3.5 rounded-sm border-[#D8E3D6] text-[#3F7657] focus:ring-[#3F7657] cursor-pointer"
+                        className="w-3.5 h-3.5 rounded-sm border-[#F1D5E4] text-[#EE0979] focus:ring-[#EE0979] cursor-pointer"
                       />
                     </th>
                     <th className="py-3 px-4 cursor-pointer" onClick={() => setSortField('name')}>
@@ -777,7 +777,7 @@ export const ContactsModule: React.FC = () => {
                               setIsViewModeSubmenuOpen(false);
                               setIsRecordsPerPageSubmenuOpen(false);
                             }}
-                            className="p-1 rounded-md hover:bg-[#E5EFE4] text-slate-600 hover:text-[#153B2E] transition cursor-pointer border border-[#D8E3D6]"
+                            className="p-1 rounded-md hover:bg-[#FFF1F7] text-slate-600 hover:text-[#0F172A] transition cursor-pointer border border-[#F1D5E4]"
                             title="Table Column & View Settings"
                           >
                             <SlidersHorizontal className="w-3.5 h-3.5" />
@@ -787,14 +787,14 @@ export const ContactsModule: React.FC = () => {
                           {isColumnSettingsOpen && (
                             <div
                               onClick={(e) => e.stopPropagation()}
-                              className="absolute right-0 top-7 z-50 w-52 bg-white rounded-xl shadow-2xl border border-[#D8E3D6] py-2 text-xs font-normal normal-case text-slate-700 animate-in fade-in"
+                              className="absolute right-0 top-7 z-50 w-52 bg-white rounded-xl shadow-2xl border border-[#F1D5E4] py-2 text-xs font-normal normal-case text-slate-700 animate-in fade-in"
                             >
                               <button
                                 onClick={() => {
                                   alert('Manage Columns: Select and rearrange contact columns.');
                                   setIsColumnSettingsOpen(false);
                                 }}
-                                className="w-full text-left px-3.5 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] flex items-center gap-2"
+                                className="w-full text-left px-3.5 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] flex items-center gap-2"
                               >
                                 <span className="text-slate-500">⚙️</span>
                                 <span>Manage Columns</span>
@@ -805,7 +805,7 @@ export const ContactsModule: React.FC = () => {
                                   alert('Column sizes have been reset.');
                                   setIsColumnSettingsOpen(false);
                                 }}
-                                className="w-full text-left px-3.5 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] text-slate-400 flex items-center gap-2 cursor-pointer border-b border-[#E5EFE4]"
+                                className="w-full text-left px-3.5 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] text-slate-400 flex items-center gap-2 cursor-pointer border-b border-[#FFF1F7]"
                               >
                                 <span className="text-slate-400">▤</span>
                                 <span>Reset Column Size</span>
@@ -820,7 +820,7 @@ export const ContactsModule: React.FC = () => {
                                 }}
                                 onMouseLeave={() => setIsRecordsPerPageSubmenuOpen(false)}
                               >
-                                <button className="w-full text-left px-3.5 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] flex items-center justify-between cursor-pointer">
+                                <button className="w-full text-left px-3.5 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] flex items-center justify-between cursor-pointer">
                                   <span className="flex items-center gap-2">
                                     <span className="text-slate-500">☰</span>
                                     <span>Records Per Page</span>
@@ -832,7 +832,7 @@ export const ContactsModule: React.FC = () => {
                                 </button>
 
                                 {isRecordsPerPageSubmenuOpen && (
-                                  <div className="absolute right-full top-0 mr-1 w-28 bg-white rounded-xl shadow-xl border border-[#D8E3D6] py-1 animate-in fade-in z-50">
+                                  <div className="absolute right-full top-0 mr-1 w-28 bg-white rounded-xl shadow-xl border border-[#F1D5E4] py-1 animate-in fade-in z-50">
                                     {[10, 20, 30, 50, 100].map((num) => (
                                       <button
                                         key={num}
@@ -841,8 +841,8 @@ export const ContactsModule: React.FC = () => {
                                           setIsRecordsPerPageSubmenuOpen(false);
                                           setIsColumnSettingsOpen(false);
                                         }}
-                                        className={`w-full text-left px-3 py-1 hover:bg-[#F5F8F3] flex items-center justify-between ${
-                                          recordsPerPage === num ? 'font-bold text-[#3F7657]' : ''
+                                        className={`w-full text-left px-3 py-1 hover:bg-[#FFF8FA] flex items-center justify-between ${
+                                          recordsPerPage === num ? 'font-bold text-[#EE0979]' : ''
                                         }`}
                                       >
                                         <span>{num}</span>
@@ -862,7 +862,7 @@ export const ContactsModule: React.FC = () => {
                                 }}
                                 onMouseLeave={() => setIsViewModeSubmenuOpen(false)}
                               >
-                                <button className="w-full text-left px-3.5 py-1.5 hover:bg-[#F5F8F3] hover:text-[#153B2E] flex items-center justify-between cursor-pointer">
+                                <button className="w-full text-left px-3.5 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] flex items-center justify-between cursor-pointer">
                                   <span className="flex items-center gap-2">
                                     <span className="text-slate-500">👁️</span>
                                     <span>View Mode</span>
@@ -874,15 +874,15 @@ export const ContactsModule: React.FC = () => {
                                 </button>
 
                                 {isViewModeSubmenuOpen && (
-                                  <div className="absolute right-full top-0 mr-1 w-32 bg-white rounded-xl shadow-xl border border-[#D8E3D6] py-1 animate-in fade-in z-50">
+                                  <div className="absolute right-full top-0 mr-1 w-32 bg-white rounded-xl shadow-xl border border-[#F1D5E4] py-1 animate-in fade-in z-50">
                                     <button
                                       onClick={() => {
                                         setTextViewMode('wrap');
                                         setIsViewModeSubmenuOpen(false);
                                         setIsColumnSettingsOpen(false);
                                       }}
-                                      className={`w-full text-left px-3 py-1.5 hover:bg-[#F5F8F3] flex items-center gap-2 ${
-                                        textViewMode === 'wrap' ? 'font-bold text-[#3F7657]' : ''
+                                      className={`w-full text-left px-3 py-1.5 hover:bg-[#FFF8FA] flex items-center gap-2 ${
+                                        textViewMode === 'wrap' ? 'font-bold text-[#EE0979]' : ''
                                       }`}
                                     >
                                       {textViewMode === 'wrap' && <span className="text-xs">✓</span>}
@@ -894,8 +894,8 @@ export const ContactsModule: React.FC = () => {
                                         setIsViewModeSubmenuOpen(false);
                                         setIsColumnSettingsOpen(false);
                                       }}
-                                      className={`w-full text-left px-3 py-1.5 hover:bg-[#F5F8F3] flex items-center gap-2 ${
-                                        textViewMode === 'clip' ? 'font-bold text-[#3F7657]' : ''
+                                      className={`w-full text-left px-3 py-1.5 hover:bg-[#FFF8FA] flex items-center gap-2 ${
+                                        textViewMode === 'clip' ? 'font-bold text-[#EE0979]' : ''
                                       }`}
                                     >
                                       {textViewMode === 'clip' && <span className="text-xs">✓</span>}
@@ -911,13 +911,13 @@ export const ContactsModule: React.FC = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#D8E3D6]">
+                <tbody className="divide-y divide-[#F1D5E4]">
                   {filteredContacts.map((contact) => {
                     const isSelected = selectedContactIds.includes(contact.id);
                     return (
                       <tr
                         key={contact.id}
-                        className={`hover:bg-[#F9FCF8] transition cursor-pointer group ${
+                        className={`hover:bg-[#FFF8FA] transition cursor-pointer group ${
                           isSelected ? 'bg-[#F2F7F1]' : ''
                         }`}
                       >
@@ -926,10 +926,10 @@ export const ContactsModule: React.FC = () => {
                             type="checkbox"
                             checked={isSelected}
                             onChange={() => handleSelectOne(contact.id)}
-                            className="w-3.5 h-3.5 rounded-sm border-[#D8E3D6] text-[#3F7657] focus:ring-[#3F7657] cursor-pointer"
+                            className="w-3.5 h-3.5 rounded-sm border-[#F1D5E4] text-[#EE0979] focus:ring-[#EE0979] cursor-pointer"
                           />
                         </td>
-                        <td className="py-3.5 px-4 font-semibold text-[#17251D]">
+                        <td className="py-3.5 px-4 font-semibold text-[#0F172A]">
                           <div className="flex items-center gap-2 flex-wrap">
                             {/* Dleaf contact card icon badge */}
                             <span className="w-5 h-5 rounded bg-slate-100 border border-slate-200 text-slate-500 inline-flex items-center justify-center text-[10px]" title="Contact card">
@@ -945,7 +945,7 @@ export const ContactsModule: React.FC = () => {
                               {contact.firstName} {contact.lastName}
                             </span>
                           </div>
-                          <span className="text-[11px] text-[#526456] block font-normal mt-0.5">
+                          <span className="text-[11px] text-[#64748B] block font-normal mt-0.5">
                             {contact.title}
                           </span>
                         </td>
@@ -970,7 +970,7 @@ export const ContactsModule: React.FC = () => {
                             {/* Softphone VoIP call */}
                             <button
                               onClick={() => startVoipCall(contact.phone, `${contact.firstName} ${contact.lastName}`)}
-                              className="p-1.5 rounded-lg border border-[#D8E3D6] hover:bg-[#E5EFE4] text-[#153B2E] transition cursor-pointer"
+                              className="p-1.5 rounded-lg border border-[#F1D5E4] hover:bg-[#FFF1F7] text-[#0F172A] transition cursor-pointer"
                               title={`VoIP Call ${contact.firstName}`}
                             >
                               <Phone className="w-3.5 h-3.5" />
@@ -985,10 +985,10 @@ export const ContactsModule: React.FC = () => {
                                   module: 'Contact',
                                 })
                               }
-                              className="p-1.5 rounded-lg border border-[#D8E3D6] hover:bg-[#E5EFE4] text-emerald-700 transition cursor-pointer"
+                              className="p-1.5 rounded-lg border border-[#F1D5E4] hover:bg-[#FFF1F7] text-[#D8086C] transition cursor-pointer"
                               title={`WhatsApp ${contact.firstName}`}
                             >
-                              <Mail className="w-3.5 h-3.5 text-emerald-600" />
+                              <Mail className="w-3.5 h-3.5 text-[#EE0979]" />
                             </button>
 
                             {/* Delete Contact */}
@@ -1013,14 +1013,14 @@ export const ContactsModule: React.FC = () => {
             </div>
           ) : (
             /* Kanban Board Mode */
-            <div className="flex-1 overflow-x-auto p-4 flex gap-4 bg-[#F5F8F3]">
+            <div className="flex-1 overflow-x-auto p-4 flex gap-4 bg-[#FFF8FA]">
               {['VIP Contact', 'Contract Reviewer', 'Key Contact', 'Sample'].map((cat) => {
                 const colContacts = filteredContacts.filter((c) => c.tags?.includes(cat));
                 return (
-                  <div key={cat} className="w-72 bg-white rounded-2xl border border-[#D8E3D6] p-3 flex flex-col shrink-0 shadow-2xs">
-                    <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#D8E3D6]">
-                      <span className="font-bold text-xs text-[#17251D]">{cat}</span>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#E5EFE4] text-[#153B2E]">
+                  <div key={cat} className="w-72 bg-white rounded-2xl border border-[#F1D5E4] p-3 flex flex-col shrink-0 shadow-2xs">
+                    <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#F1D5E4]">
+                      <span className="font-bold text-xs text-[#0F172A]">{cat}</span>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#FFF1F7] text-[#0F172A]">
                         {colContacts.length}
                       </span>
                     </div>
@@ -1029,15 +1029,15 @@ export const ContactsModule: React.FC = () => {
                       {colContacts.map((contact) => (
                         <div
                           key={contact.id}
-                          className="p-3 bg-[#F9FCF8] rounded-xl border border-[#D8E3D6] hover:border-[#3F7657] transition cursor-pointer shadow-2xs"
+                          className="p-3 bg-[#FFF8FA] rounded-xl border border-[#F1D5E4] hover:border-[#EE0979] transition cursor-pointer shadow-2xs"
                         >
-                          <div className="font-bold text-xs text-[#17251D]">
+                          <div className="font-bold text-xs text-[#0F172A]">
                             {contact.firstName} {contact.lastName}
                           </div>
-                          <div className="text-[11px] text-[#526456] mt-0.5">{contact.accountName}</div>
+                          <div className="text-[11px] text-[#64748B] mt-0.5">{contact.accountName}</div>
                           <div className="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px]">
                             <span className="text-slate-400 font-mono">{contact.phone}</span>
-                            <span className="text-[#153B2E] font-semibold">{contact.title}</span>
+                            <span className="text-[#0F172A] font-semibold">{contact.title}</span>
                           </div>
                         </div>
                       ))}
@@ -1049,21 +1049,21 @@ export const ContactsModule: React.FC = () => {
           )}
 
           {/* Footer stats & pagination bar matching Screenshot 4 & 5 */}
-          <div className="px-6 py-2 bg-white border-t border-[#D8E3D6] flex items-center justify-between text-xs text-[#526456] select-none">
+          <div className="px-6 py-2 bg-white border-t border-[#F1D5E4] flex items-center justify-between text-xs text-[#64748B] select-none">
             <div className="flex items-center gap-2">
               <span className="font-semibold text-slate-700">Total Records</span>
-              <span className="font-bold text-[#153B2E]">{filteredContacts.length}</span>
+              <span className="font-bold text-[#0F172A]">{filteredContacts.length}</span>
             </div>
             <div className="flex items-center gap-3">
               <button
-                className="p-1 rounded hover:bg-[#F5F8F3] text-slate-400 hover:text-slate-700 transition cursor-pointer"
+                className="p-1 rounded hover:bg-[#FFF8FA] text-slate-400 hover:text-slate-700 transition cursor-pointer"
                 title="Previous page"
               >
                 &lt;
               </button>
               <span className="text-xs text-slate-600 font-medium">1 to {Math.min(recordsPerPage, filteredContacts.length)}</span>
               <button
-                className="p-1 rounded hover:bg-[#F5F8F3] text-slate-400 hover:text-slate-700 transition cursor-pointer"
+                className="p-1 rounded hover:bg-[#FFF8FA] text-slate-400 hover:text-slate-700 transition cursor-pointer"
                 title="Next page"
               >
                 &gt;

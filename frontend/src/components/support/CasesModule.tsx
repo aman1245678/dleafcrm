@@ -142,7 +142,7 @@ export const CasesModule: React.FC = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowCreateModal(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs transition"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Create Case</span>
@@ -173,13 +173,13 @@ export const CasesModule: React.FC = () => {
             <div className="flex items-center justify-center gap-2.5 pt-2">
               <button
                 onClick={() => setShowCreateModal(true)}
-                className="px-4 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs transition"
+                className="px-4 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition"
               >
                 Create
               </button>
               <button
                 onClick={() => setShowImportWizard(true)}
-                className="px-4 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs transition"
+                className="px-4 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition"
               >
                 Import
               </button>
@@ -388,7 +388,7 @@ export const CasesModule: React.FC = () => {
                               className={`px-2 py-0.5 rounded text-[11px] font-medium ${
                                 cs.status === 'Closed'
                                   ? 'bg-slate-100 text-slate-600'
-                                  : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                                  : 'bg-pink-50 text-[#D8086C] border border-rose-200'
                               }`}
                             >
                               {cs.status}

@@ -104,17 +104,17 @@ export const CreateLeadModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center z-50 p-2 sm:p-4 overflow-y-auto animate-in fade-in">
-      <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-[#D8E3D6] overflow-hidden my-auto max-h-[92vh] flex flex-col font-sans text-xs">
+      <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-[#F1D5E4] overflow-hidden my-auto max-h-[92vh] flex flex-col font-sans text-xs">
         
         {/* Top Header Bar matching Dleaf CRM */}
-        <div className="px-6 py-4 bg-[#F5F8F3] border-b border-[#D8E3D6] flex items-center justify-between shrink-0">
+        <div className="px-6 py-4 bg-[#FFF8FA] border-b border-[#F1D5E4] flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-[#E5EFE4] text-[#153B2E] flex items-center justify-center font-bold">
-              <Users className="w-4 h-4 text-[#3F7657]" />
+            <div className="w-8 h-8 rounded-xl bg-[#FFF1F7] text-[#0F172A] flex items-center justify-center font-bold">
+              <Users className="w-4 h-4 text-[#EE0979]" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-[#17251D]">Create Lead</h2>
-              <span className="text-[11px] text-[#526456]">Standard Enterprise Lead Creation Layout</span>
+              <h2 className="text-base font-bold text-[#0F172A]">Create Lead</h2>
+              <span className="text-[11px] text-[#64748B]">Standard Enterprise Lead Creation Layout</span>
             </div>
           </div>
 
@@ -122,14 +122,14 @@ export const CreateLeadModal: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsCreateLeadOpen(false)}
-              className="px-3.5 py-1.5 rounded-xl border border-[#D8E3D6] hover:bg-slate-100 text-slate-700 font-semibold cursor-pointer transition"
+              className="px-3.5 py-1.5 rounded-xl border border-[#F1D5E4] hover:bg-slate-100 text-slate-700 font-semibold cursor-pointer transition"
             >
               Cancel
             </button>
             <button
               type="button"
               onClick={() => handleSubmit()}
-              className="px-4 py-1.5 rounded-xl bg-[#153B2E] hover:bg-[#0F221B] text-white font-bold transition shadow-xs cursor-pointer active:scale-95"
+              className="px-4 py-1.5 rounded-xl bg-[#0F172A] hover:bg-[#0F172A] text-white font-bold transition shadow-xs cursor-pointer active:scale-95"
             >
               Save
             </button>
@@ -140,9 +140,9 @@ export const CreateLeadModal: React.FC = () => {
         <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-6">
           
           {/* SECTION 1: Lead Image Placeholder */}
-          <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#F9FCF8] border border-[#D8E3D6]">
-            <div className="w-16 h-16 rounded-2xl bg-white border-2 border-dashed border-[#A3CCA1] flex items-center justify-center text-slate-400">
-              <User className="w-7 h-7 text-[#3F7657]" />
+          <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FFF8FA] border border-[#F1D5E4]">
+            <div className="w-16 h-16 rounded-2xl bg-white border-2 border-dashed border-[#FF6A00] flex items-center justify-center text-slate-400">
+              <User className="w-7 h-7 text-[#EE0979]" />
             </div>
             <div>
               <div className="font-bold text-slate-800 text-xs">Lead Image / Avatar</div>
@@ -152,8 +152,8 @@ export const CreateLeadModal: React.FC = () => {
 
           {/* SECTION 2: Lead Information (Dleaf 2-column layout) */}
           <div>
-            <div className="flex items-center gap-2 pb-2 mb-4 border-b border-[#D8E3D6]">
-              <span className="font-bold text-xs text-[#17251D] uppercase tracking-wider">
+            <div className="flex items-center gap-2 pb-2 mb-4 border-b border-[#F1D5E4]">
+              <span className="font-bold text-xs text-[#0F172A] uppercase tracking-wider">
                 Lead Information
               </span>
             </div>
@@ -166,7 +166,7 @@ export const CreateLeadModal: React.FC = () => {
                   type="text"
                   value={leadOwner}
                   onChange={(e) => setLeadOwner(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl focus:bg-white focus:border-[#3F7657] focus:outline-hidden"
+                  className="w-full px-3 py-2 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl focus:bg-white focus:border-[#EE0979] focus:outline-hidden"
                 />
               </div>
 
@@ -180,7 +180,7 @@ export const CreateLeadModal: React.FC = () => {
                   placeholder="e.g. Rangoni Of Florence"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden font-medium"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden font-medium"
                 />
               </div>
 
@@ -191,7 +191,7 @@ export const CreateLeadModal: React.FC = () => {
                   placeholder="First name"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden"
                 />
               </div>
 
@@ -205,7 +205,7 @@ export const CreateLeadModal: React.FC = () => {
                   placeholder="Last name"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden font-medium"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden font-medium"
                 />
               </div>
 
@@ -216,7 +216,7 @@ export const CreateLeadModal: React.FC = () => {
                   placeholder="e.g. VP of Sales"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden"
                 />
               </div>
 
@@ -227,7 +227,7 @@ export const CreateLeadModal: React.FC = () => {
                   placeholder="name@company.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden"
                 />
               </div>
 
@@ -238,7 +238,7 @@ export const CreateLeadModal: React.FC = () => {
                   placeholder="+91 98765 43210"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden"
                 />
               </div>
 
@@ -249,7 +249,7 @@ export const CreateLeadModal: React.FC = () => {
                   placeholder="+91 98765 00000"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden"
                 />
               </div>
 
@@ -258,7 +258,7 @@ export const CreateLeadModal: React.FC = () => {
                 <select
                   value={leadSource}
                   onChange={(e) => setLeadSource(e.target.value as any)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden cursor-pointer"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden cursor-pointer"
                 >
                   <option value="Web Download">Web Download</option>
                   <option value="Online Store">Online Store</option>
@@ -275,7 +275,7 @@ export const CreateLeadModal: React.FC = () => {
                 <select
                   value={leadStatus}
                   onChange={(e) => setLeadStatus(e.target.value as any)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden cursor-pointer"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden cursor-pointer"
                 >
                   <option value="Not Contacted">Not Contacted</option>
                   <option value="Contacted">Contacted</option>
@@ -292,7 +292,7 @@ export const CreateLeadModal: React.FC = () => {
                 <select
                   value={industry}
                   onChange={(e) => setIndustry(e.target.value as any)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden cursor-pointer"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden cursor-pointer"
                 >
                   <option value="Technology">Technology</option>
                   <option value="Finance">Finance</option>
@@ -310,7 +310,7 @@ export const CreateLeadModal: React.FC = () => {
                   type="number"
                   value={annualRevenue}
                   onChange={(e) => setAnnualRevenue(Number(e.target.value))}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden font-mono"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden font-mono"
                 />
               </div>
             </div>
@@ -318,8 +318,8 @@ export const CreateLeadModal: React.FC = () => {
 
           {/* SECTION 3: Address Information */}
           <div className="pt-2">
-            <div className="flex items-center gap-2 pb-2 mb-4 border-b border-[#D8E3D6]">
-              <span className="font-bold text-xs text-[#17251D] uppercase tracking-wider">
+            <div className="flex items-center gap-2 pb-2 mb-4 border-b border-[#F1D5E4]">
+              <span className="font-bold text-xs text-[#0F172A] uppercase tracking-wider">
                 Address Information
               </span>
             </div>
@@ -332,7 +332,7 @@ export const CreateLeadModal: React.FC = () => {
                   placeholder="Street / Office Address"
                   value={street}
                   onChange={(e) => setStreet(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden"
                 />
               </div>
 
@@ -342,7 +342,7 @@ export const CreateLeadModal: React.FC = () => {
                   type="text"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden"
                 />
               </div>
 
@@ -352,7 +352,7 @@ export const CreateLeadModal: React.FC = () => {
                   type="text"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden"
                 />
               </div>
 
@@ -363,7 +363,7 @@ export const CreateLeadModal: React.FC = () => {
                   placeholder="e.g. 400001"
                   value={zipCode}
                   onChange={(e) => setZipCode(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden"
                 />
               </div>
 
@@ -373,7 +373,7 @@ export const CreateLeadModal: React.FC = () => {
                   type="text"
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden"
+                  className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden"
                 />
               </div>
             </div>
@@ -381,8 +381,8 @@ export const CreateLeadModal: React.FC = () => {
 
           {/* SECTION 4: Description Information */}
           <div className="pt-2">
-            <div className="flex items-center gap-2 pb-2 mb-4 border-b border-[#D8E3D6]">
-              <span className="font-bold text-xs text-[#17251D] uppercase tracking-wider">
+            <div className="flex items-center gap-2 pb-2 mb-4 border-b border-[#F1D5E4]">
+              <span className="font-bold text-xs text-[#0F172A] uppercase tracking-wider">
                 Description Information
               </span>
             </div>
@@ -394,25 +394,25 @@ export const CreateLeadModal: React.FC = () => {
                 placeholder="Enter client requirements, conversation highlights, or pipeline expectations..."
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl focus:border-[#3F7657] focus:outline-hidden"
+                className="w-full px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl focus:border-[#EE0979] focus:outline-hidden"
               />
             </div>
           </div>
         </form>
 
         {/* Footer save bar */}
-        <div className="px-6 py-3.5 bg-[#F5F8F3] border-t border-[#D8E3D6] flex items-center justify-end gap-2 shrink-0">
+        <div className="px-6 py-3.5 bg-[#FFF8FA] border-t border-[#F1D5E4] flex items-center justify-end gap-2 shrink-0">
           <button
             type="button"
             onClick={() => setIsCreateLeadOpen(false)}
-            className="px-4 py-2 rounded-xl border border-[#D8E3D6] hover:bg-slate-100 text-slate-700 font-semibold cursor-pointer transition"
+            className="px-4 py-2 rounded-xl border border-[#F1D5E4] hover:bg-slate-100 text-slate-700 font-semibold cursor-pointer transition"
           >
             Cancel
           </button>
           <button
             type="button"
             onClick={() => handleSubmit()}
-            className="px-5 py-2 rounded-xl bg-[#153B2E] hover:bg-[#0F221B] text-white font-bold transition shadow-xs cursor-pointer active:scale-95"
+            className="px-5 py-2 rounded-xl bg-[#0F172A] hover:bg-[#0F172A] text-white font-bold transition shadow-xs cursor-pointer active:scale-95"
           >
             Save Lead Record
           </button>

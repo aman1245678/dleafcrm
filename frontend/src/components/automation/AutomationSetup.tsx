@@ -67,7 +67,7 @@ export const AutomationSetup: React.FC = () => {
             <button
               onClick={() => setActiveTab('workflows')}
               className={`px-3 py-1 rounded-md transition ${
-                activeTab === 'workflows' ? 'bg-white text-[#738F70] shadow-2xs' : 'text-slate-600'
+                activeTab === 'workflows' ? 'bg-white text-[#EE0979] shadow-2xs' : 'text-slate-600'
               }`}
             >
               Workflow Rules ({workflows.length})
@@ -75,7 +75,7 @@ export const AutomationSetup: React.FC = () => {
             <button
               onClick={() => setActiveTab('scoring')}
               className={`px-3 py-1 rounded-md transition ${
-                activeTab === 'scoring' ? 'bg-white text-[#738F70] shadow-2xs' : 'text-slate-600'
+                activeTab === 'scoring' ? 'bg-white text-[#EE0979] shadow-2xs' : 'text-slate-600'
               }`}
             >
               Lead Scoring ({scoringRules.length})
@@ -83,7 +83,7 @@ export const AutomationSetup: React.FC = () => {
             <button
               onClick={() => setActiveTab('blueprints')}
               className={`px-3 py-1 rounded-md transition ${
-                activeTab === 'blueprints' ? 'bg-white text-[#738F70] shadow-2xs' : 'text-slate-600'
+                activeTab === 'blueprints' ? 'bg-white text-[#EE0979] shadow-2xs' : 'text-slate-600'
               }`}
             >
               Blueprint Process
@@ -94,7 +94,7 @@ export const AutomationSetup: React.FC = () => {
         {activeTab === 'workflows' && (
           <button
             onClick={() => setIsAddWfOpen(true)}
-            className="flex items-center gap-1.5 bg-[#738F70] hover:bg-[#5F7A5D] text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition"
+            className="flex items-center gap-1.5 bg-[#EE0979] hover:bg-[#EE0979] text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>New Workflow Rule</span>
@@ -103,7 +103,7 @@ export const AutomationSetup: React.FC = () => {
       </div>
 
       {testResult && (
-        <div className="bg-emerald-600 text-white text-xs px-4 py-2 flex items-center justify-between animate-in fade-in">
+        <div className="bg-[#EE0979] text-white text-xs px-4 py-2 flex items-center justify-between animate-in fade-in">
           <span>{testResult}</span>
           <button onClick={() => setTestResult(null)} className="font-bold">✕</button>
         </div>
@@ -121,7 +121,7 @@ export const AutomationSetup: React.FC = () => {
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
                     <span className="font-bold text-slate-900 text-sm">{wf.name}</span>
-                    <span className="px-2 py-0.5 rounded bg-[#F2F6F2] text-[#5F7A5D] font-semibold text-[10px]">
+                    <span className="px-2 py-0.5 rounded bg-[#FFF8FA] text-[#EE0979] font-semibold text-[10px]">
                       Module: {wf.module}
                     </span>
                     <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[10px]">
@@ -131,7 +131,7 @@ export const AutomationSetup: React.FC = () => {
                   <div className="text-slate-500 text-[11px] flex items-center gap-2">
                     <span>If <strong>{wf.conditionField}</strong> {wf.conditionOperator} &quot;{wf.conditionValue}&quot;</span>
                     <ArrowRight className="w-3 h-3 text-slate-400" />
-                    <span className="text-[#3F7657] font-semibold">{wf.actionType}: {wf.actionDetails}</span>
+                    <span className="text-[#EE0979] font-semibold">{wf.actionType}: {wf.actionDetails}</span>
                   </div>
                 </div>
 
@@ -140,16 +140,16 @@ export const AutomationSetup: React.FC = () => {
                     onClick={() => handleTestWorkflow(wf)}
                     className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded font-semibold text-xs flex items-center gap-1"
                   >
-                    <Play className="w-3 h-3 text-emerald-600" />
+                    <Play className="w-3 h-3 text-[#EE0979]" />
                     <span>Test Rule</span>
                   </button>
                   <button
                     onClick={() => toggleWorkflow(wf.id)}
-                    className="p-1 text-slate-500 hover:text-[#738F70]"
+                    className="p-1 text-slate-500 hover:text-[#EE0979]"
                     title={wf.isActive ? 'Active' : 'Inactive'}
                   >
                     {wf.isActive ? (
-                      <ToggleRight className="w-7 h-7 text-emerald-500" />
+                      <ToggleRight className="w-7 h-7 text-pink-600" />
                     ) : (
                       <ToggleLeft className="w-7 h-7 text-slate-300" />
                     )}
@@ -189,14 +189,14 @@ export const AutomationSetup: React.FC = () => {
                       <td className="py-2.5 px-3 text-right">
                         <span
                           className={`font-mono font-bold px-2 py-0.5 rounded text-xs ${
-                            sr.points > 0 ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'
+                            sr.points > 0 ? 'bg-pink-50 text-[#D8086C]' : 'bg-rose-50 text-rose-700'
                           }`}
                         >
                           {sr.points > 0 ? `+${sr.points}` : sr.points} pts
                         </span>
                       </td>
                       <td className="py-2.5 px-3 text-right">
-                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                        <span className="text-[10px] font-bold text-[#D8086C] bg-pink-50 px-2 py-0.5 rounded">
                           Active
                         </span>
                       </td>
@@ -217,7 +217,7 @@ export const AutomationSetup: React.FC = () => {
                   Enforces mandatory fields and sequential approval gates for enterprise deals.
                 </p>
               </div>
-              <span className="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded text-xs">
+              <span className="px-2.5 py-1 bg-pink-100 text-[#BE075E] font-bold rounded text-xs">
                 Active Policy
               </span>
             </div>
@@ -225,7 +225,7 @@ export const AutomationSetup: React.FC = () => {
             <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-3">
               <h4 className="font-bold text-xs text-slate-700 uppercase">Process Transition Graph</h4>
               <div className="flex flex-wrap items-center gap-2 text-xs">
-                <span className="px-3 py-1.5 bg-[#E2EDE0] text-[#374A36] rounded font-semibold">Qualification</span>
+                <span className="px-3 py-1.5 bg-[#FFF1F7] text-[#374A36] rounded font-semibold">Qualification</span>
                 <ArrowRight className="w-4 h-4 text-slate-400" />
                 <span className="px-3 py-1.5 bg-cyan-100 text-cyan-800 rounded font-semibold">Needs Analysis</span>
                 <ArrowRight className="w-4 h-4 text-slate-400" />
@@ -233,7 +233,7 @@ export const AutomationSetup: React.FC = () => {
                 <ArrowRight className="w-4 h-4 text-slate-400" />
                 <span className="px-3 py-1.5 bg-amber-100 text-amber-800 rounded font-semibold">Negotiation</span>
                 <ArrowRight className="w-4 h-4 text-slate-400" />
-                <span className="px-3 py-1.5 bg-emerald-100 text-emerald-800 rounded font-semibold">Closed Won</span>
+                <span className="px-3 py-1.5 bg-pink-100 text-[#BE075E] rounded font-semibold">Closed Won</span>
               </div>
               <p className="text-[11px] text-slate-500 mt-2">
                 • Mandatory requirements: Closing Date &gt; Today, Contact assigned, Quote delivered for deals &gt; ₹1,00,000.
@@ -322,7 +322,7 @@ export const AutomationSetup: React.FC = () => {
               >
                 Cancel
               </button>
-              <button type="submit" className="px-4 py-1.5 bg-[#738F70] text-white rounded font-semibold">
+              <button type="submit" className="px-4 py-1.5 bg-[#EE0979] text-white rounded font-semibold">
                 Save Rule
               </button>
             </div>

@@ -116,7 +116,7 @@ export const SalesInboxModule: React.FC = () => {
 
             <button
               onClick={() => setViewMode('config_services')}
-              className="px-5 py-2.5 bg-[#16845B] hover:bg-[#126b4a] active:scale-95 text-white font-semibold text-xs rounded-md shadow-xs transition cursor-pointer shrink-0"
+              className="px-5 py-2.5 bg-[#EE0979] hover:bg-[#126b4a] active:scale-95 text-white font-semibold text-xs rounded-md shadow-xs transition cursor-pointer shrink-0"
             >
               Configure Now
             </button>
@@ -230,7 +230,7 @@ export const SalesInboxModule: React.FC = () => {
 
             <button
               onClick={() => setViewMode('inbox')}
-              className="text-xs text-[#3F7657] font-semibold hover:underline"
+              className="text-xs text-[#EE0979] font-semibold hover:underline"
             >
               Skip to Inbox
             </button>
@@ -256,7 +256,7 @@ export const SalesInboxModule: React.FC = () => {
                     setSelectedService(svc.name as any);
                     setViewMode('config_form');
                   }}
-                  className="p-4 rounded-xl border border-slate-200 hover:border-[#3F7657] hover:shadow-md transition text-center cursor-pointer flex flex-col items-center justify-center space-y-2 bg-white"
+                  className="p-4 rounded-xl border border-slate-200 hover:border-[#EE0979] hover:shadow-md transition text-center cursor-pointer flex flex-col items-center justify-center space-y-2 bg-white"
                 >
                   <div className={`w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center ${svc.color}`}>
                     <svc.icon className="w-5 h-5" />
@@ -301,7 +301,7 @@ export const SalesInboxModule: React.FC = () => {
                 <select
                   value={protocol}
                   onChange={(e) => setProtocol(e.target.value as any)}
-                  className="w-full sm:w-72 px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs text-slate-800 focus:outline-none focus:border-[#3F7657]"
+                  className="w-full sm:w-72 px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs text-slate-800 focus:outline-none focus:border-[#EE0979]"
                 >
                   <option value="IMAP - OAuth Integration">IMAP - OAuth Integration</option>
                   <option value="POP3">POP3 Integration</option>
@@ -316,7 +316,7 @@ export const SalesInboxModule: React.FC = () => {
                 <select
                   value={syncPeriod}
                   onChange={(e) => setSyncPeriod(e.target.value)}
-                  className="w-48 px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs text-slate-800 focus:outline-none focus:border-[#3F7657]"
+                  className="w-48 px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs text-slate-800 focus:outline-none focus:border-[#EE0979]"
                 >
                   <option value="Last 1 month">Last 1 month</option>
                   <option value="Last 3 months">Last 3 months</option>
@@ -336,7 +336,7 @@ export const SalesInboxModule: React.FC = () => {
                   value={emailInput}
                   onChange={(e) => setEmailInput(e.target.value)}
                   placeholder="e.g. sales@yourcompany.com"
-                  className="w-full sm:w-72 px-3 py-2 border border-slate-300 rounded-lg text-xs text-slate-800 focus:outline-none focus:border-[#3F7657]"
+                  className="w-full sm:w-72 px-3 py-2 border border-slate-300 rounded-lg text-xs text-slate-800 focus:outline-none focus:border-[#EE0979]"
                 />
               </div>
             </div>
@@ -362,7 +362,7 @@ export const SalesInboxModule: React.FC = () => {
               <button
                 onClick={handleFinishConfig}
                 disabled={isConfiguring}
-                className="px-6 py-2.5 bg-[#153B2E] hover:bg-[#3F7657] text-white font-semibold rounded-md text-xs shadow-xs transition active:scale-95 cursor-pointer disabled:opacity-50 flex items-center gap-2"
+                className="px-6 py-2.5 bg-[#0F172A] hover:bg-[#EE0979] text-white font-semibold rounded-md text-xs shadow-xs transition active:scale-95 cursor-pointer disabled:opacity-50 flex items-center gap-2"
               >
                 {isConfiguring ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : null}
                 <span>{isConfiguring ? 'Connecting Mailbox...' : 'Configure'}</span>
@@ -385,11 +385,11 @@ export const SalesInboxModule: React.FC = () => {
       <div className="bg-white border-b border-slate-200 px-4 py-2.5 flex items-center justify-between shrink-0 shadow-2xs">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
-            <Mail className="w-5 h-5 text-[#3F7657]" />
-            <h1 className="font-bold text-base text-[#17251D]">SalesInbox</h1>
+            <Mail className="w-5 h-5 text-[#EE0979]" />
+            <h1 className="font-bold text-base text-[#0F172A]">SalesInbox</h1>
           </div>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#E5EFE4] text-[#153B2E] rounded-md border border-[#D8E3D6] text-xs font-medium">
-            <span className="w-2 h-2 rounded-full bg-[#16845B] animate-pulse"></span>
+          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#FFF1F7] text-[#0F172A] rounded-md border border-[#F1D5E4] text-xs font-medium">
+            <span className="w-2 h-2 rounded-full bg-[#EE0979] animate-pulse"></span>
             <span>Live Sync: {imapConfig.emailAddress}</span>
           </div>
         </div>
@@ -403,15 +403,15 @@ export const SalesInboxModule: React.FC = () => {
               placeholder="Search conversations..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-8 pr-3 py-1.5 bg-slate-50 rounded-lg text-xs border border-slate-200 text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#3F7657] w-48 sm:w-64"
+              className="pl-8 pr-3 py-1.5 bg-slate-50 rounded-lg text-xs border border-slate-200 text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#EE0979] w-48 sm:w-64"
             />
           </div>
 
           <button
             onClick={() => setViewMode('landing')}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#F5F8F3] hover:bg-[#E5EFE4] text-[#153B2E] rounded-lg text-xs font-semibold border border-[#D8E3D6] transition cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FFF8FA] hover:bg-[#FFF1F7] text-[#0F172A] rounded-lg text-xs font-semibold border border-[#F1D5E4] transition cursor-pointer"
           >
-            <Settings className="w-3.5 h-3.5 text-[#3F7657]" />
+            <Settings className="w-3.5 h-3.5 text-[#EE0979]" />
             <span>Setup Wizard</span>
           </button>
         </div>
@@ -424,17 +424,17 @@ export const SalesInboxModule: React.FC = () => {
           {categories.map((cat) => {
             const catEmails = filteredEmails.filter((e) => e.category === cat);
             const badgeColors: Record<string, string> = {
-              Deals: 'bg-[#3F7657] text-white',
-              'Contacts/Leads': 'bg-[#153B2E] text-white',
-              Colleagues: 'bg-[#5F7A5D] text-white',
+              Deals: 'bg-[#EE0979] text-white',
+              'Contacts/Leads': 'bg-[#0F172A] text-white',
+              Colleagues: 'bg-[#EE0979] text-white',
               Others: 'bg-slate-100 text-slate-700',
             };
 
             return (
               <div key={cat} className="flex-1 min-w-[210px] flex flex-col bg-white">
                 {/* Column Header */}
-                <div className="p-2.5 border-b border-slate-200 bg-[#F5F8F3] flex items-center justify-between">
-                  <span className="font-bold text-xs text-[#17251D]">{cat}</span>
+                <div className="p-2.5 border-b border-slate-200 bg-[#FFF8FA] flex items-center justify-between">
+                  <span className="font-bold text-xs text-[#0F172A]">{cat}</span>
                   <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded ${badgeColors[cat]}`}>
                     {catEmails.length}
                   </span>
@@ -450,8 +450,8 @@ export const SalesInboxModule: React.FC = () => {
                         onClick={() => setSelectedEmail(email)}
                         className={`p-2.5 rounded-lg border text-xs cursor-pointer transition shadow-2xs ${
                           isSelected
-                            ? 'bg-[#E5EFE4] border-[#3F7657] ring-1 ring-[#3F7657]/30'
-                            : 'bg-white border-slate-200 hover:border-[#3F7657]/50 hover:bg-[#F5F8F3]'
+                            ? 'bg-[#FFF1F7] border-[#EE0979] ring-1 ring-[#EE0979]/30'
+                            : 'bg-white border-slate-200 hover:border-[#EE0979]/50 hover:bg-[#FFF8FA]'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-1">
@@ -472,7 +472,7 @@ export const SalesInboxModule: React.FC = () => {
                         {/* CRM Badge tag */}
                         {email.relatedRecord && (
                           <div className="mt-2 pt-1 border-t border-slate-100 flex items-center justify-between text-[10px]">
-                            <span className="font-medium text-[#3F7657] truncate">
+                            <span className="font-medium text-[#EE0979] truncate">
                               {email.relatedRecord.type}: {email.relatedRecord.name}
                             </span>
                             {email.relatedRecord.amount && (
@@ -502,9 +502,9 @@ export const SalesInboxModule: React.FC = () => {
           {selectedEmail ? (
             <div className="flex-1 flex flex-col h-full overflow-hidden">
               {/* Email Content Header */}
-              <div className="p-4 border-b border-slate-200 bg-[#F5F8F3]">
+              <div className="p-4 border-b border-slate-200 bg-[#FFF8FA]">
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <h2 className="text-sm font-bold text-[#17251D] leading-snug">
+                  <h2 className="text-sm font-bold text-[#0F172A] leading-snug">
                     {selectedEmail.subject}
                   </h2>
                   <span className="text-[11px] text-slate-400 font-mono">
@@ -513,11 +513,11 @@ export const SalesInboxModule: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-between text-xs text-slate-600">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-[#3F7657] text-white font-bold flex items-center justify-center text-[11px]">
+                    <div className="w-6 h-6 rounded-full bg-[#EE0979] text-white font-bold flex items-center justify-center text-[11px]">
                       {selectedEmail.fromName.charAt(0)}
                     </div>
                     <div>
-                      <span className="font-semibold text-[#17251D]">{selectedEmail.fromName}</span>
+                      <span className="font-semibold text-[#0F172A]">{selectedEmail.fromName}</span>
                       <span className="text-slate-400 text-[11px] ml-1">&lt;{selectedEmail.from}&gt;</span>
                     </div>
                   </div>
@@ -532,10 +532,10 @@ export const SalesInboxModule: React.FC = () => {
 
               {/* CRM Context Card */}
               {selectedEmail.relatedRecord && (
-                <div className="p-3 bg-[#F5F8F3] border-t border-b border-slate-200 text-xs">
+                <div className="p-3 bg-[#FFF8FA] border-t border-b border-slate-200 text-xs">
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-bold text-[11px] text-[#153B2E] uppercase tracking-wider flex items-center gap-1">
-                      <Briefcase className="w-3.5 h-3.5 text-[#3F7657]" />
+                    <span className="font-bold text-[11px] text-[#0F172A] uppercase tracking-wider flex items-center gap-1">
+                      <Briefcase className="w-3.5 h-3.5 text-[#EE0979]" />
                       <span>Associated CRM Context</span>
                     </span>
                     <button
@@ -545,7 +545,7 @@ export const SalesInboxModule: React.FC = () => {
                         );
                         if (targetDeal) setSelectedDealForDetail(targetDeal);
                       }}
-                      className="text-[#3F7657] hover:underline font-semibold flex items-center gap-0.5 text-[11px] cursor-pointer"
+                      className="text-[#EE0979] hover:underline font-semibold flex items-center gap-0.5 text-[11px] cursor-pointer"
                     >
                       <span>Open Record</span>
                       <ExternalLink className="w-3 h-3" />
@@ -554,24 +554,24 @@ export const SalesInboxModule: React.FC = () => {
                   <div className="grid grid-cols-2 gap-2 text-slate-600 text-[11px]">
                     <div>
                       <span className="text-slate-400">Record: </span>
-                      <span className="font-semibold text-[#17251D]">{selectedEmail.relatedRecord.name}</span>
+                      <span className="font-semibold text-[#0F172A]">{selectedEmail.relatedRecord.name}</span>
                     </div>
                     {selectedEmail.relatedRecord.company && (
                       <div>
                         <span className="text-slate-400">Company: </span>
-                        <span className="font-semibold text-[#17251D]">{selectedEmail.relatedRecord.company}</span>
+                        <span className="font-semibold text-[#0F172A]">{selectedEmail.relatedRecord.company}</span>
                       </div>
                     )}
                     {selectedEmail.relatedRecord.stage && (
                       <div>
                         <span className="text-slate-400">Pipeline Stage: </span>
-                        <span className="font-semibold text-[#16845B]">{selectedEmail.relatedRecord.stage}</span>
+                        <span className="font-semibold text-[#EE0979]">{selectedEmail.relatedRecord.stage}</span>
                       </div>
                     )}
                     {selectedEmail.relatedRecord.amount && (
                       <div>
                         <span className="text-slate-400">Value: </span>
-                        <span className="font-bold text-[#17251D]">
+                        <span className="font-bold text-[#0F172A]">
                           ₹{selectedEmail.relatedRecord.amount.toLocaleString()}
                         </span>
                       </div>
@@ -582,14 +582,14 @@ export const SalesInboxModule: React.FC = () => {
                   <div className="mt-2.5 pt-2 border-t border-slate-200 flex items-center gap-2">
                     <button
                       onClick={() => setIsCreateTaskOpen(true)}
-                      className="flex-1 py-1 px-2 bg-white hover:bg-[#E5EFE4] text-slate-700 rounded border border-slate-300 text-[11px] font-semibold flex items-center justify-center gap-1 cursor-pointer"
+                      className="flex-1 py-1 px-2 bg-white hover:bg-[#FFF1F7] text-slate-700 rounded border border-slate-300 text-[11px] font-semibold flex items-center justify-center gap-1 cursor-pointer"
                     >
                       <CheckSquare className="w-3 h-3" />
                       <span>Create Task</span>
                     </button>
                     <button
                       onClick={() => setIsCreateDealOpen(true)}
-                      className="flex-1 py-1 px-2 bg-[#3F7657] hover:bg-[#336147] text-white rounded text-[11px] font-semibold flex items-center justify-center gap-1 shadow-2xs cursor-pointer"
+                      className="flex-1 py-1 px-2 bg-[#EE0979] hover:bg-[#D8086C] text-white rounded text-[11px] font-semibold flex items-center justify-center gap-1 shadow-2xs cursor-pointer"
                     >
                       <Plus className="w-3 h-3" />
                       <span>Create Deal</span>
@@ -606,12 +606,12 @@ export const SalesInboxModule: React.FC = () => {
                     value={replyText}
                     onChange={(e) => setReplyText(e.target.value)}
                     placeholder={`Reply to ${selectedEmail.fromName}...`}
-                    className="w-full p-2.5 pr-20 text-xs border border-slate-300 rounded-lg focus:outline-none focus:border-[#3F7657] resize-none bg-slate-50 text-slate-900"
+                    className="w-full p-2.5 pr-20 text-xs border border-slate-300 rounded-lg focus:outline-none focus:border-[#EE0979] resize-none bg-slate-50 text-slate-900"
                   />
                   <button
                     type="submit"
                     disabled={!replyText.trim()}
-                    className="absolute right-2 bottom-3 px-3 py-1 bg-[#3F7657] hover:bg-[#336147] text-white rounded text-xs font-semibold flex items-center gap-1 disabled:opacity-50 cursor-pointer"
+                    className="absolute right-2 bottom-3 px-3 py-1 bg-[#EE0979] hover:bg-[#D8086C] text-white rounded text-xs font-semibold flex items-center gap-1 disabled:opacity-50 cursor-pointer"
                   >
                     <Send className="w-3 h-3" />
                     <span>Send</span>

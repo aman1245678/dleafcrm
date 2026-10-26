@@ -59,7 +59,7 @@ export const SetupModule: React.FC = () => {
         </div>
 
         {savedNotice && (
-          <span className="text-xs text-emerald-600 font-semibold flex items-center gap-1">
+          <span className="text-xs text-[#EE0979] font-semibold flex items-center gap-1">
             <CheckCircle className="w-3.5 h-3.5" /> Settings Saved!
           </span>
         )}
@@ -108,7 +108,7 @@ export const SetupModule: React.FC = () => {
                     <span className="font-bold text-slate-800">{s.label}</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="font-mono font-bold text-[#738F70]">{s.probability}% Probability</span>
+                    <span className="font-mono font-bold text-[#EE0979]">{s.probability}% Probability</span>
                     <span className="text-[10px] bg-slate-200 px-2 py-0.5 rounded text-slate-700">Open Stage</span>
                   </div>
                 </div>
@@ -130,7 +130,7 @@ export const SetupModule: React.FC = () => {
                   <h4 className="font-bold text-slate-900">Aman Kumar (You)</h4>
                   <p className="text-slate-500 text-[11px]">Dleafteam@gmail.com • Role: Administrator</p>
                 </div>
-                <span className="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">
+                <span className="text-[10px] font-bold bg-pink-100 text-[#BE075E] px-2 py-0.5 rounded">
                   Active Superuser
                 </span>
               </div>
@@ -139,7 +139,7 @@ export const SetupModule: React.FC = () => {
                   <h4 className="font-bold text-slate-900">Pooja Sharma</h4>
                   <p className="text-slate-500 text-[11px]">pooja.sharma@Dleaf.com • Role: Sales Manager</p>
                 </div>
-                <span className="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">
+                <span className="text-[10px] font-bold bg-pink-100 text-[#BE075E] px-2 py-0.5 rounded">
                   Active
                 </span>
               </div>

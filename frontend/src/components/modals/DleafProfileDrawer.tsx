@@ -41,11 +41,11 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
   const [themeMode, setThemeMode] = useState<'Day' | 'Night' | 'Auto'>('Day');
 
   // Selected Color Swatch
-  const [selectedColor, setSelectedColor] = useState<string>('#3F7657');
+  const [selectedColor, setSelectedColor] = useState<string>('#EE0979');
 
   const swatches = [
-    '#3F7657', // Project Green
-    '#16845B', // Dleaf Green
+    '#EE0979', // Project Green
+    '#EE0979', // Dleaf Green
     '#2563EB', // Blue
     '#7C3AED', // Purple
     '#DB2777', // Pink
@@ -70,7 +70,7 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
       <div className="absolute inset-y-0 right-0 max-w-sm w-full bg-white shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-250">
         
         {/* Top Gradient Banner with User Details */}
-        <div className="relative bg-gradient-to-r from-[#153B2E] via-[#265342] to-[#3F7657] text-white p-5 pb-6">
+        <div className="relative bg-gradient-to-r from-[#0F172A] via-[#265342] to-[#EE0979] text-white p-5 pb-6">
           
           {/* Close X button */}
           <button
@@ -82,7 +82,7 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
 
           {/* User Profile Info */}
           <div className="flex items-center gap-3.5 pt-1">
-            <div className="w-12 h-12 rounded-full bg-[#153B2E] border-2 border-[#A3CCA1]/80 shadow-md flex items-center justify-center font-bold text-lg text-white">
+            <div className="w-12 h-12 rounded-full bg-[#0F172A] border-2 border-[#FF6A00]/80 shadow-md flex items-center justify-center font-bold text-lg text-white">
               {currentUser?.avatar || (currentUser?.name ? currentUser.name.charAt(0) : 'A')}
             </div>
 
@@ -90,7 +90,7 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
               <div className="font-bold text-sm leading-tight flex items-center gap-1.5">
                 <span>{currentUser?.name || 'Aman kumar'}</span>
               </div>
-              <div className="text-[11px] text-[#E5EFE4] flex items-center gap-1 mt-0.5">
+              <div className="text-[11px] text-[#FFF1F7] flex items-center gap-1 mt-0.5">
                 <span>User Id: {currentUser?.id || 'usr-client'}</span>
                 <HelpCircle className="w-3 h-3 opacity-80" />
               </div>
@@ -111,14 +111,14 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
             <div className="flex items-center justify-between text-[11px] text-slate-500">
               <span className="flex items-center gap-1">
                 <span>⏰</span>
-                <span>Your trial plan: <strong className="text-emerald-700">14 Days Free Trial Active</strong></span>
+                <span>Your trial plan: <strong className="text-[#D8086C]">14 Days Free Trial Active</strong></span>
               </span>
               <button
                 onClick={() => {
                   onClose();
                   onOpenStoreModal();
                 }}
-                className="text-[#16845B] hover:underline font-semibold"
+                className="text-[#EE0979] hover:underline font-semibold"
               >
                 View Plans
               </button>
@@ -126,7 +126,7 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
 
             <div className="flex items-center justify-between pt-1">
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-[10px]">
+                <div className="w-5 h-5 rounded bg-pink-100 text-[#D8086C] flex items-center justify-center font-bold text-[10px]">
                   ⛁
                 </div>
                 <span className="font-bold text-slate-800 text-xs">Standard Trial Edition</span>
@@ -137,7 +137,7 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
                   onClose();
                   onOpenStoreModal();
                 }}
-                className="px-3 py-1 bg-white border border-[#3F7657] text-[#153B2E] hover:bg-[#E5EFE4] text-[11px] font-bold rounded shadow-2xs transition cursor-pointer"
+                className="px-3 py-1 bg-white border border-[#EE0979] text-[#0F172A] hover:bg-[#FFF1F7] text-[11px] font-bold rounded shadow-2xs transition cursor-pointer"
               >
                 UPGRADE
               </button>
@@ -153,7 +153,7 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
             className="p-3 rounded-xl border border-pink-200/80 bg-gradient-to-r from-pink-50/60 to-purple-50/60 flex items-center justify-between cursor-pointer hover:shadow-xs transition"
           >
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
+              <div className="w-8 h-8 rounded-lg bg-pink-100 text-[#D8086C] flex items-center justify-center font-bold">
                 ⚙️
               </div>
               <div>
@@ -176,7 +176,7 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
                 <button
                   onClick={() => setThemeMode('Day')}
                   className={`px-3 py-1 rounded-md font-semibold transition cursor-pointer flex items-center gap-1 ${
-                    themeMode === 'Day' ? 'bg-[#153B2E] text-white shadow-2xs' : 'text-slate-600'
+                    themeMode === 'Day' ? 'bg-[#0F172A] text-white shadow-2xs' : 'text-slate-600'
                   }`}
                 >
                   <Sun className="w-3 h-3" />
@@ -185,7 +185,7 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
                 <button
                   onClick={() => setThemeMode('Night')}
                   className={`px-3 py-1 rounded-md font-semibold transition cursor-pointer flex items-center gap-1 ${
-                    themeMode === 'Night' ? 'bg-[#153B2E] text-white shadow-2xs' : 'text-slate-600'
+                    themeMode === 'Night' ? 'bg-[#0F172A] text-white shadow-2xs' : 'text-slate-600'
                   }`}
                 >
                   <Moon className="w-3 h-3" />
@@ -194,7 +194,7 @@ export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
                 <button
                   onClick={() => setThemeMode('Auto')}
                   className={`px-3 py-1 rounded-md font-semibold transition cursor-pointer ${
-                    themeMode === 'Auto' ? 'bg-[#153B2E] text-white shadow-2xs' : 'text-slate-600'
+                    themeMode === 'Auto' ? 'bg-[#0F172A] text-white shadow-2xs' : 'text-slate-600'
                   }`}
                 >
                   Auto ⓘ

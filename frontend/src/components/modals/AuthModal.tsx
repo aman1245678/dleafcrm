@@ -126,7 +126,7 @@ export const AuthModal: React.FC = () => {
         {/* Header */}
         <div className="bg-slate-900 text-white p-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#153B2E] to-[#3F7657] flex items-center justify-center font-bold text-white shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#0F172A] to-[#EE0979] flex items-center justify-center font-bold text-white shadow-md">
               <ShieldCheck className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -147,7 +147,7 @@ export const AuthModal: React.FC = () => {
           <button
             onClick={() => setMode('roles')}
             className={`flex-1 py-2.5 text-center transition ${
-              mode === 'roles' ? 'bg-white text-[#738F70] border-b-2 border-[#738F70]' : 'text-slate-500 hover:text-slate-800'
+              mode === 'roles' ? 'bg-white text-[#EE0979] border-b-2 border-[#EE0979]' : 'text-slate-500 hover:text-slate-800'
             }`}
           >
             Switch Role
@@ -155,7 +155,7 @@ export const AuthModal: React.FC = () => {
           <button
             onClick={() => setMode('login')}
             className={`flex-1 py-2.5 text-center transition ${
-              mode === 'login' ? 'bg-white text-[#738F70] border-b-2 border-[#738F70]' : 'text-slate-500 hover:text-slate-800'
+              mode === 'login' ? 'bg-white text-[#EE0979] border-b-2 border-[#EE0979]' : 'text-slate-500 hover:text-slate-800'
             }`}
           >
             Sign In
@@ -163,7 +163,7 @@ export const AuthModal: React.FC = () => {
           <button
             onClick={() => setMode('signup')}
             className={`flex-1 py-2.5 text-center transition ${
-              mode === 'signup' ? 'bg-white text-[#738F70] border-b-2 border-[#738F70]' : 'text-slate-500 hover:text-slate-800'
+              mode === 'signup' ? 'bg-white text-[#EE0979] border-b-2 border-[#EE0979]' : 'text-slate-500 hover:text-slate-800'
             }`}
           >
             Create Org
@@ -171,7 +171,7 @@ export const AuthModal: React.FC = () => {
           <button
             onClick={() => handleSendOtp()}
             className={`flex-1 py-2.5 text-center transition ${
-              mode === 'otp' ? 'bg-white text-[#738F70] border-b-2 border-[#738F70]' : 'text-slate-500 hover:text-slate-800'
+              mode === 'otp' ? 'bg-white text-[#EE0979] border-b-2 border-[#EE0979]' : 'text-slate-500 hover:text-slate-800'
             }`}
           >
             OTP / 2FA
@@ -179,8 +179,8 @@ export const AuthModal: React.FC = () => {
         </div>
 
         {statusMsg && (
-          <div className="mx-5 mt-4 p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+          <div className="mx-5 mt-4 p-3 rounded-lg bg-pink-50 border border-rose-200 text-[#BE075E] text-xs flex items-center gap-2">
+            <CheckCircle className="w-4 h-4 text-[#EE0979] shrink-0" />
             <span>{statusMsg}</span>
           </div>
         )}
@@ -206,18 +206,18 @@ export const AuthModal: React.FC = () => {
                   onClick={() => handleRoleSelect('admin')}
                   className={`p-3.5 rounded-xl border transition cursor-pointer flex items-center justify-between ${
                     currentUser.role === 'admin'
-                      ? 'border-[#738F70] bg-[#F2F6F2]/60 ring-2 ring-blue-500/20'
+                      ? 'border-[#EE0979] bg-[#FFF8FA]/60 ring-2 ring-blue-500/20'
                       : 'border-slate-200 hover:border-slate-300 bg-white'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-[#738F70] text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                    <div className="w-9 h-9 rounded-lg bg-[#EE0979] text-white flex items-center justify-center font-bold text-xs shadow-xs">
                       ADM
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-xs text-slate-900">Administrator / Superuser</span>
-                        <span className="text-[10px] bg-[#E2EDE0] text-[#5F7A5D] font-semibold px-1.5 py-0.5 rounded">All Access</span>
+                        <span className="text-[10px] bg-[#FFF1F7] text-[#EE0979] font-semibold px-1.5 py-0.5 rounded">All Access</span>
                       </div>
                       <p className="text-[11px] text-slate-500 mt-0.5">
                         Full access to Setup, Modules & Custom Fields, User management, Pipelines & Backups.
@@ -225,7 +225,7 @@ export const AuthModal: React.FC = () => {
                     </div>
                   </div>
                   {currentUser.role === 'admin' && (
-                    <div className="w-5 h-5 rounded-full bg-[#738F70] text-white flex items-center justify-center shrink-0">
+                    <div className="w-5 h-5 rounded-full bg-[#EE0979] text-white flex items-center justify-center shrink-0">
                       <Check className="w-3.5 h-3.5" />
                     </div>
                   )}
@@ -266,18 +266,18 @@ export const AuthModal: React.FC = () => {
                   onClick={() => handleRoleSelect('agent')}
                   className={`p-3.5 rounded-xl border transition cursor-pointer flex items-center justify-between ${
                     currentUser.role === 'agent'
-                      ? 'border-emerald-600 bg-emerald-50/60 ring-2 ring-emerald-500/20'
+                      ? 'border-[#EE0979] bg-pink-50/60 ring-2 ring-pink-600/20'
                       : 'border-slate-200 hover:border-slate-300 bg-white'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                    <div className="w-9 h-9 rounded-lg bg-[#EE0979] text-white flex items-center justify-center font-bold text-xs shadow-xs">
                       AGT
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-xs text-slate-900">Sales Agent / Inside Sales</span>
-                        <span className="text-[10px] bg-emerald-100 text-emerald-700 font-semibold px-1.5 py-0.5 rounded">Rep</span>
+                        <span className="text-[10px] bg-pink-100 text-[#D8086C] font-semibold px-1.5 py-0.5 rounded">Rep</span>
                       </div>
                       <p className="text-[11px] text-slate-500 mt-0.5">
                         Leads qualification, Kanban deals execution, VoIP dialer & WhatsApp client chats.
@@ -285,7 +285,7 @@ export const AuthModal: React.FC = () => {
                     </div>
                   </div>
                   {currentUser.role === 'agent' && (
-                    <div className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                    <div className="w-5 h-5 rounded-full bg-[#EE0979] text-white flex items-center justify-center shrink-0">
                       <Check className="w-3.5 h-3.5" />
                     </div>
                   )}
@@ -315,7 +315,7 @@ export const AuthModal: React.FC = () => {
                   <label className="text-slate-700 font-semibold">Password</label>
                   <button
                     onClick={() => handleSendOtp()}
-                    className="text-[11px] text-[#738F70] hover:underline"
+                    className="text-[11px] text-[#EE0979] hover:underline"
                   >
                     Forgot Password / OTP Login?
                   </button>
@@ -359,7 +359,7 @@ export const AuthModal: React.FC = () => {
                     setIsSubmitting(false);
                   }
                 }}
-                className="w-full py-2.5 bg-[#738F70] hover:bg-[#5F7A5D] disabled:opacity-50 text-white rounded-lg font-bold shadow-sm transition flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-2.5 bg-[#EE0979] hover:bg-[#EE0979] disabled:opacity-50 text-white rounded-lg font-bold shadow-sm transition flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isSubmitting ? (
                   <RefreshCw className="w-4 h-4 animate-spin" />
@@ -467,7 +467,7 @@ export const AuthModal: React.FC = () => {
                     setIsSubmitting(false);
                   }
                 }}
-                className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white rounded-lg font-bold shadow-sm transition flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-2.5 bg-[#EE0979] hover:bg-[#D8086C] disabled:opacity-50 text-white rounded-lg font-bold shadow-sm transition flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isSubmitting ? (
                   <RefreshCw className="w-4 h-4 animate-spin" />
@@ -481,7 +481,7 @@ export const AuthModal: React.FC = () => {
           {/* TAB 4: OTP VERIFICATION */}
           {mode === 'otp' && (
             <div className="space-y-4 text-center">
-              <div className="w-12 h-12 rounded-full bg-[#E2EDE0] text-[#738F70] flex items-center justify-center mx-auto">
+              <div className="w-12 h-12 rounded-full bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center mx-auto">
                 <KeyRound className="w-6 h-6" />
               </div>
 
@@ -505,7 +505,7 @@ export const AuthModal: React.FC = () => {
                     maxLength={1}
                     value={digit}
                     onChange={(e) => handleOtpInput(idx, e.target.value)}
-                    className="w-10 h-12 text-center text-lg font-bold font-mono border-2 rounded-lg border-slate-300 focus:border-[#738F70] focus:ring-2 focus:ring-blue-100"
+                    className="w-10 h-12 text-center text-lg font-bold font-mono border-2 rounded-lg border-slate-300 focus:border-[#EE0979] focus:ring-2 focus:ring-blue-100"
                   />
                 ))}
               </div>
@@ -515,7 +515,7 @@ export const AuthModal: React.FC = () => {
                   onClick={() => {
                     setOtpCode(generatedOtp.split(''));
                   }}
-                  className="text-xs text-[#738F70] hover:underline font-semibold"
+                  className="text-xs text-[#EE0979] hover:underline font-semibold"
                 >
                   ⚡ Auto-fill Code
                 </button>
@@ -530,7 +530,7 @@ export const AuthModal: React.FC = () => {
 
               <button
                 onClick={handleVerifyOtp}
-                className="w-full py-2.5 bg-[#738F70] hover:bg-[#5F7A5D] text-white rounded-lg font-bold shadow-sm transition text-xs"
+                className="w-full py-2.5 bg-[#EE0979] hover:bg-[#EE0979] text-white rounded-lg font-bold shadow-sm transition text-xs"
               >
                 Verify & Continue
               </button>
@@ -554,7 +554,7 @@ export const AuthModal: React.FC = () => {
               Sign Out
             </button>
           ) : (
-            <span className="font-semibold text-[#738F70]">Secure 256-bit TLS</span>
+            <span className="font-semibold text-[#EE0979]">Secure 256-bit TLS</span>
           )}
         </div>
       </div>

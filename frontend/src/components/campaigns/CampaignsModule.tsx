@@ -322,7 +322,7 @@ export const CampaignsModule: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleExecuteImport}
-                  className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
+                  className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
                 >
                   Next
                 </button>
@@ -375,7 +375,7 @@ export const CampaignsModule: React.FC = () => {
 
             <button
               onClick={() => setShowCreateModal(true)}
-              className="px-4 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs flex items-center gap-1 cursor-pointer"
+              className="px-4 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs flex items-center gap-1 cursor-pointer"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>Create Campaign</span>
@@ -400,7 +400,7 @@ export const CampaignsModule: React.FC = () => {
               <div className="text-lg font-bold text-slate-900 mt-1 font-mono">
                 {formatCurrency(totalExpected)}
               </div>
-              <span className="text-[11px] text-emerald-600 mt-0.5 block">Estimated from active campaigns</span>
+              <span className="text-[11px] text-[#EE0979] mt-0.5 block">Estimated from active campaigns</span>
             </div>
 
             <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-2xs">
@@ -450,7 +450,7 @@ export const CampaignsModule: React.FC = () => {
                       <span
                         className={`px-2 py-0.5 rounded text-[10px] font-semibold ${
                           c.status === 'Active'
-                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                            ? 'bg-pink-50 text-[#D8086C] border border-rose-200'
                             : 'bg-amber-50 text-amber-700 border border-amber-200'
                         }`}
                       >
@@ -525,13 +525,13 @@ export const CampaignsModule: React.FC = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowCreateModal(true)}
-              className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
+              className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
             >
               Create
             </button>
             <button
               onClick={() => setViewState('import_wizard')}
-              className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
+              className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
             >
               Import
             </button>
@@ -669,7 +669,7 @@ export const CampaignsModule: React.FC = () => {
               </button>
               <button
                 type="submit"
-                className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
+                className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
               >
                 Save Campaign
               </button>

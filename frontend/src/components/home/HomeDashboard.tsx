@@ -38,7 +38,7 @@ export const HomeDashboard: React.FC = () => {
         <title>Dleaf CRM - Executive Progress & Gap Analysis Report</title>
         <style>
           body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #1e293b; margin: 40px; }
-          h1 { color: #0f172a; font-size: 20pt; border-bottom: 2px solid #738F70; padding-bottom: 6px; }
+          h1 { color: #0f172a; font-size: 20pt; border-bottom: 2px solid #EE0979; padding-bottom: 6px; }
           h2 { color: #1e40af; font-size: 14pt; margin-top: 24px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px; }
           h3 { color: #334155; font-size: 12pt; margin-top: 16px; }
           table { width: 100%; border-collapse: collapse; margin-top: 14px; margin-bottom: 20px; font-size: 9.5pt; }
@@ -46,7 +46,7 @@ export const HomeDashboard: React.FC = () => {
           td { padding: 7px 10px; border: 1px solid #cbd5e1; }
           .badge-progress { color: #d97706; font-weight: bold; }
           .badge-pending { color: #dc2626; font-weight: bold; }
-          .highlight { background-color: #F2F6F2; padding: 12px; border-left: 4px solid #738F70; margin: 16px 0; }
+          .highlight { background-color: #FFF8FA; padding: 12px; border-left: 4px solid #EE0979; margin: 16px 0; }
         </style>
       </head>
       <body>
@@ -54,10 +54,10 @@ export const HomeDashboard: React.FC = () => {
         <p><strong>Project Name:</strong> Dleaf CRM (Enterprise Sales & Business Suite)<br>
         <strong>Target Benchmark:</strong> Dleaf CRM Enterprise Edition<br>
         <strong>Date:</strong> 17 October 2026 | 7:00 PM IST (10:30 AM to 7:00 PM Sprint)<br>
-        <strong>Current Overall Completion Rate:</strong> <strong style="color:#16845B;">~85% (High-Velocity Production Ready)</strong></p>
+        <strong>Current Overall Completion Rate:</strong> <strong style="color:#EE0979;">~85% (High-Velocity Production Ready)</strong></p>
 
         <div class="highlight">
-          <strong>Executive Summary (17 Oct 2026):</strong> Dedicated 8.5-hour sprint (10:30 AM – 7:00 PM) successfully achieved a <strong>+5% jump to ~85% overall completion</strong>. Accomplished an enterprise-wide design system overhaul: purged 100% of generic blue/purple styles and unified the entire CRM canvas with the official Deep Forest (#153B2E), Brand Green (#3F7657), and Light Sage (#e6f0e1) color theme. Upgraded Sign In/Sign Up modal to professional dual-panel layout, eliminated sidebar scrollbars with custom divider lining, harmonized Home Dashboard, SalesInbox, Contacts, and Deals pipelines, and verified zero build errors across frontend and backend.
+          <strong>Executive Summary (17 Oct 2026):</strong> Dedicated 8.5-hour sprint (10:30 AM – 7:00 PM) successfully achieved a <strong>+5% jump to ~85% overall completion</strong>. Accomplished an enterprise-wide design system overhaul: purged 100% of generic blue/purple styles and unified the entire CRM canvas with the official Deep Forest (#0F172A), Brand Green (#EE0979), and Light Sage (#F8FAFC) color theme. Upgraded Sign In/Sign Up modal to professional dual-panel layout, eliminated sidebar scrollbars with custom divider lining, harmonized Home Dashboard, SalesInbox, Contacts, and Deals pipelines, and verified zero build errors across frontend and backend.
         </div>
 
         <h2>1. Module Implementation Status & Realistic Progress (What Is Built vs What Is Missing)</h2>
@@ -182,7 +182,7 @@ export const HomeDashboard: React.FC = () => {
         </ol>
 
         <h2>3. Overall Project Progress Summary</h2>
-        <p><strong>Total Project Completion:</strong> <strong style="color:#16845B;">~85% (Up from ~80% on 16 Oct)</strong><br>
+        <p><strong>Total Project Completion:</strong> <strong style="color:#EE0979;">~85% (Up from ~80% on 16 Oct)</strong><br>
         <strong>Hours Logged Today:</strong> 8.5 Hours Dedicated Execution (10:30 AM to 7:00 PM IST)<br>
         <strong>Status:</strong> High-Velocity Sprint Delivered with Zero Build / Compilation Errors</p>
       </body>
@@ -249,15 +249,15 @@ export const HomeDashboard: React.FC = () => {
   ];
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-[#e6f0e1] overflow-hidden">
+    <div className="flex-1 flex flex-col h-full bg-[#F8FAFC] overflow-hidden">
       {/* Clean Header Bar - Displaying Client Name cleanly */}
-      <div className="bg-[#e6f0e1] px-5 sm:px-6 py-4 border-b border-[#d2dfcd]">
+      <div className="bg-[#F8FAFC] px-5 sm:px-6 py-4 border-b border-[#F1D5E4]">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div>
-            <h1 className="text-xl font-bold tracking-tight text-[#17251D]">
+            <h1 className="text-xl font-bold tracking-tight text-[#0F172A]">
               {currentUser?.name || 'Client Workspace'}
             </h1>
-            <p className="text-xs text-[#4e6a57] mt-0.5">
+            <p className="text-xs text-[#64748B] mt-0.5">
               {currentUser?.company || 'Dleaf CRM Workspace'}
             </p>
           </div>
@@ -265,13 +265,13 @@ export const HomeDashboard: React.FC = () => {
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setIsCreateDealOpen(true)}
-              className="px-3.5 py-1.5 bg-[#3F7657] hover:bg-[#336147] text-white rounded-lg text-xs font-semibold shadow-xs transition cursor-pointer flex items-center gap-1 active:scale-95"
+              className="px-3.5 py-1.5 bg-[#EE0979] hover:bg-[#D8086C] text-white rounded-lg text-xs font-semibold shadow-xs transition cursor-pointer flex items-center gap-1 active:scale-95"
             >
               <span>+ Quick Deal</span>
             </button>
             <button
               onClick={() => setIsCreateLeadOpen(true)}
-              className="px-3.5 py-1.5 bg-white hover:bg-[#d8e7d2] text-[#17251D] border border-[#c5d7bf] rounded-lg text-xs font-semibold transition cursor-pointer flex items-center gap-1 active:scale-95"
+              className="px-3.5 py-1.5 bg-white hover:bg-[#FCE7F3] text-[#0F172A] border border-[#F1D5E4] rounded-lg text-xs font-semibold transition cursor-pointer flex items-center gap-1 active:scale-95"
             >
               <span>+ Quick Lead</span>
             </button>
@@ -279,33 +279,33 @@ export const HomeDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Content Workspace with #e6f0e1 Background */}
+      {/* Main Content Workspace with #F8FAFC Background */}
       <div className="flex-1 overflow-auto p-4 sm:p-5 max-w-5xl mx-auto w-full space-y-4 no-scrollbar">
         {/* Quick KPI Strip */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-          <div className="bg-[#f0f6ec] p-3.5 rounded-xl border border-[#d2dfcd] shadow-2xs">
-            <span className="text-[#4e6a57] text-[11px] font-medium block">Open Pipeline Value</span>
-            <span className="text-lg font-bold text-[#17251D] font-mono mt-0.5 block">
+          <div className="bg-[#FFFFFF] p-3.5 rounded-xl border border-[#F1D5E4] shadow-2xs">
+            <span className="text-[#64748B] text-[11px] font-medium block">Open Pipeline Value</span>
+            <span className="text-lg font-bold text-[#0F172A] font-mono mt-0.5 block">
               ₹{totalOpen.toLocaleString()}
             </span>
-            <span className="text-[10px] text-[#3F7657] font-semibold">In active negotiation</span>
+            <span className="text-[10px] text-[#EE0979] font-semibold">In active negotiation</span>
           </div>
-          <div className="bg-[#f0f6ec] p-3.5 rounded-xl border border-[#d2dfcd] shadow-2xs">
-            <span className="text-[#4e6a57] text-[11px] font-medium block">Closed Won Revenue</span>
-            <span className="text-lg font-bold text-[#16845B] font-mono mt-0.5 block">
+          <div className="bg-[#FFFFFF] p-3.5 rounded-xl border border-[#F1D5E4] shadow-2xs">
+            <span className="text-[#64748B] text-[11px] font-medium block">Closed Won Revenue</span>
+            <span className="text-lg font-bold text-[#EE0979] font-mono mt-0.5 block">
               ₹{totalWon.toLocaleString()}
             </span>
-            <span className="text-[10px] text-[#16845B] font-semibold">100% realized</span>
+            <span className="text-[10px] text-[#EE0979] font-semibold">100% realized</span>
           </div>
-          <div className="bg-[#f0f6ec] p-3.5 rounded-xl border border-[#d2dfcd] shadow-2xs">
-            <span className="text-[#4e6a57] text-[11px] font-medium block">Qualified Leads</span>
-            <span className="text-lg font-bold text-[#153B2E] font-mono mt-0.5 block">
+          <div className="bg-[#FFFFFF] p-3.5 rounded-xl border border-[#F1D5E4] shadow-2xs">
+            <span className="text-[#64748B] text-[11px] font-medium block">Qualified Leads</span>
+            <span className="text-lg font-bold text-[#0F172A] font-mono mt-0.5 block">
               {leads.length} Records
             </span>
-            <span className="text-[10px] text-[#3F7657] font-semibold">Ready for conversion</span>
+            <span className="text-[10px] text-[#EE0979] font-semibold">Ready for conversion</span>
           </div>
-          <div className="bg-[#f0f6ec] p-3.5 rounded-xl border border-[#d2dfcd] shadow-2xs">
-            <span className="text-[#4e6a57] text-[11px] font-medium block">Pending Tasks</span>
+          <div className="bg-[#FFFFFF] p-3.5 rounded-xl border border-[#F1D5E4] shadow-2xs">
+            <span className="text-[#64748B] text-[11px] font-medium block">Pending Tasks</span>
             <span className="text-lg font-bold text-amber-800 font-mono mt-0.5 block">
               {tasks.filter((t) => t.status !== 'Completed').length} Due
             </span>
@@ -314,17 +314,17 @@ export const HomeDashboard: React.FC = () => {
         </div>
 
         {/* Setup Onboarding Checklist */}
-        <div className="bg-[#f0f6ec] rounded-xl border border-[#d2dfcd] shadow-2xs p-5 space-y-4">
-          <div className="flex items-center justify-between border-b border-[#d2dfcd] pb-3">
+        <div className="bg-[#FFFFFF] rounded-xl border border-[#F1D5E4] shadow-2xs p-5 space-y-4">
+          <div className="flex items-center justify-between border-b border-[#F1D5E4] pb-3">
             <div>
-              <h2 className="font-bold text-sm text-[#17251D]">
+              <h2 className="font-bold text-sm text-[#0F172A]">
                 CRM First-Time Setup & Onboarding Checklist
               </h2>
-              <p className="text-[11px] text-[#4e6a57] mt-0.5">
+              <p className="text-[11px] text-[#64748B] mt-0.5">
                 Complete these initial milestones to fully leverage the Dleaf CRM architecture.
               </p>
             </div>
-            <span className="text-xs font-bold bg-[#dce8d6] text-[#153B2E] border border-[#cdddc7] px-2.5 py-1 rounded-md">
+            <span className="text-xs font-bold bg-[#FFF1F7] text-[#0F172A] border border-[#F1D5E4] px-2.5 py-1 rounded-md">
               4 of 5 Completed
             </span>
           </div>
@@ -333,24 +333,24 @@ export const HomeDashboard: React.FC = () => {
             {checklist.map((item) => (
               <div
                 key={item.id}
-                className="flex items-start justify-between p-3 rounded-lg border border-[#d2dfcd] bg-[#e6f0e1] hover:bg-[#dce8d6] transition"
+                className="flex items-start justify-between p-3 rounded-lg border border-[#F1D5E4] bg-[#F8FAFC] hover:bg-[#FFF1F7] transition"
               >
                 <div className="flex items-start gap-3">
                   {item.done ? (
-                    <CheckCircle2 className="w-5 h-5 text-[#16845B] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#EE0979] shrink-0 mt-0.5" />
                   ) : (
-                    <Circle className="w-5 h-5 text-[#4e6a57]/40 shrink-0 mt-0.5" />
+                    <Circle className="w-5 h-5 text-[#64748B]/40 shrink-0 mt-0.5" />
                   )}
                   <div>
-                    <h3 className="font-bold text-xs text-[#17251D]">{item.title}</h3>
-                    <p className="text-[11px] text-[#4e6a57] mt-0.5">{item.desc}</p>
+                    <h3 className="font-bold text-xs text-[#0F172A]">{item.title}</h3>
+                    <p className="text-[11px] text-[#64748B] mt-0.5">{item.desc}</p>
                   </div>
                 </div>
 
                 {item.action && (
                   <button
                     onClick={item.action}
-                    className="px-3 py-1.5 bg-[#dce8d6] hover:bg-[#3F7657] hover:text-white text-[#153B2E] rounded-md font-semibold text-xs border border-[#cdddc7] transition shrink-0 ml-3 flex items-center gap-1 cursor-pointer"
+                    className="px-3 py-1.5 bg-[#FFF1F7] hover:bg-[#EE0979] hover:text-white text-[#0F172A] rounded-md font-semibold text-xs border border-[#F1D5E4] transition shrink-0 ml-3 flex items-center gap-1 cursor-pointer"
                   >
                     <span>{item.actionLabel}</span>
                     <ArrowRight className="w-3 h-3" />
@@ -365,33 +365,33 @@ export const HomeDashboard: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs pb-4">
           <div
             onClick={() => setActiveModule('deals')}
-            className="p-4 bg-[#f0f6ec] rounded-xl border border-[#d2dfcd] shadow-2xs hover:border-[#3F7657] hover:bg-[#e6f0e1] cursor-pointer transition group"
+            className="p-4 bg-[#FFFFFF] rounded-xl border border-[#F1D5E4] shadow-2xs hover:border-[#EE0979] hover:bg-[#F8FAFC] cursor-pointer transition group"
           >
-            <DollarSign className="w-6 h-6 text-[#3F7657] mb-2 group-hover:scale-110 transition-transform" />
-            <h4 className="font-bold text-[#17251D]">Deals Kanban Pipeline</h4>
-            <p className="text-[11px] text-[#4e6a57] mt-1">
+            <DollarSign className="w-6 h-6 text-[#EE0979] mb-2 group-hover:scale-110 transition-transform" />
+            <h4 className="font-bold text-[#0F172A]">Deals Kanban Pipeline</h4>
+            <p className="text-[11px] text-[#64748B] mt-1">
               Move deals across stages with automatic probability calculation.
             </p>
           </div>
 
           <div
             onClick={() => setActiveModule('salesinbox')}
-            className="p-4 bg-[#f0f6ec] rounded-xl border border-[#d2dfcd] shadow-2xs hover:border-[#3F7657] hover:bg-[#e6f0e1] cursor-pointer transition group"
+            className="p-4 bg-[#FFFFFF] rounded-xl border border-[#F1D5E4] shadow-2xs hover:border-[#EE0979] hover:bg-[#F8FAFC] cursor-pointer transition group"
           >
-            <Mail className="w-6 h-6 text-[#3F7657] mb-2 group-hover:scale-110 transition-transform" />
-            <h4 className="font-bold text-[#17251D]">SalesInbox Email Hub</h4>
-            <p className="text-[11px] text-[#4e6a57] mt-1">
+            <Mail className="w-6 h-6 text-[#EE0979] mb-2 group-hover:scale-110 transition-transform" />
+            <h4 className="font-bold text-[#0F172A]">SalesInbox Email Hub</h4>
+            <p className="text-[11px] text-[#64748B] mt-1">
               Contextual 4-column mailbox synchronized directly with CRM contacts.
             </p>
           </div>
 
           <div
             onClick={() => setActiveModule('mcpserver')}
-            className="p-4 bg-[#f0f6ec] rounded-xl border border-[#d2dfcd] shadow-2xs hover:border-[#3F7657] hover:bg-[#e6f0e1] cursor-pointer transition group"
+            className="p-4 bg-[#FFFFFF] rounded-xl border border-[#F1D5E4] shadow-2xs hover:border-[#EE0979] hover:bg-[#F8FAFC] cursor-pointer transition group"
           >
-            <Sparkles className="w-6 h-6 text-[#3F7657] mb-2 group-hover:scale-110 transition-transform" />
-            <h4 className="font-bold text-[#17251D]">AI Agents & MCP Server</h4>
-            <p className="text-[11px] text-[#4e6a57] mt-1">
+            <Sparkles className="w-6 h-6 text-[#EE0979] mb-2 group-hover:scale-110 transition-transform" />
+            <h4 className="font-bold text-[#0F172A]">AI Agents & MCP Server</h4>
+            <p className="text-[11px] text-[#64748B] mt-1">
               Connect external AI agents to read and write CRM records via tool calls.
             </p>
           </div>

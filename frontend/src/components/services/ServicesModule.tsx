@@ -186,7 +186,7 @@ export const ServicesModule: React.FC = () => {
           </div>
           <button
             onClick={() => setViewMode('catalog')}
-            className="text-xs text-[#3F7657] font-semibold hover:underline"
+            className="text-xs text-[#EE0979] font-semibold hover:underline"
           >
             Direct to Active Catalog
           </button>
@@ -206,7 +206,7 @@ export const ServicesModule: React.FC = () => {
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={handleEnableServicesClick}
-              className="px-5 py-2 bg-[#153B2E] hover:bg-[#3F7657] text-white font-semibold text-xs rounded shadow-xs transition cursor-pointer"
+              className="px-5 py-2 bg-[#0F172A] hover:bg-[#EE0979] text-white font-semibold text-xs rounded shadow-xs transition cursor-pointer"
             >
               Enable Services
             </button>
@@ -399,7 +399,7 @@ export const ServicesModule: React.FC = () => {
 
                 <button
                   onClick={() => setIsCreateHoursModalOpen(true)}
-                  className="px-4 py-2 bg-[#153B2E] hover:bg-[#3F7657] text-white font-semibold text-xs rounded shadow-xs transition cursor-pointer shrink-0"
+                  className="px-4 py-2 bg-[#0F172A] hover:bg-[#EE0979] text-white font-semibold text-xs rounded shadow-xs transition cursor-pointer shrink-0"
                 >
                   + New Business hours
                 </button>
@@ -407,9 +407,9 @@ export const ServicesModule: React.FC = () => {
 
               {/* Status display */}
               {hasBusinessHours ? (
-                <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between">
+                <div className="p-4 rounded-xl bg-pink-50 border border-rose-200 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                    <CheckCircle2 className="w-5 h-5 text-[#EE0979]" />
                     <div>
                       <div className="text-xs font-bold text-slate-800">
                         Operational Hours: {businessHoursType === '24x7' ? '24 Hours X 7 days' : businessHoursType === '24x5' ? '24 Hours X 5 days' : `Custom (${customStart} - ${customEnd})`}
@@ -419,7 +419,7 @@ export const ServicesModule: React.FC = () => {
                   </div>
                   <button
                     onClick={() => setViewMode('catalog')}
-                    className="px-4 py-1.5 bg-[#153B2E] text-white text-xs font-semibold rounded hover:bg-[#3F7657] transition cursor-pointer"
+                    className="px-4 py-1.5 bg-[#0F172A] text-white text-xs font-semibold rounded hover:bg-[#EE0979] transition cursor-pointer"
                   >
                     Open Services Catalog
                   </button>
@@ -430,7 +430,7 @@ export const ServicesModule: React.FC = () => {
                   <p className="text-xs text-slate-500">No active business hours assigned yet.</p>
                   <button
                     onClick={() => setIsCreateHoursModalOpen(true)}
-                    className="mt-3 text-xs font-bold text-[#153B2E] hover:underline cursor-pointer"
+                    className="mt-3 text-xs font-bold text-[#0F172A] hover:underline cursor-pointer"
                   >
                     Configure now to unlock Services
                   </button>
@@ -527,7 +527,7 @@ export const ServicesModule: React.FC = () => {
                     </button>
                     <button
                       type="submit"
-                      className="px-5 py-1.5 text-xs font-semibold text-white bg-[#153B2E] hover:bg-[#3F7657] rounded shadow-xs transition cursor-pointer"
+                      className="px-5 py-1.5 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#EE0979] rounded shadow-xs transition cursor-pointer"
                     >
                       Save
                     </button>
@@ -554,13 +554,13 @@ export const ServicesModule: React.FC = () => {
       {/* Top Header */}
       <div className="px-6 py-3 border-b border-slate-200 bg-white flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#E5EFE4] text-[#153B2E] flex items-center justify-center font-bold text-xs">
-            <Wrench className="w-4 h-4 text-[#3F7657]" />
+          <div className="w-8 h-8 rounded-lg bg-[#FFF1F7] text-[#0F172A] flex items-center justify-center font-bold text-xs">
+            <Wrench className="w-4 h-4 text-[#EE0979]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-sm font-bold text-slate-800">Services Catalog</h1>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-pink-100 text-[#BE075E]">
                 Enabled
               </span>
             </div>
@@ -586,7 +586,7 @@ export const ServicesModule: React.FC = () => {
           </button>
           <button
             onClick={() => setIsCreateServiceModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md bg-[#153B2E] text-white hover:bg-[#3F7657] transition cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md bg-[#0F172A] text-white hover:bg-[#EE0979] transition cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>New Service</span>
@@ -627,11 +627,11 @@ export const ServicesModule: React.FC = () => {
                         {item.category}
                       </span>
                     </td>
-                    <td className="px-5 py-3 font-mono font-bold text-[#153B2E]">{item.price}</td>
+                    <td className="px-5 py-3 font-mono font-bold text-[#0F172A]">{item.price}</td>
                     <td className="px-5 py-3 text-slate-600">{item.duration}</td>
                     <td className="px-5 py-3 text-slate-500">{item.location}</td>
                     <td className="px-5 py-3">
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-[#BE075E]">
                         Active
                       </span>
                     </td>
@@ -671,7 +671,7 @@ export const ServicesModule: React.FC = () => {
                   value={newServiceName}
                   onChange={(e) => setNewServiceName(e.target.value)}
                   placeholder="e.g. Server Maintenance, Solar Installation"
-                  className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#153B2E] outline-hidden"
+                  className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#0F172A] outline-hidden"
                 />
               </div>
 
@@ -684,7 +684,7 @@ export const ServicesModule: React.FC = () => {
                     value={newServicePrice}
                     onChange={(e) => setNewServicePrice(e.target.value)}
                     placeholder="450"
-                    className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#153B2E] outline-hidden"
+                    className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#0F172A] outline-hidden"
                   />
                 </div>
                 <div>
@@ -694,7 +694,7 @@ export const ServicesModule: React.FC = () => {
                     value={newServiceDuration}
                     onChange={(e) => setNewServiceDuration(e.target.value)}
                     placeholder="2 Hours"
-                    className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#153B2E] outline-hidden"
+                    className="w-full px-3 py-1.5 rounded border border-slate-300 focus:border-[#0F172A] outline-hidden"
                   />
                 </div>
               </div>
@@ -723,7 +723,7 @@ export const ServicesModule: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white font-semibold rounded shadow-xs cursor-pointer"
+                  className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white font-semibold rounded shadow-xs cursor-pointer"
                 >
                   Save Service
                 </button>

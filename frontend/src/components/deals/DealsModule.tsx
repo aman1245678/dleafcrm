@@ -191,8 +191,8 @@ export const DealsModule: React.FC = () => {
             onClick={() => setIsFilterPanelOpen(!isFilterPanelOpen)}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs border transition cursor-pointer ${
               isFilterPanelOpen
-                ? 'bg-[#E5EFE4] border-[#3F7657] text-[#153B2E] font-medium'
-                : 'bg-white border-[#D8E3D6] text-[#47574B] hover:bg-[#F5F8F3]'
+                ? 'bg-[#FFF1F7] border-[#EE0979] text-[#0F172A] font-medium'
+                : 'bg-white border-[#F1D5E4] text-[#64748B] hover:bg-[#FFF8FA]'
             }`}
           >
             <Filter className="w-3 h-3" />
@@ -234,13 +234,13 @@ export const DealsModule: React.FC = () => {
           <div className="inline-flex rounded shadow-xs">
             <button
               onClick={() => setIsCreateDealOpen(true)}
-              className="bg-[#153B2E] hover:bg-[#3F7657] text-white px-3 py-1.5 rounded-l text-xs font-semibold flex items-center gap-1 cursor-pointer transition"
+              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-3 py-1.5 rounded-l text-xs font-semibold flex items-center gap-1 cursor-pointer transition"
             >
               <span>Create Deal</span>
             </button>
             <button
               onClick={() => setIsCreateDealOpen(true)}
-              className="bg-[#153B2E] hover:bg-[#3F7657] text-white px-1.5 py-1.5 rounded-r border-l border-[#265342] cursor-pointer transition"
+              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-1.5 py-1.5 rounded-r border-l border-[#265342] cursor-pointer transition"
             >
               <ChevronDown className="w-3 h-3" />
             </button>
@@ -422,7 +422,7 @@ export const DealsModule: React.FC = () => {
                     className="w-68 min-w-[270px] max-w-[270px] bg-[#E8EEF5]/40 rounded flex flex-col shrink-0 max-h-full border border-slate-200 shadow-2xs"
                   >
                     {/* Dleaf Stage Column Header with Cyan/Mint Background */}
-                    <div className="p-2 bg-[#D9F2EF] border-b border-teal-100 rounded-t">
+                    <div className="p-2 bg-[#D9F2EF] border-b border-pink-100 rounded-t">
                       <div className="flex items-center justify-between text-xs text-slate-800 font-medium">
                         <span className="truncate font-semibold text-[11px]">
                           {stage.label} {getCircledNumber(stageDeals.length)} - {stage.probability}%
@@ -625,13 +625,13 @@ export const DealsModule: React.FC = () => {
                       onClick={() => moveDealStage(selectedDealForDetail.id, s.id)}
                       className={`px-3 py-1.5 text-xs font-semibold rounded transition flex items-center gap-1 cursor-pointer ${
                         isCurrent
-                          ? 'bg-[#153B2E] text-white shadow-xs'
+                          ? 'bg-[#0F172A] text-white shadow-xs'
                           : isPast
-                          ? 'bg-[#E5EFE4] text-[#153B2E] hover:bg-[#D8E3D6]'
+                          ? 'bg-[#FFF1F7] text-[#0F172A] hover:bg-[#F1D5E4]'
                           : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
                       }`}
                     >
-                      {isPast && <CheckCircle2 className="w-3.5 h-3.5 text-[#3F7657]" />}
+                      {isPast && <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />}
                       <span>{s.label}</span>
                     </button>
                   );
@@ -656,7 +656,7 @@ export const DealsModule: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-[11px] text-slate-500 block">Expected Revenue</span>
-                  <span className="text-base font-bold text-emerald-700 font-mono">
+                  <span className="text-base font-bold text-[#D8086C] font-mono">
                     {formatCurrency(selectedDealForDetail.expectedRevenue)}
                   </span>
                 </div>
@@ -757,7 +757,7 @@ export const DealsModule: React.FC = () => {
               </button>
               <button
                 onClick={() => setSelectedDealForDetail(null)}
-                className="px-4 py-1.5 bg-[#153B2E] hover:bg-[#3F7657] text-white rounded text-xs font-semibold cursor-pointer transition"
+                className="px-4 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold cursor-pointer transition"
               >
                 Done
               </button>

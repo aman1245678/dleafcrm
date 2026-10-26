@@ -145,13 +145,13 @@ export const CreateAccountModal: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-2xs flex items-center justify-center p-2 sm:p-4 overflow-y-auto animate-in fade-in">
-      <div className="bg-white rounded-2xl shadow-2xl border border-[#D8E3D6] w-full max-w-5xl my-4 flex flex-col max-h-[92vh] overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-2xl border border-[#F1D5E4] w-full max-w-5xl my-4 flex flex-col max-h-[92vh] overflow-hidden">
         
         {/* Top Sticky Header (Screenshot 4) */}
-        <div className="bg-white border-b border-[#D8E3D6] px-6 py-3 flex items-center justify-between shrink-0">
+        <div className="bg-white border-b border-[#F1D5E4] px-6 py-3 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <h2 className="text-base font-bold text-[#17251D]">Create Account</h2>
-            <button className="text-xs text-[#3F7657] hover:underline font-semibold cursor-pointer">
+            <h2 className="text-base font-bold text-[#0F172A]">Create Account</h2>
+            <button className="text-xs text-[#EE0979] hover:underline font-semibold cursor-pointer">
               Edit Page Layout
             </button>
           </div>
@@ -159,19 +159,19 @@ export const CreateAccountModal: React.FC = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsCreateAccountOpen(false)}
-              className="px-4 py-1.5 rounded-xl border border-[#D8E3D6] hover:bg-[#F5F8F3] text-xs font-semibold text-slate-700 transition cursor-pointer"
+              className="px-4 py-1.5 rounded-xl border border-[#F1D5E4] hover:bg-[#FFF8FA] text-xs font-semibold text-slate-700 transition cursor-pointer"
             >
               Cancel
             </button>
             <button
               onClick={() => handleSubmit(true)}
-              className="px-4 py-1.5 rounded-xl border border-[#D8E3D6] hover:bg-[#F5F8F3] text-xs font-semibold text-[#153B2E] transition cursor-pointer"
+              className="px-4 py-1.5 rounded-xl border border-[#F1D5E4] hover:bg-[#FFF8FA] text-xs font-semibold text-[#0F172A] transition cursor-pointer"
             >
               Save and New
             </button>
             <button
               onClick={() => handleSubmit(false)}
-              className="px-5 py-1.5 rounded-xl bg-[#153B2E] hover:bg-[#0F221B] text-white text-xs font-bold shadow-xs transition active:scale-95 cursor-pointer"
+              className="px-5 py-1.5 rounded-xl bg-[#0F172A] hover:bg-[#0F172A] text-white text-xs font-bold shadow-xs transition active:scale-95 cursor-pointer"
             >
               Save
             </button>
@@ -187,15 +187,15 @@ export const CreateAccountModal: React.FC = () => {
               Account Image
             </div>
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-xl bg-[#F5F8F3] border-2 border-dashed border-[#D8E3D6] flex items-center justify-center text-slate-400">
+              <div className="w-16 h-16 rounded-xl bg-[#FFF8FA] border-2 border-dashed border-[#F1D5E4] flex items-center justify-center text-slate-400">
                 <Building className="w-8 h-8" />
               </div>
               <button
                 type="button"
                 onClick={() => alert('Upload Account Logo: Select an image file.')}
-                className="px-3 py-1.5 rounded-xl border border-[#D8E3D6] hover:bg-[#F5F8F3] text-xs font-semibold text-slate-700 flex items-center gap-1.5"
+                className="px-3 py-1.5 rounded-xl border border-[#F1D5E4] hover:bg-[#FFF8FA] text-xs font-semibold text-slate-700 flex items-center gap-1.5"
               >
-                <Upload className="w-3.5 h-3.5 text-[#3F7657]" />
+                <Upload className="w-3.5 h-3.5 text-[#EE0979]" />
                 <span>Upload Logo</span>
               </button>
             </div>
@@ -203,7 +203,7 @@ export const CreateAccountModal: React.FC = () => {
 
           {/* Section: Account Information (Screenshot 4 2-Column Grid) */}
           <div className="space-y-4">
-            <div className="text-xs font-bold text-[#17251D] border-b border-[#D8E3D6] pb-2">
+            <div className="text-xs font-bold text-[#0F172A] border-b border-[#F1D5E4] pb-2">
               Account Information
             </div>
 
@@ -216,7 +216,7 @@ export const CreateAccountModal: React.FC = () => {
                     type="text"
                     value={accountOwner}
                     onChange={(e) => setAccountOwner(e.target.value)}
-                    className="w-full px-3 py-1.5 bg-[#F5F8F3] border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                    className="w-full px-3 py-1.5 bg-[#FFF8FA] border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                   />
                   <User className="w-3.5 h-3.5 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2" />
                 </div>
@@ -226,7 +226,7 @@ export const CreateAccountModal: React.FC = () => {
                 <select
                   value={rating}
                   onChange={(e) => setRating(e.target.value)}
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 >
                   <option>-None-</option>
                   <option>Acquired</option>
@@ -252,7 +252,7 @@ export const CreateAccountModal: React.FC = () => {
                   value={accountName}
                   onChange={(e) => setAccountName(e.target.value)}
                   placeholder="e.g. King (Sample)"
-                  className="flex-1 px-3 py-1.5 bg-white border-2 border-rose-300 focus:border-[#3F7657] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border-2 border-rose-300 focus:border-[#EE0979] rounded-xl text-xs text-slate-800"
                 />
               </div>
               <div className="flex items-center">
@@ -262,7 +262,7 @@ export const CreateAccountModal: React.FC = () => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="555-555-5555"
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 />
               </div>
 
@@ -274,7 +274,7 @@ export const CreateAccountModal: React.FC = () => {
                   value={accountSite}
                   onChange={(e) => setAccountSite(e.target.value)}
                   placeholder="e.g. Headquarters / Branch"
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 />
               </div>
               <div className="flex items-center">
@@ -283,7 +283,7 @@ export const CreateAccountModal: React.FC = () => {
                   type="text"
                   value={fax}
                   onChange={(e) => setFax(e.target.value)}
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 />
               </div>
 
@@ -296,7 +296,7 @@ export const CreateAccountModal: React.FC = () => {
                     value={parentAccount}
                     onChange={(e) => setParentAccount(e.target.value)}
                     placeholder="Search parent account..."
-                    className="w-full px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                    className="w-full px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                   />
                   <Building className="w-3.5 h-3.5 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2" />
                 </div>
@@ -308,7 +308,7 @@ export const CreateAccountModal: React.FC = () => {
                   value={website}
                   onChange={(e) => setWebsite(e.target.value)}
                   placeholder="http://kingmanufacturing.com"
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 />
               </div>
 
@@ -320,7 +320,7 @@ export const CreateAccountModal: React.FC = () => {
                   value={accountNumber}
                   onChange={(e) => setAccountNumber(e.target.value)}
                   placeholder="ACC-1001"
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 />
               </div>
               <div className="flex items-center">
@@ -330,7 +330,7 @@ export const CreateAccountModal: React.FC = () => {
                   value={tickerSymbol}
                   onChange={(e) => setTickerSymbol(e.target.value)}
                   placeholder="e.g. NASDAQ: CRM"
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 />
               </div>
 
@@ -340,7 +340,7 @@ export const CreateAccountModal: React.FC = () => {
                 <select
                   value={accountType}
                   onChange={(e) => setAccountType(e.target.value)}
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 >
                   <option>-None-</option>
                   <option>Analyst</option>
@@ -360,7 +360,7 @@ export const CreateAccountModal: React.FC = () => {
                 <select
                   value={ownership}
                   onChange={(e) => setOwnership(e.target.value)}
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 >
                   <option>-None-</option>
                   <option>Other</option>
@@ -377,7 +377,7 @@ export const CreateAccountModal: React.FC = () => {
                 <select
                   value={industry}
                   onChange={(e) => setIndustry(e.target.value)}
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 >
                   <option>-None-</option>
                   <option>ASP (Application Service Provider)</option>
@@ -410,7 +410,7 @@ export const CreateAccountModal: React.FC = () => {
                   value={employees}
                   onChange={(e) => setEmployees(e.target.value)}
                   placeholder="180"
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 />
               </div>
 
@@ -424,7 +424,7 @@ export const CreateAccountModal: React.FC = () => {
                     value={annualRevenue}
                     onChange={(e) => setAnnualRevenue(e.target.value)}
                     placeholder="15000000"
-                    className="w-full pl-9 pr-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                    className="w-full pl-9 pr-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                   />
                 </div>
               </div>
@@ -435,7 +435,7 @@ export const CreateAccountModal: React.FC = () => {
                   value={sicCode}
                   onChange={(e) => setSicCode(e.target.value)}
                   placeholder="Standard Industrial Classification"
-                  className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800"
+                  className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800"
                 />
               </div>
             </div>
@@ -443,22 +443,22 @@ export const CreateAccountModal: React.FC = () => {
 
           {/* Section: Address Information (Screenshot 4 Billing vs Shipping Address) */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between border-b border-[#D8E3D6] pb-2">
-              <span className="text-xs font-bold text-[#17251D]">Address Information</span>
+            <div className="flex items-center justify-between border-b border-[#F1D5E4] pb-2">
+              <span className="text-xs font-bold text-[#0F172A]">Address Information</span>
               <button
                 type="button"
                 onClick={handleCopyAddress}
-                className="px-3 py-1 rounded-xl border border-[#D8E3D6] hover:bg-[#F5F8F3] text-xs font-semibold text-slate-700 flex items-center gap-1.5 transition cursor-pointer"
+                className="px-3 py-1 rounded-xl border border-[#F1D5E4] hover:bg-[#FFF8FA] text-xs font-semibold text-slate-700 flex items-center gap-1.5 transition cursor-pointer"
               >
-                <Copy className="w-3.5 h-3.5 text-[#3F7657]" />
+                <Copy className="w-3.5 h-3.5 text-[#EE0979]" />
                 <span>Copy Address</span>
               </button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Billing Address Box */}
-              <div className="border border-[#D8E3D6] rounded-2xl p-4 bg-white space-y-3 relative">
-                <div className="font-bold text-xs text-[#17251D] mb-2">Billing Address</div>
+              <div className="border border-[#F1D5E4] rounded-2xl p-4 bg-white space-y-3 relative">
+                <div className="font-bold text-xs text-[#0F172A] mb-2">Billing Address</div>
                 
                 <div className="space-y-2.5">
                   <div className="flex items-center">
@@ -466,7 +466,7 @@ export const CreateAccountModal: React.FC = () => {
                     <select
                       value={billingCountry}
                       onChange={(e) => setBillingCountry(e.target.value)}
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     >
                       <option>-None-</option>
                       <option>India</option>
@@ -487,7 +487,7 @@ export const CreateAccountModal: React.FC = () => {
                       type="text"
                       value={billingFlat}
                       onChange={(e) => setBillingFlat(e.target.value)}
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     />
                   </div>
 
@@ -497,7 +497,7 @@ export const CreateAccountModal: React.FC = () => {
                       type="text"
                       value={billingStreet}
                       onChange={(e) => setBillingStreet(e.target.value)}
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     />
                   </div>
 
@@ -508,7 +508,7 @@ export const CreateAccountModal: React.FC = () => {
                       value={billingCity}
                       onChange={(e) => setBillingCity(e.target.value)}
                       placeholder="San Jose"
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     />
                   </div>
 
@@ -517,7 +517,7 @@ export const CreateAccountModal: React.FC = () => {
                     <select
                       value={billingState}
                       onChange={(e) => setBillingState(e.target.value)}
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     >
                       <option>-None-</option>
                       <option>California</option>
@@ -537,7 +537,7 @@ export const CreateAccountModal: React.FC = () => {
                       type="text"
                       value={billingZip}
                       onChange={(e) => setBillingZip(e.target.value)}
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     />
                   </div>
 
@@ -549,14 +549,14 @@ export const CreateAccountModal: React.FC = () => {
                         value={billingLat}
                         onChange={(e) => setBillingLat(e.target.value)}
                         placeholder="Latitude"
-                        className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                        className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                       />
                       <input
                         type="text"
                         value={billingLng}
                         onChange={(e) => setBillingLng(e.target.value)}
                         placeholder="Longitude"
-                        className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                        className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                       />
                     </div>
                   </div>
@@ -574,8 +574,8 @@ export const CreateAccountModal: React.FC = () => {
               </div>
 
               {/* Shipping Address Box */}
-              <div className="border border-[#D8E3D6] rounded-2xl p-4 bg-white space-y-3 relative">
-                <div className="font-bold text-xs text-[#17251D] mb-2">Shipping Address</div>
+              <div className="border border-[#F1D5E4] rounded-2xl p-4 bg-white space-y-3 relative">
+                <div className="font-bold text-xs text-[#0F172A] mb-2">Shipping Address</div>
                 
                 <div className="space-y-2.5">
                   <div className="flex items-center">
@@ -583,7 +583,7 @@ export const CreateAccountModal: React.FC = () => {
                     <select
                       value={shippingCountry}
                       onChange={(e) => setShippingCountry(e.target.value)}
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     >
                       <option>-None-</option>
                       <option>India</option>
@@ -604,7 +604,7 @@ export const CreateAccountModal: React.FC = () => {
                       type="text"
                       value={shippingFlat}
                       onChange={(e) => setShippingFlat(e.target.value)}
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     />
                   </div>
 
@@ -614,7 +614,7 @@ export const CreateAccountModal: React.FC = () => {
                       type="text"
                       value={shippingStreet}
                       onChange={(e) => setShippingStreet(e.target.value)}
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     />
                   </div>
 
@@ -625,7 +625,7 @@ export const CreateAccountModal: React.FC = () => {
                       value={shippingCity}
                       onChange={(e) => setShippingCity(e.target.value)}
                       placeholder="San Jose"
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     />
                   </div>
 
@@ -634,7 +634,7 @@ export const CreateAccountModal: React.FC = () => {
                     <select
                       value={shippingState}
                       onChange={(e) => setShippingState(e.target.value)}
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     >
                       <option>-None-</option>
                       <option>California</option>
@@ -654,7 +654,7 @@ export const CreateAccountModal: React.FC = () => {
                       type="text"
                       value={shippingZip}
                       onChange={(e) => setShippingZip(e.target.value)}
-                      className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                      className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                     />
                   </div>
 
@@ -666,14 +666,14 @@ export const CreateAccountModal: React.FC = () => {
                         value={shippingLat}
                         onChange={(e) => setShippingLat(e.target.value)}
                         placeholder="Latitude"
-                        className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                        className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                       />
                       <input
                         type="text"
                         value={shippingLng}
                         onChange={(e) => setShippingLng(e.target.value)}
                         placeholder="Longitude"
-                        className="flex-1 px-3 py-1.5 bg-white border border-[#D8E3D6] rounded-xl text-xs"
+                        className="flex-1 px-3 py-1.5 bg-white border border-[#F1D5E4] rounded-xl text-xs"
                       />
                     </div>
                   </div>
@@ -694,7 +694,7 @@ export const CreateAccountModal: React.FC = () => {
 
           {/* Section: Description Information */}
           <div className="space-y-3">
-            <div className="text-xs font-bold text-[#17251D] border-b border-[#D8E3D6] pb-2">
+            <div className="text-xs font-bold text-[#0F172A] border-b border-[#F1D5E4] pb-2">
               Description Information
             </div>
             <div className="flex items-start">
@@ -704,24 +704,24 @@ export const CreateAccountModal: React.FC = () => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Add account background details, annual contract value notes, etc."
-                className="flex-1 px-3 py-2 bg-white border border-[#D8E3D6] rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-[#3F7657]"
+                className="flex-1 px-3 py-2 bg-white border border-[#F1D5E4] rounded-xl text-xs text-slate-800 focus:outline-hidden focus:border-[#EE0979]"
               />
             </div>
           </div>
         </div>
 
         {/* Bottom Bar: Create Form Views */}
-        <div className="bg-[#F5F8F3] border-t border-[#D8E3D6] px-6 py-2.5 flex items-center justify-between shrink-0 text-xs">
+        <div className="bg-[#FFF8FA] border-t border-[#F1D5E4] px-6 py-2.5 flex items-center justify-between shrink-0 text-xs">
           <div className="flex items-center gap-2">
             <span className="text-slate-500 font-medium">Create Form Views:</span>
-            <select className="px-2.5 py-1 bg-white border border-[#D8E3D6] rounded-lg text-xs font-semibold text-[#153B2E]">
+            <select className="px-2.5 py-1 bg-white border border-[#F1D5E4] rounded-lg text-xs font-semibold text-[#0F172A]">
               <option>Standard View</option>
               <option>Compact View</option>
             </select>
           </div>
           <button
             onClick={() => alert('Custom Form Page builder: Drag and drop custom fields.')}
-            className="px-3 py-1 rounded-lg border border-[#D8E3D6] bg-white hover:bg-slate-50 text-slate-700 font-medium transition cursor-pointer"
+            className="px-3 py-1 rounded-lg border border-[#F1D5E4] bg-white hover:bg-slate-50 text-slate-700 font-medium transition cursor-pointer"
           >
             Create a custom form page
           </button>

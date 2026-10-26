@@ -186,7 +186,7 @@ export const SocialModule: React.FC = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setViewMode('dashboard')}
-              className="text-xs text-[#3F7657] font-semibold hover:underline"
+              className="text-xs text-[#EE0979] font-semibold hover:underline"
             >
               Go to Active Dashboard
             </button>
@@ -250,7 +250,7 @@ export const SocialModule: React.FC = () => {
           <div className="mt-7">
             <button
               onClick={() => setViewMode('create_brand')}
-              className="px-6 py-2.5 bg-[#16845B] hover:bg-[#126b4a] active:scale-95 text-white font-semibold text-xs rounded-md shadow-xs transition duration-200 cursor-pointer"
+              className="px-6 py-2.5 bg-[#EE0979] hover:bg-[#126b4a] active:scale-95 text-white font-semibold text-xs rounded-md shadow-xs transition duration-200 cursor-pointer"
             >
               Let's Get Started
             </button>
@@ -305,7 +305,7 @@ export const SocialModule: React.FC = () => {
                   onClick={() => setActiveTab(tab)}
                   className={`pb-3 text-xs font-medium transition relative cursor-pointer ${
                     activeTab === tab
-                      ? 'text-[#16845B] font-bold border-b-2 border-[#16845B]'
+                      ? 'text-[#EE0979] font-bold border-b-2 border-[#EE0979]'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
@@ -339,7 +339,7 @@ export const SocialModule: React.FC = () => {
                         className={`w-full px-3 py-1.5 text-xs rounded border transition outline-hidden ${
                           brandError
                             ? 'border-red-400 ring-2 ring-red-100 bg-red-50/20'
-                            : 'border-slate-300 focus:border-[#16845B] focus:ring-1 focus:ring-[#16845B]'
+                            : 'border-slate-300 focus:border-[#EE0979] focus:ring-1 focus:ring-[#EE0979]'
                         }`}
                       />
                       {brandError && (
@@ -362,7 +362,7 @@ export const SocialModule: React.FC = () => {
                         value={brandDescription}
                         onChange={(e) => setBrandDescription(e.target.value)}
                         placeholder="Brief summary of social branding channels..."
-                        className="w-full px-3 py-2 text-xs rounded border border-slate-300 focus:border-[#16845B] focus:ring-1 focus:ring-[#16845B] outline-hidden resize-y"
+                        className="w-full px-3 py-2 text-xs rounded border border-slate-300 focus:border-[#EE0979] focus:ring-1 focus:ring-[#EE0979] outline-hidden resize-y"
                       />
                     </div>
                   </div>
@@ -379,7 +379,7 @@ export const SocialModule: React.FC = () => {
                       </button>
                       <button
                         type="submit"
-                        className="px-5 py-1.5 text-xs font-semibold text-white bg-[#153B2E] hover:bg-[#3F7657] rounded shadow-xs transition cursor-pointer"
+                        className="px-5 py-1.5 text-xs font-semibold text-white bg-[#0F172A] hover:bg-[#EE0979] rounded shadow-xs transition cursor-pointer"
                       >
                         Create
                       </button>
@@ -398,11 +398,11 @@ export const SocialModule: React.FC = () => {
                 </p>
                 <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-3">
                   <label className="flex items-center gap-2.5 text-xs text-slate-700 cursor-pointer">
-                    <input type="checkbox" defaultChecked className="rounded text-[#3F7657]" />
+                    <input type="checkbox" defaultChecked className="rounded text-[#EE0979]" />
                     <span>Allow Sales Representatives to reply to social direct messages</span>
                   </label>
                   <label className="flex items-center gap-2.5 text-xs text-slate-700 cursor-pointer">
-                    <input type="checkbox" defaultChecked className="rounded text-[#3F7657]" />
+                    <input type="checkbox" defaultChecked className="rounded text-[#EE0979]" />
                     <span>Auto-enrich social profile information with Clearbit & LinkedIn</span>
                   </label>
                 </div>
@@ -416,12 +416,12 @@ export const SocialModule: React.FC = () => {
                 <p className="text-xs text-slate-500 leading-relaxed">
                   Automatically convert high-intent mentions, DMs, or hashtags into Qualified Leads in Dleaf CRM.
                 </p>
-                <div className="p-4 bg-emerald-50/60 rounded-lg border border-emerald-200/80 space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-[#153B2E]">
-                    <CheckCircle2 className="w-4 h-4 text-[#3F7657]" />
+                <div className="p-4 bg-pink-50/60 rounded-lg border border-rose-200/80 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-[#0F172A]">
+                    <CheckCircle2 className="w-4 h-4 text-[#EE0979]" />
                     <span>Intent Detection Engine Active</span>
                   </div>
-                  <p className="text-[11px] text-[#47574B]">
+                  <p className="text-[11px] text-[#64748B]">
                     Mentions with terms like "pricing", "demo", "quote", or "migrate" will automatically create an unassigned lead and notify your sales team.
                   </p>
                 </div>
@@ -443,13 +443,13 @@ export const SocialModule: React.FC = () => {
       {/* Top Bar */}
       <div className="px-6 py-3 border-b border-slate-200 bg-white flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#E5EFE4] text-[#153B2E] flex items-center justify-center font-bold text-xs">
-            <Share2 className="w-4 h-4 text-[#3F7657]" />
+          <div className="w-8 h-8 rounded-lg bg-[#FFF1F7] text-[#0F172A] flex items-center justify-center font-bold text-xs">
+            <Share2 className="w-4 h-4 text-[#EE0979]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-sm font-bold text-slate-800">Social CRM</h1>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-pink-100 text-[#BE075E]">
                 Connected
               </span>
             </div>
@@ -469,7 +469,7 @@ export const SocialModule: React.FC = () => {
           </button>
           <button
             onClick={() => setViewMode('landing')}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md bg-[#153B2E] text-white hover:bg-[#3F7657] transition cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md bg-[#0F172A] text-white hover:bg-[#EE0979] transition cursor-pointer"
           >
             <Settings className="w-3.5 h-3.5" />
             <span>Setup Overview</span>
@@ -494,7 +494,7 @@ export const SocialModule: React.FC = () => {
                     onClick={() => setSelectedNetwork(net)}
                     className={`px-2 py-0.5 text-[10px] font-semibold rounded capitalize transition cursor-pointer ${
                       selectedNetwork === net
-                        ? 'bg-[#3F7657] text-white'
+                        ? 'bg-[#EE0979] text-white'
                         : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                   >
@@ -519,7 +519,7 @@ export const SocialModule: React.FC = () => {
                 <button
                   type="submit"
                   disabled={!newPostText.trim()}
-                  className="flex items-center gap-1.5 px-4 py-1.5 bg-[#3F7657] hover:bg-[#153B2E] disabled:opacity-50 text-white rounded text-xs font-semibold transition cursor-pointer"
+                  className="flex items-center gap-1.5 px-4 py-1.5 bg-[#EE0979] hover:bg-[#0F172A] disabled:opacity-50 text-white rounded text-xs font-semibold transition cursor-pointer"
                 >
                   <Send className="w-3 h-3" />
                   <span>Publish</span>
@@ -540,7 +540,7 @@ export const SocialModule: React.FC = () => {
             {posts.map((post) => (
               <div
                 key={post.id}
-                className="bg-white rounded-xl border border-slate-200 p-4 shadow-2xs hover:border-[#3F7657] transition"
+                className="bg-white rounded-xl border border-slate-200 p-4 shadow-2xs hover:border-[#EE0979] transition"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
@@ -561,14 +561,14 @@ export const SocialModule: React.FC = () => {
                   </div>
 
                   {post.isLead ? (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-pink-50 text-[#D8086C] border border-rose-200">
                       <CheckCircle2 className="w-3 h-3" />
                       <span>CRM Lead</span>
                     </span>
                   ) : (
                     <button
                       onClick={() => handleConvertToLead(post)}
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-semibold bg-[#E5EFE4] text-[#153B2E] hover:bg-[#3F7657] hover:text-white transition cursor-pointer"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-semibold bg-[#FFF1F7] text-[#0F172A] hover:bg-[#EE0979] hover:text-white transition cursor-pointer"
                     >
                       <Plus className="w-3 h-3" />
                       <span>Convert to Lead</span>
@@ -628,9 +628,9 @@ export const SocialModule: React.FC = () => {
             <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">
               Lead Conversion
             </h3>
-            <div className="p-3 rounded-lg bg-emerald-50/70 border border-emerald-200 space-y-1.5">
-              <div className="text-xl font-bold text-[#153B2E]">42 Leads</div>
-              <div className="text-[11px] text-[#3F7657]">Generated via Social Channels this month (+18%)</div>
+            <div className="p-3 rounded-lg bg-pink-50/70 border border-rose-200 space-y-1.5">
+              <div className="text-xl font-bold text-[#0F172A]">42 Leads</div>
+              <div className="text-[11px] text-[#EE0979]">Generated via Social Channels this month (+18%)</div>
             </div>
           </div>
 
