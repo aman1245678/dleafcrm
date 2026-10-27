@@ -514,7 +514,7 @@ export const handleDleafAiQuery = async (req: Request, res: Response) => {
             Authorization: `Bearer ${groqKey}`,
           },
           body: JSON.stringify({
-            model: 'llama-3.3-70b-versatile',
+            model: 'qwen/qwen3.8-27b',
             messages: [
               {
                 role: 'system',
@@ -541,8 +541,8 @@ Instructions:
             return res.json({
               success: true,
               reply: replyText,
-              model: 'groq/llama-3.3-70b',
-              source: 'ai_model',
+              model: 'groq/qwen3.8-27b-ai-agent',
+              source: 'real_ai_model',
             });
           }
         }
