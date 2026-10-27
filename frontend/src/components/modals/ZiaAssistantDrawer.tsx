@@ -192,17 +192,24 @@ export const ZiaAssistantDrawer: React.FC = () => {
             </div>
 
             <div>
-              <div className="flex items-center gap-2">
-                <h2 className="font-extrabold text-base tracking-tight text-white flex items-center">
-                  <span>Dleaf</span>
-                  <span className="text-[#EE0979]">CRM</span>
-                </h2>
+              <div className="flex items-center gap-2.5">
+                <img
+                  src="/logo1.png"
+                  alt="DleafCRM"
+                  className="h-7 w-auto object-contain block"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.src.includes('logo.png')) {
+                      target.src = '/logo.png';
+                    }
+                  }}
+                />
                 <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="text-[10px] font-semibold text-emerald-300">Online</span>
                 </div>
               </div>
-              <p className="text-[11px] text-slate-400 font-medium">AI Assistant</p>
+              <p className="text-[11px] text-slate-400 font-medium mt-0.5">AI Assistant</p>
             </div>
           </div>
 
