@@ -172,44 +172,33 @@ export const ZiaAssistantDrawer: React.FC = () => {
         <div className="absolute inset-0 bg-[#060914]/85 backdrop-blur-[2px] pointer-events-none" />
 
         {/* ========================================================
-            1. TOP HEADER (LOGO + ONLINE BADGE + ACTIONS)
+            1. TOP HEADER (CLEAN EMBLEM LOGO ON WHITE + STATUS)
         ========================================================= */}
-        <div className="relative z-10 px-4 py-3.5 border-b border-white/10 flex items-center justify-between shrink-0 bg-[#080C1B]/90">
+        <div className="relative z-10 px-4 py-3 border-b border-white/10 flex items-center justify-between shrink-0 bg-[#080C1B]/95">
           <div className="flex items-center gap-3">
-            {/* Logo box with glowing gradient border */}
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#FF6A00] via-[#EE0979] to-[#7928CA] p-[1.5px] shadow-lg shadow-pink-500/20">
-              <div className="w-full h-full bg-[#0E1326] rounded-[10px] flex items-center justify-center overflow-hidden p-1">
+            {/* Logo box with glowing border & clean WHITE background */}
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#FF6A00] via-[#EE0979] to-[#7928CA] p-[1.5px] shadow-lg shadow-pink-500/25 shrink-0">
+              <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center overflow-hidden p-1.5 shadow-inner">
                 <img
-                  src="/logo1.png"
-                  alt="DleafCRM"
-                  className="w-full h-full object-contain"
+                  src="/favicon.png"
+                  alt="Dleaf Logo"
+                  className="w-full h-full object-contain block"
                   onError={(e) => {
-                    // Fallback to sparkles if logo not rendered
-                    (e.target as HTMLElement).style.display = 'none';
+                    (e.currentTarget as HTMLImageElement).src = '/logo1.png';
                   }}
                 />
               </div>
             </div>
 
             <div>
-              <div className="flex items-center gap-2.5">
-                <img
-                  src="/logo1.png"
-                  alt="DleafCRM"
-                  className="h-7 w-auto object-contain block"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    if (!target.src.includes('logo.png')) {
-                      target.src = '/logo.png';
-                    }
-                  }}
-                />
+              <div className="flex items-center gap-2">
+                <span className="font-extrabold text-[15px] tracking-tight text-white">DleafCRM</span>
                 <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="text-[10px] font-semibold text-emerald-300">Online</span>
                 </div>
               </div>
-              <p className="text-[11px] text-slate-400 font-medium mt-0.5">AI Assistant</p>
+              <p className="text-[11px] text-slate-400 font-medium">AI Assistant</p>
             </div>
           </div>
 
@@ -333,9 +322,9 @@ export const ZiaAssistantDrawer: React.FC = () => {
                 <div key={msg.id} className="space-y-3">
                   {/* AI Sender Tag */}
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#FF6A00] to-[#EE0979] p-[1px] flex items-center justify-center shadow-xs">
-                      <div className="w-full h-full bg-[#0E1326] rounded-[7px] flex items-center justify-center p-0.5">
-                        <img src="/logo1.png" alt="AI" className="w-full h-full object-contain" />
+                    <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#FF6A00] to-[#EE0979] p-[1px] flex items-center justify-center shadow-xs shrink-0">
+                      <div className="w-full h-full bg-white rounded-[7px] flex items-center justify-center p-0.5">
+                        <img src="/favicon.png" alt="AI" className="w-full h-full object-contain block" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/logo1.png'; }} />
                       </div>
                     </div>
                     <span className="font-bold text-white text-[11px] tracking-tight">DleafCRM AI</span>
@@ -461,9 +450,9 @@ export const ZiaAssistantDrawer: React.FC = () => {
                 {/* Assistant Name Label */}
                 {msg.sender === 'dleafai' && (
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#FF6A00] to-[#EE0979] p-[1px] flex items-center justify-center shadow-xs">
-                      <div className="w-full h-full bg-[#0E1326] rounded-[7px] flex items-center justify-center p-0.5">
-                        <img src="/logo1.png" alt="AI" className="w-full h-full object-contain" />
+                    <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#FF6A00] to-[#EE0979] p-[1px] flex items-center justify-center shadow-xs shrink-0">
+                      <div className="w-full h-full bg-white rounded-[7px] flex items-center justify-center p-0.5">
+                        <img src="/favicon.png" alt="AI" className="w-full h-full object-contain block" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/logo1.png'; }} />
                       </div>
                     </div>
                     <span className="font-bold text-white text-[11px] tracking-tight">DleafCRM AI</span>
