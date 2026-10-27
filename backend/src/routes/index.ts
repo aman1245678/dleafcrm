@@ -14,6 +14,7 @@ import forecastRoutes from './forecastRoutes.js';
 import documentRoutes from './documentRoutes.js';
 import campaignRoutes from './campaignRoutes.js';
 import supportRoutes from './supportRoutes.js';
+import aiRoutes from './aiRoutes.js';
 import { checkDatabaseConnection } from '../db/prisma.js';
 
 const apiRouter = Router();
@@ -48,6 +49,7 @@ apiRouter.use('/forecasts', forecastRoutes);
 apiRouter.use('/documents', documentRoutes);
 apiRouter.use('/campaigns', campaignRoutes);
 apiRouter.use('/support', supportRoutes);
+apiRouter.use('/ai', aiRoutes);
 apiRouter.use('/', mcpRoutes);
 
 export default apiRouter;

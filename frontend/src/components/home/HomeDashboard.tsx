@@ -28,7 +28,10 @@ export const HomeDashboard: React.FC = () => {
     leads,
     tasks,
     currentUser,
+    openDleafAiWithPrompt,
   } = useCRM();
+
+  const [dashboardAiInput, setDashboardAiInput] = React.useState('');
 
   const downloadWordReport = () => {
     const docHtml = `
@@ -614,30 +617,52 @@ export const HomeDashboard: React.FC = () => {
               </div>
 
               {/* DleafAI Prompt Input */}
-              <div className="mt-2 relative">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (!dashboardAiInput.trim()) return;
+                  openDleafAiWithPrompt(dashboardAiInput.trim());
+                  setDashboardAiInput('');
+                }}
+                className="mt-2 relative"
+              >
                 <input
                   type="text"
-                  placeholder="Ask DleafAI anything..."
+                  value={dashboardAiInput}
+                  onChange={(e) => setDashboardAiInput(e.target.value)}
+                  placeholder="Ask DleafAI anything about Dleaf CRM..."
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979]"
                 />
-                <button className="absolute right-2.5 top-2.5 text-[#EE0979] font-bold text-xs hover:scale-110 transition cursor-pointer">
+                <button
+                  type="submit"
+                  className="absolute right-2.5 top-2.5 text-[#EE0979] font-bold text-xs hover:scale-110 transition cursor-pointer"
+                >
                   ➔
                 </button>
-              </div>
+              </form>
 
               {/* Quick Prompt Chips */}
               <div className="mt-3 space-y-1.5 text-[11px] text-slate-600">
-                <div className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-[#FFF1F7] hover:text-[#EE0979] cursor-pointer transition">
+                <div
+                  onClick={() => openDleafAiWithPrompt('Analyze pipeline and forecast revenue')}
+                  className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-[#FFF1F7] hover:text-[#EE0979] cursor-pointer transition"
+                >
                   <span>📊</span>
                   <span className="truncate">Analyze pipeline & forecast</span>
                 </div>
-                <div className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-[#FFF1F7] hover:text-[#EE0979] cursor-pointer transition">
+                <div
+                  onClick={() => openDleafAiWithPrompt('How does 1-click lead conversion work?')}
+                  className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-[#FFF1F7] hover:text-[#EE0979] cursor-pointer transition"
+                >
                   <span>🎯</span>
-                  <span className="truncate">Identify best conversion deals</span>
+                  <span className="truncate">How does 1-click lead conversion work?</span>
                 </div>
-                <div className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-[#FFF1F7] hover:text-[#EE0979] cursor-pointer transition">
+                <div
+                  onClick={() => openDleafAiWithPrompt('How to use WhatsApp and VoIP calling in Dleaf CRM?')}
+                  className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-[#FFF1F7] hover:text-[#EE0979] cursor-pointer transition"
+                >
                   <span>✉️</span>
-                  <span className="truncate">Draft client follow-up email</span>
+                  <span className="truncate">WhatsApp & VoIP calling guide</span>
                 </div>
               </div>
             </div>

@@ -1103,6 +1103,22 @@ export const api = {
       }
     },
   },
+
+  // DleafAI Intelligence Assistant
+  ai: {
+    query: async (message: string, context?: any) => {
+      try {
+        const res = await fetch('/api/ai/query', {
+          method: 'POST',
+          headers: getAuthHeaders(),
+          body: JSON.stringify({ message, context }),
+        });
+        return await res.json();
+      } catch (err: any) {
+        return { success: false, error: err.message };
+      }
+    },
+  },
 };
 
 

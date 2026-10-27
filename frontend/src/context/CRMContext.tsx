@@ -118,6 +118,9 @@ interface CRMContextType {
   setIsGlobalSearchOpen: (open: boolean) => void;
   isZiaOpen: boolean;
   setIsZiaOpen: (open: boolean) => void;
+  dleafAiInitialPrompt: string;
+  setDleafAiInitialPrompt: (prompt: string) => void;
+  openDleafAiWithPrompt: (prompt: string) => void;
   isImapModalOpen: boolean;
   setIsImapModalOpen: (open: boolean) => void;
   isCreateDealOpen: boolean;
@@ -330,6 +333,11 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [selectedLeadForDetail, setSelectedLeadForDetail] = useState<Lead | null>(null);
   const [isGlobalSearchOpen, setIsGlobalSearchOpen] = useState(false);
   const [isZiaOpen, setIsZiaOpen] = useState(false);
+  const [dleafAiInitialPrompt, setDleafAiInitialPrompt] = useState<string>('');
+  const openDleafAiWithPrompt = (prompt: string) => {
+    setDleafAiInitialPrompt(prompt);
+    setIsZiaOpen(true);
+  };
   const [isImapModalOpen, setIsImapModalOpen] = useState(false);
   const [isCreateDealOpen, setIsCreateDealOpen] = useState(false);
   const [isCreateLeadOpen, setIsCreateLeadOpen] = useState(false);
@@ -1345,6 +1353,9 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         setIsSubscriptionModalOpen,
         isMobileSidebarOpen,
         setIsMobileSidebarOpen,
+        dleafAiInitialPrompt,
+        setDleafAiInitialPrompt,
+        openDleafAiWithPrompt,
       }}
     >
       {children}

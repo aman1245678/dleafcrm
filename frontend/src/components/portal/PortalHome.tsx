@@ -40,7 +40,7 @@ import { useCRM } from '../../context/CRMContext';
 import { UserGuideModal } from '../modals/UserGuideModal';
 
 export const PortalHome: React.FC = () => {
-  const { setPortalPage, setIsPortalSignInOpen, setAppMode, setIsZiaOpen, isAuthenticated } = useCRM();
+  const { setPortalPage, setIsPortalSignInOpen, setAppMode, setIsZiaOpen, isAuthenticated, openDleafAiWithPrompt } = useCRM();
   const [ctaEmail, setCtaEmail] = useState('');
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isGuideOpen, setIsGuideOpen] = useState(false);
@@ -48,22 +48,14 @@ export const PortalHome: React.FC = () => {
 
   const handleAiPromptSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (isAuthenticated) {
-      setAppMode('workspace');
-      setIsZiaOpen(true);
-    } else {
-      setIsPortalSignInOpen(true);
-    }
+    if (!aiPrompt.trim()) return;
+    openDleafAiWithPrompt(aiPrompt.trim());
+    setAiPrompt('');
   };
 
   const handleQuickPromptClick = (text: string) => {
     setAiPrompt(text);
-    if (isAuthenticated) {
-      setAppMode('workspace');
-      setIsZiaOpen(true);
-    } else {
-      setIsPortalSignInOpen(true);
-    }
+    openDleafAiWithPrompt(text);
   };
 
   const handleCtaSubmit = (e: React.FormEvent) => {
