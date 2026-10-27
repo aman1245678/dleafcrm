@@ -23,7 +23,7 @@ export const PortalPricing: React.FC = () => {
   const [currency, setCurrency] = useState<'INR' | 'USD'>('INR');
   const [usersCount, setUsersCount] = useState<number>(5);
   const [extraStorageGb, setExtraStorageGb] = useState<number>(10);
-  const [includeZiaAi, setIncludeZiaAi] = useState<boolean>(true);
+  const [includeDleafAi, setIncludeDleafAi] = useState<boolean>(true);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   // Pricing rates
@@ -111,8 +111,8 @@ export const PortalPricing: React.FC = () => {
   const selectedPlanRate = currency === 'INR' ? 1400 : 23;
   const calculatedBase = usersCount * selectedPlanRate;
   const calculatedStorage = extraStorageGb * (currency === 'INR' ? 25 : 0.5);
-  const calculatedZia = includeZiaAi ? (currency === 'INR' ? 1200 : 18) : 0;
-  const calculatedTotal = calculatedBase + calculatedStorage + calculatedZia;
+  const calculatedDleafAi = includeDleafAi ? (currency === 'INR' ? 1200 : 18) : 0;
+  const calculatedTotal = calculatedBase + calculatedStorage + calculatedDleafAi;
 
   const faqs = [
     {
@@ -383,8 +383,8 @@ export const PortalPricing: React.FC = () => {
                 </div>
                 <input
                   type="checkbox"
-                  checked={includeZiaAi}
-                  onChange={(e) => setIncludeZiaAi(e.target.checked)}
+                  checked={includeDleafAi}
+                  onChange={(e) => setIncludeDleafAi(e.target.checked)}
                   className="w-4 h-4 accent-blue-600 rounded cursor-pointer"
                 />
               </div>
@@ -411,10 +411,10 @@ export const PortalPricing: React.FC = () => {
                     <span>Extra Storage ({extraStorageGb} GB):</span>
                     <span>{currency === 'INR' ? `₹${calculatedStorage.toLocaleString()}` : `$${calculatedStorage}`}</span>
                   </div>
-                  {includeZiaAi && (
+                  {includeDleafAi && (
                     <div className="flex justify-between text-purple-300">
                       <span>DleafAI Intelligence:</span>
-                      <span>{currency === 'INR' ? `₹${calculatedZia.toLocaleString()}` : `$${calculatedZia}`}</span>
+                      <span>{currency === 'INR' ? `₹${calculatedDleafAi.toLocaleString()}` : `$${calculatedDleafAi}`}</span>
                     </div>
                   )}
                 </div>
