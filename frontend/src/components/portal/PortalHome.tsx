@@ -887,17 +887,19 @@ export const PortalHome: React.FC = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
           <div className="col-span-2 space-y-3">
             <div className="flex items-center gap-2">
-              <img
-                src="/logo1.png?v=20"
-                alt="DleafCRM"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (!target.src.includes('logo.png')) {
-                    target.src = '/logo.png?v=20';
-                  }
-                }}
-                className="h-10 sm:h-11 w-auto max-w-[220px] object-contain"
-              />
+              <div className="bg-white/95 px-3 py-1.5 rounded-xl border border-white/20 shadow-md inline-flex items-center w-fit">
+                <img
+                  src="/logo1.png"
+                  alt="DleafCRM"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.src.includes('logo.png')) {
+                      target.src = '/logo.png';
+                    }
+                  }}
+                  className="h-7 sm:h-8 w-auto max-w-[190px] object-contain block"
+                />
+              </div>
             </div>
             <p className="font-editorial-body text-[11.5px] text-slate-400 leading-relaxed max-w-xs">
               Next-generation enterprise CRM uniting omnichannel sales, DleafAI deal intelligence, and Indian statutory compliance.
