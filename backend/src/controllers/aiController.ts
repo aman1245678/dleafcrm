@@ -291,6 +291,93 @@ export const DLEAF_KNOWLEDGE_TOPICS: KnowledgeTopic[] = [
 - **Backend**: Node.js, Express REST API, PostgreSQL.
 - **Server**: Ubuntu 24.04 VPS (\`143.110.241.182\`) par PM2 daemon se managed hai, Nginx SSL reverse-proxy ke sath.
 - **Live Website**: https://dleafcrm.dleaftech.com`
+  },
+  {
+    id: 'troubleshooting_contact_save',
+    category: 'Troubleshooting',
+    title: 'Contact / Record Not Saving Troubleshooting',
+    keywords: [
+      'contact save', 'contact kyun nahi ho raha', 'save nahi ho raha', 'contact not saving',
+      'error saving', 'validation error', 'duplicate email', 'why contact not saved'
+    ],
+    hinglishKeywords: [
+      'contact save kyun nahi ho raha', 'contact save nahi ho raha', 'save kyu nahi ho raha', 'contact add nahi ho raha', 'error aa raha hai'
+    ],
+    englishResponse: `**Troubleshooting: Why Contact is Not Saving?**:
+If your contact or lead record isn't saving, here are the 4 common reasons and quick fixes:
+1. **Mandatory Fields**: Ensure **First Name**, **Last Name**, and **Email** are filled in.
+2. **Email Format / Duplicate Check**: Dleaf CRM prevents duplicate contact emails across the same company workspace. Make sure the email is valid (e.g., \`user@domain.com\`) and not already assigned.
+3. **Network / Auth Token**: If your session timed out, refresh the page or re-login to regenerate your JWT token.
+4. **Database Status**: The backend writes to PostgreSQL (\`users\`, \`contacts\` tables) with automatic in-memory fallback. Check your browser console (\`F12\` -> Network tab) for any \`400\` or \`500\` error codes.`,
+    hindiResponse: `**Troubleshooting: Contact Save Kyun Nahi Ho Raha?**:
+Agar aapka contact ya lead save nahi ho raha hai, toh ye 4 points check karein:
+1. **Mandatory Fields**: First Name, Last Name aur Valid Email ID bharna zaroori hai.
+2. **Duplicate Email Check**: Agar wo email pehle se CRM me kisi contact ke pass hai, toh duplicate prevention use block karega. Naya unique email daalkar try karein.
+3. **Session Expiry**: Agar page kafi der se open hai, toh browser refresh karein ya dubara login karein taaki JWT token refresh ho sake.
+4. **Network / Database Check**: Keyboard par \`F12\` dabakar *Console* ya *Network* tab me dekhein koi 400 Bad Request error toh nahi aa raha.`
+  },
+  {
+    id: 'dashboard_revenue_math',
+    category: 'Business Logic',
+    title: 'Dashboard Revenue & Conversion Rate Calculation',
+    keywords: [
+      'revenue', 'conversion rate', 'calculate', 'calculation', 'math',
+      'win probability', 'formula', 'dashboard revenue', 'expected revenue'
+    ],
+    hinglishKeywords: [
+      'revenue kaise calculate hota hai', 'conversion rate kaise calculate hota hai', 'formula kya hai', 'revenue calculation', 'math kaise kaam karta hai'
+    ],
+    englishResponse: `**Dashboard Revenue & Conversion Math**:
+1. **Total Won Revenue (INR ₹)**:
+   - Sum of the \`amount\` of all Deals currently in the **"Closed Won"** stage (100% stage probability).
+2. **Pipeline Expected Revenue**:
+   - Calculated as: \`∑ (Deal Amount × Stage Win Probability %)\`
+   - Example: A ₹1,00,000 deal in *Proposal* stage (75% probability) contributes ₹75,000 to expected revenue.
+3. **Win / Conversion Probability Rate**:
+   - Formula: \`(Total Closed Won Deals ÷ Total Converted Deals [Won + Lost]) × 100\`
+   - Current benchmark displayed in the cockpit: ~68% win rate across active quarters.`,
+    hindiResponse: `**Dashboard Revenue & Conversion Rate Calculation**:
+1. **Total Won Revenue**:
+   - Jo Deals **"Closed Won"** (100% stage) me hain, unke total amount ka sum hota hai.
+2. **Expected Pipeline Revenue**:
+   - Formula: \`Deal Amount × Stage Probability %\`
+   - Example: Agar ₹1,00,000 ki deal *Proposal Stage* (75%) par hai, toh uska expected revenue ₹75,000 count hota hai.
+3. **Win Conversion Rate**:
+   - Formula: \`(Total Won Deals ÷ Total Finished Deals [Won + Lost]) × 100\`
+   - Home Dashboard cockpit par live conversion rate (~68%) real-time update hota hai.`
+  },
+  {
+    id: 'system_connectivity',
+    category: 'Architecture',
+    title: 'Frontend, Backend & Database Connectivity Architecture',
+    keywords: [
+      'frontend backend database', 'how connected', 'connected', 'architecture flow',
+      'kaise connected hain', 'connection flow', 'system design', 'rest api flow'
+    ],
+    hinglishKeywords: [
+      'frontend backend kaise connected hai', 'database kaise juda hai', 'project flow kya hai', 'kaise kaam karta hai pura system'
+    ],
+    englishResponse: `**System Connectivity Architecture (Frontend ⇄ Backend ⇄ Database)**:
+1. **Frontend Layer (React 19 + TypeScript + Vite 8)**:
+   - Hosted at \`https://dleafcrm.dleaftech.com\`.
+   - Sends typed HTTP REST API requests via the unified service layer (\`frontend/src/services/api.ts\`).
+   - Uses JWT Bearer tokens in headers for secure session authentication.
+2. **Nginx Reverse Proxy & SSL**:
+   - Nginx on DigitalOcean VPS routes root traffic \`/\` to the Vite React frontend (port 3000) and routes \`/api/*\` directly to the Node.js Express backend (port 5005).
+3. **Backend API Layer (Node.js + Express REST API)**:
+   - Running on port 5005 via PM2 daemon (\`dleafcrm-backend\`).
+   - Validates requests, enforces RBAC (Super Admin, Sales Manager, Rep), and coordinates business logic (CPQ 18% GST math, lead conversion, IMAP sync).
+4. **Data Persistence (PostgreSQL & Hybrid Engine)**:
+   - Connects to PostgreSQL via pooled connection (\`backend/src/db/pg.ts\`). Auto-migrates tables (\`users\`, \`leads\`, \`deals\`, \`companies\`, \`whatsapp_messages\`).`,
+    hindiResponse: `**Project Architecture: Frontend, Backend aur Database Kaise Connected Hain?**:
+1. **Frontend (React 19 + TypeScript + Vite 8)**:
+   - \`https://dleafcrm.dleaftech.com\` par chalta hai. Browser se \`frontend/src/services/api.ts\` ke through REST API calls bhejta hai.
+2. **Nginx Reverse Proxy (SSL)**:
+   - Nginx server \`https://dleafcrm.dleaftech.com/api\` ki saari requests ko seedhe backend ke port 5005 par forward karta hai.
+3. **Backend (Node.js + Express REST API)**:
+   - VPS par PM2 process daemon (\`dleafcrm-backend\`) ke sath port 5005 par chalta hai. Ye authentication (JWT), 1-click lead conversion, aur WhatsApp/VoIP routing handle karta hai.
+4. **Database (PostgreSQL)**:
+   - \`backend/src/db/pg.ts\` connection pool ke sath PostgreSQL se connected hai aur automatically \`leads\`, \`deals\`, \`users\` aur \`companies\` tables ko sync karta hai.`
   }
 ];
 
