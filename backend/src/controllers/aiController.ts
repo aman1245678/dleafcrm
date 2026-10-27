@@ -351,11 +351,11 @@ Agar aapka contact ya lead save nahi ho raha hai, toh ye 4 points check karein:
     category: 'Architecture',
     title: 'Frontend, Backend & Database Connectivity Architecture',
     keywords: [
-      'frontend backend database', 'how connected', 'connected', 'architecture flow',
-      'kaise connected hain', 'connection flow', 'system design', 'rest api flow'
+      'frontend, backend aur database', 'frontend backend database', 'how connected', 'connected', 'architecture flow',
+      'kaise connected hain', 'connection flow', 'system design', 'rest api flow', 'frontend backend aur database kaise'
     ],
     hinglishKeywords: [
-      'frontend backend kaise connected hai', 'database kaise juda hai', 'project flow kya hai', 'kaise kaam karta hai pura system'
+      'frontend backend database', 'kaise connected hain', 'frontend backend kaise connected hai', 'database kaise juda hai', 'project flow kya hai', 'kaise kaam karta hai pura system'
     ],
     englishResponse: `**System Connectivity Architecture (Frontend ⇄ Backend ⇄ Database)**:
 1. **Frontend Layer (React 19 + TypeScript + Vite 8)**:
