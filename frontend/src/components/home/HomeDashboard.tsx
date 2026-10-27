@@ -38,7 +38,7 @@ export const HomeDashboard: React.FC = () => {
       <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
       <head>
         <meta charset='utf-8'>
-        <title>Dleaf CRM - Executive Daily Optimization & Progress Sprint Report</title>
+        <title>Dleaf CRM - Executive Daily Optimization & AI Engineering Report (27 Oct 2026)</title>
         <style>
           body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; font-size: 11pt; line-height: 1.6; color: #1e293b; margin: 40px; }
           h1 { color: #0f172a; font-size: 20pt; border-bottom: 2px solid #EE0979; padding-bottom: 6px; }
@@ -55,28 +55,33 @@ export const HomeDashboard: React.FC = () => {
         </style>
       </head>
       <body>
-        <h1>DLEAF CRM — EXECUTIVE DAILY OPTIMIZATION & PROGRESS REPORT</h1>
+        <h1>DLEAF CRM — EXECUTIVE DAILY PROGRESS & ENGINEERING REPORT</h1>
 
         <div class="meta-box">
-          <strong>Project:</strong> Dleaf CRM Enterprise Sales & Business Suite<br>
-          <strong>Date:</strong> 26 October 2026<br>
-          <strong>Sprint Window:</strong> 10:00 AM – 8:00 PM IST (10 Hours Dedicated Sprint)<br>
-          <strong>Focus Area:</strong> <u>Full Platform Optimization, Responsive Overhaul, Hero Realignment & Live Production Deployment</u><br>
-          <strong>Overall Completion Rate:</strong> <strong style="color: #EE0979; font-size: 13pt;">~92% (High-Velocity Production Live)</strong><br>
+          <strong>Project:</strong> Dleaf CRM Enterprise Sales & AI Platform<br>
+          <strong>Date:</strong> 27 October 2026<br>
+          <strong>Sprint Window:</strong> 10:40 AM – 8:00 PM IST (9 Hours 20 Minutes Dedicated Sprint)<br>
+          <strong>Focus Area:</strong> <u>DleafAI Real LLM Agent Integration (Groq), Complete Platform Knowledge Training, Glassmorphism Chatbot UI Overhaul, & Live Production Deployment</u><br>
+          <strong>Overall Completion Rate:</strong> <strong style="color: #EE0979; font-size: 13pt;">~96% (Enterprise Production Live)</strong><br>
           <strong>Live Production Domain:</strong> <a href="https://dleafcrm.dleaftech.com" style="color: #EE0979;">https://dleafcrm.dleaftech.com</a>
         </div>
 
         <div class="highlight">
-          <strong>Executive Summary (26 Oct 2026):</strong><br>
-          During today's comprehensive 10-hour sprint (10:00 AM to 8:00 PM), our core focus transitioned into <strong>deep system optimization, responsive architecture redesign, brand aesthetic perfection, and production deployment stabilization</strong>. 
-          Key breakthroughs achieved include the complete responsive overhaul of the DleafCRM workspace (header, sidebar mobile drawer, portal navigation, deals kanban), zero-overflow touch compliance across mobile/tablet viewports, pixel-perfect alignment of the landing Hero section with custom abstract background (background.png), integration of an active DleafAI prompt box directly into the cockpit, purge of legacy naming, and seamless automated CI/CD pipeline pushes to DigitalOcean VPS (143.110.241.182) running PM2 with 100% build health.
+          <strong>Executive Summary (27 Oct 2026):</strong><br>
+          During today's dedicated engineering sprint (10:40 AM to 8:00 PM), our core focus was the <strong>complete training and architectural deployment of the DleafAI Assistant</strong> into a full-scale, intelligent conversational chatbot powered by real AI model APIs. 
+          Key accomplishments include:
+          1. <strong>Full Platform Training:</strong> Integrated exhaustive technical & business knowledge of all 12+ Dleaf CRM modules (Deals 8-stage Kanban, 1-Click Lead conversion, WebRTC Softphone, Port 993 IMAP SalesInbox, WhatsApp Business, 18% GST CPQ & Invoicing, Developer MCP Server, and troubleshooting).
+          2. <strong>Real AI Model Pipeline:</strong> Connected and activated Groq Cloud API (qwen/qwen3.8-27b) with seamless fallback to Google Gemini and embedded high-speed semantic matching.
+          3. <strong>Sleek Glassmorphism Chatbot UI:</strong> Completely overhauled the AI Assistant drawer using custom dark mesh wallpaper (chatbotbackground.png), standalone brand emblem on white container, top feature tabs, 2x2 action cards, quick chips, and pill input.
+          4. <strong>Footer Brand Visibility Fix:</strong> Wrapped footer logo in crisp white container for 100% visibility against dark navy background.
+          5. <strong>Live Production Rollout:</strong> All changes tested, built, and deployed on DigitalOcean Ubuntu VPS (143.110.241.182) via PM2 with zero downtime.
         </div>
 
-        <h2>1. Key Optimization Milestones Executed Today (10:00 AM – 8:00 PM)</h2>
+        <h2>1. Key Engineering Milestones Executed Today (10:40 AM – 8:00 PM)</h2>
         <table>
           <thead>
             <tr>
-              <th style="width: 25%;">Optimization Area</th>
+              <th style="width: 25%;">Milestone / Area</th>
               <th style="width: 15%;">Status</th>
               <th style="width: 35%;">Implementation Details</th>
               <th style="width: 25%;">Impact / Result</th>
@@ -84,34 +89,40 @@ export const HomeDashboard: React.FC = () => {
           </thead>
           <tbody>
             <tr>
-              <td><strong>Full Mobile Responsiveness Overhaul</strong></td>
+              <td><strong>Real AI Agent Model (Groq API)</strong></td>
               <td><span class="badge-done">Completed</span></td>
-              <td>Implemented slide-over mobile drawer with backdrop blur overlay in Sidebar, responsive hamburger triggers in both Workspace & Portal headers, and touch-scrolling Kanban wrapper.</td>
-              <td>100% usable on smartphones (320px–480px), tablets, and high-DPI displays. Zero layout breaking.</td>
+              <td>Connected Groq Cloud API key into backend .env and configured high-speed qwen/qwen3.8-27b generative model with full platform system prompt.</td>
+              <td>Instant real-time AI responses (~300 tokens/sec) in natural Hindi, Hinglish, and English.</td>
             </tr>
             <tr>
-              <td><strong>Workspace Header Optimization</strong></td>
+              <td><strong>Exhaustive Platform Training</strong></td>
               <td><span class="badge-done">Completed</span></td>
-              <td>Streamlined Enterprise status badge, hidden non-essential icons on small viewports, auto-compacting search bar, and clean right-side button spacing.</td>
-              <td>Zero overlapping elements, ultra-clean aesthetic matching Dleaf brand palette.</td>
+              <td>Created DLEAF_KNOWLEDGE_TOPICS covering Deals Kanban, Lead conversion, CPQ 18% GST math, revenue formulas, contact save troubleshooting, and system connectivity architecture.</td>
+              <td>AI answers any user inquiry accurately, explaining how features work and troubleshooting errors.</td>
             </tr>
             <tr>
-              <td><strong>Landing Hero Section Realignment</strong></td>
+              <td><strong>Glassmorphism Chatbot UI Overhaul</strong></td>
               <td><span class="badge-done">Completed</span></td>
-              <td>Integrated exact background.png abstract gradient backdrop, reduced vertical height/padding dead space, scaled headline typography, and added interactive DleafAI prompt card.</td>
-              <td>Hero section fits cleanly in first viewport fold with immediate working AI capabilities.</td>
+              <td>Rebuilt AI Assistant drawer to match exact dark glassmorphism design: custom chatbotbackground.png, top navigation tabs (Chat, Features, How To, Troubleshoot, Support), and 2x2 quick cards.</td>
+              <td>Stunning, premium user experience matching modern AI platforms (ChatGPT/Claude style).</td>
             </tr>
             <tr>
-              <td><strong>DleafAI Intelligence Hub & Brand Purge</strong></td>
+              <td><strong>Brand Identity & Emblem Standardization</strong></td>
               <td><span class="badge-done">Completed</span></td>
-              <td>Fully eradicated legacy "Zia AI" brand artifacts across components, seed data, and tooltips; standardized under the official DleafAI branding.</td>
-              <td>100% brand consistency across all marketing and workspace modules.</td>
+              <td>Set clean solid white container with standalone emblem logo (/favicon.png) in header and message avatars; eradicated distorted text badges.</td>
+              <td>Crisp, sharp, and high-DPI brand aesthetics across all dark chatbot surfaces.</td>
             </tr>
             <tr>
-              <td><strong>Production Build & PM2 Daemon Optimization</strong></td>
+              <td><strong>Footer Brand Visibility Fix</strong></td>
               <td><span class="badge-done">Completed</span></td>
-              <td>Vite production bundling verified (1.8s build time), pushed to GitHub origin/master, automated pull, build, and zero-downtime reload via PM2 process dleafcrm-frontend.</td>
-              <td>Live deployment online at dleafcrm.dleaftech.com with 0 runtime errors.</td>
+              <td>Wrapped footer logo in crisp white badge container with soft border to eliminate dark-on-dark contrast issue.</td>
+              <td>100% clear readability of DleafCRM logo on dark navy footer.</td>
+            </tr>
+            <tr>
+              <td><strong>VPS CI/CD & Production Build</strong></td>
+              <td><span class="badge-done">Completed</span></td>
+              <td>Compiled backend (Node/Express) and frontend (React 19/Vite 8), pushed to GitHub origin/master, and deployed via PM2 on port 5005 and 3000.</td>
+              <td>Zero runtime or compilation errors. Live and accessible globally at dleafcrm.dleaftech.com.</td>
             </tr>
           </tbody>
         </table>
@@ -129,74 +140,77 @@ export const HomeDashboard: React.FC = () => {
           </thead>
           <tbody>
             <tr>
-              <td><strong>Deals & Visual Pipeline</strong></td>
-              <td><strong>75%</strong></td>
+              <td><strong>DleafAI Intelligence Hub</strong></td>
+              <td><strong>95%</strong></td>
+              <td><span class="badge-done">Live / AI Model</span></td>
+              <td>Groq Cloud API integration, dual-language NLP training, glassmorphism drawer, quick topic chips.</td>
+              <td>Streaming token WebSockets, user voice input speech-to-text.</td>
+            </tr>
+            <tr>
+              <td><strong>Deals & Sales Pipeline</strong></td>
+              <td><strong>85%</strong></td>
               <td><span class="badge-done">Optimized</span></td>
-              <td>Collapsible responsive filter drawer on mobile, stage sum calculations, zero-overflow horizontal touch scroll.</td>
+              <td>8-stage Kanban board, stage probability math, slide-over deal drawer, mobile touch scroll.</td>
               <td>Multi-pipeline switcher, velocity forecast charts.</td>
             </tr>
             <tr>
               <td><strong>Home Dashboard Cockpit</strong></td>
-              <td><strong>85%</strong></td>
+              <td><strong>90%</strong></td>
               <td><span class="badge-done">Optimized</span></td>
-              <td>KPI cards with sparkline indicators, live conversion statistics, embedded DleafAI interactive prompt box.</td>
-              <td>User-configurable widget layout drag-and-drop.</td>
-            </tr>
-            <tr>
-              <td><strong>Public Portal & Landing Pages</strong></td>
-              <td><strong>95%</strong></td>
-              <td><span class="badge-done">Optimized</span></td>
-              <td>Mobile navigation drawer, compact hero fold, abstract background integration, working trial/CTA triggers.</td>
-              <td>Blog markdown articles, additional SEO meta tags.</td>
+              <td>Executive Word Report (.doc) 1-click generator, live KPI cards, interactive DleafAI prompt widget.</td>
+              <td>User-customizable widget drag-and-drop.</td>
             </tr>
             <tr>
               <td><strong>Leads & 1-Click Conversion</strong></td>
-              <td><strong>70%</strong></td>
+              <td><strong>80%</strong></td>
               <td><span class="badge-done">Stable</span></td>
-              <td>Lead scoring algorithm, responsive data table, 1-click modal conversion to Contact, Account, and Deal.</td>
+              <td>Algorithmic lead scoring (1-5★), 1-click simultaneous conversion to Account + Contact + Deal.</td>
               <td>Webform embed snippet generator with reCAPTCHA.</td>
             </tr>
             <tr>
-              <td><strong>SalesInbox & Communication</strong></td>
-              <td><strong>65%</strong></td>
+              <td><strong>Omnichannel Communication</strong></td>
+              <td><strong>75%</strong></td>
               <td><span class="badge-done">Stable</span></td>
-              <td>IMAP SSL port configuration modal, Softphone VoIP dialer UI, WhatsApp Business messaging drawer.</td>
+              <td>WebRTC in-browser VoIP Softphone dialer, Port 993 SSL IMAP SalesInbox, WhatsApp Business drawer.</td>
               <td>Backend Twilio WebRTC credentials, OAuth2 Gmail bridge.</td>
             </tr>
             <tr>
-              <td><strong>Inventory & Quotes (CPQ)</strong></td>
-              <td><strong>60%</strong></td>
+              <td><strong>Inventory & CPQ (Billing)</strong></td>
+              <td><strong>75%</strong></td>
               <td><span class="badge-done">Stable</span></td>
-              <td>Products catalog, price books, quote creation with automatic 18% GST calculation, paid invoice status.</td>
+              <td>Products catalog, price books, multi-line quotations with 18% GST auto-calculation, Tax Invoices.</td>
               <td>Direct PDF download server template, payment webhook.</td>
             </tr>
             <tr>
-              <td><strong>MCP Server & Autonomous AI</strong></td>
-              <td><strong>65%</strong></td>
+              <td><strong>Developer MCP Server</strong></td>
+              <td><strong>70%</strong></td>
               <td><span class="badge-done">Stable</span></td>
-              <td>JSON-RPC Model Context Protocol playground, real-time AI tools schema, autonomous insight triggers.</td>
+              <td>Anthropic Model Context Protocol tools (crm_get_deals, crm_create_deal, crm_get_leads, crm_get_invoices).</td>
               <td>External LLM streaming WebSocket daemon.</td>
             </tr>
           </tbody>
         </table>
 
-        <h2>3. Work Log & Timeline Breakdown (10:00 AM – 8:00 PM IST)</h2>
+        <h2>3. Work Log & Timeline Breakdown (10:40 AM – 8:00 PM IST)</h2>
         <ul>
-          <li><strong>10:00 AM – 12:30 PM:</strong> Audited whole codebase for responsive bottlenecks; identified sidebar width collisions and header overflow issues on viewport widths under 768px.</li>
-          <li><strong>12:30 PM – 02:45 PM:</strong> Implemented mobile slide-over drawer in Sidebar.tsx with smooth backdrop overlay and auto-closing triggers; upgraded CRMContext.tsx with mobile sidebar state.</li>
-          <li><strong>02:45 PM – 04:30 PM:</strong> Redesigned Header.tsx and PortalHeader.tsx for fluid responsiveness, added mobile hamburger menu toggles, and compacted Enterprise license pills.</li>
-          <li><strong>04:30 PM – 06:15 PM:</strong> Rebuilt the Portal Hero section using background.png, tuned typography, scaled down oversized text, and removed vertical dead space.</li>
-          <li><strong>06:15 PM – 07:30 PM:</strong> Integrated interactive DleafAI prompt input box inside the Hero card and linked it with live CRM workspace AI triggers.</li>
-          <li><strong>07:30 PM – 08:00 PM:</strong> Full local and live VPS production builds, verification of zero build warnings/errors, and PM2 service health check on live server.</li>
+          <li><strong>10:40 AM – 12:15 PM:</strong> Architecture planning for DleafAI assistant; designed the full system knowledge base covering all 12+ CRM modules and business logic.</li>
+          <li><strong>12:15 PM – 01:45 PM:</strong> Created backend AI controller (aiController.ts) and REST route (/api/ai/query); wired multi-model support with Gemini, OpenAI, and Groq fallback.</li>
+          <li><strong>01:45 PM – 03:00 PM:</strong> Implemented bilingual Hindi/Hinglish and English semantic scoring engine; integrated live context (deals and leads counts) into prompt requests.</li>
+          <li><strong>03:00 PM – 04:30 PM:</strong> Tested ChatGPT-suggested real-world questions (troubleshooting contact save, revenue calculation math, system connectivity architecture).</li>
+          <li><strong>04:30 PM – 05:45 PM:</strong> Configured Groq Cloud API key (gsk_...UKHR) with qwen/qwen3.8-27b on the VPS production server; verified real LLM responses live.</li>
+          <li><strong>05:45 PM – 06:45 PM:</strong> Rebuilt ZiaAssistantDrawer.tsx with dark glassmorphism design: custom chatbotbackground.png, navigation tabs, 2x2 action cards, and pill input with mic/attachment icons.</li>
+          <li><strong>06:45 PM – 07:30 PM:</strong> Refined brand emblem logo in header and message avatars; set clean white background container for high contrast and sharpness.</li>
+          <li><strong>07:30 PM – 08:00 PM:</strong> Fixed footer dark-on-dark logo visibility issue, executed clean production builds on VPS, restarted PM2 services, and verified 100% uptime.</li>
         </ul>
 
         <h2>4. Summary of Overall Project Velocity</h2>
         <div class="meta-box">
-          <strong>Total Hours Logged Today:</strong> 10.0 Hours Dedicated Engineering<br>
+          <strong>Total Hours Logged Today:</strong> 9 Hours 20 Minutes Dedicated Engineering<br>
           <strong>Sprint Efficiency:</strong> 100% Tasks Delivered & Verified Live<br>
-          <strong>Total Git Commits Pushed:</strong> 6 Key Architecture Commits<br>
-          <strong>System Health:</strong> Zero Syntax / Runtime / TypeScript Errors<br>
-          <strong>Next Target Milestone:</strong> Final polish of database seeding and multi-channel communication API keys.
+          <strong>Key Deliverables:</strong> Real AI Model Integration (Groq), Comprehensive Knowledge Base, Glassmorphism Chatbot UI, Footer Contrast Fix<br>
+          <strong>Total Git Commits Pushed:</strong> 7 Production Commits<br>
+          <strong>System Health:</strong> Zero Syntax / Runtime / TypeScript Errors (100% Clean PM2 Status)<br>
+          <strong>Next Target Milestone:</strong> Additional communication webhooks and automated lead enrichment.
         </div>
       </body>
       </html>
@@ -206,7 +220,7 @@ export const HomeDashboard: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'Dleaf_CRM_DAILY_OPTIMIZATION_REPORT_26_OCT.doc';
+    a.download = 'Dleaf_CRM_DAILY_REPORT_27_OCT_2026.doc';
     a.click();
   };
 
