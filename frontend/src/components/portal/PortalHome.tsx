@@ -481,112 +481,160 @@ export const PortalHome: React.FC = () => {
 
       {/* =========================================================================
           SECTION 4: COMPACT DUAL-PANEL SHOWCASE (Interactive Pipeline + DleafAI)
+          With Exact User-Provided Background Wallpaper (/hero-bg-exact.png)
       ========================================================================== */}
-      <section className="py-8 px-4 sm:px-8 lg:px-12 bg-[#FAFAFD] border-b border-[#F1D5E4]">
-        <div className="max-w-7xl mx-auto space-y-6">
+      <section className="relative py-12 sm:py-16 px-4 sm:px-8 lg:px-12 overflow-hidden bg-[#0A0E1A] border-b border-white/10">
+
+        {/* Exact User Background Wallpaper */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          <img
+            src="/hero-bg-exact.png"
+            alt="DleafCRM Section Background"
+            className="w-full h-full object-cover object-center opacity-100"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto space-y-8">
 
           {/* Section Header */}
-          <div className="max-w-3xl">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#EE0979] font-editorial">
-              Precision Sales Architecture
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-editorial-heading text-[#0F172A] mt-0.5 leading-tight">
-              The Free CRM With Unlimited Growth Potential
+          <div className="max-w-3xl text-left space-y-2">
+            <div className="flex items-center gap-2">
+              <span className="w-5 h-[2px] bg-[#EE0979]" />
+              <span className="text-xs font-extrabold uppercase tracking-widest text-[#EE0979]">
+                Precision Sales Architecture
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0A1128] tracking-tight leading-[1.15]">
+              The Free CRM With <span className="text-[#EE0979]">Unlimited Growth Potential</span>
             </h2>
-            <p className="font-editorial-body text-[13.5px] text-slate-600 mt-1.5 leading-relaxed">
-              Don’t let budget constraints limit your growth. Dleaf CRM brings all your customer data, revenue pipelines, and AI insights together — making it seamless to create remarkable customer experiences without data migration headaches.
+            <p className="text-xs sm:text-[14px] text-slate-700 font-normal leading-relaxed max-w-2xl">
+              Don't let budget constraints limit your growth. Dleaf CRM brings all your customer data, revenue pipelines, and AI insights together — making it seamless to create remarkable customer experiences without data migration headaches.
             </p>
           </div>
 
-          {/* Compact 2-Column Feature Deck */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          {/* Compact 2-Column Feature Deck (Exact User Mockup) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
 
             {/* Left Panel: Real-time Deals Pipeline (7 Cols) */}
-            <div className="lg:col-span-7 bg-white p-4 sm:p-5 rounded-2xl border border-[#F1D5E4] shadow-xs flex flex-col justify-between">
+            <div className="lg:col-span-7 bg-white/95 backdrop-blur-md p-5 sm:p-6 rounded-3xl border border-white/80 shadow-[0_15px_40px_rgba(0,0,0,0.08)] flex flex-col justify-between space-y-4">
               <div>
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979]" />
-                    <span className="font-editorial font-bold text-sm text-[#0F172A]">Multi-Stage Visual Deal Pipeline</span>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#EE0979]" />
+                    <span className="font-extrabold text-sm sm:text-base text-[#0F172A]">Multi-Stage Visual Deal Pipeline</span>
                   </div>
                   <button
-                    onClick={() => setAppMode('workspace')}
-                    className="text-xs font-semibold text-[#EE0979] hover:text-[#FF6A00] font-editorial flex items-center gap-1 cursor-pointer"
+                    onClick={() => {
+                      if (isAuthenticated) setAppMode('workspace');
+                      else setIsPortalSignInOpen(true);
+                    }}
+                    className="text-xs font-bold text-[#EE0979] hover:underline flex items-center gap-1 cursor-pointer"
                   >
                     <span>Launch Live Kanban</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
-                {/* 3 Compact Stages */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-3.5">
-                  {/* Stage 1 */}
-                  <div className="bg-[#FFF8FA] p-2.5 rounded-xl border border-[#F1D5E4] space-y-2">
+                {/* 3 Compact Stages Matching Mockup */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3.5">
+                  
+                  {/* Stage 1: Qualification */}
+                  <div className="bg-[#FAFBFD] p-3 rounded-2xl border border-slate-200/80 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-editorial text-[11px] font-bold text-slate-800">Qualification</span>
-                      <span className="text-[10px] font-semibold text-slate-500 bg-white px-1.5 py-0.5 rounded border border-slate-200">10%</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-rose-500" />
+                        <span className="text-[11px] font-bold text-slate-700">Qualification</span>
+                      </div>
+                      <span className="text-[10px] font-semibold text-slate-600 bg-white px-1.5 py-0.5 rounded border border-slate-200">10%</span>
                     </div>
-                    <div className="text-[11px] font-bold text-[#EE0979] font-editorial">₹14,50,000</div>
+                    <div className="text-sm font-black text-rose-600">₹14,50,000</div>
 
-                    <div className="bg-white p-2.5 rounded-lg border border-slate-200/90 shadow-2xs space-y-1">
-                      <div className="font-editorial text-xs font-bold text-slate-900 leading-tight">Cloud ERP Upgrade</div>
-                      <div className="font-editorial-body text-[10.5px] text-slate-500">Apex Global Logistics</div>
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-md bg-rose-50 text-rose-600 flex items-center justify-center text-[10px]">
+                          📦
+                        </div>
+                        <div className="text-[11px] font-bold text-slate-800">Cloud ERP Upgrade</div>
+                      </div>
+                      <div className="text-[10px] text-slate-500">Apex Global Logistics</div>
                       <div className="flex items-center justify-between pt-1">
-                        <span className="text-xs font-bold text-[#EE0979]">₹8,50,000</span>
-                        <span className="text-[9px] bg-[#FFF1F7] text-[#EE0979] px-1.5 py-0.2 rounded font-bold">Hot Lead</span>
+                        <span className="text-xs font-bold text-slate-900">₹8,50,000</span>
+                        <span className="text-[9px] bg-rose-50 text-rose-600 px-1.5 py-0.2 rounded font-bold">Hot Lead</span>
                       </div>
                     </div>
 
-                    <div className="bg-white p-2.5 rounded-lg border border-slate-200/90 shadow-2xs space-y-1">
-                      <div className="font-editorial text-xs font-bold text-slate-900 leading-tight">Telephony Setup</div>
-                      <div className="font-editorial-body text-[10.5px] text-slate-500">FinSecure Capital</div>
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200/90 shadow-2xs space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center text-[10px]">
+                          📞
+                        </div>
+                        <div className="text-[11px] font-bold text-slate-800">Telephony Setup</div>
+                      </div>
+                      <div className="text-[10px] text-slate-500">FinSecure Capital</div>
                       <div className="flex items-center justify-between pt-1">
-                        <span className="text-xs font-bold text-[#EE0979]">₹6,00,000</span>
-                        <span className="text-[9px] bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded">Follow-up</span>
+                        <span className="text-xs font-bold text-slate-900">₹6,00,000</span>
+                        <span className="text-[9px] bg-blue-50 text-blue-600 px-1.5 py-0.2 rounded font-semibold">Follow-up</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Stage 2 */}
-                  <div className="bg-[#FFF8FA] p-2.5 rounded-xl border border-[#F1D5E4] space-y-2">
+                  {/* Stage 2: Proposal / CPQ */}
+                  <div className="bg-[#FAFBFD] p-3 rounded-2xl border border-slate-200/80 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-editorial text-[11px] font-bold text-slate-800">Proposal / CPQ</span>
-                      <span className="text-[10px] font-semibold text-slate-500 bg-white px-1.5 py-0.5 rounded border border-slate-200">60%</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-amber-500" />
+                        <span className="text-[11px] font-bold text-slate-700">Proposal / CPQ</span>
+                      </div>
+                      <span className="text-[10px] font-semibold text-slate-600 bg-white px-1.5 py-0.5 rounded border border-slate-200">60%</span>
                     </div>
-                    <div className="text-[11px] font-bold text-[#EE0979] font-editorial">₹32,00,000</div>
+                    <div className="text-sm font-black text-amber-600">₹32,00,000</div>
 
-                    <div className="bg-white p-2.5 rounded-lg border border-[#F1D5E4] shadow-2xs space-y-1">
-                      <div className="font-editorial text-xs font-bold text-slate-900 leading-tight">Omnichannel Suite</div>
-                      <div className="font-editorial-body text-[10.5px] text-slate-500">Tata Consumer Ltd</div>
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-md bg-purple-50 text-purple-600 flex items-center justify-center text-[10px]">
+                          🏢
+                        </div>
+                        <div className="text-[11px] font-bold text-slate-800">Omnichannel Suite</div>
+                      </div>
+                      <div className="text-[10px] text-slate-500">Tata Consumer Ltd</div>
                       <div className="flex items-center justify-between pt-1">
-                        <span className="text-xs font-bold text-[#EE0979]">₹32,00,000</span>
-                        <span className="text-[9px] bg-[#FFF1F7] text-[#EE0979] px-1.5 py-0.2 rounded font-bold">92% Win Prob</span>
+                        <span className="text-xs font-bold text-slate-900">₹32,00,000</span>
+                        <span className="text-[9px] bg-pink-50 text-[#EE0979] px-1.5 py-0.2 rounded font-bold">92% Win Prob</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Stage 3 */}
-                  <div className="bg-[#FFF1F7] p-2.5 rounded-xl border border-[#F1D5E4] space-y-2">
+                  {/* Stage 3: Closed Won */}
+                  <div className="bg-[#FAFBFD] p-3 rounded-2xl border border-slate-200/80 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-editorial text-[11px] font-bold text-[#EE0979]">Closed Won</span>
-                      <span className="text-[10px] font-bold text-white bg-gradient-to-r from-[#FF6A00] to-[#EE0979] px-1.5 py-0.5 rounded">100%</span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                        <span className="text-[11px] font-bold text-slate-700">Closed Won</span>
+                      </div>
+                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">100%</span>
                     </div>
-                    <div className="text-[11px] font-bold text-[#EE0979] font-editorial">₹45,00,000</div>
+                    <div className="text-sm font-black text-emerald-600">₹45,00,000</div>
 
-                    <div className="bg-white p-2.5 rounded-lg border border-[#F1D5E4] shadow-2xs space-y-1">
-                      <div className="font-editorial text-xs font-bold text-slate-900 leading-tight">Global Sales Cloud</div>
-                      <div className="font-editorial-body text-[10.5px] text-slate-500">Mahindra Tech</div>
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center text-[10px]">
+                          🏆
+                        </div>
+                        <div className="text-[11px] font-bold text-slate-800">Global Sales Cloud</div>
+                      </div>
+                      <div className="text-[10px] text-slate-500">Mahindra Tech</div>
                       <div className="flex items-center justify-between pt-1">
-                        <span className="text-xs font-bold text-[#EE0979]">₹45,00,000</span>
-                        <span className="text-[9px] bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white px-1.5 py-0.2 rounded font-bold">Closed</span>
+                        <span className="text-xs font-bold text-slate-900">₹45,00,000</span>
+                        <span className="text-[9px] bg-emerald-50 text-emerald-600 px-1.5 py-0.2 rounded font-bold">Closed</span>
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
 
               {/* Bottom Feature Bullets */}
-              <div className="mt-3.5 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-600 font-editorial">
+              <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between text-xs text-slate-600 font-medium">
                 <span className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
                   1-Click Lead Conversion
@@ -603,57 +651,83 @@ export const PortalHome: React.FC = () => {
             </div>
 
             {/* Right Panel: DleafAI Copilot + Softphone (5 Cols) */}
-            <div className="lg:col-span-5 bg-gradient-to-br from-white via-white to-[#FFF1F7] p-4 sm:p-5 rounded-2xl border border-[#F1D5E4] shadow-xs flex flex-col justify-between">
+            <div className="lg:col-span-5 bg-white/95 backdrop-blur-md p-5 sm:p-6 rounded-3xl border border-white/80 shadow-[0_15px_40px_rgba(0,0,0,0.08)] flex flex-col justify-between space-y-4">
               <div>
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-lg bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center">
-                      <Sparkles className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="font-editorial font-bold text-sm text-[#0F172A]">DleafAI Copilot & Voice Dialer</span>
+                  <div className="flex items-center gap-2.5">
+                    <Sparkles className="w-4 h-4 text-[#EE0979]" />
+                    <span className="font-extrabold text-sm sm:text-base text-[#0F172A]">DleafAI Copilot & Voice Dialer</span>
                   </div>
-                  <span className="text-[10px] font-bold text-[#EE0979] bg-[#FFF1F7] border border-[#F1D5E4] px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                     Active Agent
                   </span>
                 </div>
 
                 {/* AI Dialogue Snapshot */}
-                <div className="mt-3 space-y-2">
-                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
-                    <div className="flex items-center gap-1.5 text-slate-500 text-[10.5px] font-editorial font-semibold">
-                      <Bot className="w-3.5 h-3.5 text-[#EE0979]" />
+                <div className="mt-3 space-y-3">
+                  <div className="p-3 rounded-2xl bg-[#FFF8FA] border border-[#F1D5E4] text-xs">
+                    <div className="flex items-center gap-1.5 text-[#EE0979] text-[11px] font-bold">
+                      <Sparkles className="w-3.5 h-3.5" />
                       <span>DleafAI Opportunity Detection</span>
                     </div>
-                    <p className="font-editorial-body text-slate-700 mt-1 leading-snug">
+                    <p className="text-slate-700 mt-1 leading-snug italic">
                       "Tata Consumer deal win probability jumped from 65% to 92% after CXO engagement. Immediate action: Send CPQ quote before 4 PM."
                     </p>
                   </div>
 
-                  {/* Softphone Dialer Widget Mock */}
-                  <div className="p-2.5 rounded-xl bg-[#0F172A] text-white flex items-center justify-between border border-white/10">
+                  {/* Softphone Dialer Widget Mock (Dark Navy Pill) */}
+                  <div className="p-3 sm:p-3.5 rounded-2xl bg-[#0A1128] text-white flex items-center justify-between shadow-md">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979] flex items-center justify-center animate-pulse">
+                      <div className="w-9 h-9 rounded-full bg-rose-500 flex items-center justify-center text-white shadow-xs">
                         <PhoneCall className="w-4 h-4 text-white" />
                       </div>
                       <div>
-                        <div className="font-editorial text-xs font-bold text-white">Calling Rajesh Kumar</div>
-                        <div className="text-[10.5px] text-slate-400">VP Procurement • +91 98201 44210</div>
+                        <div className="text-xs font-bold text-white">Calling Rajesh Kumar</div>
+                        <div className="text-[10px] text-slate-300">VP Procurement • +91 98201 44210</div>
                       </div>
                     </div>
-                    <div className="text-[11px] font-mono text-[#EE0979]">01:42</div>
+                    
+                    {/* Live Waveform & Timer */}
+                    <div className="flex items-center gap-2">
+                      <div className="hidden sm:flex items-center gap-0.5">
+                        <span className="w-0.5 h-3 bg-pink-400 rounded-full animate-pulse" />
+                        <span className="w-0.5 h-5 bg-pink-300 rounded-full animate-pulse delay-75" />
+                        <span className="w-0.5 h-2 bg-pink-400 rounded-full animate-pulse delay-150" />
+                        <span className="w-0.5 h-4 bg-pink-200 rounded-full animate-pulse delay-100" />
+                        <span className="w-0.5 h-6 bg-rose-400 rounded-full animate-pulse delay-200" />
+                      </div>
+                      <span className="text-xs font-mono font-bold text-rose-300">01:42</span>
+                    </div>
                   </div>
+
+                  {/* Audio Waveform Visual */}
+                  <div className="h-6 flex items-center justify-center gap-1 px-4 opacity-80">
+                    {Array.from({ length: 32 }).map((_, i) => (
+                      <span
+                        key={i}
+                        className="w-1 bg-[#EE0979] rounded-full"
+                        style={{
+                          height: `${Math.sin(i * 0.4) * 10 + 12}px`,
+                          opacity: i % 2 === 0 ? 0.9 : 0.4,
+                        }}
+                      />
+                    ))}
+                  </div>
+
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                <p className="font-editorial-body text-[11px] text-slate-500">
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                <p className="text-[11px] text-slate-500">
                   Auto-transcribes calls into CRM meeting notes.
                 </p>
                 <button
-                  onClick={() => setIsZiaOpen(true)}
-                  className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition font-editorial cursor-pointer shadow-xs"
+                  onClick={() => openDleafAiWithPrompt('Analyze current pipeline opportunities')}
+                  className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 text-white text-xs font-bold px-4 py-2 rounded-xl transition cursor-pointer shadow-xs flex items-center gap-1.5"
                 >
-                  Ask DleafAI
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Ask DleafAI</span>
                 </button>
               </div>
             </div>
