@@ -79,13 +79,16 @@ router.post('/send-message', async (req, res) => {
     );
 
     let liveMetaResult: any = null;
-    const waToken = process.env.WHATSAPP_API_TOKEN;
+    const waToken = process.env.WHATSAPP_ACCESS_TOKEN || process.env.WHATSAPP_API_TOKEN;
     const waPhoneId = process.env.WHATSAPP_PHONE_NUMBER_ID;
+    const waVersion = process.env.WHATSAPP_API_VERSION || 'v22.0';
 
     // Direct Meta WhatsApp Cloud API dispatch if credentials provided
     if (msgType === 'whatsapp' && waToken && waPhoneId) {
       try {
-        const metaRes = await fetch(`https://graph.facebook.com/v21.0/${waPhoneId}/messages`, {
+        const cleanTo = cleanRecipient.replace(/[^0-9]/g, '');
+        console.log(`📱 [Meta WhatsApp] Dispatching to ${cleanTo} via ${waVersion}/${waPhoneId}...`);
+        const metaRes = await fetch(`https://graph.facebook.com/${waVersion}/${waPhoneId}/messages`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${waToken}`,
@@ -94,12 +97,13 @@ router.post('/send-message', async (req, res) => {
           body: JSON.stringify({
             messaging_product: 'whatsapp',
             recipient_type: 'individual',
-            to: cleanRecipient.replace(/[^0-9]/g, ''),
+            to: cleanTo,
             type: 'text',
             text: { preview_url: false, body: cleanMsg },
           }),
         });
         liveMetaResult = await metaRes.json();
+        console.log('✅ [Meta WhatsApp Result]:', liveMetaResult);
       } catch (metaErr: any) {
         console.warn('⚠️ [Meta Cloud API] Gateway call failed:', metaErr.message);
       }
@@ -110,7 +114,7 @@ router.post('/send-message', async (req, res) => {
       success: true,
       message: `${msgType === 'whatsapp' ? 'WhatsApp' : 'SMS'} message dispatched and stored in PostgreSQL!`,
       data: savedMsg,
-      metaWebhookStatus: liveMetaResult ? 'DISPATCHED_TO_META_CLOUD' : 'DISPATCHED_TO_GATEWAY',
+      metaWebhookStatus: liveMetaResult?.messages ? 'DISPATCHED_TO_META_CLOUD' : 'DISPATCHED_TO_GATEWAY',
       metaDetails: liveMetaResult,
     });
   } catch (err: any) {
@@ -313,6 +317,65 @@ router.post('/create-payment-link', async (req, res) => {
     paymentLink,
     qrCodeUrl: `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(paymentLink)}`,
   });
+});
+
+// ---------------------------------------------------------------------------
+// 5. Meta WhatsApp Cloud API Webhook (Verification & Inbound Events)
+// ---------------------------------------------------------------------------
+
+// GET /api/communication/webhook - Meta Webhook Verification
+router.get('/webhook', (req, res) => {
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+
+  const expectedToken = (process.env.WHATSAPP_VERIFY_TOKEN || 'nexwapi_verify_9f3k2q7x').trim();
+
+  if (mode === 'subscribe' && token === expectedToken) {
+    console.log('✅ [Meta WhatsApp Webhook] Verified successfully with token!');
+    return res.status(200).send(challenge);
+  }
+  console.warn('⚠️ [Meta WhatsApp Webhook] Verification token mismatch:', { token, expectedToken });
+  return res.sendStatus(403);
+});
+
+// POST /api/communication/webhook - Inbound WhatsApp Message Receiver
+router.post('/webhook', async (req, res) => {
+  try {
+    const body = req.body;
+    if (body.object === 'whatsapp_business_account') {
+      const entries = body.entry || [];
+      for (const entry of entries) {
+        const changes = entry.changes || [];
+        for (const change of changes) {
+          const value = change.value;
+          if (value && value.messages) {
+            for (const msg of value.messages) {
+              const from = msg.from; // Phone number
+              const text = msg.text?.body || '[Media/Interactive message]';
+              const name = value.contacts?.[0]?.profile?.name || from;
+              
+              console.log(`📩 [Inbound WhatsApp] From ${name} (${from}): ${text}`);
+              try {
+                await pool.query(
+                  `INSERT INTO whatsapp_messages (sender, recipient, message, type, status)
+                   VALUES ($1, $2, $3, 'whatsapp', 'received')`,
+                  [name, from, text]
+                );
+              } catch (dbErr: any) {
+                console.warn('⚠️ [Inbound DB Save]:', dbErr.message);
+              }
+            }
+          }
+        }
+      }
+      return res.status(200).send('EVENT_RECEIVED');
+    }
+    return res.sendStatus(404);
+  } catch (err: any) {
+    console.error('❌ [Meta Webhook Error]:', err.message);
+    return res.sendStatus(500);
+  }
 });
 
 export default router;
