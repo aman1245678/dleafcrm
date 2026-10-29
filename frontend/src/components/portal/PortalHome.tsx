@@ -77,171 +77,390 @@ export const PortalHome: React.FC = () => {
     <div className="flex-1 flex flex-col bg-[#F8FAFC] overflow-x-hidden font-sans text-[#0F172A]">
 
       {/* =========================================================================
-          SECTION 1: HERO SECTION - Compact, Balanced & Interactive Dleaf Ai Card
+          SECTION 1: HERO SECTION - Exact Match to User Mockup with hero-bg-exact.png
       ========================================================================== */}
-      <section className="relative pt-3 sm:pt-6 pb-8 sm:pb-10 px-4 sm:px-8 lg:px-12 overflow-hidden bg-white">
+      <section className="relative overflow-hidden bg-[#0A0E1A]">
 
-        {/* Exact Abstract Gradient Blob Background from /background.png */}
-        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-          <img
-            src="/background.png"
-            alt="DleafCRM Abstract Background"
-            className="w-full h-full object-cover object-right-top opacity-95"
-          />
+        {/* Top Metric Bar (Dark Blue Navbar Extension from Mockup) */}
+        <div className="relative z-20 bg-[#070B16] text-white border-b border-white/10 px-4 sm:px-8 py-2.5">
+          <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-sans">
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4 text-[#EE0979]" />
+              <span className="font-extrabold text-sm text-white">250,000+</span>
+              <span className="text-slate-400 text-[11px]">Businesses Worldwide</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Globe className="w-4 h-4 text-[#EE0979]" />
+              <span className="font-extrabold text-sm text-white">180+</span>
+              <span className="text-slate-400 text-[11px]">Countries Active</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+              <span className="font-extrabold text-sm text-white">4.9 / 5.0</span>
+              <span className="text-slate-400 text-[11px]">G2 & Gartner Review Rating</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4 text-[#EE0979]" />
+              <span className="font-extrabold text-sm text-white">99.99%</span>
+              <span className="text-slate-400 text-[11px]">Enterprise Cloud SLA</span>
+            </div>
+          </div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Main Hero Container with Exact Background Wallpaper */}
+        <div className="relative z-10 pt-8 sm:pt-12 pb-14 sm:pb-16 px-4 sm:px-8 lg:px-12">
+          
+          {/* Exact Background Wallpaper from user uploaded image */}
+          <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+            <img
+              src="/hero-bg-exact.png"
+              alt="DleafCRM Wallpaper"
+              className="w-full h-full object-cover object-center opacity-100"
+            />
+          </div>
 
-          {/* Top Hero Grid: 2 Columns Matching Reference Image */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+          <div className="relative z-10 max-w-7xl mx-auto space-y-8">
 
-            {/* ----------------- LEFT COLUMN: Compact Copy & Form (7 cols) ----------------- */}
-            <div className="lg:col-span-7 space-y-3.5 text-left">
-
-              {/* Exact Pill Badge: "• Smart Business Growth Platform" */}
-              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3 py-0.5 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[#EE0979]" />
-                <span className="tracking-tight text-[11px] font-bold text-slate-800">Smart Business Growth Platform</span>
-              </div>
-
-              {/* Compact Main Heading */}
-              <h1 className="text-2xl sm:text-3xl lg:text-[38px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.15]">
-                Work faster. Think better.<br />
-                Automate{' '}
-                <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent">
-                  everything.
-                </span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-xs sm:text-[13.5px] text-slate-600 font-normal leading-relaxed max-w-lg">
-                The all-in-one CRM to capture high-value leads, automate pipeline deals, and accelerate team revenue with DleafAI intelligence.
-              </p>
-
-              {/* Email Form */}
-              <form
-                onSubmit={handleCtaSubmit}
-                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 max-w-md pt-0.5"
-              >
-                <div className="relative flex-1">
-                  <Mail className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="email"
-                    value={ctaEmail}
-                    onChange={(e) => setCtaEmail(e.target.value)}
-                    placeholder="Enter your work email..."
-                    className="w-full pl-9 pr-3 py-2 bg-white/95 backdrop-blur-sm rounded-full border border-slate-200 text-xs sm:text-[13px] text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979] shadow-xs"
-                  />
+            {/* Top Half: Heading & Description on Left + Floating Growth Chart on Right */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              {/* Left Copy Column */}
+              <div className="lg:col-span-7 space-y-4 text-left">
+                {/* Pink Precision Sales Architecture Overline */}
+                <div className="flex items-center gap-2">
+                  <span className="w-5 h-[2px] bg-[#EE0979]" />
+                  <span className="text-xs font-extrabold uppercase tracking-widest text-[#EE0979]">
+                    Precision Sales Architecture
+                  </span>
                 </div>
-                <button
-                  type="submit"
-                  className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-4 py-2 rounded-full transition shadow-md shadow-[#EE0979]/25 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
-                >
-                  <span>Start Free Trial</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </form>
 
-              {/* Trust Checklist */}
-              <div className="flex flex-wrap items-center gap-y-1.5 gap-x-4 text-[11px] text-slate-600 font-medium pt-0.5">
-                <div className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
-                  <span>Free 14-Day Trial</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
-                  <span>No Credit Card Needed</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
-                  <span>Setup in 2 Minutes</span>
+                {/* Main Heading Exact Text and Styling */}
+                <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-[-0.03em] leading-[1.12] text-[#0A1128]">
+                  The Free CRM With<br />
+                  <span className="text-[#EE0979]">Unlimited Growth Potential</span>
+                </h1>
+
+                {/* Subtitle */}
+                <p className="text-xs sm:text-[13.5px] text-slate-700 font-normal leading-relaxed max-w-xl">
+                  Don't let budget constraints limit your growth. Dleaf CRM brings all your customer data, revenue pipelines, and AI insights together — making it seamless to create remarkable customer experiences without data migration headaches.
+                </p>
+
+                {/* Action Buttons: Pink Primary + White Watch Demo */}
+                <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <button
+                    onClick={() => {
+                      if (isAuthenticated) setAppMode('workspace');
+                      else setIsPortalSignInOpen(true);
+                    }}
+                    className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 active:scale-95 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-full transition shadow-lg shadow-[#EE0979]/25 flex items-center gap-2 cursor-pointer"
+                  >
+                    <span>Get Started Free</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    onClick={() => setIsGuideOpen(true)}
+                    className="bg-white/95 hover:bg-white text-slate-800 border border-slate-200 hover:border-[#EE0979] font-bold text-xs sm:text-sm px-5 py-3 rounded-full transition shadow-sm flex items-center gap-2 cursor-pointer"
+                  >
+                    <Play className="w-3.5 h-3.5 fill-[#EE0979] text-[#EE0979]" />
+                    <span>Watch Demo</span>
+                  </button>
                 </div>
               </div>
 
-              {/* Download User Guide Button */}
-              <div className="pt-0.5">
-                <button
-                  type="button"
-                  onClick={() => setIsGuideOpen(true)}
-                  className="inline-flex items-center gap-1.5 text-[#EE0979] font-bold hover:underline cursor-pointer bg-white/90 hover:bg-[#FFF1F7] px-3 py-1 rounded-full border border-[#F1D5E4] text-[11px] transition shadow-2xs"
-                >
-                  <BookOpen className="w-3 h-3 text-[#EE0979]" />
-                  <span>Download User Guide (PDF)</span>
-                </button>
+              {/* Right Column: Floating 3D Stats Graphic */}
+              <div className="lg:col-span-5 relative flex items-center justify-center lg:justify-end">
+                <div className="relative w-full max-w-[340px] sm:max-w-[380px] select-none">
+                  
+                  {/* Floating Higher Conversions Pill */}
+                  <div className="absolute -top-3 left-4 z-20 bg-white/95 backdrop-blur-md rounded-xl px-3.5 py-1.5 border border-slate-200/80 shadow-md flex items-center gap-2">
+                    <BarChart2 className="w-4 h-4 text-[#EE0979]" />
+                    <div className="text-[11px] font-extrabold text-slate-800 leading-tight">
+                      Higher Conversions<br />
+                      <span className="text-[9.5px] font-semibold text-slate-500">More Revenue</span>
+                    </div>
+                  </div>
+
+                  {/* Main Glassmorphism Chart Card */}
+                  <div className="bg-white/90 backdrop-blur-md rounded-3xl p-5 border border-white/80 shadow-[0_20px_50px_rgba(238,9,121,0.15)] space-y-3">
+                    <div className="flex items-center justify-between text-xs text-slate-400 font-semibold">
+                      <span>Monthly Growth</span>
+                      <span className="text-emerald-500 font-bold">+148%</span>
+                    </div>
+
+                    {/* Pink Bars & Curve Graphic */}
+                    <div className="h-32 w-full flex items-end justify-between gap-2 pt-4 px-2 relative">
+                      <div className="w-6 bg-pink-100 rounded-t-lg h-[35%]" />
+                      <div className="w-6 bg-pink-200 rounded-t-lg h-[50%]" />
+                      <div className="w-6 bg-pink-300 rounded-t-lg h-[40%]" />
+                      <div className="w-6 bg-pink-400 rounded-t-lg h-[70%]" />
+                      <div className="w-6 bg-gradient-to-t from-[#FF6A00] to-[#EE0979] rounded-t-lg h-[95%] shadow-md" />
+
+                      {/* Ascending Red Arrow Path */}
+                      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M 10 75 Q 35 60, 55 45 T 90 10" fill="none" stroke="#EE0979" strokeWidth="3" strokeDasharray="2,2" />
+                      </svg>
+                      <div className="absolute top-2 right-1 w-6 h-6 rounded-full bg-[#EE0979] text-white flex items-center justify-center shadow-md animate-bounce">
+                        <ArrowUp className="w-3.5 h-3.5" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Floating AI Powered Sales Growth Pill */}
+                  <div className="absolute -bottom-2 -right-2 z-20 bg-white/95 backdrop-blur-md rounded-2xl px-3.5 py-2 border border-slate-200/80 shadow-md flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#EE0979]" />
+                    <span className="text-[11px] font-extrabold text-slate-800">AI Powered<br /><span className="text-[9.5px] font-semibold text-slate-500">Sales Growth</span></span>
+                  </div>
+
+                </div>
               </div>
 
             </div>
 
-            {/* ----------------- RIGHT COLUMN: Interactive Dleaf Ai Assistant Card (5 cols) ----------------- */}
-            <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
-              <div className="w-full max-w-md bg-white/95 backdrop-blur-md rounded-2xl border border-white/80 shadow-[0_12px_35px_rgba(238,9,121,0.12)] p-4 sm:p-5 flex flex-col gap-3">
+            {/* Bottom Half: 2 Interactive Glassmorphism Panels (Exact from User Mockup) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+              
+              {/* PANEL 1: Multi-Stage Visual Deal Pipeline (7 cols) */}
+              <div className="lg:col-span-7 bg-white/95 backdrop-blur-md rounded-3xl border border-white/80 shadow-[0_15px_40px_rgba(0,0,0,0.06)] p-5 sm:p-6 flex flex-col justify-between space-y-4">
                 
-                {/* Header: Sparkle Icon + Title */}
-                <div className="flex items-center gap-3.5">
-                  <div className="w-12 h-12 rounded-xl bg-white shadow-xs border border-slate-100 flex items-center justify-center relative shrink-0 p-2">
-                    <div className="w-full h-full relative flex items-center justify-center">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-[#FF6A00] via-[#EE0979] to-[#7928CA] rounded-sm transform rotate-45 scale-75" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#7928CA] via-[#EE0979] to-[#FF6A00] rounded-sm transform scale-75" />
-                      <Sparkles className="w-5 h-5 text-white relative z-10" />
+                {/* Header */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center text-[#EE0979]">
+                      <Layers className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm sm:text-base font-extrabold text-[#0F172A]">
+                        Multi-Stage Visual Deal Pipeline
+                      </h3>
+                      <p className="text-[11px] text-slate-500">
+                        Track deals, manage your sales pipeline, and close more business with a clear visual flow.
+                      </p>
                     </div>
                   </div>
 
-                  <div className="flex-1">
-                    <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#0F172A] leading-tight">
-                      Dleaf <span className="text-[#EE0979]">Ai</span> Assistant
-                    </h2>
-                    <p className="text-[10px] text-slate-500 font-medium">Ask anything or automate workflows live</p>
-                  </div>
-
-                  <span className="text-[9.5px] bg-[#FFF1F7] text-[#EE0979] px-2 py-0.5 rounded-full font-bold shrink-0">
-                    Active
-                  </span>
+                  <button
+                    onClick={() => {
+                      if (isAuthenticated) setAppMode('workspace');
+                      else setIsPortalSignInOpen(true);
+                    }}
+                    className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 text-white text-[11px] font-bold px-3 py-1.5 rounded-xl shadow-xs flex items-center gap-1 cursor-pointer shrink-0"
+                  >
+                    <span>Launch Live Kanban</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
                 </div>
 
-                {/* Interactive Working AI Prompt Box */}
-                <form
-                  onSubmit={handleAiPromptSubmit}
-                  className="p-1.5 bg-[#F8FAFC] rounded-xl border border-[#F1D5E4] hover:border-[#EE0979] focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20 transition-all"
-                >
-                  <div className="flex items-center gap-1.5">
-                    <Bot className="w-3.5 h-3.5 text-[#EE0979] shrink-0 ml-1.5" />
-                    <input
-                      type="text"
-                      value={aiPrompt}
-                      onChange={(e) => setAiPrompt(e.target.value)}
-                      placeholder="Ask AI: 'Summarize deals', 'Draft email'..."
-                      className="w-full bg-transparent text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden py-1"
-                    />
-                    <button
-                      type="submit"
-                      className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 active:scale-95 text-white font-bold text-[11px] px-3 py-1 rounded-lg transition shadow-xs flex items-center gap-1 shrink-0 cursor-pointer"
-                    >
-                      <span>Ask</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </button>
-                  </div>
-                </form>
+                {/* 3 Pipeline Columns (Qualification, Proposal/CPQ, Closed Won) */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  
+                  {/* Column 1: Qualification (10%) */}
+                  <div className="bg-[#FAFBFD] rounded-2xl p-3 border border-slate-200/80 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-rose-500" />
+                        <span className="text-[11px] font-bold text-slate-700">Qualification</span>
+                      </div>
+                      <span className="text-[10px] bg-slate-200/70 text-slate-600 px-1.5 py-0.2 rounded font-bold">10%</span>
+                    </div>
+                    <div className="text-sm font-black text-rose-600">₹14,50,000</div>
 
-                {/* Quick AI Prompts */}
-                <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-                  <span className="text-[10px] text-slate-400 font-medium">Quick:</span>
-                  {[
-                    '📊 Pipeline forecast',
-                    '🎯 Score hot leads',
-                    '✉️ Draft outreach',
-                  ].map((chip) => (
-                    <button
-                      key={chip}
-                      type="button"
-                      onClick={() => handleQuickPromptClick(chip.slice(2).trim())}
-                      className="text-[10px] font-medium bg-white hover:bg-[#FFF1F7] text-slate-600 hover:text-[#EE0979] border border-slate-200 hover:border-[#EE0979] px-2 py-0.5 rounded-full transition shadow-2xs cursor-pointer"
-                    >
-                      {chip}
-                    </button>
-                  ))}
+                    {/* Card 1 */}
+                    <div className="bg-white rounded-xl p-2.5 border border-slate-200 shadow-2xs space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-md bg-rose-50 text-rose-600 flex items-center justify-center text-[10px]">
+                          📦
+                        </div>
+                        <div className="text-[11px] font-bold text-slate-800">Cloud ERP Upgrade</div>
+                      </div>
+                      <div className="text-[10px] text-slate-500">Apex Global Logistics</div>
+                      <div className="flex items-center justify-between pt-1">
+                        <span className="text-[11px] font-extrabold text-slate-900">₹8,50,000</span>
+                        <span className="text-[9px] bg-rose-50 text-rose-600 px-1.5 py-0.2 rounded-full font-bold">Hot Lead</span>
+                      </div>
+                    </div>
+
+                    {/* Card 2 */}
+                    <div className="bg-white rounded-xl p-2.5 border border-slate-200 shadow-2xs space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center text-[10px]">
+                          📞
+                        </div>
+                        <div className="text-[11px] font-bold text-slate-800">Telephony Setup</div>
+                      </div>
+                      <div className="text-[10px] text-slate-500">FinSecure Capital</div>
+                      <div className="flex items-center justify-between pt-1">
+                        <span className="text-[11px] font-extrabold text-slate-900">₹6,00,000</span>
+                        <span className="text-[9px] bg-blue-50 text-blue-600 px-1.5 py-0.2 rounded-full font-bold">Follow-up</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Column 2: Proposal / CPQ (60%) */}
+                  <div className="bg-[#FAFBFD] rounded-2xl p-3 border border-slate-200/80 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-amber-500" />
+                        <span className="text-[11px] font-bold text-slate-700">Proposal / CPQ</span>
+                      </div>
+                      <span className="text-[10px] bg-slate-200/70 text-slate-600 px-1.5 py-0.2 rounded font-bold">60%</span>
+                    </div>
+                    <div className="text-sm font-black text-amber-600">₹32,00,000</div>
+
+                    {/* Card */}
+                    <div className="bg-white rounded-xl p-2.5 border border-slate-200 shadow-2xs space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-md bg-purple-50 text-purple-600 flex items-center justify-center text-[10px]">
+                          🏢
+                        </div>
+                        <div className="text-[11px] font-bold text-slate-800">Omnichannel Suite</div>
+                      </div>
+                      <div className="text-[10px] text-slate-500">Tata Consumer Ltd</div>
+                      <div className="flex items-center justify-between pt-1">
+                        <span className="text-[11px] font-extrabold text-slate-900">₹32,00,000</span>
+                        <span className="text-[9px] bg-pink-50 text-[#EE0979] px-1.5 py-0.2 rounded-full font-bold">92% Win Prob</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Column 3: Closed Won (100%) */}
+                  <div className="bg-[#FAFBFD] rounded-2xl p-3 border border-slate-200/80 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                        <span className="text-[11px] font-bold text-slate-700">Closed Won</span>
+                      </div>
+                      <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.2 rounded font-bold">100%</span>
+                    </div>
+                    <div className="text-sm font-black text-emerald-600">₹45,00,000</div>
+
+                    {/* Card */}
+                    <div className="bg-white rounded-xl p-2.5 border border-slate-200 shadow-2xs space-y-1">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center text-[10px]">
+                          🏆
+                        </div>
+                        <div className="text-[11px] font-bold text-slate-800">Global Sales Cloud</div>
+                      </div>
+                      <div className="text-[10px] text-slate-500">Mahindra Tech</div>
+                      <div className="flex items-center justify-between pt-1">
+                        <span className="text-[11px] font-extrabold text-slate-900">₹45,00,000</span>
+                        <span className="text-[9px] bg-emerald-50 text-emerald-600 px-1.5 py-0.2 rounded-full font-bold">Closed</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Bottom Trust Chips */}
+                <div className="flex flex-wrap items-center justify-between pt-2 border-t border-slate-100 text-[11px] text-slate-600 font-medium">
+                  <div className="flex items-center gap-1">
+                    <Zap className="w-3.5 h-3.5 text-[#EE0979]" />
+                    <span>1-Click Lead Conversion</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <TrendingUp className="w-3.5 h-3.5 text-[#EE0979]" />
+                    <span>Dynamic INR Currency Summary</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
+                    <span>Built-in GST Quotes & Invoices</span>
+                  </div>
                 </div>
 
               </div>
+
+              {/* PANEL 2: DleafAI Copilot & Voice Dialer (5 cols) */}
+              <div className="lg:col-span-5 bg-white/95 backdrop-blur-md rounded-3xl border border-white/80 shadow-[0_15px_40px_rgba(0,0,0,0.06)] p-5 sm:p-6 flex flex-col justify-between space-y-4">
+                
+                {/* Header */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <Sparkles className="w-5 h-5 text-[#EE0979]" />
+                    <div>
+                      <h3 className="text-sm sm:text-base font-extrabold text-[#0F172A]">
+                        DleafAI Copilot & Voice Dialer
+                      </h3>
+                      <p className="text-[10px] sm:text-[11px] text-slate-500">
+                        AI-powered insights and voice capabilities to help your sales team close faster.
+                      </p>
+                    </div>
+                  </div>
+                  <span className="inline-flex items-center gap-1 text-[10px] bg-emerald-50 text-emerald-600 border border-emerald-200 px-2 py-0.5 rounded-full font-bold shrink-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    Active Agent
+                  </span>
+                </div>
+
+                {/* DleafAI Opportunity Detection Card */}
+                <div className="bg-[#FFF8FA] rounded-2xl p-3 border border-[#F1D5E4] space-y-1 text-left">
+                  <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#EE0979]">
+                    <Sparkles className="w-3 h-3" />
+                    <span>DleafAI Opportunity Detection</span>
+                  </div>
+                  <p className="text-[11px] text-slate-700 italic leading-snug">
+                    "Tata Consumer deal win probability jumped from 65% to 92% after CXO engagement. Immediate action: Send CPQ quote before 4 PM."
+                  </p>
+                </div>
+
+                {/* Active Phone Call Box (Dark Navy) */}
+                <div className="bg-[#0A1128] text-white rounded-2xl p-3 sm:p-3.5 flex items-center justify-between shadow-md">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-full bg-rose-500 flex items-center justify-center text-white shadow-xs">
+                      <PhoneCall className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-white">Calling Rajesh Kumar</div>
+                      <div className="text-[10px] text-slate-300">VP Procurement • +91 98201 44210</div>
+                    </div>
+                  </div>
+
+                  {/* Timer & Live Audio Waveform */}
+                  <div className="flex items-center gap-2">
+                    <div className="hidden sm:flex items-center gap-0.5">
+                      <span className="w-0.5 h-3 bg-pink-400 rounded-full animate-pulse" />
+                      <span className="w-0.5 h-5 bg-pink-300 rounded-full animate-pulse delay-75" />
+                      <span className="w-0.5 h-2 bg-pink-400 rounded-full animate-pulse delay-150" />
+                      <span className="w-0.5 h-4 bg-pink-200 rounded-full animate-pulse delay-100" />
+                      <span className="w-0.5 h-6 bg-rose-400 rounded-full animate-pulse delay-200" />
+                    </div>
+                    <span className="text-xs font-mono font-bold text-rose-300">01:42</span>
+                  </div>
+                </div>
+
+                {/* Pink Audio Waveform Visual */}
+                <div className="h-6 flex items-center justify-center gap-1 px-4 opacity-80">
+                  {Array.from({ length: 32 }).map((_, i) => (
+                    <span
+                      key={i}
+                      className="w-1 bg-[#EE0979] rounded-full"
+                      style={{
+                        height: `${Math.sin(i * 0.4) * 10 + 12}px`,
+                        opacity: i % 2 === 0 ? 0.9 : 0.4,
+                      }}
+                    />
+                  ))}
+                </div>
+
+                {/* Bottom Row: Auto-transcribe pill + Ask DleafAI button */}
+                <div className="flex items-center justify-between gap-2 pt-1 border-t border-slate-100">
+                  <span className="text-[10.5px] text-slate-500 font-medium flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-slate-400" />
+                    Auto-transcribes calls into CRM meeting notes.
+                  </span>
+
+                  <button
+                    onClick={() => openDleafAiWithPrompt('Analyze current pipeline opportunities')}
+                    className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-4 py-2 rounded-xl transition shadow-xs flex items-center gap-1.5 cursor-pointer shrink-0"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Ask DleafAI</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
+                </div>
+
+              </div>
+
             </div>
 
           </div>
