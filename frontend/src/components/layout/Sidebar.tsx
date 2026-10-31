@@ -43,6 +43,7 @@ import {
   ShoppingCart,
   Lightbulb,
   X,
+  Lock,
 } from 'lucide-react';
 import { useCRM, NavigationModule } from '../../context/CRMContext';
 
