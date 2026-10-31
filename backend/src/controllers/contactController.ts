@@ -1,28 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma, isPrismaConnected } from '../db/prisma.js';
 
-let memoryContacts: any[] = [
-  {
-    id: 'cont-1',
-    firstName: 'Rajesh',
-    lastName: 'Gopinathan',
-    email: 'rajesh.g@tcs.com',
-    phone: '+91 98200 44551',
-    title: 'Managing Director & CEO',
-    accountName: 'Tata Consultancy Services',
-    owner: 'Aman Kumar',
-  },
-  {
-    id: 'cont-2',
-    firstName: 'Isha',
-    lastName: 'Ambani',
-    email: 'isha.ambani@ril.com',
-    phone: '+91 98200 77889',
-    title: 'Executive Director - Retail',
-    accountName: 'Reliance Industries Ltd',
-    owner: 'Aman Kumar',
-  },
-];
+let memoryContacts: any[] = [];
 
 export const getContacts = async (req: Request, res: Response) => {
   try {

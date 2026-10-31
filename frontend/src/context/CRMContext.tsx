@@ -254,7 +254,7 @@ interface CRMContextType {
 
 const CRMContext = createContext<CRMContextType | undefined>(undefined);
 
-const STORAGE_KEY = 'Dleaf_crm_state_v1';
+const STORAGE_KEY = 'Dleaf_crm_state_v2';
 
 export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [activeModule, setActiveModule] = useState<NavigationModule>('deals');
@@ -493,30 +493,9 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     isRecording: false,
   });
 
-  // Communication Hub (WhatsApp, SMS, Call Logs)
   const [commLogs, setCommLogs] = useState<CommMessage[]>(() => {
     const saved = localStorage.getItem(`${STORAGE_KEY}_comm_logs`);
-    return saved ? JSON.parse(saved) : [
-      {
-        id: 'comm-1',
-        type: 'whatsapp',
-        recipientName: 'James Wilson',
-        recipientPhoneOrEmail: '+91 98201 12345',
-        content: 'Hi James, welcome to Dleaf CRM! Here is the solution overview.',
-        status: 'delivered',
-        timestamp: '10:30 AM',
-      },
-      {
-        id: 'comm-2',
-        type: 'call',
-        recipientName: 'Rajesh Sharma',
-        recipientPhoneOrEmail: '+91 99300 88776',
-        content: 'Discussed Enterprise Licensing terms and pricing model.',
-        status: 'completed',
-        timestamp: 'Yesterday',
-        duration: '04:12 min',
-      }
-    ];
+    return saved ? JSON.parse(saved) : [];
   });
 
   useEffect(() => {

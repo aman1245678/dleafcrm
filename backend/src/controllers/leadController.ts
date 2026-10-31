@@ -1,52 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma, isPrismaConnected } from '../db/prisma.js';
 
-let memoryLeads: any[] = [
-  {
-    id: 'lead-201',
-    firstName: 'Pooja',
-    lastName: 'Sharma',
-    company: 'FinEdge Technologies Ltd',
-    title: 'CTO & Head of Tech',
-    email: 'pooja.sharma@finedge.in',
-    phone: '+91 98201 11223',
-    leadSource: 'Web Download',
-    leadStatus: 'Pre-Qualified',
-    rating: 'Hot',
-    industry: 'Financial Services',
-    annualRevenue: 50000000,
-    employees: 180,
-    score: 85,
-    owner: 'Aman Kumar',
-    city: 'Mumbai',
-    country: 'India',
-    isConverted: false,
-    tags: ['Fintech', 'Urgent RFP'],
-    createdTime: '2026-10-05 11:20',
-  },
-  {
-    id: 'lead-202',
-    firstName: 'Vikram',
-    lastName: 'Mehta',
-    company: 'Zenith Logistics Hub',
-    title: 'Managing Director',
-    email: 'v.mehta@zenithlog.com',
-    phone: '+91 99304 44556',
-    leadSource: 'Cold Call',
-    leadStatus: 'Contacted',
-    rating: 'Warm',
-    industry: 'Supply Chain',
-    annualRevenue: 22000000,
-    employees: 95,
-    score: 62,
-    owner: 'Aman Kumar',
-    city: 'Gurugram',
-    country: 'India',
-    isConverted: false,
-    tags: ['Supply Chain', 'Fleet'],
-    createdTime: '2026-10-06 14:45',
-  },
-];
+let memoryLeads: any[] = [];
 
 let memoryAccounts: any[] = [];
 let memoryContacts: any[] = [];

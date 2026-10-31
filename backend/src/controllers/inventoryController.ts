@@ -1,44 +1,8 @@
 import { Request, Response } from 'express';
 import { prisma, isPrismaConnected } from '../db/prisma.js';
 
-let memoryProducts: any[] = [
-  {
-    id: 'prod-1',
-    name: 'Dleaf Enterprise CRM Core License',
-    productCode: 'DL-CRM-ENT-01',
-    category: 'Software',
-    unitPrice: 45000,
-    taxPercent: 18,
-    inStock: 999,
-    status: 'Active',
-  },
-  {
-    id: 'prod-2',
-    name: 'AI Zia Intelligence & Predictive Sales Addon',
-    productCode: 'DL-ZIA-AI-02',
-    category: 'Software',
-    unitPrice: 18000,
-    taxPercent: 18,
-    inStock: 500,
-    status: 'Active',
-  },
-];
-
-let memoryInvoices: any[] = [
-  {
-    id: 'inv-001',
-    invoiceNumber: 'INV-2026-0089',
-    subject: 'Enterprise CRM Subscription Q4',
-    accountName: 'Tata Consultancy Services',
-    contactName: 'Rajesh Gopinathan',
-    status: 'Paid',
-    invoiceDate: '2026-10-01',
-    dueDate: '2026-10-15',
-    subTotal: 1200000,
-    taxAmount: 216000,
-    grandTotal: 1416000,
-  },
-];
+let memoryProducts: any[] = [];
+let memoryInvoices: any[] = [];
 
 export const getProducts = async (req: Request, res: Response) => {
   try {

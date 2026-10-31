@@ -35,38 +35,7 @@ let memoryForecastConfig: ForecastConfig = {
   setBy: '-',
 };
 
-let memoryTargetQuotas: TargetQuotaItem[] = [
-  {
-    id: 'quota-1',
-    roleOrUser: 'CEO / Managing Director',
-    period: 'Q4 2026',
-    targetAmount: 1000000,
-    achievedAmount: 250000,
-    pipelineCommit: 420000,
-    bestCase: 550000,
-    dealsCount: 6,
-  },
-  {
-    id: 'quota-2',
-    roleOrUser: 'Aman kumar (Sales Manager)',
-    period: 'Q4 2026',
-    targetAmount: 600000,
-    achievedAmount: 250000,
-    pipelineCommit: 270000,
-    bestCase: 350000,
-    dealsCount: 4,
-  },
-  {
-    id: 'quota-3',
-    roleOrUser: 'Sales Reps',
-    period: 'Q4 2026',
-    targetAmount: 400000,
-    achievedAmount: 0,
-    pipelineCommit: 150000,
-    bestCase: 200000,
-    dealsCount: 2,
-  },
-];
+let memoryTargetQuotas: TargetQuotaItem[] = [];
 
 export const getForecastConfig = async (req: Request, res: Response) => {
   try {

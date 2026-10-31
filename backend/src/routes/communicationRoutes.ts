@@ -13,26 +13,7 @@ let memoryMessages: Array<{
   type: string;
   status: string;
   created_at: string;
-}> = [
-  {
-    id: 1,
-    sender: 'Aman Kumar (CRM)',
-    recipient: '+91 98201 12345',
-    message: 'Welcome to Dleaf CRM! Here is the solution overview.',
-    type: 'whatsapp',
-    status: 'delivered',
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: 2,
-    sender: 'Aman Kumar (CRM)',
-    recipient: '+91 99300 88776',
-    message: 'Enterprise proposal is ready for review.',
-    type: 'sms',
-    status: 'sent',
-    created_at: new Date().toISOString(),
-  },
-];
+}> = [];
 
 // Active SMTP configurations map (in-memory per organization / tenant)
 let currentSmtpConfig: {
