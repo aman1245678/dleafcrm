@@ -33,6 +33,7 @@ import { DataAdminModule } from './components/dataadmin/DataAdminModule';
 import { SetupModule } from './components/setup/SetupModule';
 import { SuperAdminModule } from './components/superadmin/SuperAdminModule';
 import { WorkqueueModule } from './components/workqueue/WorkqueueModule';
+import { VaultModule } from './components/vault/VaultModule';
 
 // Public Portal Components (matching Dleaf CRM landing pages & header dropdowns)
 import { PortalHeader } from './components/portal/PortalHeader';
@@ -357,6 +358,8 @@ const CRMAppContainer: React.FC = () => {
       }
       case 'setup':
         return <SetupModule />;
+      case 'vault':
+        return <VaultModule />;
       case 'superadmin': {
         const isSuper =
           currentUser?.email?.toLowerCase().trim() === 'aman.kumar@dleaftech.com' ||

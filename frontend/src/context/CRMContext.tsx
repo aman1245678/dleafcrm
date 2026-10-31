@@ -84,6 +84,7 @@ export type NavigationModule =
   | 'mcpserver'
   | 'dataadmin'
   | 'setup'
+  | 'vault'
   | 'superadmin';
 
 interface CRMContextType {
