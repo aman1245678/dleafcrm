@@ -44,6 +44,7 @@ import { PortalCustomers } from './components/portal/PortalCustomers';
 import { PortalResources } from './components/portal/PortalResources';
 import { PortalFreeTools } from './components/portal/PortalFreeTools';
 import { PortalSignInModal } from './components/portal/PortalSignInModal';
+import { StandaloneLeadForm } from './components/forms/StandaloneLeadForm';
 
 // Global Modals & Drawers
 import { GlobalSearchModal } from './components/modals/GlobalSearchModal';
@@ -81,15 +82,12 @@ const CRMAppContainer: React.FC = () => {
     currentUser,
   } = useCRM();
 
+  // Standalone Public Web-to-Lead Form (Direct Script URL)
+  if (window.location.pathname.startsWith('/forms/lead') || window.location.pathname.startsWith('/embed/lead')) {
+    return <StandaloneLeadForm />;
+  }
+
   // URL Deep-Linking & Script Form Direct Opener:
-  // Examples:
-  // ?open=lead -> Opens Lead Creation Form directly
-  // ?open=deal -> Opens Deal Creation Form directly
-  // ?open=contact -> Opens Contact Creation Form directly
-  // ?open=account -> Opens Account Creation Form directly
-  // ?open=task -> Opens Task Creation Form directly
-  // ?module=documents -> Directly navigates to Documents module
-  // ?module=invoices -> Directly navigates to Invoices
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const openForm = params.get('open')?.toLowerCase();
@@ -102,40 +100,43 @@ const CRMAppContainer: React.FC = () => {
 
     if (openForm) {
       setAppMode('workspace');
-      switch (openForm) {
-        case 'lead':
-        case 'createlead':
-        case 'create-lead':
-          setActiveModule('leads');
-          setIsCreateLeadOpen(true);
-          break;
-        case 'deal':
-        case 'createdeal':
-        case 'create-deal':
-          setActiveModule('deals');
-          setIsCreateDealOpen(true);
-          break;
-        case 'contact':
-        case 'createcontact':
-        case 'create-contact':
-          setActiveModule('contacts');
-          setIsCreateContactOpen(true);
-          break;
-        case 'account':
-        case 'createaccount':
-        case 'create-account':
-          setActiveModule('accounts');
-          setIsCreateAccountOpen(true);
-          break;
-        case 'task':
-        case 'createtask':
-        case 'create-task':
-          setActiveModule('tasks');
-          setIsCreateTaskOpen(true);
-          break;
-        default:
-          break;
-      }
+      // Delay slightly so that workspace loads cleanly before triggering modal
+      setTimeout(() => {
+        switch (openForm) {
+          case 'lead':
+          case 'createlead':
+          case 'create-lead':
+            setActiveModule('leads');
+            setIsCreateLeadOpen(true);
+            break;
+          case 'deal':
+          case 'createdeal':
+          case 'create-deal':
+            setActiveModule('deals');
+            setIsCreateDealOpen(true);
+            break;
+          case 'contact':
+          case 'createcontact':
+          case 'create-contact':
+            setActiveModule('contacts');
+            setIsCreateContactOpen(true);
+            break;
+          case 'account':
+          case 'createaccount':
+          case 'create-account':
+            setActiveModule('accounts');
+            setIsCreateAccountOpen(true);
+            break;
+          case 'task':
+          case 'createtask':
+          case 'create-task':
+            setActiveModule('tasks');
+            setIsCreateTaskOpen(true);
+            break;
+          default:
+            break;
+        }
+      }, 150);
     }
   }, []);
 
