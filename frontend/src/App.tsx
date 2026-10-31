@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CRMProvider, useCRM } from './context/CRMContext';
 import { Header } from './components/layout/Header';
 import { Sidebar } from './components/layout/Sidebar';
@@ -67,13 +67,77 @@ const CRMAppContainer: React.FC = () => {
     setAppMode,
     portalPage,
     activeModule,
+    setActiveModule,
     isAuthenticated,
     setIsPortalSignInOpen,
+    setIsCreateLeadOpen,
+    setIsCreateDealOpen,
+    setIsCreateContactOpen,
+    setIsCreateAccountOpen,
+    setIsCreateTaskOpen,
     subscription,
     isSubscriptionModalOpen,
     setIsSubscriptionModalOpen,
     currentUser,
   } = useCRM();
+
+  // URL Deep-Linking & Script Form Direct Opener:
+  // Examples:
+  // ?open=lead -> Opens Lead Creation Form directly
+  // ?open=deal -> Opens Deal Creation Form directly
+  // ?open=contact -> Opens Contact Creation Form directly
+  // ?open=account -> Opens Account Creation Form directly
+  // ?open=task -> Opens Task Creation Form directly
+  // ?module=documents -> Directly navigates to Documents module
+  // ?module=invoices -> Directly navigates to Invoices
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const openForm = params.get('open')?.toLowerCase();
+    const targetModule = params.get('module')?.toLowerCase();
+
+    if (targetModule) {
+      setAppMode('workspace');
+      setActiveModule(targetModule as any);
+    }
+
+    if (openForm) {
+      setAppMode('workspace');
+      switch (openForm) {
+        case 'lead':
+        case 'createlead':
+        case 'create-lead':
+          setActiveModule('leads');
+          setIsCreateLeadOpen(true);
+          break;
+        case 'deal':
+        case 'createdeal':
+        case 'create-deal':
+          setActiveModule('deals');
+          setIsCreateDealOpen(true);
+          break;
+        case 'contact':
+        case 'createcontact':
+        case 'create-contact':
+          setActiveModule('contacts');
+          setIsCreateContactOpen(true);
+          break;
+        case 'account':
+        case 'createaccount':
+        case 'create-account':
+          setActiveModule('accounts');
+          setIsCreateAccountOpen(true);
+          break;
+        case 'task':
+        case 'createtask':
+        case 'create-task':
+          setActiveModule('tasks');
+          setIsCreateTaskOpen(true);
+          break;
+        default:
+          break;
+      }
+    }
+  }, []);
 
   // If in Public Portal Mode (Default Landing Page)
   if (appMode === 'portal') {
@@ -153,7 +217,10 @@ const CRMAppContainer: React.FC = () => {
   // Subscription Gate: Only allow access if user has an active subscription or is Super Admin
   const isSuperAdmin =
     currentUser?.email?.toLowerCase().trim() === 'aman.kumar@dleaftech.com' ||
-    (currentUser?.role as string) === 'SUPER_ADMIN';
+    currentUser?.email?.toLowerCase().trim() === 'amankumarparsa1@gmail.com' ||
+    currentUser?.email?.toLowerCase().trim() === 'aman.kumar@dleaf.com' ||
+    (currentUser?.role as string) === 'SUPER_ADMIN' ||
+    (currentUser?.role as string) === 'admin';
   const isWorkspaceUnlocked =
     isSuperAdmin ||
     (Boolean(subscription?.hasSubscription) && subscription?.planStatus === 'active');
