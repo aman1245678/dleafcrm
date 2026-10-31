@@ -1039,6 +1039,30 @@ export const api = {
         return { success: false, error: err.message };
       }
     },
+    setPassword: async (id: string, data: { password?: string; allowDownload?: boolean; watermarkText?: string; expiryDays?: number }) => {
+      try {
+        const res = await fetch(`/api/documents/${id}/password`, {
+          method: 'POST',
+          headers: getAuthHeaders(),
+          body: JSON.stringify(data),
+        });
+        return await res.json();
+      } catch (err: any) {
+        return { success: false, error: err.message };
+      }
+    },
+    accessShared: async (token: string, password?: string) => {
+      try {
+        const res = await fetch(`/api/documents/share/${token}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password }),
+        });
+        return await res.json();
+      } catch (err: any) {
+        return { success: false, error: err.message };
+      }
+    },
   },
 
   // Zoho Campaigns Engine

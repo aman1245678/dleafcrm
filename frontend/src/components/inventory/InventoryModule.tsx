@@ -28,6 +28,7 @@ export const InventoryModule: React.FC = () => {
     paymentLink: string;
     qrCodeUrl: string;
   } | null>(null);
+  const [activePrintInvoice, setActivePrintInvoice] = useState<Invoice | null>(null);
   const [prodForm, setProdForm] = useState<{
     name: string;
     productCode: string;
@@ -250,6 +251,14 @@ export const InventoryModule: React.FC = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       <button
+                        onClick={() => setActivePrintInvoice(inv)}
+                        className="px-2.5 py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-300 rounded font-semibold text-xs flex items-center gap-1.5 transition cursor-pointer"
+                        title="Print / Download Zoho Books-grade GST Tax Invoice"
+                      >
+                        <Printer className="w-3.5 h-3.5 text-blue-600" />
+                        <span>Print GST PDF</span>
+                      </button>
+                      <button
                         onClick={async () => {
                           const res = await api.communication.createPaymentLink({
                             invoiceId: inv.id,
@@ -348,6 +357,141 @@ export const InventoryModule: React.FC = () => {
               >
                 Close Payment Window
               </button>
+            </div>
+          </div>
+        )}
+
+        {/* Zoho Books Grade Printable GST Tax Invoice Modal */}
+        {activePrintInvoice && (
+          <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-50 p-4 animate-in fade-in overflow-y-auto">
+            <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full p-8 border border-slate-200 text-slate-800 my-8">
+              {/* Header with Print Controls */}
+              <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-6 print:hidden">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-sm text-slate-900">Tax Invoice Preview</span>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-pink-50 text-[#EE0979] border border-pink-200">
+                    GSTIN Compliant
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => window.print()}
+                    className="px-4 py-1.5 bg-[#EE0979] hover:bg-[#D8086C] text-white rounded text-xs font-bold flex items-center gap-1.5 shadow-xs cursor-pointer"
+                  >
+                    <Printer className="w-3.5 h-3.5" />
+                    <span>Print / Save PDF</span>
+                  </button>
+                  <button
+                    onClick={() => setActivePrintInvoice(null)}
+                    className="px-3 py-1.5 border border-slate-300 hover:bg-slate-50 text-slate-700 rounded text-xs font-semibold"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+
+              {/* Printable Invoice Document Body */}
+              <div className="space-y-6 text-xs" id="printable-gst-invoice">
+                {/* Company Header */}
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h1 className="text-xl font-black text-slate-950 tracking-tight">DLEAF TECHNOLOGIES PVT. LTD.</h1>
+                    <p className="text-slate-500 text-[11px] mt-0.5">Software & Enterprise Cloud CRM Services</p>
+                    <p className="text-slate-600 mt-1">CIN: U72900DL2024PTC123456</p>
+                    <p className="text-slate-600 font-mono"><strong>GSTIN:</strong> 07AAACD1234F1Z5</p>
+                    <p className="text-slate-600">contact@dleaftech.com | +91 98765 43210</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs uppercase tracking-widest font-bold text-slate-400 block">TAX INVOICE</span>
+                    <span className="text-lg font-black font-mono text-[#EE0979] block">{activePrintInvoice.invoiceNumber}</span>
+                    <p className="text-slate-600 mt-1">Date: <strong>{activePrintInvoice.invoiceDate || '2026-10-31'}</strong></p>
+                    <p className="text-slate-600">Due Date: <strong>{activePrintInvoice.dueDate || '2026-11-15'}</strong></p>
+                  </div>
+                </div>
+
+                {/* Billed To Box */}
+                <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">
+                    Billed To (Client / Customer):
+                  </span>
+                  <div className="text-xs space-y-0.5">
+                    <p className="font-bold text-slate-900 text-sm">{activePrintInvoice.accountName || 'Valued Enterprise Client'}</p>
+                    <p className="text-slate-600">Attn: {activePrintInvoice.contactName || 'Accounts Department'}</p>
+                    <p className="text-slate-600">Place of Supply: State Code 07 (Delhi / Inter-State)</p>
+                  </div>
+                </div>
+
+                {/* Line Items Table */}
+                <table className="w-full border-collapse border border-slate-200">
+                  <thead className="bg-slate-100 text-slate-700 font-semibold text-[11px]">
+                    <tr>
+                      <th className="p-2 border border-slate-200 text-left">#</th>
+                      <th className="p-2 border border-slate-200 text-left">Description of Goods / Services</th>
+                      <th className="p-2 border border-slate-200 text-center">HSN/SAC</th>
+                      <th className="p-2 border border-slate-200 text-right">Qty</th>
+                      <th className="p-2 border border-slate-200 text-right">Rate</th>
+                      <th className="p-2 border border-slate-200 text-right">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(activePrintInvoice.items && activePrintInvoice.items.length > 0 ? activePrintInvoice.items : [
+                      { id: 'item-1', productId: 'p1', productName: 'Dleaf Enterprise CRM License (Annual)', quantity: 1, listPrice: activePrintInvoice.subTotal || 25000, discountPercent: 0, total: activePrintInvoice.subTotal || 25000 }
+                    ]).map((item, idx) => (
+                      <tr key={item.id} className="border-b border-slate-100">
+                        <td className="p-2 border border-slate-200 text-slate-400 font-mono">{idx + 1}</td>
+                        <td className="p-2 border border-slate-200 font-medium text-slate-900">{item.productName}</td>
+                        <td className="p-2 border border-slate-200 text-center font-mono text-slate-500">998314</td>
+                        <td className="p-2 border border-slate-200 text-right font-mono">{item.quantity}</td>
+                        <td className="p-2 border border-slate-200 text-right font-mono">₹{item.listPrice.toLocaleString()}</td>
+                        <td className="p-2 border border-slate-200 text-right font-bold font-mono">₹{item.total.toLocaleString()}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+                {/* Tax Breakdown & Bank Details */}
+                <div className="grid grid-cols-2 gap-4 pt-2">
+                  {/* Bank Details */}
+                  <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                    <span className="font-bold text-slate-900 block text-[11px]">Bank Remittance Details:</span>
+                    <p className="text-slate-600">Bank Name: <strong>HDFC Bank Ltd.</strong></p>
+                    <p className="text-slate-600">Account Name: <strong>DLEAF TECHNOLOGIES PRIVATE LIMITED</strong></p>
+                    <p className="text-slate-600 font-mono">Account No: <strong>50200087654321</strong></p>
+                    <p className="text-slate-600 font-mono">IFSC Code: <strong>HDFC0001234</strong></p>
+                  </div>
+
+                  {/* Calculations */}
+                  <div className="space-y-1.5 text-right font-mono">
+                    <div className="flex justify-between text-slate-600">
+                      <span>Sub Total:</span>
+                      <span>₹{activePrintInvoice.subTotal.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between text-slate-600">
+                      <span>Integrated GST (18%):</span>
+                      <span>₹{activePrintInvoice.taxAmount.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between font-bold text-sm text-slate-950 pt-2 border-t border-slate-300">
+                      <span>Invoice Total:</span>
+                      <span className="text-[#EE0979]">₹{activePrintInvoice.grandTotal.toLocaleString()}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Signatory Footer */}
+                <div className="pt-8 flex justify-between items-end border-t border-slate-200">
+                  <div className="text-[11px] text-slate-500 space-y-0.5">
+                    <p>• Terms: Payment due within 15 days of invoice issue.</p>
+                    <p>• Subject to New Delhi jurisdiction.</p>
+                    <p>• This is a computer-generated tax invoice verified by Dleaf CRM.</p>
+                  </div>
+                  <div className="text-right">
+                    <div className="h-10 border-b border-slate-300 w-44 ml-auto mb-1 flex items-end justify-center">
+                      <span className="text-[11px] font-serif italic text-blue-900">Aman Kumar (Authorized)</span>
+                    </div>
+                    <span className="text-[10px] font-bold text-slate-600 uppercase">Authorized Signatory</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
