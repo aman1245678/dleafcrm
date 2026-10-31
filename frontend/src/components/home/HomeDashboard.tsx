@@ -324,13 +324,13 @@ export const HomeDashboard: React.FC = () => {
                 <Users className="w-4 h-4" />
               </div>
               <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-                ↑ +12%
+                {leads.length > 0 ? '↑ Active' : '0 New'}
               </span>
             </div>
             <div className="mt-3">
               <span className="text-[#64748B] text-[11px] font-medium block">Total Leads</span>
               <span className="text-2xl font-black text-[#0F172A] font-mono mt-0.5 block tracking-tight">
-                {leads.length > 0 ? (leads.length * 1245).toLocaleString() : '12,548'}
+                {leads.length.toLocaleString()}
               </span>
             </div>
             <div className="mt-2 text-[10px] text-[#64748B]">Active marketing conversion</div>
@@ -343,13 +343,13 @@ export const HomeDashboard: React.FC = () => {
                 <DollarSign className="w-4 h-4" />
               </div>
               <span className="text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">
-                ↑ +8%
+                {deals.length > 0 ? '↑ Active' : '0 Active'}
               </span>
             </div>
             <div className="mt-3">
               <span className="text-[#64748B] text-[11px] font-medium block">Active Deals</span>
               <span className="text-2xl font-black text-[#0F172A] font-mono mt-0.5 block tracking-tight">
-                {deals.length > 0 ? (deals.length * 463).toLocaleString() : '3,246'}
+                {deals.length.toLocaleString()}
               </span>
             </div>
             <div className="mt-2 text-[10px] text-[#64748B]">Across 8 sales stages</div>
@@ -362,13 +362,13 @@ export const HomeDashboard: React.FC = () => {
                 <TrendingUp className="w-4 h-4" />
               </div>
               <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
-                ↑ +24%
+                {totalWon > 0 ? '↑ Realized' : '₹0'}
               </span>
             </div>
             <div className="mt-3">
               <span className="text-[#64748B] text-[11px] font-medium block">Total Revenue</span>
               <span className="text-2xl font-black text-[#0F172A] font-mono mt-0.5 block tracking-tight">
-                {totalWon > 0 ? `₹${(totalWon / 100000).toFixed(1)}L` : '₹1.8 Cr'}
+                {totalWon > 0 ? `₹${(totalWon / 100000).toFixed(1)}L` : '₹0'}
               </span>
             </div>
             <div className="mt-2 text-[10px] text-[#64748B]">Realized closed pipeline</div>
@@ -381,13 +381,13 @@ export const HomeDashboard: React.FC = () => {
                 <Zap className="w-4 h-4" />
               </div>
               <span className="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">
-                ↑ +6%
+                {deals.length > 0 ? `${Math.round((deals.filter(d => d.stage === 'Closed Won').length / deals.length) * 100)}%` : '0%'}
               </span>
             </div>
             <div className="mt-3">
               <span className="text-[#64748B] text-[11px] font-medium block">Win Rate</span>
               <span className="text-2xl font-black text-[#0F172A] font-mono mt-0.5 block tracking-tight">
-                34%
+                {deals.length > 0 ? `${Math.round((deals.filter(d => d.stage === 'Closed Won').length / deals.length) * 100)}%` : '0%'}
               </span>
             </div>
             <div className="mt-2 text-[10px] text-[#64748B]">Deal velocity benchmark</div>
@@ -478,7 +478,7 @@ export const HomeDashboard: React.FC = () => {
                   <circle cx="50" cy="50" r="38" fill="transparent" stroke="#10B981" strokeWidth="14" strokeDasharray="25 215" strokeDashoffset="-215" />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                  <span className="text-base font-black text-[#0F172A] leading-tight font-mono">3,246</span>
+                  <span className="text-base font-black text-[#0F172A] leading-tight font-mono">{deals.length.toLocaleString()}</span>
                   <span className="text-[9px] text-[#64748B] uppercase font-bold">Deals</span>
                 </div>
               </div>
@@ -521,7 +521,7 @@ export const HomeDashboard: React.FC = () => {
 
         </div>
 
-        {/* ROW 3: Recent Leads | Upcoming Tasks | AI Assistant DleafAI Copilot (Exact Match to Reference) */}
+        {/* ROW 3: Recent Leads | Upcoming Tasks | AI Assistant DleafAI Copilot */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           
           {/* Box 1: Recent Leads */}
@@ -532,52 +532,31 @@ export const HomeDashboard: React.FC = () => {
                 View All →
               </button>
             </div>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#FF6A00] to-[#EE0979] text-white flex items-center justify-center font-bold text-xs">
-                    R
+            {leads.length > 0 ? (
+              <div className="space-y-3">
+                {leads.slice(0, 3).map((lead) => (
+                  <div key={lead.id} className="flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#FF6A00] to-[#EE0979] text-white flex items-center justify-center font-bold text-xs">
+                        {lead.firstName?.[0] || 'L'}
+                      </div>
+                      <div>
+                        <span className="font-bold text-xs text-slate-800 block leading-tight">{lead.firstName} {lead.lastName}</span>
+                        <span className="text-[10px] text-slate-400">{lead.email || lead.company}</span>
+                      </div>
+                    </div>
+                    <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-rose-50 text-[#EE0979]">
+                      {lead.rating || 'New'}
+                    </span>
                   </div>
-                  <div>
-                    <span className="font-bold text-xs text-slate-800 block leading-tight">Rohan Mehta</span>
-                    <span className="text-[10px] text-slate-400">rohan@acmecorp.com</span>
-                  </div>
-                </div>
-                <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-rose-50 text-[#EE0979]">
-                  Hot
-                </span>
+                ))}
               </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-xs">
-                    P
-                  </div>
-                  <div>
-                    <span className="font-bold text-xs text-slate-800 block leading-tight">Priya Sharma</span>
-                    <span className="text-[10px] text-slate-400">priya@quantumtech.com</span>
-                  </div>
-                </div>
-                <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-700">
-                  Warm
-                </span>
+            ) : (
+              <div className="py-6 text-center text-slate-400 text-xs">
+                <Users className="w-6 h-6 mx-auto mb-1.5 opacity-40 text-slate-400" />
+                No leads recorded yet.
               </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-xs">
-                    V
-                  </div>
-                  <div>
-                    <span className="font-bold text-xs text-slate-800 block leading-tight">Vikram Singh</span>
-                    <span className="text-[10px] text-slate-400">vikram@nextgen.com</span>
-                  </div>
-                </div>
-                <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700">
-                  Cold
-                </span>
-              </div>
-            </div>
+            )}
           </div>
 
           {/* Box 2: Upcoming Tasks */}
@@ -588,31 +567,24 @@ export const HomeDashboard: React.FC = () => {
                 View All →
               </button>
             </div>
-            <div className="space-y-3">
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#EE0979] shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-semibold text-xs text-slate-800 block leading-tight">Follow up with Rohan</span>
-                  <span className="text-[10px] text-slate-400">Today, 10:00 AM</span>
-                </div>
+            {tasks.length > 0 ? (
+              <div className="space-y-3">
+                {tasks.slice(0, 3).map((task) => (
+                  <div key={task.id} className="flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#EE0979] shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-semibold text-xs text-slate-800 block leading-tight">{task.subject}</span>
+                      <span className="text-[10px] text-slate-400">{task.dueDate || 'No due date'}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
-
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-semibold text-xs text-slate-800 block leading-tight">Demo call with Priya</span>
-                  <span className="text-[10px] text-slate-400">Today, 02:30 PM</span>
-                </div>
+            ) : (
+              <div className="py-6 text-center text-slate-400 text-xs">
+                <CheckCircle2 className="w-6 h-6 mx-auto mb-1.5 opacity-40 text-slate-400" />
+                No pending tasks.
               </div>
-
-              <div className="flex items-start gap-2.5">
-                <Circle className="w-4 h-4 text-slate-300 shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-semibold text-xs text-slate-800 block leading-tight">Proposal for Quantum Tech</span>
-                  <span className="text-[10px] text-slate-400">Tomorrow, 11:00 AM</span>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
 
           {/* Box 3: DleafAI Interactive Prompt Box */}

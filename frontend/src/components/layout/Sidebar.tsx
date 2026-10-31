@@ -103,10 +103,10 @@ export const Sidebar: React.FC = () => {
     {
       title: 'Sales',
       items: [
-        { id: 'leads', label: 'Leads', icon: Users, badge: leads.length, badgeColor: 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979]' },
+        { id: 'leads', label: 'Leads', icon: Users, badge: leads.length > 0 ? leads.length : undefined, badgeColor: 'bg-gradient-to-r from-[#FF6A00] to-[#EE0979]' },
         { id: 'contacts', label: 'Contacts', icon: UserCheck },
         { id: 'accounts', label: 'Accounts', icon: Building2 },
-        { id: 'deals', label: 'Deals', icon: DollarSign, badge: deals.length, badgeColor: 'bg-[#0F172A]' },
+        { id: 'deals', label: 'Deals', icon: DollarSign, badge: deals.length > 0 ? deals.length : undefined, badgeColor: 'bg-[#0F172A]' },
         { id: 'forecasts', label: 'Forecasts', icon: TrendingUp },
         { id: 'documents', label: 'Documents', icon: FolderOpen },
         { id: 'campaigns', label: 'Campaigns', icon: Megaphone },
@@ -115,7 +115,7 @@ export const Sidebar: React.FC = () => {
     {
       title: 'Activities',
       items: [
-        { id: 'tasks', label: 'Tasks', icon: CheckSquare, badge: pendingTasksCount, badgeColor: 'bg-amber-600' },
+        { id: 'tasks', label: 'Tasks', icon: CheckSquare, badge: pendingTasksCount > 0 ? pendingTasksCount : undefined, badgeColor: 'bg-amber-600' },
         { id: 'meetings', label: 'Meetings', icon: Calendar },
         { id: 'calls', label: 'Calls', icon: PhoneCall },
       ],
@@ -211,9 +211,11 @@ export const Sidebar: React.FC = () => {
             <ListTodo className="w-4 h-4" />
             <span>Workqueue</span>
           </div>
-          <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white">
-            {pendingTasksCount}
-          </span>
+          {pendingTasksCount > 0 && (
+            <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-gradient-to-r from-[#FF6A00] to-[#EE0979] text-white">
+              {pendingTasksCount}
+            </span>
+          )}
         </button>
 
         <button
