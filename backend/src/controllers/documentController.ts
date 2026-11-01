@@ -14,6 +14,8 @@ export interface DocumentRecord {
   isFavorite: boolean;
   isTrash: boolean;
   content?: string;
+  fileData?: string; // Base64 data URL for live preview and instant download
+  mimeType?: string;
   // Zoho WorkDrive-grade security & sharing
   isPasswordProtected?: boolean;
   password?: string;
@@ -26,6 +28,21 @@ export interface DocumentRecord {
 
 // In-memory document storage initialized clean
 let memoryDocuments: DocumentRecord[] = [];
+
+
+export const getDocumentById = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const doc = memoryDocuments.find((d) => d.id === id);
+    if (!doc) {
+      return res.status(404).json({ success: false, message: 'Document not found' });
+    }
+    const { password, ...cleanDoc } = doc;
+    res.json({ success: true, data: cleanDoc });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
 
 export const getDocuments = async (req: Request, res: Response) => {
   try {
@@ -74,7 +91,7 @@ export const getDocuments = async (req: Request, res: Response) => {
 
 export const createDocument = async (req: Request, res: Response) => {
   try {
-    const { name, category, folder, size, content, password, allowDownload, watermarkText } = req.body;
+    const { name, category, folder, size, content, fileData, mimeType, password, allowDownload, watermarkText } = req.body;
 
     if (!name) {
       return res.status(400).json({ success: false, message: 'Document name is required' });
@@ -95,6 +112,8 @@ export const createDocument = async (req: Request, res: Response) => {
       isFavorite: false,
       isTrash: false,
       content: content || 'Confidential Enterprise Document Content - Dleaf CRM',
+      fileData: fileData || undefined,
+      mimeType: mimeType || undefined,
       isPasswordProtected: !!password,
       password: password ? String(password).trim() : undefined,
       shareToken,
@@ -237,6 +256,8 @@ export const accessSharedDocument = async (req: Request, res: Response) => {
         uploadedBy: doc.uploadedBy,
         uploadDate: doc.uploadDate,
         content: doc.content,
+        fileData: doc.fileData,
+        mimeType: doc.mimeType,
         allowDownload: doc.allowDownload !== false,
         watermarkText: doc.watermarkText || '',
         expiresAt: doc.shareExpiresAt

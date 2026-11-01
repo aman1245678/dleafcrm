@@ -993,7 +993,15 @@ export const api = {
         return { success: false, error: err.message };
       }
     },
-    create: async (data: { name: string; category?: string; folder?: string; size?: string }) => {
+    getById: async (id: string) => {
+        try {
+          const res = await fetch(`/api/documents/${id}`, { headers: getAuthHeaders() });
+          return await res.json();
+        } catch (err: any) {
+          return { success: false, error: err.message };
+        }
+      },
+      create: async (data: { name: string; category?: string; folder?: string; size?: string; content?: string; fileData?: string; mimeType?: string; password?: string; allowDownload?: boolean; watermarkText?: string }) => {
       try {
         const res = await fetch('/api/documents', {
           method: 'POST',

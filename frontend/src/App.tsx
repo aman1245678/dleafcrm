@@ -46,6 +46,7 @@ import { PortalResources } from './components/portal/PortalResources';
 import { PortalFreeTools } from './components/portal/PortalFreeTools';
 import { PortalSignInModal } from './components/portal/PortalSignInModal';
 import { StandaloneLeadForm } from './components/forms/StandaloneLeadForm';
+import { SharedDocumentViewer } from './components/documents/SharedDocumentViewer';
 
 // Global Modals & Drawers
 import { GlobalSearchModal } from './components/modals/GlobalSearchModal';
@@ -82,6 +83,12 @@ const CRMAppContainer: React.FC = () => {
     setIsSubscriptionModalOpen,
     currentUser,
   } = useCRM();
+
+  // Public Shared Document Viewer (/share/:token)
+  if (window.location.pathname.startsWith('/share/')) {
+    const token = window.location.pathname.replace('/share/', '').split('/')[0];
+    return <SharedDocumentViewer token={token} />;
+  }
 
   // Standalone Public Web-to-Lead Form (Direct Script URL)
   if (window.location.pathname.startsWith('/forms/lead') || window.location.pathname.startsWith('/embed/lead')) {

@@ -45,6 +45,9 @@ interface DocumentRecord {
   modifiedTime: string;
   isFavorite: boolean;
   isTrash: boolean;
+  content?: string;
+  fileData?: string;
+  mimeType?: string;
   isPasswordProtected?: boolean;
   shareToken?: string;
   shareExpiresAt?: string;
@@ -64,6 +67,9 @@ export const DocumentsModule: React.FC = () => {
   const [showUploadDropdown, setShowUploadDropdown] = useState(false);
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [showCreateDocModal, setShowCreateDocModal] = useState(false);
+  const [previewingDoc, setPreviewingDoc] = useState<DocumentRecord | null>(null);
+  const [previewLoading, setPreviewLoading] = useState(false);
+  const [uploadSelectedFile, setUploadSelectedFile] = useState<File | null>(null);
 
   // Zoho WorkDrive-style Security & Password Modal
   const [selectedDocForSecurity, setSelectedDocForSecurity] = useState<DocumentRecord | null>(null);
@@ -139,6 +145,15 @@ export const DocumentsModule: React.FC = () => {
     }
   };
 
+  const readFileAsDataURL = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = (err) => reject(err);
+      reader.readAsDataURL(file);
+    });
+  };
+
   const handleNativeFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -154,15 +169,26 @@ export const DocumentsModule: React.FC = () => {
         : `${Math.round(file.size / 1024)} KB`;
 
     try {
+      let base64 = '';
+      try {
+        base64 = await readFileAsDataURL(file);
+      } catch (readErr) {
+        console.warn('Could not read binary data:', readErr);
+      }
+
       await api.documents.create({
         name: file.name,
         category: cat,
         folder: activeFolder,
         size: sizeFormatted,
+        fileData: base64 || undefined,
+        mimeType: file.type || undefined,
       });
       fetchDocs();
     } catch (err) {
       console.error(err);
+    } finally {
+      if (fileInputRef.current) fileInputRef.current.value = '';
     }
   };
 
@@ -214,6 +240,47 @@ export const DocumentsModule: React.FC = () => {
       fetchDocs();
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const handleDownloadDoc = (doc: DocumentRecord) => {
+    if (doc.fileData && doc.fileData.startsWith('data:')) {
+      const link = document.createElement('a');
+      link.href = doc.fileData;
+      link.download = doc.name;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      const blob = new Blob([doc.content || 'Dleaf CRM Document Payload'], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = doc.name.includes('.') ? doc.name : `${doc.name}.txt`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+  };
+
+  const handleOpenPreview = async (doc: DocumentRecord) => {
+    if (doc.fileData || doc.content) {
+      setPreviewingDoc(doc);
+      return;
+    }
+    try {
+      setPreviewLoading(true);
+      const res = await api.documents.getById(doc.id);
+      if (res.success && res.data) {
+        setPreviewingDoc(res.data);
+      } else {
+        setPreviewingDoc(doc);
+      }
+    } catch {
+      setPreviewingDoc(doc);
+    } finally {
+      setPreviewLoading(false);
     }
   };
 
@@ -526,7 +593,14 @@ export const DocumentsModule: React.FC = () => {
                       </td>
                       <td className="py-2.5 px-4 font-semibold text-slate-900 flex items-center gap-2">
                         <FileText className="w-4 h-4 text-blue-600 shrink-0" />
-                        <span className="truncate max-w-xs">{doc.name}</span>
+                        <button
+                          type="button"
+                          onClick={() => handleOpenPreview(doc)}
+                          className="truncate max-w-xs text-left hover:text-blue-600 hover:underline cursor-pointer"
+                          title="Click to Open / Preview Document"
+                        >
+                          {doc.name}
+                        </button>
                       </td>
                       <td className="py-2.5 px-4">
                         {doc.isPasswordProtected ? (
@@ -551,10 +625,28 @@ export const DocumentsModule: React.FC = () => {
                       </td>
                       <td className="py-2.5 px-4 text-right">
                         <div className="flex items-center justify-end gap-1.5">
+                          {/* Live Preview Button */}
+                          <button
+                            onClick={() => handleOpenPreview(doc)}
+                            className="p-1 text-slate-500 hover:text-emerald-600 cursor-pointer rounded hover:bg-slate-100"
+                            title="Open & Preview Document"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                          </button>
+
+                          {/* Direct Download Button */}
+                          <button
+                            onClick={() => handleDownloadDoc(doc)}
+                            className="p-1 text-slate-500 hover:text-blue-600 cursor-pointer rounded hover:bg-slate-100"
+                            title="Download Document"
+                          >
+                            <Download className="w-3.5 h-3.5" />
+                          </button>
+
                           {/* Share Link with Password */}
                           <button
                             onClick={() => handleCopyShareLink(doc)}
-                            className="p-1 text-slate-500 hover:text-blue-600 cursor-pointer"
+                            className="p-1 text-slate-500 hover:text-purple-600 cursor-pointer rounded hover:bg-slate-100"
                             title="Copy Secure Share Link"
                           >
                             <Share2 className="w-3.5 h-3.5" />
@@ -963,6 +1055,102 @@ export const DocumentsModule: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Document In-App Preview Modal */}
+      {previewingDoc && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 select-none">
+          <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden animate-in fade-in">
+            {/* Header */}
+            <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                  <FileText className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-sm text-slate-800 truncate max-w-md">{previewingDoc.name}</h3>
+                  <div className="flex items-center gap-2 text-[11px] text-slate-500">
+                    <span>{previewingDoc.category}</span>
+                    <span>•</span>
+                    <span>{previewingDoc.size}</span>
+                    <span>•</span>
+                    <span>Uploaded by {previewingDoc.uploadedBy}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleDownloadDoc(previewingDoc)}
+                  className="px-3 py-1.5 bg-gradient-to-r from-[#EE0979] to-[#FF6A00] text-white rounded-lg text-xs font-semibold hover:brightness-110 flex items-center gap-1.5 shadow-xs cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleCopyShareLink(previewingDoc)}
+                  className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center gap-1.5 border border-slate-300 cursor-pointer"
+                >
+                  <Share2 className="w-3.5 h-3.5" />
+                  <span>Share</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPreviewingDoc(null)}
+                  className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Viewer Content */}
+            <div className="flex-1 overflow-auto p-4 bg-slate-100/50 flex items-center justify-center min-h-[400px]">
+              {previewLoading ? (
+                <div className="flex flex-col items-center justify-center p-8">
+                  <div className="w-8 h-8 border-3 border-[#EE0979] border-t-transparent rounded-full animate-spin mb-2" />
+                  <span className="text-xs text-slate-500">Loading document stream...</span>
+                </div>
+              ) : previewingDoc.fileData && (previewingDoc.mimeType?.startsWith('image/') || previewingDoc.name.match(/\.(png|jpe?g|gif|webp|svg)$/i)) ? (
+                <img
+                  src={previewingDoc.fileData}
+                  alt={previewingDoc.name}
+                  className="max-h-[70vh] w-auto max-w-full rounded-lg object-contain shadow-md"
+                />
+              ) : previewingDoc.fileData && (previewingDoc.mimeType === 'application/pdf' || previewingDoc.name.match(/\.pdf$/i) || previewingDoc.fileData.startsWith('data:application/pdf')) ? (
+                <iframe
+                  src={`${previewingDoc.fileData}#toolbar=1`}
+                  title={previewingDoc.name}
+                  className="w-full h-[72vh] rounded-lg border border-slate-200 bg-white"
+                />
+              ) : (
+                <div className="w-full h-full min-h-[350px] p-6 bg-white border border-slate-200 rounded-xl shadow-xs overflow-auto">
+                  <h4 className="font-bold text-xs uppercase tracking-wider text-slate-400 mb-3">Document Content Preview</h4>
+                  <pre className="text-xs font-mono text-slate-700 whitespace-pre-wrap leading-relaxed">
+                    {previewingDoc.content || 'Confidential document encrypted. Use Download to view the original file.'}
+                  </pre>
+                </div>
+              )}
+            </div>
+
+            {/* Footer */}
+            <div className="px-5 py-2.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+              <span className="flex items-center gap-1.5 text-[11px]">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                Zoho WorkDrive Secured Document Viewer
+              </span>
+              <button
+                type="button"
+                onClick={() => setPreviewingDoc(null)}
+                className="px-3 py-1 bg-white border border-slate-300 rounded text-slate-700 hover:bg-slate-50 font-medium text-xs cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
