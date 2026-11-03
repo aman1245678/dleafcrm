@@ -22,16 +22,16 @@ export const getDeals = async (req: Request, res: Response) => {
 
 export const getDealById = async (req: Request, res: Response) => {
   const { id } = req.params;
-  try {
-    if (process.env.DATABASE_URL) {
+  if (isPrismaConnected()) {
+    try {
       const deal = await prisma.deal.findUnique({
         where: { id },
         include: { account: true, contact: true, quotes: true },
       });
       if (deal) return res.json({ success: true, data: deal });
+    } catch (err) {
+      console.warn('Prisma query failed:', err);
     }
-  } catch (err) {
-    console.warn('Prisma query failed:', err);
   }
   const memoryDeal = memoryDeals.find((d) => d.id === id);
   if (!memoryDeal) return res.status(404).json({ success: false, message: 'Deal not found' });
@@ -51,8 +51,8 @@ export const createDeal = async (req: Request, res: Response) => {
     lastActivityTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
   };
 
-  try {
-    if (process.env.DATABASE_URL) {
+  if (isPrismaConnected()) {
+    try {
       const created = await prisma.deal.create({
         data: {
           id: newDeal.id,
@@ -69,9 +69,9 @@ export const createDeal = async (req: Request, res: Response) => {
         },
       });
       return res.status(201).json({ success: true, data: created });
+    } catch (err) {
+      console.warn('Prisma insert fallback to memory:', err);
     }
-  } catch (err) {
-    console.warn('Prisma insert fallback to memory:', err);
   }
 
   memoryDeals.unshift(newDeal);
@@ -82,8 +82,8 @@ export const updateDealStage = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { stage, probability } = req.body;
 
-  try {
-    if (process.env.DATABASE_URL) {
+  if (isPrismaConnected()) {
+    try {
       const deal = await prisma.deal.findUnique({ where: { id } });
       if (deal) {
         const prob = probability !== undefined ? probability : deal.probability;
@@ -94,9 +94,9 @@ export const updateDealStage = async (req: Request, res: Response) => {
         });
         return res.json({ success: true, data: updated });
       }
+    } catch (err) {
+      console.warn('Prisma stage update fallback:', err);
     }
-  } catch (err) {
-    console.warn('Prisma stage update fallback:', err);
   }
 
   const deal = memoryDeals.find((d) => d.id === id);
@@ -111,13 +111,13 @@ export const updateDealStage = async (req: Request, res: Response) => {
 
 export const deleteDeal = async (req: Request, res: Response) => {
   const { id } = req.params;
-  try {
-    if (process.env.DATABASE_URL) {
+  if (isPrismaConnected()) {
+    try {
       await prisma.deal.delete({ where: { id } });
       return res.json({ success: true, message: 'Deal deleted successfully from PostgreSQL' });
+    } catch (err) {
+      console.warn('Prisma delete fallback:', err);
     }
-  } catch (err) {
-    console.warn('Prisma delete fallback:', err);
   }
 
   memoryDeals = memoryDeals.filter((d) => d.id !== id);
