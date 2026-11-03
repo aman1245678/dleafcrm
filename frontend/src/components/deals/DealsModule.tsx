@@ -191,11 +191,11 @@ export const DealsModule: React.FC = () => {
             onClick={() => setIsFilterPanelOpen(!isFilterPanelOpen)}
             className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs border transition cursor-pointer ${
               isFilterPanelOpen
-                ? 'bg-[#FFF1F7] border-[#EE0979] text-[#0F172A] font-medium'
-                : 'bg-white border-[#F1D5E4] text-[#64748B] hover:bg-[#FFF8FA]'
+                ? 'bg-emerald-50 border-[#153B2E] text-[#153B2E] font-medium'
+                : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
             }`}
           >
-            <Filter className="w-3 h-3" />
+            <Filter className="w-3 h-3 text-[#153B2E]" />
             <span>Filter</span>
           </button>
 
@@ -210,7 +210,7 @@ export const DealsModule: React.FC = () => {
             <button
               onClick={() => setViewMode('kanban')}
               className={`p-1 rounded cursor-pointer ${
-                viewMode === 'kanban' ? 'bg-white text-blue-600 shadow-xs' : 'text-slate-400 hover:text-slate-700'
+                viewMode === 'kanban' ? 'bg-white text-[#153B2E] font-bold shadow-xs' : 'text-slate-400 hover:text-slate-700'
               }`}
               title="Kanban View"
             >
@@ -219,7 +219,7 @@ export const DealsModule: React.FC = () => {
             <button
               onClick={() => setViewMode('list')}
               className={`p-1 rounded cursor-pointer ${
-                viewMode === 'list' ? 'bg-white text-blue-600 shadow-xs' : 'text-slate-400 hover:text-slate-700'
+                viewMode === 'list' ? 'bg-white text-[#153B2E] font-bold shadow-xs' : 'text-slate-400 hover:text-slate-700'
               }`}
               title="List View"
             >
@@ -234,13 +234,13 @@ export const DealsModule: React.FC = () => {
           <div className="inline-flex rounded shadow-xs">
             <button
               onClick={() => setIsCreateDealOpen(true)}
-              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-3 py-1.5 rounded-l text-xs font-semibold flex items-center gap-1 cursor-pointer transition"
+              className="bg-[#153B2E] hover:bg-[#1E5442] text-white px-3 py-1.5 rounded-l text-xs font-semibold flex items-center gap-1 cursor-pointer transition"
             >
               <span>Create Deal</span>
             </button>
             <button
               onClick={() => setIsCreateDealOpen(true)}
-              className="bg-[#0F172A] hover:bg-[#EE0979] text-white px-1.5 py-1.5 rounded-r border-l border-[#334155] cursor-pointer transition"
+              className="bg-[#153B2E] hover:bg-[#1E5442] text-white px-1.5 py-1.5 rounded-r border-l border-[#24624D] cursor-pointer transition"
             >
               <ChevronDown className="w-3 h-3" />
             </button>
@@ -429,10 +429,10 @@ export const DealsModule: React.FC = () => {
                     onDrop={(e) => handleDrop(e, stage.id)}
                     className="w-68 min-w-[270px] max-w-[270px] bg-[#E8EEF5]/40 rounded flex flex-col shrink-0 max-h-full border border-slate-200 shadow-2xs"
                   >
-                    {/* Dleaf Stage Column Header with Cyan/Mint Background */}
-                    <div className="p-2 bg-[#FFF1F7] border-b border-pink-100 rounded-t">
+                    {/* Dleaf Stage Column Header with Forest Green Accent */}
+                    <div className="p-2 bg-[#F0F7F4] border-b border-[#D4E8DF] rounded-t">
                       <div className="flex items-center justify-between text-xs text-slate-800 font-medium">
-                        <span className="truncate font-semibold text-[11px]">
+                        <span className="truncate font-semibold text-[11px] text-[#153B2E]">
                           {stage.label} {getCircledNumber(stageDeals.length)} - {stage.probability}%
                         </span>
                       </div>
