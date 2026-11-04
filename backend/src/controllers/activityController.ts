@@ -1,7 +1,119 @@
 import { Request, Response } from 'express';
 import { prisma } from '../db/prisma.js';
 
-let memoryTasks: any[] = [];
+let memoryTasks: any[] = [
+  {
+    id: 'task-live-01',
+    subject: 'Follow-up on Cloud ERP Migration Proposal',
+    dueDate: '2026-11-06',
+    status: 'In Progress',
+    priority: 'High',
+    owner: 'Aman kumar',
+    accountName: 'TechCorp India',
+    contactName: 'Rajesh Sharma',
+    createdTime: '2026-11-04 10:00',
+  },
+  {
+    id: 'task-live-02',
+    subject: 'Send GST Tax Invoice & Remittance Details',
+    dueDate: '2026-11-05',
+    status: 'Not Started',
+    priority: 'High',
+    owner: 'Aman kumar',
+    accountName: 'Sharma Retail Ventures',
+    contactName: 'Rahul Sharma',
+    createdTime: '2026-11-04 11:30',
+  },
+  {
+    id: 'task-live-03',
+    subject: 'Verify WhatsApp Business Broadcast Response Rate',
+    dueDate: '2026-11-07',
+    status: 'Not Started',
+    priority: 'Normal',
+    owner: 'Aman kumar',
+    accountName: 'Apex Logistics',
+    contactName: 'Sunil Verma',
+    createdTime: '2026-11-04 14:00',
+  },
+];
+
+let memoryMeetings: any[] = [
+  {
+    id: 'meet-live-01',
+    title: 'Enterprise Solution Demo & Technical Walkthrough',
+    from: '2026-11-05 14:00',
+    to: '2026-11-05 15:00',
+    host: 'Aman kumar',
+    status: 'Scheduled',
+    contactName: 'Rajesh Sharma',
+    relatedRecordName: 'TechCorp India',
+    meetingVenue: 'Google Meet',
+    createdTime: '2026-11-04 12:00',
+  },
+  {
+    id: 'meet-live-02',
+    title: 'Annual Contract SLA & Security Review',
+    from: '2026-11-06 16:30',
+    to: '2026-11-06 17:30',
+    host: 'Aman kumar',
+    status: 'Scheduled',
+    contactName: 'Rahul Sharma',
+    relatedRecordName: 'Sharma Retail Ventures',
+    meetingVenue: 'Zoom Video',
+    createdTime: '2026-11-04 15:30',
+  },
+];
+
+export const memoryCalls: any[] = [
+  {
+    id: 'call-live-01',
+    subject: 'Outbound Discovery Call - TechCorp Cloud Requirements',
+    contactName: 'Rajesh Sharma',
+    relatedRecordName: 'TechCorp India',
+    callType: 'Outbound',
+    callStatus: 'Scheduled',
+    phone: '+91 98765 43210',
+    callStartTime: '2026-11-05 11:00',
+    callOwner: 'Aman kumar',
+    createdTime: '2026-11-04 13:00',
+  },
+  {
+    id: 'call-live-02',
+    subject: 'Quarterly Renewal Follow-up Call',
+    contactName: 'Sunil Verma',
+    relatedRecordName: 'Apex Logistics',
+    callType: 'Outbound',
+    callStatus: 'Scheduled',
+    phone: '+91 98111 22334',
+    callStartTime: '2026-11-05 15:30',
+    callOwner: 'Aman kumar',
+    createdTime: '2026-11-04 13:15',
+  },
+  {
+    id: 'call-live-03',
+    subject: 'Payment Terms & Bank Remittance Discussion',
+    contactName: 'Rahul Sharma',
+    relatedRecordName: 'Sharma Retail Ventures',
+    callType: 'Outbound',
+    callStatus: 'Scheduled',
+    phone: '+91 98222 33445',
+    callStartTime: '2026-11-06 10:30',
+    callOwner: 'Aman kumar',
+    createdTime: '2026-11-04 14:00',
+  },
+  {
+    id: 'call-live-04',
+    subject: 'New Web Lead Initial Qualification Call',
+    contactName: 'Vikram Mehta',
+    relatedRecordName: 'Mehta Global Systems',
+    callType: 'Outbound',
+    callStatus: 'Scheduled',
+    phone: '+91 98333 44556',
+    callStartTime: '2026-11-06 12:00',
+    callOwner: 'Aman kumar',
+    createdTime: '2026-11-04 14:30',
+  },
+];
 
 export const getTasks = async (req: Request, res: Response) => {
   try {
@@ -65,9 +177,6 @@ export const deleteTask = async (req: Request, res: Response) => {
   }
   return res.status(404).json({ success: false, message: 'Task not found' });
 };
-
-let memoryMeetings: any[] = [];
-export const memoryCalls: any[] = [];
 
 export const getMeetings = async (req: Request, res: Response) => {
   try {
