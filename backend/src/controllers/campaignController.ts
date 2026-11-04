@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 export interface CampaignRecord {
   id: string;
   name: string;
-  type: 'Telemarketing' | 'Email' | 'Webinar' | 'Trade Show' | 'Public Relations' | 'Direct Mail' | 'Banner Ads' | 'Other';
+  type: 'WhatsApp Broadcast' | 'Telemarketing' | 'Email' | 'Webinar' | 'Trade Show' | 'Public Relations' | 'Direct Mail' | 'Banner Ads' | 'Other';
   status: 'Planning' | 'Active' | 'Completed' | 'Cancelled';
   startDate: string;
   endDate: string;
@@ -18,8 +18,43 @@ export interface CampaignRecord {
   modifiedTime: string;
 }
 
-// In-memory campaign storage initialized to empty to match Zoho Screenshot 1
-let memoryCampaigns: CampaignRecord[] = [];
+// In-memory campaign storage initialized with active WhatsApp & Telemarketing campaigns
+let memoryCampaigns: CampaignRecord[] = [
+  {
+    id: 'camp-whatsapp-01',
+    name: 'Pan-India Enterprise WhatsApp Outreach',
+    type: 'WhatsApp Broadcast',
+    status: 'Active',
+    startDate: '2026-11-01',
+    endDate: '2026-11-30',
+    expectedRevenue: 850000,
+    budgetedCost: 35000,
+    actualCost: 18500,
+    expectedResponse: '28%',
+    numSent: 2500,
+    campaignOwner: 'Aman kumar',
+    description: 'High-converting WhatsApp Business broadcast for B2B enterprise sales automation',
+    createdTime: '2026-11-01 10:00',
+    modifiedTime: '2026-11-04 17:00',
+  },
+  {
+    id: 'camp-telemarketing-02',
+    name: 'Q4 Direct Telemarketing Calling Campaign',
+    type: 'Telemarketing',
+    status: 'Active',
+    startDate: '2026-11-02',
+    endDate: '2026-12-15',
+    expectedRevenue: 600000,
+    budgetedCost: 45000,
+    actualCost: 22000,
+    expectedResponse: '18%',
+    numSent: 1200,
+    campaignOwner: 'Aman kumar',
+    description: 'Direct outbound telecalling campaign using integrated CRM VoIP softphone',
+    createdTime: '2026-11-02 11:30',
+    modifiedTime: '2026-11-04 17:15',
+  },
+];
 
 export const getCampaigns = async (req: Request, res: Response) => {
   try {

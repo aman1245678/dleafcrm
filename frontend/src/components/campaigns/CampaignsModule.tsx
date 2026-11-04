@@ -525,13 +525,13 @@ export const CampaignsModule: React.FC = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowCreateModal(true)}
-              className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
+              className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#1E5442] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
             >
               Create
             </button>
             <button
               onClick={() => setViewState('import_wizard')}
-              className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
+              className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#1E5442] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
             >
               Import
             </button>
@@ -584,7 +584,8 @@ export const CampaignsModule: React.FC = () => {
                   onChange={(e) => setType(e.target.value)}
                   className="w-full px-2.5 py-1.5 border border-slate-300 rounded text-xs bg-white focus:outline-hidden focus:border-blue-500"
                 >
-                  <option value="Telemarketing">Telemarketing</option>
+                  <option value="WhatsApp Broadcast">WhatsApp Broadcast</option>
+                  <option value="Telemarketing">Telemarketing (Calling)</option>
                   <option value="Email">Email</option>
                   <option value="Webinar">Webinar</option>
                   <option value="Trade Show">Trade Show</option>
@@ -669,7 +670,7 @@ export const CampaignsModule: React.FC = () => {
               </button>
               <button
                 type="submit"
-                className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
+                className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#1E5442] text-white rounded text-xs font-semibold shadow-xs cursor-pointer transition"
               >
                 Save Campaign
               </button>
