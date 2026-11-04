@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { prisma, isPrismaConnected } from '../db/prisma.js';
 
-let memoryDeals: any[] = [];
+export let memoryDeals: any[] = [];
 
 export const getDeals = async (req: Request, res: Response) => {
   try {

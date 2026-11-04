@@ -577,7 +577,7 @@ export const ForecastsModule: React.FC = () => {
             {/* Primary Action Button: "Configure Now" */}
             <button
               onClick={() => setShowConfigModal(true)}
-              className="px-6 py-2 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
+              className="px-6 py-2 bg-[#153B2E] hover:bg-[#1E5442] text-white rounded text-xs font-semibold shadow-xs transition active:scale-95 cursor-pointer"
             >
               Configure Now
             </button>
@@ -772,9 +772,9 @@ export const ForecastsModule: React.FC = () => {
             <button
               type="button"
               onClick={handleSaveConfig}
-              className="px-5 py-1.5 bg-[#0F172A] hover:bg-[#EE0979] text-white rounded text-xs font-semibold shadow-xs cursor-pointer"
+              className="px-5 py-1.5 bg-[#153B2E] hover:bg-[#1E5442] text-white rounded text-xs font-semibold shadow-xs cursor-pointer transition"
             >
-              Save
+              Save Configuration
             </button>
           </div>
         </div>

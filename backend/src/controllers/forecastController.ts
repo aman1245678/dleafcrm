@@ -1,4 +1,6 @@
 import { Request, Response } from 'express';
+import { memoryDeals } from './dealController.js';
+import { prisma, isPrismaConnected } from '../db/prisma.js';
 
 export interface ForecastConfig {
   forecastModel: 'Top down' | 'Bottom up';
@@ -6,7 +8,7 @@ export interface ForecastConfig {
   dealRevenue: boolean;
   dealQuantity: boolean;
   fiscalYearType: 'Standard Fiscal Year' | 'Custom Fiscal Year';
-  fiscalYearBeginsIn: string;
+  fiscalYearBeginsIn: string; // January
   isConfigured: boolean;
   setBy?: string;
   configuredAt?: string;
@@ -15,7 +17,7 @@ export interface ForecastConfig {
 export interface TargetQuotaItem {
   id: string;
   roleOrUser: string;
-  period: string; // e.g. Q4 2026
+  period: string; // e.g. Q4 2026, Full Year 2026
   targetAmount: number;
   achievedAmount: number;
   pipelineCommit: number;
@@ -23,27 +25,123 @@ export interface TargetQuotaItem {
   dealsCount: number;
 }
 
-// In-memory initial state for Forecast Configuration matching Zoho CRM
+// Default Configuration: January to December Fiscal Year, Top down model, Roles hierarchy
 let memoryForecastConfig: ForecastConfig = {
   forecastModel: 'Top down',
   hierarchyBasedOn: 'Roles',
-  dealRevenue: false,
-  dealQuantity: false,
+  dealRevenue: true,
+  dealQuantity: true,
   fiscalYearType: 'Standard Fiscal Year',
   fiscalYearBeginsIn: 'January',
-  isConfigured: false,
-  setBy: '-',
+  isConfigured: true,
+  setBy: 'Aman kumar',
+  configuredAt: new Date().toISOString(),
 };
 
-let memoryTargetQuotas: TargetQuotaItem[] = [];
+let memoryTargetQuotas: TargetQuotaItem[] = [
+  {
+    id: 'quota-ceo',
+    roleOrUser: 'CEO / Managing Director (Global Target)',
+    period: 'FY 2026 (Jan - Dec)',
+    targetAmount: 2500000,
+    achievedAmount: 0,
+    pipelineCommit: 0,
+    bestCase: 0,
+    dealsCount: 0,
+  },
+  {
+    id: 'quota-sales-head',
+    roleOrUser: 'Aman kumar (Sales Head / Manager)',
+    period: 'FY 2026 (Jan - Dec)',
+    targetAmount: 1500000,
+    achievedAmount: 0,
+    pipelineCommit: 0,
+    bestCase: 0,
+    dealsCount: 0,
+  },
+  {
+    id: 'quota-sales-reps',
+    roleOrUser: 'Enterprise Sales Executives / Reps',
+    period: 'FY 2026 (Jan - Dec)',
+    targetAmount: 1000000,
+    achievedAmount: 0,
+    pipelineCommit: 0,
+    bestCase: 0,
+    dealsCount: 0,
+  },
+];
+
+// Helper to compute live dynamic quotas from active CRM deals
+async function getLiveQuotas(): Promise<TargetQuotaItem[]> {
+  let allDeals: any[] = [];
+  if (isPrismaConnected()) {
+    try {
+      allDeals = await prisma.deal.findMany();
+    } catch {
+      allDeals = memoryDeals;
+    }
+  } else {
+    allDeals = memoryDeals;
+  }
+
+  // Calculate live deals aggregates
+  let totalClosedWon = 0;
+  let totalCommit = 0;
+  let totalBestCase = 0;
+  const count = allDeals.length;
+
+  for (const d of allDeals) {
+    const amt = Number(d.amount) || 0;
+    const stage = String(d.stage || '').toLowerCase();
+    const prob = Number(d.probability) || 0;
+
+    if (stage === 'closed won' || prob === 100) {
+      totalClosedWon += amt;
+    } else if (prob >= 60 || stage.includes('negotiation') || stage.includes('proposal') || stage.includes('decision')) {
+      totalCommit += amt;
+    } else if (prob >= 20 || stage.includes('needs analysis') || stage.includes('value proposition')) {
+      totalBestCase += amt;
+    }
+  }
+
+  // If there are deals in the system, reflect them in the active manager & CEO quotas
+  return memoryTargetQuotas.map((q) => {
+    if (q.id === 'quota-ceo') {
+      return {
+        ...q,
+        achievedAmount: totalClosedWon,
+        pipelineCommit: totalCommit,
+        bestCase: totalBestCase + totalCommit,
+        dealsCount: count,
+      };
+    }
+    if (q.id === 'quota-sales-head') {
+      return {
+        ...q,
+        achievedAmount: totalClosedWon,
+        pipelineCommit: totalCommit,
+        bestCase: totalBestCase + totalCommit,
+        dealsCount: count,
+      };
+    }
+    return {
+      ...q,
+      achievedAmount: 0,
+      pipelineCommit: Math.round(totalCommit * 0.4),
+      bestCase: Math.round(totalBestCase * 0.5),
+      dealsCount: Math.max(0, count - 1),
+    };
+  });
+}
 
 export const getForecastConfig = async (req: Request, res: Response) => {
   try {
+    const liveQuotas = await getLiveQuotas();
     res.json({
       success: true,
       data: {
         config: memoryForecastConfig,
-        quotas: memoryTargetQuotas,
+        quotas: liveQuotas,
       },
     });
   } catch (err: any) {
@@ -70,16 +168,20 @@ export const updateForecastConfig = async (req: Request, res: Response) => {
       dealRevenue: dealRevenue ?? memoryForecastConfig.dealRevenue,
       dealQuantity: dealQuantity ?? memoryForecastConfig.dealQuantity,
       fiscalYearType: fiscalYearType ?? memoryForecastConfig.fiscalYearType,
-      fiscalYearBeginsIn: fiscalYearBeginsIn ?? memoryForecastConfig.fiscalYearBeginsIn,
+      fiscalYearBeginsIn: fiscalYearBeginsIn ?? 'January',
       isConfigured: isConfigured !== undefined ? isConfigured : true,
       setBy: 'Aman kumar',
       configuredAt: new Date().toISOString(),
     };
 
+    const liveQuotas = await getLiveQuotas();
     res.json({
       success: true,
       message: 'Forecast configuration updated successfully',
-      data: memoryForecastConfig,
+      data: {
+        config: memoryForecastConfig,
+        quotas: liveQuotas,
+      },
     });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
@@ -91,7 +193,7 @@ export const resetForecastConfig = async (req: Request, res: Response) => {
     memoryForecastConfig.isConfigured = false;
     res.json({
       success: true,
-      message: 'Forecast configuration reset to unconfigured state',
+      message: 'Forecast configuration reset to unconfigured landing state',
       data: memoryForecastConfig,
     });
   } catch (err: any) {
