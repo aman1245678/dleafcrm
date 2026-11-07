@@ -57,7 +57,7 @@ export const PortalPricing: React.FC = () => {
       badge: 'MOST POPULAR',
       features: [
         'Unlimited Contacts & Accounts',
-        'In-Browser VoIP Softphone Dialer (WebRTC)',
+        'Lead Cadence & Workflow Automation',
         'WhatsApp Business Cloud Integration',
         'SalesInbox: 4-Way Prioritized Email Hub',
         'Inventory Management (Quotes, Invoices with 18% GST)',
@@ -121,7 +121,7 @@ export const PortalPricing: React.FC = () => {
     },
     {
       q: 'Is there a free trial available for the Enterprise features?',
-      a: 'Yes! We offer a full-featured 15-day free trial of Dleaf CRM Enterprise Edition with no credit card required. You get access to the 8-stage Kanban board, VoIP Softphone, WhatsApp Business drawer, and DleafAI.',
+      a: 'Yes! We offer a full-featured 15-day free trial of Dleaf CRM Enterprise Edition with no credit card required. You get access to the 8-stage Kanban board, SalesInbox, WhatsApp Business drawer, and DleafAI.',
     },
     {
       q: 'Does Dleaf CRM support Indian GST (18%) and multi-currency?',
@@ -399,7 +399,7 @@ export const PortalPricing: React.FC = () => {
                   <span className="text-xs text-slate-400 font-normal"> / month</span>
                 </div>
                 <div className="text-xs text-rose-500 font-semibold mt-1">
-                  ✓ Includes 15-day trial + VoIP softphone + WhatsApp setup
+                  ✓ Includes 15-day trial + SalesInbox + WhatsApp setup
                 </div>
 
                 <div className="mt-4 pt-4 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">

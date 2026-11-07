@@ -58,7 +58,6 @@ import { CreateContactModal } from './components/modals/CreateContactModal';
 import { CreateAccountModal } from './components/modals/CreateAccountModal';
 import { CreateTaskModal } from './components/modals/CreateTaskModal';
 import { AuthModal } from './components/modals/AuthModal';
-import { VoipDialerModal } from './components/communication/VoipDialerModal';
 import { WhatsAppDrawer } from './components/communication/WhatsAppDrawer';
 import { SubscriptionModal } from './components/modals/SubscriptionModal';
 
@@ -398,7 +397,6 @@ const CRMAppContainer: React.FC = () => {
       <CreateAccountModal />
       <CreateTaskModal />
       <AuthModal />
-      <VoipDialerModal />
       <WhatsAppDrawer />
       <SubscriptionModal
         isOpen={isSubscriptionModalOpen}

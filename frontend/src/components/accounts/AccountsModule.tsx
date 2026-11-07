@@ -26,7 +26,6 @@ export const AccountsModule: React.FC = () => {
     accounts,
     deleteAccount,
     setIsCreateAccountOpen,
-    startVoipCall,
   } = useCRM();
 
   // Custom Views dropdown state (Screenshot 1: All Accounts with dropdown)
@@ -899,16 +898,6 @@ export const AccountsModule: React.FC = () => {
                         <td className="py-3.5 px-4 font-mono text-slate-700">
                           <div className="flex items-center gap-1.5">
                             <span>{account.phone}</span>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                startVoipCall(account.phone, account.name);
-                              }}
-                              className="text-slate-400 hover:text-[#EE0979]"
-                              title="Call"
-                            >
-                              <Phone className="w-3 h-3" />
-                            </button>
                           </div>
                         </td>
                         <td className="py-3.5 px-4">

@@ -642,11 +642,11 @@ export const HomeDashboard: React.FC = () => {
                   <span className="truncate">How does 1-click lead conversion work?</span>
                 </div>
                 <div
-                  onClick={() => openDleafAiWithPrompt('How to use WhatsApp and VoIP calling in Dleaf CRM?')}
+                  onClick={() => openDleafAiWithPrompt('How to use WhatsApp and Email communication in Dleaf CRM?')}
                   className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-[#FFF1F7] hover:text-[#EE0979] cursor-pointer transition"
                 >
                   <span>✉️</span>
-                  <span className="truncate">WhatsApp & VoIP calling guide</span>
+                  <span className="truncate">WhatsApp & Email guide</span>
                 </div>
               </div>
             </div>

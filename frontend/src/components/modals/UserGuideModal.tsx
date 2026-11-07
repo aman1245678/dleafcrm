@@ -212,8 +212,8 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
                   <p>Schedule client demo calls and physical meetings. Includes Google Calendar / Outlook sync compatibility and attendee RSVP tracking.</p>
                 </div>
                 <div className="p-3.5 bg-white border border-slate-200 rounded-xl space-y-1 shadow-2xs">
-                  <strong className="text-slate-900 block font-bold">Calls & VoIP Softphone</strong>
-                  <p>Log incoming and outgoing calls with call disposition outcomes (Connected, Busy, No Answer) and duration. Directly synchronized with in-browser WebRTC VoIP Softphone.</p>
+                  <strong className="text-slate-900 block font-bold">Calls & Log Tracker</strong>
+                  <p>Log incoming and outgoing calls with call disposition outcomes (Connected, Busy, No Answer), scheduled times, and duration records.</p>
                 </div>
               </div>
             </div>
@@ -389,7 +389,7 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
                     <div className="p-2.5 bg-white border border-[#EE0979] rounded-xl shadow-xs">
                       <div className="font-bold text-[#0F172A]">Professional (Popular)</div>
                       <div className="text-[#EE0979] font-extrabold text-sm">₹3,999/mo</div>
-                      <div className="text-[10px] text-slate-500 mt-1">VoIP Softphone, IMAP & WhatsApp</div>
+                      <div className="text-[10px] text-slate-500 mt-1">SalesInbox, IMAP & WhatsApp</div>
                     </div>
                     <div className="p-2.5 bg-white border rounded-xl">
                       <div className="font-bold text-slate-800">Enterprise</div>

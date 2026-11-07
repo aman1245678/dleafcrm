@@ -46,7 +46,6 @@ export const LeadsModule: React.FC = () => {
     selectedLeadForDetail,
     setSelectedLeadForDetail,
     setIsCreateLeadOpen,
-    startVoipCall,
     openWhatsAppDrawer,
   } = useCRM();
 
@@ -1032,15 +1031,6 @@ export const LeadsModule: React.FC = () => {
                         </td>
                         <td className="py-3.5 px-4 text-right" onClick={(e) => e.stopPropagation()}>
                           <div className="flex items-center justify-end gap-1.5">
-                            {/* VoIP Softphone Call button */}
-                            <button
-                              onClick={() => startVoipCall(lead.phone, `${lead.firstName} ${lead.lastName}`)}
-                              className="p-1.5 rounded-lg border border-[#F1D5E4] hover:bg-[#FFF1F7] text-[#0F172A] transition cursor-pointer"
-                              title={`Call ${lead.firstName} via VoIP`}
-                            >
-                              <Phone className="w-3.5 h-3.5" />
-                            </button>
-
                             {/* WhatsApp Direct Chat button */}
                             <button
                               onClick={() =>

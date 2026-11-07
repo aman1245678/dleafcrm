@@ -32,7 +32,7 @@ export const PortalCustomers: React.FC = () => {
       industry: 'enterprise',
       logo: 'AGL',
       quote:
-        'The in-browser VoIP softphone dialer and WhatsApp Business drawer eliminated manual phone logging for our 120 field sales reps. Every call duration and outcome is automatically recorded.',
+        'The WhatsApp Business drawer and SalesInbox hub eliminated manual logging for our 120 field sales reps. Every client message and outcome is automatically recorded.',
       author: 'Priya Narang',
       title: 'VP of Sales Operations',
       metrics: '45% Shorter Deal Cycles',

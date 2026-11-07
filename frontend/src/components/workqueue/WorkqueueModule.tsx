@@ -41,7 +41,6 @@ export const WorkqueueModule: React.FC = () => {
     setIsCreateTaskOpen,
     setIsCreateLeadOpen,
     setActiveModule,
-    startVoipCall,
     openWhatsAppDrawer,
   } = useCRM();
 
@@ -523,7 +522,7 @@ export const WorkqueueModule: React.FC = () => {
               </div>
             )}
 
-            {/* CALLS QUEUE WITH 1-CLICK VOIP */}
+            {/* CALLS QUEUE */}
             {activeCategory === 'calls' && (
               <div className="divide-y divide-slate-100">
                 {filteredCalls.length === 0 ? (
@@ -566,13 +565,6 @@ export const WorkqueueModule: React.FC = () => {
                         >
                           <MessageSquare className="w-3.5 h-3.5" />
                         </button>
-                        <button
-                          onClick={() => startVoipCall(call.phone || '+91 98765 43210', call.contactName)}
-                          className="text-xs font-bold px-3 py-1.5 rounded-lg bg-[#153B2E] text-white hover:bg-[#1E5442] active:scale-95 transition cursor-pointer flex items-center gap-1.5 shadow-xs"
-                        >
-                          <PhoneCall className="w-3.5 h-3.5" />
-                          <span>Call via VoIP</span>
-                        </button>
                       </div>
                     </div>
                   ))
@@ -601,11 +593,15 @@ export const WorkqueueModule: React.FC = () => {
                         {lead.leadStatus}
                       </span>
                       <button
-                        onClick={() => startVoipCall(lead.phone, `${lead.firstName} ${lead.lastName}`)}
-                        className="p-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 transition cursor-pointer"
-                        title="Call via VoIP"
+                        onClick={() => openWhatsAppDrawer({
+                          name: `${lead.firstName} ${lead.lastName}`,
+                          phone: lead.phone,
+                          module: 'Lead',
+                        })}
+                        className="p-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 transition cursor-pointer"
+                        title="Send WhatsApp"
                       >
-                        <Phone className="w-3.5 h-3.5 text-emerald-700" />
+                        <MessageSquare className="w-3.5 h-3.5 text-emerald-700" />
                       </button>
                       <button
                         onClick={() => setActiveModule('leads')}
@@ -634,11 +630,15 @@ export const WorkqueueModule: React.FC = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       <button
-                        onClick={() => startVoipCall(c.phone, `${c.firstName} ${c.lastName}`)}
-                        className="p-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 transition cursor-pointer"
-                        title="Call Contact"
+                        onClick={() => openWhatsAppDrawer({
+                          name: `${c.firstName} ${c.lastName}`,
+                          phone: c.phone,
+                          module: 'Contact',
+                        })}
+                        className="p-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 transition cursor-pointer"
+                        title="Send WhatsApp"
                       >
-                        <Phone className="w-3.5 h-3.5 text-emerald-700" />
+                        <MessageSquare className="w-3.5 h-3.5 text-emerald-700" />
                       </button>
                       <button
                         onClick={() => setActiveModule('contacts')}

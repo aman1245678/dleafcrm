@@ -29,7 +29,6 @@ export const ContactsModule: React.FC = () => {
     contacts,
     deleteContact,
     setIsCreateContactOpen,
-    startVoipCall,
     openWhatsAppDrawer,
   } = useCRM();
 
@@ -967,15 +966,6 @@ export const ContactsModule: React.FC = () => {
                         </td>
                         <td className="py-3.5 px-4 text-right" onClick={(e) => e.stopPropagation()}>
                           <div className="flex items-center justify-end gap-1.5">
-                            {/* Softphone VoIP call */}
-                            <button
-                              onClick={() => startVoipCall(contact.phone, `${contact.firstName} ${contact.lastName}`)}
-                              className="p-1.5 rounded-lg border border-[#F1D5E4] hover:bg-[#FFF1F7] text-[#0F172A] transition cursor-pointer"
-                              title={`VoIP Call ${contact.firstName}`}
-                            >
-                              <Phone className="w-3.5 h-3.5" />
-                            </button>
-
                             {/* WhatsApp Direct */}
                             <button
                               onClick={() =>

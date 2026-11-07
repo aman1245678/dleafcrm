@@ -269,7 +269,7 @@ export const PortalFeatures: React.FC = () => {
               <div className="text-xs font-bold text-rose-500 uppercase tracking-wider">Test It Live</div>
               <h4 className="text-sm font-bold mt-1">Open Live CRM Workspace</h4>
               <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                Test the 8-stage Kanban board and VoIP softphone directly in the browser applet.
+                Test the 8-stage Kanban board and WhatsApp communication drawer directly in the browser applet.
               </p>
               <button
                 onClick={() => setAppMode('workspace')}

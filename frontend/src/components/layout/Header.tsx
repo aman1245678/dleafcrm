@@ -58,9 +58,7 @@ export const Header: React.FC = () => {
     avatar: 'A'
   };
   const setIsAuthModalOpen = crm?.setIsAuthModalOpen || (() => {});
-  const setIsVoipModalOpen = crm?.setIsVoipModalOpen || (() => {});
   const setIsWhatsAppModalOpen = crm?.setIsWhatsAppModalOpen || (() => {});
-  const voipCall = crm?.voipCall;
   const setAppMode = crm?.setAppMode || (() => {});
   const logout = crm?.logout || (async () => {});
 
@@ -77,7 +75,6 @@ export const Header: React.FC = () => {
   const [hasLogoError, setHasLogoError] = useState(false);
 
   // Safe variables
-  const isVoipActive = Boolean(voipCall?.active);
   const pendingTasksCount = tasks.filter((t) => t?.status !== 'Completed').length;
   const unreadEmailsCount = emails.filter((e) => !e?.isRead).length;
 
@@ -332,20 +329,6 @@ export const Header: React.FC = () => {
             )}
           </div>
 
-          {/* VoIP Call Button - Safely uses isVoipActive without crashing */}
-          <button
-            onClick={() => setIsVoipModalOpen(true)}
-            className={`hidden sm:flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-lg border text-xs font-semibold transition shadow-xs ${
-              isVoipActive
-                ? 'bg-[#EE0979] text-white border-pink-600 animate-pulse'
-                : 'bg-slate-100 hover:bg-slate-200 text-[#D8086C] border-slate-200'
-            }`}
-            title="Open In-Browser VoIP Softphone Dialer"
-          >
-            <Phone className="w-3.5 h-3.5" />
-            <span className="hidden xl:inline">{isVoipActive ? 'Calling...' : 'VoIP Call'}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-pink-600 animate-ping"></span>
-          </button>
 
           {/* WhatsApp / SMS Messenger */}
           <button

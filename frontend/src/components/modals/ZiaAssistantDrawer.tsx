@@ -124,7 +124,7 @@ export const ZiaAssistantDrawer: React.FC = () => {
           {
             id: `ai-${Date.now()}`,
             sender: 'dleafai',
-            text: 'DleafCRM ke core features ready hain. Deals Kanban, Lead 1-Click Convert, VoIP calling aur WhatsApp communication hub se connect kar sakte hain.',
+            text: 'DleafCRM ke core features ready hain. Deals Kanban, Lead 1-Click Convert, SalesInbox aur WhatsApp communication hub se connect kar sakte hain.',
             time: formatCurrentTime(),
             model: 'DleafCRM AI',
           },
@@ -529,11 +529,11 @@ export const ZiaAssistantDrawer: React.FC = () => {
 
           <button
             type="button"
-            onClick={() => handleSendPrompt('WhatsApp & VoIP kaise chalega?')}
+            onClick={() => handleSendPrompt('WhatsApp & Email messaging kaise chalega?')}
             className="px-2.5 py-1 rounded-full bg-[#131A33] hover:bg-[#1D264A] text-slate-300 hover:text-white border border-white/10 flex items-center gap-1.5 transition cursor-pointer"
           >
             <PhoneCall className="w-3 h-3 text-emerald-400" />
-            <span>WhatsApp & VoIP kaise chalega?</span>
+            <span>WhatsApp & Email messaging kaise chalega?</span>
           </button>
 
           <button

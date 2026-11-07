@@ -475,7 +475,7 @@ export const PortalFreeTools: React.FC = () => {
                       </div>
                       <div className="text-slate-400 text-[11px]">
                         {totalLeadScore >= 75
-                          ? 'Automatically routes to Senior AE with instant VoIP softphone task reminder.'
+                          ? 'Automatically routes to Senior AE with instant WhatsApp & task reminder.'
                           : 'Added to automated 5-step email educational campaign.'}
                       </div>
                     </div>

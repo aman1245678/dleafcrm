@@ -53,9 +53,7 @@ const PLANS: PlanOption[] = [
     highlight: true,
     badge: 'MOST POPULAR',
     features: [
-      'Up to 20,000 Contacts & Accounts',
-      '2,500 Pipeline Deals & Kanban Board',
-      'In-Browser VoIP Softphone Dialer (WebRTC)',
+      'Omnichannel SalesInbox & IMAP Suite',
       'WhatsApp Business Cloud Integration',
       'Inventory Management (Quotes & Invoices)',
       'Autonomous Deal Win Prediction by DleafAI',
@@ -73,7 +71,7 @@ const PLANS: PlanOption[] = [
     features: [
       'Up to 500,000 Contacts & Accounts',
       '100,000 Active Deals & Automation',
-      'Multi-Agent WhatsApp & VoIP Softphone',
+      'Multi-Agent WhatsApp & Campaigns Suite',
       'Full Custom Roles & Field-Level Permissions',
       'MCP Server & Custom Webhook Automations',
       'Unlimited Cloud Storage & Data Backup',
@@ -206,8 +204,8 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
               </h2>
               <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl">
                 {reason === 'gate'
-                  ? 'CRM access requires an active commercial plan. Please subscribe using Razorpay to unlock pipeline deals, leads, VoIP, and WhatsApp.'
-                  : 'Scale your team capacity with higher contacts, autonomous DleafAI intelligence, and multi-agent softphones.'}
+                  ? 'CRM access requires an active commercial plan. Please subscribe using Razorpay to unlock pipeline deals, leads, SalesInbox, and WhatsApp.'
+                  : 'Scale your team capacity with higher contacts, autonomous DleafAI intelligence, and omnichannel messaging.'}
               </p>
             </div>
           </div>

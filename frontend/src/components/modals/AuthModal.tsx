@@ -280,7 +280,7 @@ export const AuthModal: React.FC = () => {
                         <span className="text-[10px] bg-pink-100 text-[#D8086C] font-semibold px-1.5 py-0.5 rounded">Rep</span>
                       </div>
                       <p className="text-[11px] text-slate-500 mt-0.5">
-                        Leads qualification, Kanban deals execution, VoIP dialer & WhatsApp client chats.
+                        Leads qualification, Kanban deals execution, SalesInbox & WhatsApp client chats.
                       </p>
                     </div>
                   </div>
