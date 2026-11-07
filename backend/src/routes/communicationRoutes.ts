@@ -51,6 +51,62 @@ router.post('/send-message', async (req, res) => {
   const cleanMsg = String(message).trim();
   const msgType = type === 'sms' ? 'sms' : 'whatsapp';
 
+  // 1. DLT SMS dispatch if type is SMS
+  let liveSmsResult: any = null;
+  if (msgType === 'sms' && process.env.SMS_API_URL && process.env.SMS_API_KEY) {
+    try {
+      const cleanTo = cleanRecipient.replace(/[^0-9]/g, '').slice(-10);
+      const smsUrl = `${process.env.SMS_API_URL}?method=sms&api_key=${encodeURIComponent(process.env.SMS_API_KEY)}&to=${cleanTo}&sender=${encodeURIComponent(process.env.SMS_SENDER_ID || 'BSMDO')}&message=${encodeURIComponent(cleanMsg)}&format=json`;
+      console.log(`📱 [DLT Bulk SMS] Dispatching to ${cleanTo}...`);
+      const smsRes = await fetch(smsUrl);
+      liveSmsResult = await smsRes.json();
+      console.log('📱 [DLT Bulk SMS Dispatch Result]:', liveSmsResult);
+    } catch (smsErr: any) {
+      console.warn('⚠️ [DLT SMS Gateway] Failed to dispatch:', smsErr.message);
+    }
+  }
+
+  // 2. WhatsApp Cloud API / Nexwapi dispatch
+  let liveMetaResult: any = null;
+  const waToken = (process.env.WHATSAPP_ACCESS_TOKEN || process.env.WHATSAPP_API_TOKEN || '').trim();
+  const waPhoneId = (process.env.WHATSAPP_PHONE_NUMBER_ID || '').trim();
+  const waVersion = (process.env.WHATSAPP_API_VERSION || 'v22.0').trim();
+
+  if (msgType === 'whatsapp' && waToken && waPhoneId) {
+    try {
+      const cleanTo = cleanRecipient.replace(/[^0-9]/g, '');
+      console.log(`📱 [Meta WhatsApp] Dispatching to ${cleanTo} via ${waVersion}/${waPhoneId}...`);
+      
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+      const metaRes = await fetch(`https://graph.facebook.com/${waVersion}/${waPhoneId}/messages`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${waToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messaging_product: 'whatsapp',
+          recipient_type: 'individual',
+          to: cleanTo,
+          type: 'text',
+          text: { preview_url: false, body: cleanMsg },
+        }),
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+      liveMetaResult = await metaRes.json();
+      console.log('✅ [Meta WhatsApp Result]:', JSON.stringify(liveMetaResult));
+    } catch (metaErr: any) {
+      console.warn('⚠️ [Meta Cloud API] Gateway call failed or timed out:', metaErr.message);
+    }
+  } else if (msgType === 'whatsapp') {
+    console.warn('⚠️ [Meta WhatsApp] Missing credentials:', { hasToken: Boolean(waToken), hasPhoneId: Boolean(waPhoneId) });
+  }
+
+  // 3. Persist record to PostgreSQL or fallback in-memory store
+  let savedMsg: any = null;
   try {
     const result = await pool.query(
       `INSERT INTO whatsapp_messages (sender, recipient, message, type, status)
@@ -58,69 +114,10 @@ router.post('/send-message', async (req, res) => {
        RETURNING *`,
       [sender, cleanRecipient, cleanMsg, msgType]
     );
-
-    // 1. DLT SMS dispatch if type is SMS
-    let liveSmsResult: any = null;
-    if (msgType === 'sms' && process.env.SMS_API_URL && process.env.SMS_API_KEY) {
-      try {
-        const cleanTo = cleanRecipient.replace(/[^0-9]/g, '').slice(-10);
-        const smsUrl = `${process.env.SMS_API_URL}?method=sms&api_key=${encodeURIComponent(process.env.SMS_API_KEY)}&to=${cleanTo}&sender=${encodeURIComponent(process.env.SMS_SENDER_ID || 'BSMDO')}&message=${encodeURIComponent(cleanMsg)}&format=json`;
-        const smsRes = await fetch(smsUrl);
-        liveSmsResult = await smsRes.json();
-        console.log('📱 [DLT Bulk SMS Dispatch Result]:', liveSmsResult);
-      } catch (smsErr: any) {
-        console.warn('⚠️ [DLT SMS Gateway] Failed to dispatch:', smsErr.message);
-      }
-    }
-
-    // 2. WhatsApp Cloud API / Nexwapi dispatch
-    let liveMetaResult: any = null;
-    const waToken = (process.env.WHATSAPP_ACCESS_TOKEN || process.env.WHATSAPP_API_TOKEN || '').trim();
-    const waPhoneId = (process.env.WHATSAPP_PHONE_NUMBER_ID || '').trim();
-    const waVersion = (process.env.WHATSAPP_API_VERSION || 'v22.0').trim();
-
-    if (msgType === 'whatsapp' && waToken && waPhoneId) {
-      try {
-        const cleanTo = cleanRecipient.replace(/[^0-9]/g, '');
-        console.log(`📱 [Meta WhatsApp] Dispatching to ${cleanTo} via ${waVersion}/${waPhoneId}...`);
-        
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 8000);
-
-        const metaRes = await fetch(`https://graph.facebook.com/${waVersion}/${waPhoneId}/messages`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${waToken}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            messaging_product: 'whatsapp',
-            recipient_type: 'individual',
-            to: cleanTo,
-            type: 'text',
-            text: { preview_url: false, body: cleanMsg },
-          }),
-          signal: controller.signal,
-        });
-        clearTimeout(timeoutId);
-        liveMetaResult = await metaRes.json();
-        console.log('✅ [Meta WhatsApp Result]:', liveMetaResult);
-      } catch (metaErr: any) {
-        console.warn('⚠️ [Meta Cloud API] Gateway call failed or timed out:', metaErr.message);
-      }
-    }
-
-    const savedMsg = result.rows[0];
-    return res.status(201).json({
-      success: true,
-      message: `${msgType === 'whatsapp' ? 'WhatsApp' : 'SMS'} message dispatched and stored in PostgreSQL!`,
-      data: savedMsg,
-      metaWebhookStatus: liveMetaResult?.messages ? 'DELIVERED_TO_META_WHATSAPP' : (liveSmsResult?.status === 'success' ? 'DELIVERED_TO_SMS_GATEWAY' : 'DISPATCHED_TO_GATEWAY'),
-      metaDetails: liveMetaResult || liveSmsResult,
-    });
-  } catch (err: any) {
-    // Graceful fallback to memory store if local PostgreSQL is unreachable
-    const fallbackMsg = {
+    savedMsg = result.rows[0];
+  } catch (dbErr: any) {
+    console.warn('⚠️ [DB Warning] Could not save to postgres, using memory fallback:', dbErr.message);
+    savedMsg = {
       id: Date.now(),
       sender,
       recipient: cleanRecipient,
@@ -129,15 +126,23 @@ router.post('/send-message', async (req, res) => {
       status: 'sent',
       created_at: new Date().toISOString(),
     };
-    memoryMessages.unshift(fallbackMsg);
-
-    return res.status(201).json({
-      success: true,
-      message: `${msgType === 'whatsapp' ? 'WhatsApp' : 'SMS'} message dispatched (Memory fallback mode)!`,
-      data: fallbackMsg,
-      metaWebhookStatus: 'DISPATCHED_TO_GATEWAY',
-    });
+    memoryMessages.unshift(savedMsg);
   }
+
+  const isDelivered = Boolean(liveMetaResult?.messages?.[0]?.id);
+  const isSmsDelivered = liveSmsResult?.status === 'success';
+
+  return res.status(201).json({
+    success: true,
+    message: isDelivered 
+      ? 'WhatsApp message successfully sent to Meta Cloud API!' 
+      : (isSmsDelivered ? 'SMS message dispatched to carrier gateway!' : `${msgType === 'whatsapp' ? 'WhatsApp' : 'SMS'} message processed!`),
+    data: savedMsg,
+    metaWebhookStatus: isDelivered 
+      ? 'DELIVERED_TO_META_WHATSAPP' 
+      : (isSmsDelivered ? 'DELIVERED_TO_SMS_GATEWAY' : 'DISPATCHED_TO_GATEWAY'),
+    metaDetails: liveMetaResult || liveSmsResult,
+  });
 });
 
 // GET /api/communication/messages
