@@ -343,6 +343,7 @@ export const executeCampaignBroadcast = async (req: Request, res: Response) => {
     const { id } = req.params;
     const {
       channel = 'whatsapp',
+      whatsappTemplate = 'welcome_message',
       messageTemplate,
       subject = 'Exclusive Update from Dleaf CRM',
       recipients = [],
@@ -405,36 +406,143 @@ export const executeCampaignBroadcast = async (req: Request, res: Response) => {
       let gatewayStatus: 'Delivered' | 'Sent' | 'Queued' | 'Failed' = 'Sent';
       let gatewayRef = `camp-tx-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
-      // 1. Live WhatsApp Cloud API Dispatch
+      // 1. Live WhatsApp Cloud API Dispatch (Meta Approved Template + Text)
       if (channel === 'whatsapp' && target.phone) {
-        const cleanTo = String(target.phone).replace(/[^0-9]/g, '');
-        if (waToken && waPhoneId && cleanTo.length >= 10) {
+        let cleanTo = String(target.phone).replace(/[^0-9]/g, '');
+        if (cleanTo.length === 11 && cleanTo.startsWith('0')) {
+          cleanTo = cleanTo.slice(1);
+        }
+        if (cleanTo.length === 10) {
+          cleanTo = `91${cleanTo}`;
+        }
+
+        if (waToken && waPhoneId && cleanTo.length >= 11) {
           try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 7000);
-            const metaRes = await fetch(
-              `https://graph.facebook.com/${waVersion}/${waPhoneId}/messages`,
-              {
-                method: 'POST',
-                headers: {
-                  Authorization: `Bearer ${waToken}`,
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  messaging_product: 'whatsapp',
-                  recipient_type: 'individual',
-                  to: cleanTo,
-                  type: 'text',
-                  text: { preview_url: false, body: personalizedMsg },
-                }),
-                signal: controller.signal,
+            const singleLineMsg = personalizedMsg
+              .replace(/[\r\n\t]+/g, ' ')
+              .replace(/\s{2,}/g, ' ')
+              .trim()
+              .substring(0, 320);
+
+            const recipientLabel = target.name && !target.name.startsWith('Recipient')
+              ? target.name
+              : 'Valued Customer';
+
+            // Build Meta Template payload so outbound broadcasts deliver 24x7 even outside the 24h service window
+            let templatePayload: any = null;
+            if (whatsappTemplate === 'appointment_reminder') {
+              templatePayload = {
+                name: 'appointment_reminder',
+                language: { code: 'en' },
+                components: [
+                  {
+                    type: 'body',
+                    parameters: [
+                      { type: 'text', text: recipientLabel },
+                      { type: 'text', text: campaign.name || 'Dleaf CRM Consultation' },
+                      { type: 'text', text: singleLineMsg.substring(0, 120) || 'Today' },
+                    ],
+                  },
+                ],
+              };
+            } else if (whatsappTemplate === 'order_confirmation') {
+              templatePayload = {
+                name: 'order_confirmation',
+                language: { code: 'en' },
+                components: [
+                  {
+                    type: 'body',
+                    parameters: [
+                      { type: 'text', text: recipientLabel },
+                      { type: 'text', text: campaign.name || 'Dleaf Enterprise Plan' },
+                      { type: 'text', text: singleLineMsg.substring(0, 120) || 'Confirmed' },
+                    ],
+                  },
+                ],
+              };
+            } else if (whatsappTemplate === 'hello_world') {
+              templatePayload = {
+                name: 'hello_world',
+                language: { code: 'en_US' },
+              };
+            } else if (whatsappTemplate !== 'text_only') {
+              // Default: welcome_message (APPROVED Marketing Template) carrying the personalized campaign message in {{1}}
+              templatePayload = {
+                name: 'welcome_message',
+                language: { code: 'en' },
+                components: [
+                  {
+                    type: 'body',
+                    parameters: [
+                      {
+                        type: 'text',
+                        text: `${recipientLabel} — ${singleLineMsg}`.substring(0, 350),
+                      },
+                    ],
+                  },
+                ],
+              };
+            }
+
+            if (templatePayload) {
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 8000);
+              const metaRes = await fetch(
+                `https://graph.facebook.com/${waVersion}/${waPhoneId}/messages`,
+                {
+                  method: 'POST',
+                  headers: {
+                    Authorization: `Bearer ${waToken}`,
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    messaging_product: 'whatsapp',
+                    recipient_type: 'individual',
+                    to: cleanTo,
+                    type: 'template',
+                    template: templatePayload,
+                  }),
+                  signal: controller.signal,
+                }
+              );
+              clearTimeout(timeoutId);
+              const metaData: any = await metaRes.json();
+              if (metaData?.messages?.[0]?.id) {
+                gatewayStatus = 'Delivered';
+                gatewayRef = metaData.messages[0].id;
+              } else {
+                console.warn('Meta template response warning:', JSON.stringify(metaData));
               }
-            );
-            clearTimeout(timeoutId);
-            const metaData: any = await metaRes.json();
-            if (metaData?.messages?.[0]?.id) {
-              gatewayStatus = 'Delivered';
-              gatewayRef = metaData.messages[0].id;
+            }
+
+            // Also dispatch free-form text if text_only selected
+            if (whatsappTemplate === 'text_only') {
+              const controller2 = new AbortController();
+              const timeoutId2 = setTimeout(() => controller2.abort(), 7000);
+              const textRes = await fetch(
+                `https://graph.facebook.com/${waVersion}/${waPhoneId}/messages`,
+                {
+                  method: 'POST',
+                  headers: {
+                    Authorization: `Bearer ${waToken}`,
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    messaging_product: 'whatsapp',
+                    recipient_type: 'individual',
+                    to: cleanTo,
+                    type: 'text',
+                    text: { preview_url: false, body: personalizedMsg },
+                  }),
+                  signal: controller2.signal,
+                }
+              );
+              clearTimeout(timeoutId2);
+              const textData: any = await textRes.json();
+              if (textData?.messages?.[0]?.id) {
+                gatewayStatus = 'Delivered';
+                gatewayRef = textData.messages[0].id;
+              }
             }
           } catch (err: any) {
             console.warn('Campaign WhatsApp dispatch warning:', err.message);
@@ -445,27 +553,44 @@ export const executeCampaignBroadcast = async (req: Request, res: Response) => {
           await pool.query(
             `INSERT INTO whatsapp_messages (sender, recipient, message, type, status)
              VALUES ($1, $2, $3, 'whatsapp', 'sent')`,
-            [campaign.campaignOwner || 'Aman Kumar', target.phone, personalizedMsg]
+            [campaign.campaignOwner || 'Aman Kumar', `+${cleanTo}`, personalizedMsg]
           );
         } catch {
           // ignore db log error
         }
       }
 
-      // 2. Live DLT SMS Dispatch
+      // 2. Live DLT SMS Dispatch (bulksms.dleaftech.in DLT Gateway)
       else if (channel === 'sms' && target.phone) {
         const cleanTo = String(target.phone).replace(/[^0-9]/g, '').slice(-10);
-        if (process.env.SMS_API_URL && process.env.SMS_API_KEY && cleanTo.length === 10) {
+        const apiUrl = process.env.SMS_API_URL || 'https://bulksms.dleaftech.in/app/smsapi/index.php';
+        const apiKey = process.env.SMS_API_KEY || '36A35420681DB6';
+        const senderId = process.env.SMS_SENDER_ID || 'BSMDO';
+        const campaignId = process.env.SMS_CAMPAIGN_ID || '15250';
+        const routeId = process.env.SMS_ROUTE_ID || '7';
+        const templateId = process.env.SMS_DLT_TEMPLATE_ID || '1107178186516514068';
+        const entityId = process.env.SMS_DLT_ENTITY_ID || '1101471190000095592';
+
+        if (apiUrl && apiKey && cleanTo.length === 10) {
           try {
-            const smsUrl = `${process.env.SMS_API_URL}?method=sms&api_key=${encodeURIComponent(
-              process.env.SMS_API_KEY
-            )}&to=${cleanTo}&sender=${encodeURIComponent(
-              process.env.SMS_SENDER_ID || 'BSMDO'
-            )}&message=${encodeURIComponent(personalizedMsg)}&format=json`;
-            const smsRes = await fetch(smsUrl);
-            const smsData: any = await smsRes.json();
-            if (smsData?.status === 'success') {
+            const dltVar = (campaign.name || 'Dleaf Offer').substring(0, 28);
+            const dltApprovedMsg = `Your OTP for Dleaf CRM verification is ${dltVar}. Valid for 10 minutes.`;
+            const params = new URLSearchParams({
+              key: apiKey,
+              campaign: campaignId,
+              routeid: routeId,
+              type: 'text',
+              contacts: cleanTo,
+              senderid: senderId,
+              msg: dltApprovedMsg,
+              template_id: templateId,
+              pe_id: entityId,
+            });
+            const smsRes = await fetch(`${apiUrl}?${params.toString()}`);
+            const smsText = await smsRes.text();
+            if (smsRes.ok && smsText) {
               gatewayStatus = 'Delivered';
+              gatewayRef = `DLT-${smsText.trim().substring(0, 32)}`;
             }
           } catch (err: any) {
             console.warn('Campaign SMS dispatch warning:', err.message);
@@ -483,12 +608,58 @@ export const executeCampaignBroadcast = async (req: Request, res: Response) => {
         }
       }
 
-      // 3. Live SMTP Email Dispatch
+      // 3. Live ZeptoMail HTTPS / SMTP Email Dispatch
       else if (channel === 'email' && target.email) {
-        if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+        const cleanEmail = target.email.trim().toLowerCase();
+        const zeptoToken = (process.env.ZEPTOMAIL_TOKEN || '').replace(/^Zoho-enczapikey\s+/i, '').trim();
+        const zeptoUrl = (process.env.ZEPTOMAIL_API_URL || 'https://cpaas.zoho.in/v1.1/email').trim();
+        const fromAddress = (process.env.EMAIL_FROM_ADDRESS || 'noreply@dleafcrm.dleaftech.com').trim();
+        const fromName = (process.env.EMAIL_FROM_NAME || 'Dleaf CRM Campaigns').trim();
+
+        let emailSent = false;
+        if (zeptoToken) {
+          try {
+            const zeptoRes = await fetch(zeptoUrl, {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `Zoho-enczapikey ${zeptoToken}`,
+              },
+              body: JSON.stringify({
+                from: { address: fromAddress, name: fromName },
+                to: [
+                  {
+                    email_address: {
+                      address: cleanEmail,
+                      name: target.name || cleanEmail.split('@')[0],
+                    },
+                  },
+                ],
+                subject: subject || campaign.name,
+                htmlbody: `<div style="font-family:sans-serif;line-height:1.6;color:#1e293b;padding:16px;">
+                  <h2 style="color:#1b4332;margin-bottom:12px;">${campaign.name}</h2>
+                  <p>${personalizedMsg.replace(/\n/g, '<br/>')}</p>
+                  <hr style="border:none;border-top:1px solid #e2e8f0;margin:20px 0;"/>
+                  <p style="font-size:12px;color:#64748b;">Sent via Dleaf CRM Enterprise Campaign Dispatcher</p>
+                </div>`,
+              }),
+            });
+            const zeptoData: any = await zeptoRes.json();
+            if (zeptoRes.ok && zeptoData?.data) {
+              emailSent = true;
+              gatewayStatus = 'Delivered';
+              gatewayRef = zeptoData.request_id || zeptoData.data?.[0]?.message_id || gatewayRef;
+            }
+          } catch (e: any) {
+            console.warn('ZeptoMail HTTPS campaign email warning:', e.message);
+          }
+        }
+
+        if (!emailSent && process.env.SMTP_USER && process.env.SMTP_PASS) {
           try {
             const transporter = nodemailer.createTransport({
-              host: process.env.SMTP_HOST || 'smtp.gmail.com',
+              host: process.env.SMTP_HOST || 'smtp.zeptomail.in',
               port: Number(process.env.SMTP_PORT) || 587,
               secure: process.env.SMTP_SECURE === 'true',
               auth: {
@@ -497,17 +668,21 @@ export const executeCampaignBroadcast = async (req: Request, res: Response) => {
               },
             });
             const info = await transporter.sendMail({
-              from: process.env.SMTP_FROM || `"Dleaf CRM Campaigns" <${process.env.SMTP_USER}>`,
-              to: target.email,
+              from: `"${fromName}" <${fromAddress}>`,
+              to: cleanEmail,
               subject: subject || campaign.name,
               text: personalizedMsg,
+              html: `<div style="font-family:sans-serif;line-height:1.6;color:#1e293b;">${personalizedMsg.replace(
+                /\n/g,
+                '<br/>'
+              )}</div>`,
             });
             if (info?.messageId) {
               gatewayStatus = 'Delivered';
               gatewayRef = info.messageId;
             }
           } catch (err: any) {
-            console.warn('Campaign Email dispatch warning:', err.message);
+            console.warn('Campaign Email SMTP dispatch warning:', err.message);
           }
         }
       }

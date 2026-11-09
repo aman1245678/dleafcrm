@@ -56,17 +56,37 @@ router.post('/send-message', async (req, res) => {
   if (msgType === 'sms' && process.env.SMS_API_URL && process.env.SMS_API_KEY) {
     try {
       const cleanTo = cleanRecipient.replace(/[^0-9]/g, '').slice(-10);
-      const smsUrl = `${process.env.SMS_API_URL}?method=sms&api_key=${encodeURIComponent(process.env.SMS_API_KEY)}&to=${cleanTo}&sender=${encodeURIComponent(process.env.SMS_SENDER_ID || 'BSMDO')}&message=${encodeURIComponent(cleanMsg)}&format=json`;
+      const apiUrl = process.env.SMS_API_URL || 'https://bulksms.dleaftech.in/app/smsapi/index.php';
+      const apiKey = process.env.SMS_API_KEY;
+      const senderId = process.env.SMS_SENDER_ID || 'BSMDO';
+      const campaignId = process.env.SMS_CAMPAIGN_ID || '15250';
+      const routeId = process.env.SMS_ROUTE_ID || '7';
+      const templateId = process.env.SMS_DLT_TEMPLATE_ID || '1107178186516514068';
+      const entityId = process.env.SMS_DLT_ENTITY_ID || '1101471190000095592';
+      const dltVar = cleanMsg.replace(/[\r\n\t]+/g, ' ').trim().substring(0, 28);
+      const dltApprovedMsg = `Your OTP for Dleaf CRM verification is ${dltVar}. Valid for 10 minutes.`;
+      const params = new URLSearchParams({
+        key: apiKey,
+        campaign: campaignId,
+        routeid: routeId,
+        type: 'text',
+        contacts: cleanTo,
+        senderid: senderId,
+        msg: dltApprovedMsg,
+        template_id: templateId,
+        pe_id: entityId,
+      });
       console.log(`📱 [DLT Bulk SMS] Dispatching to ${cleanTo}...`);
-      const smsRes = await fetch(smsUrl);
-      liveSmsResult = await smsRes.json();
+      const smsRes = await fetch(`${apiUrl}?${params.toString()}`);
+      const smsText = await smsRes.text();
+      liveSmsResult = { status: smsRes.ok ? 'success' : 'error', raw: smsText };
       console.log('📱 [DLT Bulk SMS Dispatch Result]:', liveSmsResult);
     } catch (smsErr: any) {
       console.warn('⚠️ [DLT SMS Gateway] Failed to dispatch:', smsErr.message);
     }
   }
 
-  // 2. WhatsApp Cloud API / Nexwapi dispatch
+  // 2. WhatsApp Cloud API / Nexwapi dispatch (Template + Text for 24x7 delivery)
   let liveMetaResult: any = null;
   const waToken = (process.env.WHATSAPP_ACCESS_TOKEN || process.env.WHATSAPP_API_TOKEN || '').trim();
   const waPhoneId = (process.env.WHATSAPP_PHONE_NUMBER_ID || '').trim();
@@ -74,12 +94,21 @@ router.post('/send-message', async (req, res) => {
 
   if (msgType === 'whatsapp' && waToken && waPhoneId) {
     try {
-      const cleanTo = cleanRecipient.replace(/[^0-9]/g, '');
+      let cleanTo = cleanRecipient.replace(/[^0-9]/g, '');
+      if (cleanTo.length === 11 && cleanTo.startsWith('0')) cleanTo = cleanTo.slice(1);
+      if (cleanTo.length === 10) cleanTo = `91${cleanTo}`;
       console.log(`📱 [Meta WhatsApp] Dispatching to ${cleanTo} via ${waVersion}/${waPhoneId}...`);
-      
+
+      const singleLineMsg = cleanMsg
+        .replace(/[\r\n\t]+/g, ' ')
+        .replace(/\s{2,}/g, ' ')
+        .trim()
+        .substring(0, 320);
+
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 8000);
 
+      // Dispatch Approved Meta Marketing Template (welcome_message) so message delivers even outside 24h window
       const metaRes = await fetch(`https://graph.facebook.com/${waVersion}/${waPhoneId}/messages`, {
         method: 'POST',
         headers: {
@@ -90,8 +119,22 @@ router.post('/send-message', async (req, res) => {
           messaging_product: 'whatsapp',
           recipient_type: 'individual',
           to: cleanTo,
-          type: 'text',
-          text: { preview_url: false, body: cleanMsg },
+          type: 'template',
+          template: {
+            name: 'welcome_message',
+            language: { code: 'en' },
+            components: [
+              {
+                type: 'body',
+                parameters: [
+                  {
+                    type: 'text',
+                    text: singleLineMsg || 'Greetings from Dleaf CRM!',
+                  },
+                ],
+              },
+            ],
+          },
         }),
         signal: controller.signal,
       });

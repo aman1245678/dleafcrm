@@ -174,6 +174,7 @@ export const CampaignsModule: React.FC = () => {
   // Execute Live Broadcast Modal
   const [showBroadcastModal, setShowBroadcastModal] = useState(false);
   const [broadcastChannel, setBroadcastChannel] = useState<'whatsapp' | 'sms' | 'email' | 'telemarketing'>('whatsapp');
+  const [broadcastWaTemplate, setBroadcastWaTemplate] = useState<'welcome_message' | 'appointment_reminder' | 'order_confirmation' | 'hello_world' | 'text_only'>('welcome_message');
   const [broadcastSubject, setBroadcastSubject] = useState('');
   const [broadcastMessage, setBroadcastMessage] = useState('');
   const [broadcastCustomPhones, setBroadcastCustomPhones] = useState('');
@@ -498,7 +499,8 @@ export const CampaignsModule: React.FC = () => {
           .split(/[\n,;]+/)
           .map((s) => s.trim())
           .filter(Boolean);
-        entries.forEach((entry, idx) => {
+        for (let idx = 0; idx < entries.length; idx++) {
+          const entry = entries[idx];
           if (entry.includes('@')) {
             recipients.push({
               name: entry.split('@')[0],
@@ -506,22 +508,33 @@ export const CampaignsModule: React.FC = () => {
               email: entry,
             });
           } else {
+            const digits = entry.replace(/[^0-9]/g, '');
+            const localTen = digits.length === 12 && digits.startsWith('91') ? digits.slice(2) : digits.length === 11 && digits.startsWith('0') ? digits.slice(1) : digits;
+            if (localTen.length < 10) {
+              setBroadcastFeedback({
+                type: 'error',
+                text: `Invalid mobile number "${entry}" (${localTen.length} digits). Please enter a valid 10-digit mobile number (e.g. +91 6202326924).`,
+              });
+              setIsExecutingBroadcast(false);
+              return;
+            }
             recipients.push({
-              name: `Recipient #${idx + 1}`,
+              name: currentUser?.name || `Recipient #${idx + 1}`,
               companyOrAccount: selectedCampaign.name,
               phone: entry,
             });
           }
-        });
+        }
       }
 
       const res = await api.campaigns.executeBroadcast(selectedCampaign.id, {
         channel: broadcastChannel,
+        whatsappTemplate: broadcastWaTemplate,
         messageTemplate: broadcastMessage,
         subject: broadcastSubject,
         recipients,
         costPerRecipient: Number(broadcastCostPerMsg) || 0,
-      });
+      } as any);
 
       if (res.success && res.data) {
         setSelectedCampaign(res.data);
@@ -2364,6 +2377,35 @@ export const CampaignsModule: React.FC = () => {
               </div>
             </div>
 
+            {broadcastChannel === 'whatsapp' && (
+              <div>
+                <label className="block text-slate-700 font-bold mb-1">
+                  Meta Approved WhatsApp Template (Required by Meta for 24x7 Outbound Delivery)
+                </label>
+                <select
+                  value={broadcastWaTemplate}
+                  onChange={(e) => setBroadcastWaTemplate(e.target.value as any)}
+                  className="w-full px-3 py-2 border border-emerald-300 rounded-xl text-xs font-semibold bg-emerald-50/50 text-slate-900"
+                >
+                  <option value="welcome_message">
+                    welcome_message — Marketing Broadcast (Includes Custom Message below • Always Delivers 24x7)
+                  </option>
+                  <option value="appointment_reminder">
+                    appointment_reminder — Utility Reminder (Includes Name, Campaign & Custom Message)
+                  </option>
+                  <option value="order_confirmation">
+                    order_confirmation — Confirmation Alert (Includes Name, Campaign & Custom Message)
+                  </option>
+                  <option value="hello_world">
+                    hello_world — Official Meta Test Template
+                  </option>
+                  <option value="text_only">
+                    Custom Text Only (Only delivers if recipient replied to +91 76311 00654 within last 24h)
+                  </option>
+                </select>
+              </div>
+            )}
+
             {broadcastChannel === 'email' && (
               <div>
                 <label className="block text-slate-700 font-bold mb-1">Email Subject Line</label>
@@ -2376,15 +2418,44 @@ export const CampaignsModule: React.FC = () => {
               </div>
             )}
 
-            <div>
-              <label className="block text-slate-700 font-bold mb-1">
-                Campaign Members Automatically Included: <span className="text-[#153B2E]">{memberCount} Member(s)</span>
-              </label>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="block text-slate-700 font-bold">
+                  Campaign Target Members Included: <span className="text-[#153B2E]">{memberCount} Member(s)</span>
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedCrmMemberIds([]);
+                    setShowAddMemberModal(true);
+                  }}
+                  className="text-[11px] font-bold text-[#153B2E] hover:underline cursor-pointer"
+                >
+                  + Add / Select Leads & Contacts
+                </button>
+              </div>
+
+              {(selectedCampaign.members || []).length > 0 && (
+                <div className="flex flex-wrap gap-1.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200 max-h-24 overflow-y-auto">
+                  {(selectedCampaign.members || []).map((m) => (
+                    <span
+                      key={m.id}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-[11px] font-semibold text-slate-800"
+                    >
+                      <span>{m.name}</span>
+                      <span className="font-mono text-emerald-700">
+                        ({broadcastChannel === 'email' ? m.email || m.phone : m.phone || m.email})
+                      </span>
+                    </span>
+                  ))}
+                </div>
+              )}
+
               <input
                 type="text"
                 value={broadcastCustomPhones}
                 onChange={(e) => setBroadcastCustomPhones(e.target.value)}
-                placeholder="Optional: Add extra phone numbers or emails separated by comma (e.g. 919876543210)"
+                placeholder="Optional: Enter extra 10-digit WhatsApp numbers or emails separated by comma (e.g. +91 6202326924)"
                 className="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-mono"
               />
             </div>
