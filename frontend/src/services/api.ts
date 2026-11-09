@@ -339,6 +339,20 @@ export const api = {
     }
   },
 
+  updateContact: async (id: string, contactData: unknown) => {
+    try {
+      const res = await fetch(`/api/contacts/${id}`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(contactData),
+      });
+      return await res.json();
+    } catch (err) {
+      console.error('Error updating contact via API:', err);
+      return null;
+    }
+  },
+
   deleteContact: async (id: string) => {
     try {
       const res = await fetch(`/api/contacts/${id}`, {
@@ -1094,6 +1108,36 @@ export const api = {
           method: 'POST',
           headers: getAuthHeaders(),
           body: JSON.stringify(data),
+        });
+        return await res.json();
+      } catch (err: any) {
+        return { success: false, error: err.message };
+      }
+    },
+    update: async (id: string, data: any) => {
+      try {
+        const res = await fetch(`/api/campaigns/${id}`, {
+          method: 'PUT',
+          headers: getAuthHeaders(),
+          body: JSON.stringify(data),
+        });
+        return await res.json();
+      } catch (err: any) {
+        return { success: false, error: err.message };
+      }
+    },
+    executeBroadcast: async (id: string, payload: {
+      channel: 'whatsapp' | 'sms' | 'email' | 'telemarketing';
+      messageTemplate: string;
+      subject?: string;
+      recipients?: Array<{ id?: string; name: string; companyOrAccount?: string; phone?: string; email?: string }>;
+      costPerRecipient?: number;
+    }) => {
+      try {
+        const res = await fetch(`/api/campaigns/${id}/execute`, {
+          method: 'POST',
+          headers: getAuthHeaders(),
+          body: JSON.stringify(payload),
         });
         return await res.json();
       } catch (err: any) {

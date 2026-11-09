@@ -52,14 +52,35 @@ export interface Lead {
   convertedDealId?: string;
 }
 
+export interface ContactNote {
+  id: string;
+  title?: string;
+  content: string;
+  author: string;
+  createdAt: string;
+}
+
+export interface ContactAttachment {
+  id: string;
+  fileName: string;
+  fileSize: string;
+  attachedBy: string;
+  dateAdded: string;
+  url?: string;
+}
+
 export interface Contact {
   id: string;
+  salutation?: string;
   firstName: string;
   lastName: string;
   email: string;
+  secondaryEmail?: string;
   phone: string;
+  homePhone?: string;
   mobile?: string;
   otherPhone?: string;
+  fax?: string;
   assistant?: string;
   asstPhone?: string;
   department?: string;
@@ -74,6 +95,14 @@ export interface Contact {
   skypeId?: string;
   twitter?: string;
   reportingTo?: string;
+  connectedTo?: string;
+  avatarUrl?: string;
+  isLocked?: boolean;
+  isUntouched?: boolean;
+  createdBy?: string;
+  modifiedBy?: string;
+  unsubscribedMode?: string;
+  unsubscribedTime?: string;
 
   // Mailing Address
   mailingCountry?: string;
@@ -97,6 +126,9 @@ export interface Contact {
 
   description?: string;
   followUpDate?: string; // e.g. "Oct 7", "Oct 9", "Oct 8", "Oct 6", "Oct 5"
+  notesList?: ContactNote[];
+  attachmentsList?: ContactAttachment[];
+  campaignsList?: string[];
 
   tags: string[];
   lastActivityTime: string;

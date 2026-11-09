@@ -105,6 +105,32 @@ export async function initPostgresTables() {
         status VARCHAR(50) DEFAULT 'sent',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
+
+      CREATE TABLE IF NOT EXISTS contacts_records (
+        id VARCHAR(100) PRIMARY KEY,
+        company_id VARCHAR(100) DEFAULT 'comp-dleaf',
+        first_name VARCHAR(150),
+        last_name VARCHAR(150),
+        email VARCHAR(255),
+        phone VARCHAR(80),
+        account_name VARCHAR(255),
+        owner VARCHAR(150) DEFAULT 'Aman Kumar',
+        payload JSONB NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+
+      CREATE TABLE IF NOT EXISTS campaigns_records (
+        id VARCHAR(100) PRIMARY KEY,
+        company_id VARCHAR(100) DEFAULT 'comp-dleaf',
+        name VARCHAR(255) NOT NULL,
+        type VARCHAR(100),
+        status VARCHAR(100),
+        owner VARCHAR(150) DEFAULT 'Aman Kumar',
+        payload JSONB NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
     `);
 
     // Ensure default primary company exists

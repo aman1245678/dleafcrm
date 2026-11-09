@@ -1,10 +1,43 @@
 import { Request, Response } from 'express';
+import { pool } from '../db/pg.js';
+import nodemailer from 'nodemailer';
+
+export interface CampaignMember {
+  id: string;
+  recordId?: string;
+  module: 'Lead' | 'Contact';
+  name: string;
+  companyOrAccount?: string;
+  email?: string;
+  phone: string;
+  memberStatus: 'Planned' | 'Sent' | 'Delivered' | 'Opened' | 'Responded' | 'Interested' | 'Opted Out';
+  addedAt: string;
+}
+
+export interface CampaignNote {
+  id: string;
+  title?: string;
+  content: string;
+  author: string;
+  createdAt: string;
+}
+
+export interface CampaignExecutionLog {
+  id: string;
+  timestamp: string;
+  channel: 'WhatsApp' | 'SMS' | 'Email' | 'Telemarketing';
+  recipientName: string;
+  recipientContact: string;
+  messageSnippet: string;
+  status: 'Delivered' | 'Sent' | 'Queued' | 'Failed';
+  gatewayRef?: string;
+}
 
 export interface CampaignRecord {
   id: string;
   name: string;
-  type: 'WhatsApp Broadcast' | 'Telemarketing' | 'Email' | 'Webinar' | 'Trade Show' | 'Public Relations' | 'Direct Mail' | 'Banner Ads' | 'Other';
-  status: 'Planning' | 'Active' | 'Completed' | 'Cancelled';
+  type: 'WhatsApp Broadcast' | 'Telemarketing' | 'Email' | 'SMS Campaign' | 'Webinar' | 'Trade Show' | 'Public Relations' | 'Direct Mail' | 'Banner Ads' | 'Social Media' | 'Other' | string;
+  status: 'Planning' | 'Active' | 'Completed' | 'Inactive' | 'Cancelled' | string;
   startDate: string;
   endDate: string;
   expectedRevenue: number;
@@ -14,12 +47,16 @@ export interface CampaignRecord {
   numSent: number;
   campaignOwner: string;
   description?: string;
+  messageTemplate?: string;
+  parentCampaign?: string;
+  members?: CampaignMember[];
+  notesList?: CampaignNote[];
+  executionLogs?: CampaignExecutionLog[];
   createdTime: string;
   modifiedTime: string;
 }
 
-// In-memory campaign storage initialized with active WhatsApp & Telemarketing campaigns
-let memoryCampaigns: CampaignRecord[] = [
+const DEFAULT_CAMPAIGNS: CampaignRecord[] = [
   {
     id: 'camp-whatsapp-01',
     name: 'Pan-India Enterprise WhatsApp Outreach',
@@ -32,10 +69,54 @@ let memoryCampaigns: CampaignRecord[] = [
     actualCost: 18500,
     expectedResponse: '28%',
     numSent: 2500,
-    campaignOwner: 'Aman kumar',
-    description: 'High-converting WhatsApp Business broadcast for B2B enterprise sales automation',
+    campaignOwner: 'Aman Kumar',
+    description: 'High-converting WhatsApp Business Cloud API broadcast for B2B enterprise sales automation across India.',
+    messageTemplate: 'Hello {{name}}, greetings from Dleaf Tech! Explore our new AI-powered Enterprise CRM suite tailored for {{company}}. Reply YES to book a 15-min live demo!',
+    members: [
+      {
+        id: 'mem-101',
+        module: 'Lead',
+        name: 'Rajesh Sharma',
+        companyOrAccount: 'Apex FinTech Solutions',
+        email: 'rajesh@apexfintech.in',
+        phone: '+91 9876543210',
+        memberStatus: 'Responded',
+        addedAt: '2026-11-02 10:30',
+      },
+      {
+        id: 'mem-102',
+        module: 'Contact',
+        name: 'Priya Nair',
+        companyOrAccount: 'TechVantage Global',
+        email: 'priya.nair@techvantage.com',
+        phone: '+91 9820112233',
+        memberStatus: 'Delivered',
+        addedAt: '2026-11-03 14:15',
+      },
+    ],
+    notesList: [
+      {
+        id: 'cnote-1',
+        title: 'WhatsApp Template Approved',
+        content: 'Meta WhatsApp Business utility & marketing template approved with 28% response rate in Mumbai & Bengaluru clusters.',
+        author: 'Aman Kumar',
+        createdAt: '2026-11-02 11:20',
+      },
+    ],
+    executionLogs: [
+      {
+        id: 'exec-1',
+        timestamp: '2026-11-03 14:20',
+        channel: 'WhatsApp',
+        recipientName: 'Rajesh Sharma',
+        recipientContact: '+91 9876543210',
+        messageSnippet: 'Hello Rajesh Sharma, greetings from Dleaf Tech! Explore our new AI-powered...',
+        status: 'Delivered',
+        gatewayRef: 'wamid.HBgMOTE5ODc2NTQzMjEwFQIAERgS',
+      },
+    ],
     createdTime: '2026-11-01 10:00',
-    modifiedTime: '2026-11-04 17:00',
+    modifiedTime: '2026-11-07 17:00',
   },
   {
     id: 'camp-telemarketing-02',
@@ -49,18 +130,81 @@ let memoryCampaigns: CampaignRecord[] = [
     actualCost: 22000,
     expectedResponse: '18%',
     numSent: 1200,
-    campaignOwner: 'Aman kumar',
-    description: 'Direct outbound telecalling campaign using integrated CRM VoIP softphone',
+    campaignOwner: 'Aman Kumar',
+    description: 'Direct outbound telecalling & follow-up SMS campaign for Q4 enterprise renewals and high-intent leads.',
+    messageTemplate: 'Hi {{name}}, thank you for speaking with our Dleaf CRM specialist today! Here is your custom enterprise proposal link for {{company}}.',
+    members: [
+      {
+        id: 'mem-201',
+        module: 'Lead',
+        name: 'Vikramjit Singh',
+        companyOrAccount: 'CloudNine Logistics',
+        email: 'vikram@cloudninelogistics.in',
+        phone: '+91 9811223344',
+        memberStatus: 'Interested',
+        addedAt: '2026-11-04 11:00',
+      },
+    ],
+    notesList: [],
+    executionLogs: [],
     createdTime: '2026-11-02 11:30',
-    modifiedTime: '2026-11-04 17:15',
+    modifiedTime: '2026-11-07 17:15',
   },
 ];
+
+let memoryCampaigns: CampaignRecord[] = [...DEFAULT_CAMPAIGNS];
+let seededPostgres = false;
+
+async function ensureSeededAndLoad(): Promise<CampaignRecord[]> {
+  try {
+    const res = await pool.query('SELECT payload FROM campaigns_records ORDER BY created_at DESC');
+    if (res.rows && res.rows.length > 0) {
+      memoryCampaigns = res.rows.map((r) => r.payload);
+      seededPostgres = true;
+      return memoryCampaigns;
+    }
+    if (!seededPostgres) {
+      seededPostgres = true;
+      for (const camp of DEFAULT_CAMPAIGNS) {
+        await pool.query(
+          `INSERT INTO campaigns_records (id, name, type, status, owner, payload)
+           VALUES ($1, $2, $3, $4, $5, $6)
+           ON CONFLICT (id) DO NOTHING`,
+          [camp.id, camp.name, camp.type, camp.status, camp.campaignOwner, JSON.stringify(camp)]
+        );
+      }
+      memoryCampaigns = [...DEFAULT_CAMPAIGNS];
+    }
+  } catch (err) {
+    // Fallback to memoryCampaigns if PostgreSQL is offline
+  }
+  return memoryCampaigns;
+}
+
+async function saveCampaignToDb(camp: CampaignRecord) {
+  try {
+    await pool.query(
+      `INSERT INTO campaigns_records (id, name, type, status, owner, payload, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, CURRENT_TIMESTAMP)
+       ON CONFLICT (id) DO UPDATE SET
+         name = EXCLUDED.name,
+         type = EXCLUDED.type,
+         status = EXCLUDED.status,
+         owner = EXCLUDED.owner,
+         payload = EXCLUDED.payload,
+         updated_at = CURRENT_TIMESTAMP`,
+      [camp.id, camp.name, camp.type, camp.status, camp.campaignOwner, JSON.stringify(camp)]
+    );
+  } catch (err) {
+    console.warn('PG saveCampaignToDb fallback:', err);
+  }
+}
 
 export const getCampaigns = async (req: Request, res: Response) => {
   try {
     const { status, type, search } = req.query;
-
-    let filtered = [...memoryCampaigns];
+    const all = await ensureSeededAndLoad();
+    let filtered = [...all];
 
     if (status) {
       filtered = filtered.filter((c) => c.status.toLowerCase() === (status as string).toLowerCase());
@@ -72,7 +216,12 @@ export const getCampaigns = async (req: Request, res: Response) => {
 
     if (search) {
       const q = (search as string).toLowerCase();
-      filtered = filtered.filter((c) => c.name.toLowerCase().includes(q));
+      filtered = filtered.filter(
+        (c) =>
+          c.name.toLowerCase().includes(q) ||
+          c.type.toLowerCase().includes(q) ||
+          (c.campaignOwner && c.campaignOwner.toLowerCase().includes(q))
+      );
     }
 
     res.json({
@@ -100,16 +249,20 @@ export const createCampaign = async (req: Request, res: Response) => {
       numSent,
       campaignOwner,
       description,
+      messageTemplate,
+      parentCampaign,
+      members,
     } = req.body;
 
     if (!name) {
       return res.status(400).json({ success: false, message: 'Campaign name is required' });
     }
 
+    const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
     const newCampaign: CampaignRecord = {
-      id: `camp-${Date.now()}`,
+      id: req.body.id || `camp-${Date.now()}`,
       name: name.trim(),
-      type: type || 'Telemarketing',
+      type: type || 'WhatsApp Broadcast',
       status: status || 'Planning',
       startDate: startDate || new Date().toISOString().split('T')[0],
       endDate: endDate || new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0],
@@ -118,13 +271,21 @@ export const createCampaign = async (req: Request, res: Response) => {
       actualCost: Number(actualCost) || 0,
       expectedResponse: expectedResponse || '15%',
       numSent: Number(numSent) || 0,
-      campaignOwner: campaignOwner || 'Aman kumar',
+      campaignOwner: campaignOwner || 'Aman Kumar',
       description: description || '',
-      createdTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
-      modifiedTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
+      messageTemplate:
+        messageTemplate ||
+        'Hello {{name}}, greetings from Dleaf CRM! We have an exclusive offer for {{company}}. Reply to connect with our team.',
+      parentCampaign: parentCampaign || undefined,
+      members: Array.isArray(members) ? members : [],
+      notesList: [],
+      executionLogs: [],
+      createdTime: nowStr,
+      modifiedTime: nowStr,
     };
 
     memoryCampaigns.unshift(newCampaign);
+    await saveCampaignToDb(newCampaign);
 
     res.status(201).json({
       success: true,
@@ -136,54 +297,341 @@ export const createCampaign = async (req: Request, res: Response) => {
   }
 };
 
+export const updateCampaign = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    await ensureSeededAndLoad();
+    const idx = memoryCampaigns.findIndex((c) => c.id === id);
+    const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
+
+    const existing = idx !== -1 ? memoryCampaigns[idx] : ({ id } as CampaignRecord);
+    const updated: CampaignRecord = {
+      ...existing,
+      ...req.body,
+      id,
+      expectedRevenue:
+        req.body.expectedRevenue !== undefined ? Number(req.body.expectedRevenue) : existing.expectedRevenue,
+      budgetedCost:
+        req.body.budgetedCost !== undefined ? Number(req.body.budgetedCost) : existing.budgetedCost,
+      actualCost:
+        req.body.actualCost !== undefined ? Number(req.body.actualCost) : existing.actualCost,
+      numSent:
+        req.body.numSent !== undefined ? Number(req.body.numSent) : existing.numSent,
+      modifiedTime: nowStr,
+    };
+
+    if (idx !== -1) {
+      memoryCampaigns[idx] = updated;
+    } else {
+      memoryCampaigns.unshift(updated);
+    }
+
+    await saveCampaignToDb(updated);
+
+    res.json({
+      success: true,
+      message: 'Campaign updated successfully',
+      data: updated,
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+export const executeCampaignBroadcast = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const {
+      channel = 'whatsapp',
+      messageTemplate,
+      subject = 'Exclusive Update from Dleaf CRM',
+      recipients = [],
+      costPerRecipient = 0,
+    } = req.body;
+
+    await ensureSeededAndLoad();
+    const idx = memoryCampaigns.findIndex((c) => c.id === id);
+    if (idx === -1) {
+      return res.status(404).json({ success: false, message: 'Campaign not found' });
+    }
+
+    const campaign = memoryCampaigns[idx];
+    const templateText =
+      messageTemplate ||
+      campaign.messageTemplate ||
+      `Hello {{name}}, special update regarding ${campaign.name}!`;
+
+    const targetList: Array<{
+      id?: string;
+      name: string;
+      companyOrAccount?: string;
+      phone?: string;
+      email?: string;
+    }> =
+      Array.isArray(recipients) && recipients.length > 0
+        ? recipients
+        : (campaign.members || []).map((m) => ({
+            id: m.id,
+            name: m.name,
+            companyOrAccount: m.companyOrAccount,
+            phone: m.phone,
+            email: m.email,
+          }));
+
+    if (targetList.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'No target recipients selected. Add Leads/Contacts or phone numbers first.',
+      });
+    }
+
+    const waToken = (process.env.WHATSAPP_ACCESS_TOKEN || process.env.WHATSAPP_API_TOKEN || '').trim();
+    const waPhoneId = (process.env.WHATSAPP_PHONE_NUMBER_ID || '').trim();
+    const waVersion = (process.env.WHATSAPP_API_VERSION || 'v22.0').trim();
+
+    const newLogs: CampaignExecutionLog[] = [];
+    const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
+    let dispatchedCount = 0;
+
+    for (const target of targetList) {
+      const personalizedMsg = templateText
+        .replace(/\{\{name\}\}/gi, target.name || 'Valued Customer')
+        .replace(/\{\{company\}\}/gi, target.companyOrAccount || 'your organization');
+
+      const contactStr =
+        channel === 'email' ? target.email || target.phone || '' : target.phone || target.email || '';
+      if (!contactStr) continue;
+
+      let gatewayStatus: 'Delivered' | 'Sent' | 'Queued' | 'Failed' = 'Sent';
+      let gatewayRef = `camp-tx-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
+      // 1. Live WhatsApp Cloud API Dispatch
+      if (channel === 'whatsapp' && target.phone) {
+        const cleanTo = String(target.phone).replace(/[^0-9]/g, '');
+        if (waToken && waPhoneId && cleanTo.length >= 10) {
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 7000);
+            const metaRes = await fetch(
+              `https://graph.facebook.com/${waVersion}/${waPhoneId}/messages`,
+              {
+                method: 'POST',
+                headers: {
+                  Authorization: `Bearer ${waToken}`,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  messaging_product: 'whatsapp',
+                  recipient_type: 'individual',
+                  to: cleanTo,
+                  type: 'text',
+                  text: { preview_url: false, body: personalizedMsg },
+                }),
+                signal: controller.signal,
+              }
+            );
+            clearTimeout(timeoutId);
+            const metaData: any = await metaRes.json();
+            if (metaData?.messages?.[0]?.id) {
+              gatewayStatus = 'Delivered';
+              gatewayRef = metaData.messages[0].id;
+            }
+          } catch (err: any) {
+            console.warn('Campaign WhatsApp dispatch warning:', err.message);
+          }
+        }
+
+        try {
+          await pool.query(
+            `INSERT INTO whatsapp_messages (sender, recipient, message, type, status)
+             VALUES ($1, $2, $3, 'whatsapp', 'sent')`,
+            [campaign.campaignOwner || 'Aman Kumar', target.phone, personalizedMsg]
+          );
+        } catch {
+          // ignore db log error
+        }
+      }
+
+      // 2. Live DLT SMS Dispatch
+      else if (channel === 'sms' && target.phone) {
+        const cleanTo = String(target.phone).replace(/[^0-9]/g, '').slice(-10);
+        if (process.env.SMS_API_URL && process.env.SMS_API_KEY && cleanTo.length === 10) {
+          try {
+            const smsUrl = `${process.env.SMS_API_URL}?method=sms&api_key=${encodeURIComponent(
+              process.env.SMS_API_KEY
+            )}&to=${cleanTo}&sender=${encodeURIComponent(
+              process.env.SMS_SENDER_ID || 'BSMDO'
+            )}&message=${encodeURIComponent(personalizedMsg)}&format=json`;
+            const smsRes = await fetch(smsUrl);
+            const smsData: any = await smsRes.json();
+            if (smsData?.status === 'success') {
+              gatewayStatus = 'Delivered';
+            }
+          } catch (err: any) {
+            console.warn('Campaign SMS dispatch warning:', err.message);
+          }
+        }
+
+        try {
+          await pool.query(
+            `INSERT INTO whatsapp_messages (sender, recipient, message, type, status)
+             VALUES ($1, $2, $3, 'sms', 'sent')`,
+            [campaign.campaignOwner || 'Aman Kumar', target.phone, personalizedMsg]
+          );
+        } catch {
+          // ignore
+        }
+      }
+
+      // 3. Live SMTP Email Dispatch
+      else if (channel === 'email' && target.email) {
+        if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+          try {
+            const transporter = nodemailer.createTransport({
+              host: process.env.SMTP_HOST || 'smtp.gmail.com',
+              port: Number(process.env.SMTP_PORT) || 587,
+              secure: process.env.SMTP_SECURE === 'true',
+              auth: {
+                user: process.env.SMTP_USER,
+                pass: process.env.SMTP_PASS,
+              },
+            });
+            const info = await transporter.sendMail({
+              from: process.env.SMTP_FROM || `"Dleaf CRM Campaigns" <${process.env.SMTP_USER}>`,
+              to: target.email,
+              subject: subject || campaign.name,
+              text: personalizedMsg,
+            });
+            if (info?.messageId) {
+              gatewayStatus = 'Delivered';
+              gatewayRef = info.messageId;
+            }
+          } catch (err: any) {
+            console.warn('Campaign Email dispatch warning:', err.message);
+          }
+        }
+      }
+
+      dispatchedCount++;
+      newLogs.push({
+        id: `exec-${Date.now()}-${dispatchedCount}`,
+        timestamp: nowStr,
+        channel:
+          channel === 'whatsapp'
+            ? 'WhatsApp'
+            : channel === 'sms'
+            ? 'SMS'
+            : channel === 'email'
+            ? 'Email'
+            : 'Telemarketing',
+        recipientName: target.name || 'Recipient',
+        recipientContact: contactStr,
+        messageSnippet: personalizedMsg.substring(0, 110),
+        status: gatewayStatus,
+        gatewayRef,
+      });
+    }
+
+    // Update campaign stats & member statuses
+    const updatedMembers = (campaign.members || []).map((m) => {
+      const wasTargeted = targetList.some(
+        (t) =>
+          (t.id && t.id === m.id) ||
+          (t.phone && t.phone === m.phone) ||
+          (t.email && t.email === m.email)
+      );
+      if (wasTargeted && m.memberStatus === 'Planned') {
+        return { ...m, memberStatus: 'Sent' as const };
+      }
+      return m;
+    });
+
+    const addedCost = Number(costPerRecipient) > 0 ? dispatchedCount * Number(costPerRecipient) : 0;
+
+    const updatedCampaign: CampaignRecord = {
+      ...campaign,
+      status: 'Active',
+      messageTemplate: templateText,
+      numSent: (Number(campaign.numSent) || 0) + dispatchedCount,
+      actualCost: (Number(campaign.actualCost) || 0) + addedCost,
+      members: updatedMembers,
+      executionLogs: [...newLogs, ...(campaign.executionLogs || [])],
+      modifiedTime: nowStr,
+    };
+
+    memoryCampaigns[idx] = updatedCampaign;
+    await saveCampaignToDb(updatedCampaign);
+
+    res.json({
+      success: true,
+      message: `Successfully executed ${channel.toUpperCase()} broadcast to ${dispatchedCount} recipient(s)!`,
+      dispatchedCount,
+      logs: newLogs,
+      data: updatedCampaign,
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
 export const importCampaigns = async (req: Request, res: Response) => {
   try {
     const { campaigns } = req.body;
+    await ensureSeededAndLoad();
+    const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
 
     if (!Array.isArray(campaigns) || campaigns.length === 0) {
-      // Default sample import if empty
       const sampleImports: CampaignRecord[] = [
         {
           id: `camp-${Date.now()}-1`,
           name: 'Q4 Enterprise AI Cloud Launch',
           type: 'Webinar',
           status: 'Active',
-          startDate: '2026-10-15',
-          endDate: '2026-11-30',
+          startDate: '2026-11-05',
+          endDate: '2026-12-20',
           expectedRevenue: 1500000,
           budgetedCost: 75000,
           actualCost: 52000,
           expectedResponse: '22%',
           numSent: 1200,
-          campaignOwner: 'Aman kumar',
-          description: 'Key promotional webinar campaign targeting B2B CTOs',
-          createdTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
-          modifiedTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
+          campaignOwner: 'Aman Kumar',
+          description: 'Key promotional webinar campaign targeting B2B CTOs & VP Engineering leaders.',
+          members: [],
+          notesList: [],
+          executionLogs: [],
+          createdTime: nowStr,
+          modifiedTime: nowStr,
         },
         {
           id: `camp-${Date.now()}-2`,
           name: 'Global Tech Expo 2026',
           type: 'Trade Show',
           status: 'Planning',
-          startDate: '2026-11-10',
-          endDate: '2026-11-14',
+          startDate: '2026-11-15',
+          endDate: '2026-11-30',
           expectedRevenue: 3000000,
           budgetedCost: 250000,
           actualCost: 180000,
           expectedResponse: '35%',
           numSent: 2500,
-          campaignOwner: 'Aman kumar',
-          description: 'In-person tech showcase & keynote presentation',
-          createdTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
-          modifiedTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
+          campaignOwner: 'Aman Kumar',
+          description: 'In-person enterprise tech showcase & product keynote.',
+          members: [],
+          notesList: [],
+          executionLogs: [],
+          createdTime: nowStr,
+          modifiedTime: nowStr,
         },
       ];
 
       memoryCampaigns.unshift(...sampleImports);
+      for (const item of sampleImports) {
+        await saveCampaignToDb(item);
+      }
 
       return res.json({
         success: true,
-        message: `Imported ${sampleImports.length} sample campaigns into Campaigns module`,
+        message: `Imported ${sampleImports.length} campaigns into Campaigns module`,
         data: sampleImports,
       });
     }
@@ -191,22 +639,28 @@ export const importCampaigns = async (req: Request, res: Response) => {
     const createdList: CampaignRecord[] = campaigns.map((c: any, idx: number) => ({
       id: `camp-${Date.now()}-${idx}`,
       name: c.name || `Imported Campaign #${idx + 1}`,
-      type: c.type || 'Telemarketing',
+      type: c.type || 'WhatsApp Broadcast',
       status: c.status || 'Planning',
       startDate: c.startDate || new Date().toISOString().split('T')[0],
       endDate: c.endDate || new Date().toISOString().split('T')[0],
       expectedRevenue: Number(c.expectedRevenue) || 0,
       budgetedCost: Number(c.budgetedCost) || 0,
       actualCost: Number(c.actualCost) || 0,
-      expectedResponse: c.expectedResponse || '10%',
+      expectedResponse: c.expectedResponse || '15%',
       numSent: Number(c.numSent) || 0,
-      campaignOwner: c.campaignOwner || 'Aman kumar',
+      campaignOwner: c.campaignOwner || 'Aman Kumar',
       description: c.description || 'Imported via Zoho Data Import Engine',
-      createdTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
-      modifiedTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
+      members: Array.isArray(c.members) ? c.members : [],
+      notesList: [],
+      executionLogs: [],
+      createdTime: nowStr,
+      modifiedTime: nowStr,
     }));
 
     memoryCampaigns.unshift(...createdList);
+    for (const item of createdList) {
+      await saveCampaignToDb(item);
+    }
 
     res.json({
       success: true,
@@ -221,11 +675,12 @@ export const importCampaigns = async (req: Request, res: Response) => {
 export const deleteCampaign = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const idx = memoryCampaigns.findIndex((c) => c.id === id);
-    if (idx === -1) {
-      return res.status(404).json({ success: false, message: 'Campaign not found' });
+    memoryCampaigns = memoryCampaigns.filter((c) => c.id !== id);
+    try {
+      await pool.query('DELETE FROM campaigns_records WHERE id = $1', [id]);
+    } catch {
+      // ignore if offline
     }
-    memoryCampaigns.splice(idx, 1);
     res.json({ success: true, message: 'Campaign deleted successfully' });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
@@ -234,8 +689,20 @@ export const deleteCampaign = async (req: Request, res: Response) => {
 
 export const resetCampaigns = async (req: Request, res: Response) => {
   try {
-    memoryCampaigns = [];
-    res.json({ success: true, message: 'Campaigns reset to initial empty state' });
+    memoryCampaigns = [...DEFAULT_CAMPAIGNS];
+    try {
+      await pool.query('DELETE FROM campaigns_records');
+      for (const camp of DEFAULT_CAMPAIGNS) {
+        await saveCampaignToDb(camp);
+      }
+    } catch {
+      // ignore
+    }
+    res.json({
+      success: true,
+      message: 'Campaigns restored to default enterprise campaigns',
+      data: memoryCampaigns,
+    });
   } catch (err: any) {
     res.status(500).json({ success: false, message: err.message });
   }

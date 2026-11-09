@@ -114,6 +114,10 @@ interface CRMContextType {
   setSelectedDealForDetail: (deal: Deal | null) => void;
   selectedLeadForDetail: Lead | null;
   setSelectedLeadForDetail: (lead: Lead | null) => void;
+  selectedContactForDetail: Contact | null;
+  setSelectedContactForDetail: (contact: Contact | null) => void;
+  contactToEdit: Contact | null;
+  setContactToEdit: (contact: Contact | null) => void;
   
   isGlobalSearchOpen: boolean;
   setIsGlobalSearchOpen: (open: boolean) => void;
@@ -332,6 +336,8 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   // UI state
   const [selectedDealForDetail, setSelectedDealForDetail] = useState<Deal | null>(null);
   const [selectedLeadForDetail, setSelectedLeadForDetail] = useState<Lead | null>(null);
+  const [selectedContactForDetail, setSelectedContactForDetail] = useState<Contact | null>(null);
+  const [contactToEdit, setContactToEdit] = useState<Contact | null>(null);
   const [isGlobalSearchOpen, setIsGlobalSearchOpen] = useState(false);
   const [isZiaOpen, setIsZiaOpen] = useState(false);
   const [dleafAiInitialPrompt, setDleafAiInitialPrompt] = useState<string>('');
@@ -422,6 +428,25 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         } catch {
           // Keep offline state
         }
+      }
+
+      // Sync contacts from backend PostgreSQL if available
+      try {
+        const serverContacts = await api.getContacts();
+        if (Array.isArray(serverContacts) && serverContacts.length > 0) {
+          setContacts((prev) => {
+            const byId = new Map<string, Contact>();
+            serverContacts.forEach((c: Contact) => {
+              if (c && c.id) byId.set(c.id, c);
+            });
+            prev.forEach((c) => {
+              if (c && c.id && !byId.has(c.id)) byId.set(c.id, c);
+            });
+            return Array.from(byId.values());
+          });
+        }
+      } catch {
+        // Keep local contacts
       }
     };
     initSession();
@@ -865,12 +890,16 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   };
 
   const addContact = (data: Omit<Contact, 'id' | 'createdTime' | 'modifiedTime' | 'lastActivityTime'>): Contact => {
+    const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
     const newContact: Contact = {
       ...data,
-      id: `cont-${Date.now()}`,
-      createdTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
-      modifiedTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
-      lastActivityTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
+      id: `cont-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+      createdBy: data.createdBy || currentUser?.name || 'Aman Kumar',
+      modifiedBy: data.modifiedBy || currentUser?.name || 'Aman Kumar',
+      isUntouched: data.isUntouched ?? true,
+      createdTime: nowStr,
+      modifiedTime: nowStr,
+      lastActivityTime: nowStr,
     };
     setContacts((prev) => [newContact, ...prev]);
     addAuditLog('CREATE', 'Contacts', `${newContact.firstName} ${newContact.lastName}`, 'Created new contact record.');
@@ -879,12 +908,27 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   };
 
   const updateContact = (updated: Contact) => {
-    setContacts((prev) => prev.map((c) => (c.id === updated.id ? updated : c)));
-    addAuditLog('UPDATE', 'Contacts', `${updated.firstName} ${updated.lastName}`, 'Updated contact record.');
+    const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
+    const withMeta: Contact = {
+      ...updated,
+      modifiedBy: currentUser?.name || 'Aman Kumar',
+      modifiedTime: nowStr,
+      lastActivityTime: nowStr,
+      isUntouched: false,
+    };
+    setContacts((prev) => prev.map((c) => (c.id === withMeta.id ? withMeta : c)));
+    if (selectedContactForDetail && selectedContactForDetail.id === withMeta.id) {
+      setSelectedContactForDetail(withMeta);
+    }
+    addAuditLog('UPDATE', 'Contacts', `${withMeta.firstName} ${withMeta.lastName}`, 'Updated contact record.');
+    api.updateContact(withMeta.id, withMeta).catch(() => {});
   };
 
   const deleteContact = (id: string) => {
     setContacts((prev) => prev.filter((c) => c.id !== id));
+    if (selectedContactForDetail?.id === id) {
+      setSelectedContactForDetail(null);
+    }
     addAuditLog('DELETE', 'Contacts', id, 'Deleted contact.');
     api.deleteContact(id).catch(() => {});
   };
@@ -1241,6 +1285,10 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         setSelectedDealForDetail,
         selectedLeadForDetail,
         setSelectedLeadForDetail,
+        selectedContactForDetail,
+        setSelectedContactForDetail,
+        contactToEdit,
+        setContactToEdit,
         isGlobalSearchOpen,
         setIsGlobalSearchOpen,
         isZiaOpen,
