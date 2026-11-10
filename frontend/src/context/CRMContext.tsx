@@ -1027,7 +1027,14 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     };
     setTasks((prev) => [newTask, ...prev]);
     addAuditLog('CREATE', 'Tasks', newTask.subject, `Assigned to ${newTask.owner}`);
+    api.createTask(newTask).catch(() => {});
     return newTask;
+  };
+
+  const updateTask = (task: Task) => {
+    setTasks((prev) => prev.map((t) => (t.id === task.id ? task : t)));
+    addAuditLog('UPDATE', 'Tasks', task.subject, `Updated task details`);
+    api.updateTask(task.id, task).catch(() => {});
   };
 
   const toggleTaskStatus = (taskId: string) => {
@@ -1035,6 +1042,7 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       prev.map((t) => {
         if (t.id === taskId) {
           const nextStatus = t.status === 'Completed' ? 'In Progress' : 'Completed';
+          api.updateTaskStatus(taskId, nextStatus).catch(() => {});
           return { ...t, status: nextStatus };
         }
         return t;
@@ -1044,6 +1052,8 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const deleteTask = (taskId: string) => {
     setTasks((prev) => prev.filter((t) => t.id !== taskId));
+    addAuditLog('DELETE', 'Tasks', taskId, 'Deleted task');
+    api.deleteTask(taskId).catch(() => {});
   };
 
   const addMeeting = (data: Omit<Meeting, 'id' | 'createdTime'>): Meeting => {
@@ -1054,7 +1064,20 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     };
     setMeetings((prev) => [newMeet, ...prev]);
     addAuditLog('CREATE', 'Meetings', newMeet.title, `Scheduled meeting hosted by ${newMeet.host}`);
+    api.createMeeting(newMeet).catch(() => {});
     return newMeet;
+  };
+
+  const updateMeeting = (meeting: Meeting) => {
+    setMeetings((prev) => prev.map((m) => (m.id === meeting.id ? meeting : m)));
+    addAuditLog('UPDATE', 'Meetings', meeting.title, `Updated meeting details`);
+    api.updateMeeting(meeting.id, meeting).catch(() => {});
+  };
+
+  const deleteMeeting = (meetingId: string) => {
+    setMeetings((prev) => prev.filter((m) => m.id !== meetingId));
+    addAuditLog('DELETE', 'Meetings', meetingId, 'Deleted meeting');
+    api.deleteMeeting(meetingId).catch(() => {});
   };
 
   const addCall = (data: Omit<Call, 'id' | 'createdTime'>): Call => {
