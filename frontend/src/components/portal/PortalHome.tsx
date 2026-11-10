@@ -35,6 +35,13 @@ import {
   Sliders,
   Rocket,
   BookOpen,
+  ExternalLink,
+  GraduationCap,
+  MessageSquare,
+  Building2,
+  Code,
+  Truck,
+  Wallet,
 } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
 import { UserGuideModal } from '../modals/UserGuideModal';
@@ -98,24 +105,25 @@ export const PortalHome: React.FC = () => {
             {/* ----------------- LEFT COLUMN: Compact Copy & Form (7 cols) ----------------- */}
             <div className="lg:col-span-7 space-y-3.5 text-left">
 
-              {/* Exact Pill Badge: "• Smart Business Growth Platform" */}
-              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3 py-0.5 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[#EE0979]" />
-                <span className="tracking-tight text-[11px] font-bold text-slate-800">Smart Business Growth Platform</span>
+              {/* Exact Pill Badge */}
+              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3.5 py-1 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#EE0979] animate-pulse" />
+                <span className="tracking-tight text-[11px] font-bold text-slate-800">
+                  DleafTech Innovation Ecosystem • Meta WhatsApp Official BSP
+                </span>
               </div>
 
               {/* Compact Main Heading */}
-              <h1 className="text-2xl sm:text-3xl lg:text-[38px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.15]">
-                Work faster. Think better.<br />
-                Automate{' '}
+              <h1 className="text-2xl sm:text-3xl lg:text-[40px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.15]">
+                Your Digital Vision,<br />
                 <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent">
-                  everything.
+                  Engineered by Dleaftech.
                 </span>
               </h1>
 
               {/* Subtitle */}
               <p className="text-xs sm:text-[13.5px] text-slate-600 font-normal leading-relaxed max-w-lg">
-                The all-in-one CRM to capture high-value leads, automate pipeline deals, and accelerate team revenue with DleafAI intelligence.
+                The all-in-one CRM & AI growth suite engineered by Dleaf Technologies — integrating official <strong>Nexwapi</strong> WhatsApp Cloud API broadcasts, <strong>Dleaftech Academy</strong> tech expertise, and full-funnel sales automation.
               </p>
 
               {/* Email Form */}
@@ -251,15 +259,45 @@ export const PortalHome: React.FC = () => {
 
             <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-md transition text-left flex items-start gap-3.5 group">
               <div className="w-10 h-10 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <Bot className="w-5 h-5 text-[#EE0979]" />
+                <Code className="w-5 h-5 text-[#EE0979]" />
               </div>
-              <div>
-                <div className="font-bold text-[#0F172A] text-xs sm:text-sm">AI-Powered CRM</div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Smarter tools to automate your workflow.</div>
-                <button onClick={() => setPortalPage('platform')} className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
-                  <span>Learn More</span>
-                  <ArrowRight className="w-3 h-3" />
-                </button>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between">
+                  <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Dleaftech Engineering</div>
+                  <span className="text-[9px] bg-slate-100 text-slate-600 font-semibold px-1.5 py-0.5 rounded">Parent</span>
+                </div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">AI-powered websites, custom enterprise apps & mobile development.</div>
+                <a
+                  href="https://www.dleaftech.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Visit Dleaftech</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-emerald-500 hover:shadow-md transition text-left flex items-start gap-3.5 group">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <MessageSquare className="w-5 h-5 text-emerald-600" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between">
+                  <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Nexwapi WhatsApp API</div>
+                  <span className="text-[9px] bg-emerald-100 text-emerald-700 font-semibold px-1.5 py-0.5 rounded">Meta BSP</span>
+                </div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Official WhatsApp Cloud API, AI chatbots & automated bulk broadcasts.</div>
+                <a
+                  href="https://nexwapi.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] font-bold text-emerald-600 hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Explore Nexwapi</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
             </div>
 
@@ -267,69 +305,163 @@ export const PortalHome: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                 <Zap className="w-5 h-5 text-[#EE0979]" />
               </div>
-              <div>
-                <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Sales Automation</div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Convert more leads with intelligent automation.</div>
-                <button onClick={() => setPortalPage('features')} className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
-                  <span>Learn More</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between">
+                  <div className="font-bold text-[#0F172A] text-xs sm:text-sm">DleafCRM Intelligence</div>
+                  <span className="text-[9px] bg-[#FFF1F7] text-[#EE0979] font-semibold px-1.5 py-0.5 rounded">Live App</span>
+                </div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Zoho-standard deals, CPQ invoices, price books & AI lead scoring.</div>
+                <button
+                  onClick={() => setAppMode('workspace')}
+                  className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Launch Workspace</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-md transition text-left flex items-start gap-3.5 group">
-              <div className="w-10 h-10 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <Users className="w-5 h-5 text-[#EE0979]" />
+            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-purple-500 hover:shadow-md transition text-left flex items-start gap-3.5 group">
+              <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <GraduationCap className="w-5 h-5 text-purple-600" />
               </div>
-              <div>
-                <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Customer Insights</div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Understand your customers with powerful analytics.</div>
-                <button onClick={() => setPortalPage('features')} className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
-                  <span>Learn More</span>
-                  <ArrowRight className="w-3 h-3" />
-                </button>
-              </div>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-md transition text-left flex items-start gap-3.5 group">
-              <div className="w-10 h-10 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <Grid className="w-5 h-5 text-[#EE0979]" />
-              </div>
-              <div>
-                <div className="font-bold text-[#0F172A] text-xs sm:text-sm">All-in-One Platform</div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Sales, marketing, service and more — in one place.</div>
-                <button onClick={() => setPortalPage('platform')} className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer">
-                  <span>Learn More</span>
-                  <ArrowRight className="w-3 h-3" />
-                </button>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between">
+                  <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Dleaftech Academy</div>
+                  <span className="text-[9px] bg-purple-100 text-purple-700 font-semibold px-1.5 py-0.5 rounded">EdTech</span>
+                </div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">10,000+ engineers trained, 500+ live projects & 200+ hiring partners.</div>
+                <a
+                  href="https://academy.dleaftech.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] font-bold text-purple-600 hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Explore Academy</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
             </div>
 
           </div>
 
-          {/* ----------------- ENTERPRISE TRUST LOGOS & METRICS STRIP ----------------- */}
+          {/* ----------------- DLEAFTECH INNOVATION ECOSYSTEM BRANDS STRIP ----------------- */}
           <div className="mt-14 pt-8 border-t border-slate-200/80">
-            <div className="text-center text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-6">
-              TRUSTED BY 25,000+ BUSINESSES WORLDWIDE
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center gap-2 bg-[#FFF1F7] text-[#EE0979] px-3.5 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase mb-1.5 border border-[#F1D5E4]">
+                <Building2 className="w-3.5 h-3.5 text-[#EE0979]" />
+                <span>DleafTech Innovation Ecosystem & Platforms</span>
+              </div>
+              <p className="text-xs text-slate-600 font-medium max-w-xl mx-auto">
+                Engineered by parent company <strong className="text-slate-900 font-bold">Dleaf Technologies Pvt. Ltd.</strong> — delivering next-gen enterprise solutions across Web, AI, EdTech & WhatsApp.
+              </p>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center sm:justify-between gap-6 sm:gap-8 px-4 opacity-80 font-bold text-slate-700 text-sm sm:text-base tracking-tight select-none">
-              <span className="hover:text-slate-900 transition cursor-default font-black text-lg">amazon</span>
-              <span className="hover:text-slate-900 transition cursor-default flex items-center gap-1.5 font-semibold">
-                <span className="grid grid-cols-2 gap-0.5 w-3 h-3">
-                  <span className="bg-[#f25022]"></span>
-                  <span className="bg-[#7fba00]"></span>
-                  <span className="bg-[#00a4ef]"></span>
-                  <span className="bg-[#ffb900]"></span>
-                </span>
-                Microsoft
+            {/* Interactive Grid of Ecosystem Brand Cards with Live Links */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 px-2">
+              
+              {/* Dleaftech */}
+              <a
+                href="https://www.dleaftech.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#EE0979] hover:shadow-md transition-all flex flex-col items-center text-center cursor-pointer"
+              >
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#FF6A00] to-[#EE0979] text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
+                  DL
+                </div>
+                <div className="font-extrabold text-xs text-slate-800 group-hover:text-[#EE0979] transition flex items-center gap-1">
+                  <span>Dleaftech</span>
+                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition" />
+                </div>
+                <span className="text-[10px] text-slate-500 font-medium mt-0.5">Parent IT Agency</span>
+              </a>
+
+              {/* Nexwapi */}
+              <a
+                href="https://nexwapi.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 hover:shadow-md transition-all flex flex-col items-center text-center cursor-pointer"
+              >
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
+                  NW
+                </div>
+                <div className="font-extrabold text-xs text-slate-800 group-hover:text-emerald-600 transition flex items-center gap-1">
+                  <span>Nexwapi</span>
+                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition" />
+                </div>
+                <span className="text-[10px] text-emerald-600 font-medium mt-0.5">WhatsApp Cloud API</span>
+              </a>
+
+              {/* Dleaftech Academy */}
+              <a
+                href="https://academy.dleaftech.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-purple-500 hover:shadow-md transition-all flex flex-col items-center text-center cursor-pointer"
+              >
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
+                  DA
+                </div>
+                <div className="font-extrabold text-xs text-slate-800 group-hover:text-purple-600 transition flex items-center gap-1">
+                  <span>Academy</span>
+                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition" />
+                </div>
+                <span className="text-[10px] text-purple-600 font-medium mt-0.5">EdTech Hub</span>
+              </a>
+
+              {/* Zivoxa / Zioxa */}
+              <div className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-cyan-500 hover:shadow-md transition-all flex flex-col items-center text-center cursor-default">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
+                  ZX
+                </div>
+                <div className="font-extrabold text-xs text-slate-800 group-hover:text-cyan-600 transition">
+                  Zivoxa
+                </div>
+                <span className="text-[10px] text-cyan-600 font-medium mt-0.5">Cloud ERP</span>
+              </div>
+
+              {/* Bill Rakho */}
+              <div className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-amber-500 hover:shadow-md transition-all flex flex-col items-center text-center cursor-default">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
+                  BR
+                </div>
+                <div className="font-extrabold text-xs text-slate-800 group-hover:text-amber-600 transition">
+                  Bill Rakho
+                </div>
+                <span className="text-[10px] text-amber-600 font-medium mt-0.5">Smart FinTech</span>
+              </div>
+
+              {/* Golax & Liftoo */}
+              <div className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-rose-500 hover:shadow-md transition-all flex flex-col items-center text-center cursor-default">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-rose-500 to-red-600 text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
+                  GX
+                </div>
+                <div className="font-extrabold text-xs text-slate-800 group-hover:text-rose-600 transition">
+                  Golax & Liftoo
+                </div>
+                <span className="text-[10px] text-rose-600 font-medium mt-0.5">Logistics & Fleet</span>
+              </div>
+
+            </div>
+
+            {/* Bottom Meta & Cloud Badge */}
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-[11px] font-semibold text-slate-500">
+              <span className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                Official Meta Business Partner (WhatsApp Cloud API)
               </span>
-              <span className="hover:text-slate-900 transition cursor-default font-bold text-base">Google</span>
-              <span className="hover:text-slate-900 transition cursor-default font-black text-[#0668E1]">∞ Meta</span>
-              <span className="hover:text-slate-900 transition cursor-default font-bold">Spotify</span>
-              <span className="hover:text-slate-900 transition cursor-default font-serif font-black text-[#FA0F00]">A Adobe</span>
-              <span className="hover:text-slate-900 transition cursor-default font-bold text-[#96bf48]">shopify</span>
-              <span className="hover:text-slate-900 transition cursor-default font-black">slack</span>
+              <span>•</span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#EE0979]"></span>
+                DleafTech High-Performance Cloud
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+                10,000+ Alumni & Active Users
+              </span>
             </div>
           </div>
 
@@ -446,18 +578,18 @@ export const PortalHome: React.FC = () => {
       <section className="py-5 px-4 sm:px-8 lg:px-12 bg-[#0F172A] text-white border-b border-white/10">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 items-center text-center">
           <div className="flex items-center justify-center gap-3">
-            <Users className="w-5 h-5 text-[#FF6A00] shrink-0" />
+            <GraduationCap className="w-5 h-5 text-[#FF6A00] shrink-0" />
             <div className="text-left">
-              <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">250,000+</div>
-              <div className="font-editorial text-[11px] text-slate-400">Businesses Worldwide</div>
+              <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">10,000+</div>
+              <div className="font-editorial text-[11px] text-slate-400">Dleaftech Academy Alumni</div>
             </div>
           </div>
 
           <div className="flex items-center justify-center gap-3">
-            <Globe className="w-5 h-5 text-[#EE0979] shrink-0" />
+            <Code className="w-5 h-5 text-[#EE0979] shrink-0" />
             <div className="text-left">
-              <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">180+</div>
-              <div className="font-editorial text-[11px] text-slate-400">Countries Active</div>
+              <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">500+</div>
+              <div className="font-editorial text-[11px] text-slate-400">Live Enterprise Projects</div>
             </div>
           </div>
 
@@ -465,15 +597,15 @@ export const PortalHome: React.FC = () => {
             <Star className="w-5 h-5 text-amber-400 fill-amber-400 shrink-0" />
             <div className="text-left">
               <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">4.9 / 5.0</div>
-              <div className="font-editorial text-[11px] text-slate-400">G2 & Gartner Review Rating</div>
+              <div className="font-editorial text-[11px] text-slate-400">Top Rated IT Agency</div>
             </div>
           </div>
 
           <div className="flex items-center justify-center gap-3">
-            <Shield className="w-5 h-5 text-[#7928CA] shrink-0" />
+            <MessageSquare className="w-5 h-5 text-emerald-400 shrink-0" />
             <div className="text-left">
-              <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">99.99%</div>
-              <div className="font-editorial text-[11px] text-slate-400">Enterprise Cloud SLA</div>
+              <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">Official BSP</div>
+              <div className="font-editorial text-[11px] text-slate-400">Meta WhatsApp Cloud API</div>
             </div>
           </div>
         </div>
@@ -723,16 +855,37 @@ export const PortalHome: React.FC = () => {
           {/* Logo Strip */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-[#F1D5E4]">
             <span className="font-editorial text-xs font-bold uppercase tracking-wider text-slate-500 shrink-0">
-              Trusted by 25,000+ Enterprises
+              Trusted Ecosystem Clients & Brands
             </span>
-            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-6 sm:gap-8 opacity-75 grayscale hover:grayscale-0 transition-all">
-              <span className="font-editorial text-base font-bold text-slate-800">TATA</span>
-              <span className="font-editorial text-base font-semibold text-[#007cc3]">Infosys</span>
-              <span className="font-editorial text-base font-bold text-rose-600">Reliance</span>
-              <span className="font-editorial text-base font-bold text-red-600">Mahindra</span>
-              <span className="font-editorial text-xs font-bold bg-[#004c8f] text-white px-2 py-0.5 rounded">HDFC BANK</span>
-              <span className="font-editorial text-sm font-bold italic text-amber-700">ICICI Bank</span>
-              <span className="font-editorial text-base font-bold text-slate-800">WIPRO</span>
+            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-5 sm:gap-7 opacity-90 transition-all text-xs font-bold">
+              <span className="font-editorial text-sm font-bold text-slate-800 flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#EE0979]"></span>
+                Spanish Tailor
+              </span>
+              <span className="font-editorial text-sm font-bold text-[#007cc3] flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#007cc3]"></span>
+                Golax Logistics
+              </span>
+              <span className="font-editorial text-sm font-bold text-emerald-600 flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
+                Liftoo Mobility
+              </span>
+              <span className="font-editorial text-sm font-bold text-purple-600 flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-purple-600"></span>
+                Milox Tech
+              </span>
+              <span className="font-editorial text-sm font-bold text-amber-600 flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-amber-600"></span>
+                Bill Rakho
+              </span>
+              <span className="font-editorial text-sm font-bold text-cyan-700 flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-cyan-700"></span>
+                Zivoxa Cloud
+              </span>
+              <span className="font-editorial text-sm font-bold text-blue-600 flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+                Apna Patna
+              </span>
             </div>
           </div>
 
@@ -740,21 +893,21 @@ export const PortalHome: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 pt-6">
             {[
               {
-                quote: "Dleaf CRM replaced three fragmented tools for our sales reps. Pipeline transparency boosted quarterly deal closures by 34%.",
-                author: "Vikram Singhania",
-                role: "VP of Sales, Apex Logistics",
+                quote: "Nexwapi WhatsApp Cloud API combined with Dleaf CRM gave us 98% message open rates and automated 80% of customer inquiries within 10 seconds.",
+                author: "Rahul Verma",
+                role: "Head of Operations, Spanish Tailor",
                 rating: 5
               },
               {
-                quote: "The DleafAI lead scoring model alone saved our SDRs 12 hours every week by prioritizing the deals most likely to close.",
-                author: "Ananya Deshmukh",
-                role: "Revenue Operations, FinSecure",
+                quote: "Dleaftech engineered our complete digital platform and integrated real-time lead management. Our operations scaled revenue 3x within 6 months.",
+                author: "Amit Singhania",
+                role: "Founder, Golax Logistics",
                 rating: 5
               },
               {
-                quote: "Smooth CPQ generation with GST calculation built-in. Quotes go to prospective clients in under 2 minutes.",
-                author: "Siddharth Mehta",
-                role: "Managing Director, Nova Infra",
+                quote: "The DleafAI deal scoring and integrated GST billing saved our operations team 15+ hours weekly. The fastest, most unified CRM for growing businesses.",
+                author: "Neha Sharma",
+                role: "Operations Lead, Liftoo Mobility",
                 rating: 5
               }
             ].map((t, i) => (
@@ -902,7 +1055,7 @@ export const PortalHome: React.FC = () => {
               </div>
             </div>
             <p className="font-editorial-body text-[11.5px] text-slate-400 leading-relaxed max-w-xs">
-              Next-generation enterprise CRM uniting omnichannel sales, DleafAI deal intelligence, and Indian statutory compliance.
+              Parent company: Dleaf Technologies Pvt. Ltd. Next-generation enterprise CRM uniting Nexwapi WhatsApp Cloud API, AI deal intelligence, and digital engineering.
             </p>
             <div className="flex items-center gap-2 pt-1">
               <a href="#" className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 hover:bg-[#EE0979] hover:text-white text-slate-300 flex items-center justify-center transition">
@@ -924,6 +1077,32 @@ export const PortalHome: React.FC = () => {
           </div>
 
           <div>
+            <div className="font-editorial font-bold text-white text-xs mb-3 uppercase tracking-wider">Ecosystem</div>
+            <ul className="space-y-2 text-[11px] font-editorial-body text-slate-400">
+              <li>
+                <a href="https://www.dleaftech.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#EE0979] transition flex items-center gap-1">
+                  <span>Dleaftech Agency</span>
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </li>
+              <li>
+                <a href="https://nexwapi.com/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition flex items-center gap-1">
+                  <span>Nexwapi WhatsApp</span>
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </li>
+              <li>
+                <a href="https://academy.dleaftech.com/" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition flex items-center gap-1">
+                  <span>Dleaftech Academy</span>
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </li>
+              <li className="hover:text-cyan-400 transition cursor-default">Zivoxa Cloud ERP</li>
+              <li className="hover:text-amber-400 transition cursor-default">Bill Rakho FinTech</li>
+            </ul>
+          </div>
+
+          <div>
             <div className="font-editorial font-bold text-white text-xs mb-3 uppercase tracking-wider">Platform</div>
             <ul className="space-y-2 text-[11px] font-editorial-body text-slate-400">
               <li onClick={() => setPortalPage('features')} className="hover:text-[#EE0979] transition cursor-pointer">Deals Kanban</li>
@@ -935,20 +1114,10 @@ export const PortalHome: React.FC = () => {
           </div>
 
           <div>
-            <div className="font-editorial font-bold text-white text-xs mb-3 uppercase tracking-wider">Solutions</div>
-            <ul className="space-y-2 text-[11px] font-editorial-body text-slate-400">
-              <li onClick={() => setPortalPage('platform')} className="hover:text-[#EE0979] transition cursor-pointer">Startups</li>
-              <li onClick={() => setPortalPage('platform')} className="hover:text-[#EE0979] transition cursor-pointer">SMEs & Mid-Market</li>
-              <li onClick={() => setPortalPage('platform')} className="hover:text-[#EE0979] transition cursor-pointer">Enterprise Cloud</li>
-              <li onClick={() => setPortalPage('platform')} className="hover:text-[#EE0979] transition cursor-pointer">Telephony & WhatsApp</li>
-            </ul>
-          </div>
-
-          <div>
             <div className="font-editorial font-bold text-white text-xs mb-3 uppercase tracking-wider">Resources</div>
             <ul className="space-y-2 text-[11px] font-editorial-body text-slate-400">
               <li onClick={() => setPortalPage('resources')} className="hover:text-[#EE0979] transition cursor-pointer">Documentation</li>
-              <li onClick={() => setPortalPage('resources')} className="hover:text-[#EE0979] transition cursor-pointer">API Reference</li>
+              <li onClick={() => setIsGuideOpen(true)} className="hover:text-[#EE0979] transition cursor-pointer">User Guide PDF</li>
               <li onClick={() => setPortalPage('customers')} className="hover:text-[#EE0979] transition cursor-pointer">Customer Stories</li>
               <li onClick={() => setPortalPage('resources')} className="hover:text-[#EE0979] transition cursor-pointer">Webinars</li>
             </ul>
