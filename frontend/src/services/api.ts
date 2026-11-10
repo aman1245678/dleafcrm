@@ -585,6 +585,20 @@ export const api = {
     }
   },
 
+  updateProduct: async (id: string, productData: unknown) => {
+    try {
+      const res = await fetch(`/api/inventory/products/${id}`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(productData),
+      });
+      return await res.json();
+    } catch (err) {
+      console.error('Error updating product via API:', err);
+      return null;
+    }
+  },
+
   deleteProduct: async (id: string) => {
     try {
       const res = await fetch(`/api/inventory/products/${id}`, {
@@ -609,6 +623,44 @@ export const api = {
     }
   },
 
+  createInvoice: async (invoiceData: unknown) => {
+    try {
+      const res = await fetch('/api/inventory/invoices', {
+        method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(invoiceData),
+      });
+      return await res.json();
+    } catch {
+      return null;
+    }
+  },
+
+  updateInvoice: async (id: string, invoiceData: unknown) => {
+    try {
+      const res = await fetch(`/api/inventory/invoices/${id}`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(invoiceData),
+      });
+      return await res.json();
+    } catch {
+      return null;
+    }
+  },
+
+  deleteInvoice: async (id: string) => {
+    try {
+      const res = await fetch(`/api/inventory/invoices/${id}`, {
+        method: 'DELETE',
+        headers: getAuthHeaders(),
+      });
+      return await res.json();
+    } catch {
+      return null;
+    }
+  },
+
   // Price Books
   getPriceBooks: async () => {
     try {
@@ -623,6 +675,18 @@ export const api = {
     try {
       const res = await fetch('/api/inventory/pricebooks', {
         method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(data),
+      });
+      return await res.json();
+    } catch {
+      return null;
+    }
+  },
+  updatePriceBook: async (id: string, data: unknown) => {
+    try {
+      const res = await fetch(`/api/inventory/pricebooks/${id}`, {
+        method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(data),
       });
@@ -662,6 +726,18 @@ export const api = {
       return null;
     }
   },
+  updateQuote: async (id: string, data: unknown) => {
+    try {
+      const res = await fetch(`/api/inventory/quotes/${id}`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(data),
+      });
+      return await res.json();
+    } catch {
+      return null;
+    }
+  },
   deleteQuote: async (id: string) => {
     try {
       const res = await fetch(`/api/inventory/quotes/${id}`, { method: 'DELETE', headers: getAuthHeaders() });
@@ -685,6 +761,18 @@ export const api = {
     try {
       const res = await fetch('/api/inventory/salesorders', {
         method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(data),
+      });
+      return await res.json();
+    } catch {
+      return null;
+    }
+  },
+  updateSalesOrder: async (id: string, data: unknown) => {
+    try {
+      const res = await fetch(`/api/inventory/salesorders/${id}`, {
+        method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(data),
       });
@@ -724,6 +812,18 @@ export const api = {
       return null;
     }
   },
+  updatePurchaseOrder: async (id: string, data: unknown) => {
+    try {
+      const res = await fetch(`/api/inventory/purchaseorders/${id}`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(data),
+      });
+      return await res.json();
+    } catch {
+      return null;
+    }
+  },
   deletePurchaseOrder: async (id: string) => {
     try {
       const res = await fetch(`/api/inventory/purchaseorders/${id}`, { method: 'DELETE', headers: getAuthHeaders() });
@@ -747,6 +847,18 @@ export const api = {
     try {
       const res = await fetch('/api/inventory/vendors', {
         method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(data),
+      });
+      return await res.json();
+    } catch {
+      return null;
+    }
+  },
+  updateVendor: async (id: string, data: unknown) => {
+    try {
+      const res = await fetch(`/api/inventory/vendors/${id}`, {
+        method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(data),
       });

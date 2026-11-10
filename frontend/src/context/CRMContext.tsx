@@ -509,6 +509,36 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       } catch {
         // Keep local calls
       }
+
+      // Sync products from backend PostgreSQL if available
+      try {
+        const serverProducts = await api.getProducts();
+        if (Array.isArray(serverProducts) && serverProducts.length > 0) {
+          setProducts(serverProducts);
+        }
+      } catch {
+        // Keep local products
+      }
+
+      // Sync quotes from backend PostgreSQL if available
+      try {
+        const serverQuotes = await api.getQuotes();
+        if (Array.isArray(serverQuotes) && serverQuotes.length > 0) {
+          setQuotes(serverQuotes);
+        }
+      } catch {
+        // Keep local quotes
+      }
+
+      // Sync invoices from backend PostgreSQL if available
+      try {
+        const serverInvoices = await api.getInvoices();
+        if (Array.isArray(serverInvoices) && serverInvoices.length > 0) {
+          setInvoices(serverInvoices);
+        }
+      } catch {
+        // Keep local invoices
+      }
     };
     initSession();
   }, []);

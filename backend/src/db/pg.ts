@@ -182,6 +182,22 @@ export async function initPostgresTables() {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
+
+      CREATE TABLE IF NOT EXISTS inventory_records (
+        id VARCHAR(100) PRIMARY KEY,
+        module_type VARCHAR(50) NOT NULL,
+        company_id VARCHAR(100) DEFAULT 'comp-dleaf',
+        name VARCHAR(255) NOT NULL,
+        code_or_number VARCHAR(100),
+        status VARCHAR(50) DEFAULT 'Active',
+        amount NUMERIC(15, 2) DEFAULT 0,
+        related_entity VARCHAR(255),
+        owner VARCHAR(150) DEFAULT 'Aman Kumar',
+        payload JSONB NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+      CREATE INDEX IF NOT EXISTS idx_inventory_records_module ON inventory_records(module_type);
     `);
 
     // Ensure default primary company exists
