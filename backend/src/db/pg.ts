@@ -131,6 +131,21 @@ export async function initPostgresTables() {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
+
+      CREATE TABLE IF NOT EXISTS tasks_records (
+        id VARCHAR(100) PRIMARY KEY,
+        company_id VARCHAR(100) DEFAULT 'comp-dleaf',
+        subject VARCHAR(255) NOT NULL,
+        due_date VARCHAR(50),
+        status VARCHAR(50) DEFAULT 'Not Started',
+        priority VARCHAR(50) DEFAULT 'Normal',
+        owner VARCHAR(150) DEFAULT 'Aman Kumar',
+        contact_name VARCHAR(150),
+        related_to VARCHAR(255),
+        payload JSONB NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
     `);
 
     // Ensure default primary company exists

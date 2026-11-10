@@ -405,6 +405,20 @@ export const api = {
     }
   },
 
+  updateTask: async (id: string, taskData: unknown) => {
+    try {
+      const res = await fetch(`/api/tasks/${id}`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(taskData),
+      });
+      return await res.json();
+    } catch (err) {
+      console.error('Error updating task via API:', err);
+      return null;
+    }
+  },
+
   updateTaskStatus: async (id: string, status: string) => {
     try {
       const res = await fetch(`/api/tasks/${id}/status`, {

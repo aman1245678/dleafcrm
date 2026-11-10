@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import {
   getTasks,
+  getTaskById,
   createTask,
+  updateTask,
   updateTaskStatus,
   deleteTask,
   getMeetings,
@@ -17,10 +19,16 @@ router.get('/', getTasks);
 router.post('/', createTask);
 router.get('/tasks', getTasks);
 router.post('/tasks', createTask);
-router.patch('/:id/status', updateTaskStatus);
+
+router.get('/tasks/:id', getTaskById);
+router.put('/tasks/:id', updateTask);
 router.patch('/tasks/:id/status', updateTaskStatus);
-router.delete('/:id', deleteTask);
 router.delete('/tasks/:id', deleteTask);
+
+router.get('/:id', getTaskById);
+router.put('/:id', updateTask);
+router.patch('/:id/status', updateTaskStatus);
+router.delete('/:id', deleteTask);
 
 // Meetings
 router.get('/meetings', getMeetings);
