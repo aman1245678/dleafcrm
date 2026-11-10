@@ -232,6 +232,8 @@ interface CRMContextType {
   deleteTask: (taskId: string) => void;
 
   addMeeting: (meeting: Omit<Meeting, 'id' | 'createdTime'>) => Meeting;
+  updateMeeting: (meeting: Meeting) => void;
+  deleteMeeting: (meetingId: string) => void;
   addCall: (call: Omit<Call, 'id' | 'createdTime'>) => Call;
   deleteCall: (callId: string) => void;
 
@@ -467,6 +469,25 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         }
       } catch {
         // Keep local tasks
+      }
+
+      // Sync meetings from backend PostgreSQL if available
+      try {
+        const serverMeetings = await api.getMeetings();
+        if (Array.isArray(serverMeetings) && serverMeetings.length > 0) {
+          setMeetings((prev) => {
+            const byId = new Map<string, Meeting>();
+            serverMeetings.forEach((m: Meeting) => {
+              if (m && m.id) byId.set(m.id, m);
+            });
+            prev.forEach((m) => {
+              if (m && m.id && !byId.has(m.id)) byId.set(m.id, m);
+            });
+            return Array.from(byId.values());
+          });
+        }
+      } catch {
+        // Keep local meetings
       }
     };
     initSession();
@@ -1365,6 +1386,8 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         toggleTaskStatus,
         deleteTask,
         addMeeting,
+        updateMeeting,
+        deleteMeeting,
         addCall,
         deleteCall,
         addProduct,

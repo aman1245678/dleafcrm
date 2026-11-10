@@ -41,6 +41,7 @@ apiRouter.use('/accounts', accountRoutes);
 apiRouter.use('/contacts', contactRoutes);
 apiRouter.use('/activities', activityRoutes);
 apiRouter.use('/tasks', activityRoutes);
+apiRouter.use('/meetings', activityRoutes);
 apiRouter.use('/inventory', inventoryRoutes);
 apiRouter.use('/auth', authRoutes);
 apiRouter.use('/communication', communicationRoutes);

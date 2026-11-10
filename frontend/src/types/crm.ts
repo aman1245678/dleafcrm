@@ -236,6 +236,7 @@ export interface Meeting {
   toTime: string;
   location?: string;
   meetingVenue?: string;
+  meetingLink?: string;
   allDay?: boolean;
   host: string;
   participants: string[];

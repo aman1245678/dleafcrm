@@ -471,6 +471,20 @@ export const api = {
     }
   },
 
+  updateMeeting: async (id: string, meetingData: unknown) => {
+    try {
+      const res = await fetch(`/api/activities/meetings/${id}`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(meetingData),
+      });
+      return await res.json();
+    } catch (err) {
+      console.error('Error updating meeting via API:', err);
+      return null;
+    }
+  },
+
   deleteMeeting: async (id: string) => {
     try {
       const res = await fetch(`/api/activities/meetings/${id}`, {
