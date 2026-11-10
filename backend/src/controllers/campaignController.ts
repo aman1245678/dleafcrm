@@ -707,19 +707,51 @@ export const executeCampaignBroadcast = async (req: Request, res: Response) => {
       });
     }
 
-    // Update campaign stats & member statuses
-    const updatedMembers = (campaign.members || []).map((m) => {
-      const wasTargeted = targetList.some(
-        (t) =>
+    // Update campaign stats & member statuses (and auto-add new targeted Leads/Contacts to campaign.members)
+    const existingKeys = new Set(
+      (campaign.members || []).map((m) => {
+        const p = (m.phone || '').replace(/[^0-9]/g, '').slice(-10);
+        const e = (m.email || '').trim().toLowerCase();
+        return `${p}_${e}`;
+      })
+    );
+
+    const updatedMembers: CampaignMember[] = (campaign.members || []).map((m) => {
+      const cleanPhone = (m.phone || '').replace(/[^0-9]/g, '').slice(-10);
+      const cleanEmail = (m.email || '').trim().toLowerCase();
+      const wasTargeted = targetList.some((t) => {
+        const tPhone = (t.phone || '').replace(/[^0-9]/g, '').slice(-10);
+        const tEmail = (t.email || '').trim().toLowerCase();
+        return (
           (t.id && t.id === m.id) ||
-          (t.phone && t.phone === m.phone) ||
-          (t.email && t.email === m.email)
-      );
-      if (wasTargeted && m.memberStatus === 'Planned') {
+          (tPhone && cleanPhone && tPhone === cleanPhone) ||
+          (tEmail && cleanEmail && tEmail === cleanEmail)
+        );
+      });
+      if (wasTargeted) {
         return { ...m, memberStatus: 'Sent' as const };
       }
       return m;
     });
+
+    for (const target of targetList) {
+      const tPhone = (target.phone || '').replace(/[^0-9]/g, '').slice(-10);
+      const tEmail = (target.email || '').trim().toLowerCase();
+      const key = `${tPhone}_${tEmail}`;
+      if ((tPhone || tEmail) && !existingKeys.has(key)) {
+        updatedMembers.push({
+          id: target.id || `mem-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+          name: target.name || 'Recipient',
+          companyOrAccount: target.companyOrAccount || campaign.name,
+          phone: target.phone || '',
+          email: target.email || '',
+          module: (target as any).module || (target.email && !target.phone ? 'Contact' : 'Lead'),
+          memberStatus: 'Sent',
+          addedAt: nowStr,
+        });
+        existingKeys.add(key);
+      }
+    }
 
     const addedCost = Number(costPerRecipient) > 0 ? dispatchedCount * Number(costPerRecipient) : 0;
 

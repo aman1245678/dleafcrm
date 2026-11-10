@@ -70,6 +70,15 @@ export interface CampaignExecutionLog {
   gatewayRef?: string;
 }
 
+export interface BroadcastTargetItem {
+  id: string;
+  name: string;
+  companyOrAccount?: string;
+  phone?: string;
+  email?: string;
+  module: 'Lead' | 'Contact' | 'Member' | 'Custom';
+}
+
 export interface CampaignRecord {
   id: string;
   name: string;
@@ -182,6 +191,13 @@ export const CampaignsModule: React.FC = () => {
   const [isExecutingBroadcast, setIsExecutingBroadcast] = useState(false);
   const [broadcastFeedback, setBroadcastFeedback] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
+  // Audience Target Selection state for Live Broadcast Dispatcher
+  const [broadcastRecipientsList, setBroadcastRecipientsList] = useState<BroadcastTargetItem[]>([]);
+  const [showAudiencePicker, setShowAudiencePicker] = useState(false);
+  const [audienceFilterTab, setAudienceFilterTab] = useState<'all' | 'leads' | 'contacts'>('all');
+  const [audienceSearchQuery, setAudienceSearchQuery] = useState('');
+  const [quickCustomInput, setQuickCustomInput] = useState('');
+
   // Campaign Note State
   const [noteTitle, setNoteTitle] = useState('');
   const [noteContent, setNoteContent] = useState('');
@@ -271,6 +287,22 @@ export const CampaignsModule: React.FC = () => {
         `Hello {{name}}, greetings from Dleaf CRM! We are reaching out regarding ${camp.name} for {{company}}. Reply YES to connect with us.`
     );
     setBroadcastCustomPhones('');
+    setQuickCustomInput('');
+    setAudienceSearchQuery('');
+    setAudienceFilterTab('all');
+
+    // Populate initial targets from existing campaign members
+    const initialTargets: BroadcastTargetItem[] = (camp.members || []).map((m) => ({
+      id: m.id,
+      name: m.name,
+      companyOrAccount: m.companyOrAccount || '',
+      phone: m.phone || '',
+      email: m.email || '',
+      module: (m.module as any) || 'Member',
+    }));
+    setBroadcastRecipientsList(initialTargets);
+    // If no members, auto-open the audience picker so user can pick immediately
+    setShowAudiencePicker(initialTargets.length === 0);
     setBroadcastFeedback(null);
     setShowBroadcastModal(true);
   };
@@ -479,21 +511,14 @@ export const CampaignsModule: React.FC = () => {
     setBroadcastFeedback(null);
 
     try {
-      const recipients: Array<{
-        id?: string;
-        name: string;
-        companyOrAccount?: string;
-        phone?: string;
-        email?: string;
-      }> = [...(selectedCampaign.members || [])].map((m) => ({
-        id: m.id,
-        name: m.name,
-        companyOrAccount: m.companyOrAccount,
-        phone: m.phone,
-        email: m.email,
-      }));
+      // Combine broadcastRecipientsList with any extra custom phones entered
+      const targetMap = new Map<string, BroadcastTargetItem>();
+      broadcastRecipientsList.forEach((r) => {
+        const p = (r.phone || '').replace(/[^0-9]/g, '').slice(-10);
+        const e = (r.email || '').trim().toLowerCase();
+        targetMap.set(`${p}_${e}`, r);
+      });
 
-      // Parse any custom comma/newline-separated phone numbers or emails entered for instant live testing
       if (broadcastCustomPhones.trim()) {
         const entries = broadcastCustomPhones
           .split(/[\n,;]+/)
@@ -502,14 +527,25 @@ export const CampaignsModule: React.FC = () => {
         for (let idx = 0; idx < entries.length; idx++) {
           const entry = entries[idx];
           if (entry.includes('@')) {
-            recipients.push({
-              name: entry.split('@')[0],
-              companyOrAccount: selectedCampaign.name,
-              email: entry,
-            });
+            const key = `_${entry.toLowerCase()}`;
+            if (!targetMap.has(key)) {
+              targetMap.set(key, {
+                id: `custom-entry-${Date.now()}-${idx}`,
+                name: entry.split('@')[0],
+                companyOrAccount: selectedCampaign.name,
+                email: entry,
+                phone: '',
+                module: 'Custom',
+              });
+            }
           } else {
             const digits = entry.replace(/[^0-9]/g, '');
-            const localTen = digits.length === 12 && digits.startsWith('91') ? digits.slice(2) : digits.length === 11 && digits.startsWith('0') ? digits.slice(1) : digits;
+            const localTen =
+              digits.length === 12 && digits.startsWith('91')
+                ? digits.slice(2)
+                : digits.length === 11 && digits.startsWith('0')
+                ? digits.slice(1)
+                : digits;
             if (localTen.length < 10) {
               setBroadcastFeedback({
                 type: 'error',
@@ -518,21 +554,47 @@ export const CampaignsModule: React.FC = () => {
               setIsExecutingBroadcast(false);
               return;
             }
-            recipients.push({
-              name: currentUser?.name || `Recipient #${idx + 1}`,
-              companyOrAccount: selectedCampaign.name,
-              phone: entry,
-            });
+            const key = `${localTen}_`;
+            if (!targetMap.has(key)) {
+              targetMap.set(key, {
+                id: `custom-entry-${Date.now()}-${idx}`,
+                name: `Recipient #${targetMap.size + 1}`,
+                companyOrAccount: selectedCampaign.name,
+                phone: entry.startsWith('+') ? entry : `+91 ${localTen}`,
+                email: '',
+                module: 'Custom',
+              });
+            }
           }
         }
       }
+
+      const finalRecipients = Array.from(targetMap.values());
+      if (finalRecipients.length === 0) {
+        setBroadcastFeedback({
+          type: 'error',
+          text: 'No recipients selected! Please choose at least 1 Lead, Contact, or enter a mobile number.',
+        });
+        setShowAudiencePicker(true);
+        setIsExecutingBroadcast(false);
+        return;
+      }
+
+      const recipientsPayload = finalRecipients.map((r) => ({
+        id: r.id,
+        name: r.name,
+        companyOrAccount: r.companyOrAccount || selectedCampaign.name,
+        phone: r.phone,
+        email: r.email,
+        module: r.module,
+      }));
 
       const res = await api.campaigns.executeBroadcast(selectedCampaign.id, {
         channel: broadcastChannel,
         whatsappTemplate: broadcastWaTemplate,
         messageTemplate: broadcastMessage,
         subject: broadcastSubject,
-        recipients,
+        recipients: recipientsPayload,
         costPerRecipient: Number(broadcastCostPerMsg) || 0,
       } as any);
 
@@ -1924,6 +1986,8 @@ export const CampaignsModule: React.FC = () => {
       {/* Global Modals */}
       {showCreateModal && renderCreateModal()}
       {showBroadcastModal && renderBroadcastModal()}
+      {showAddMemberModal && renderAddMemberModal()}
+      {showAssociateDealModal && renderAssociateDealModal()}
     </div>
   );
 
@@ -2306,11 +2370,184 @@ export const CampaignsModule: React.FC = () => {
   // -------------------------------------------------------------
   function renderBroadcastModal() {
     if (!selectedCampaign) return null;
-    const memberCount = (selectedCampaign.members || []).length;
+
+    const crmRecords = [
+      ...leads.map((l) => ({
+        id: l.id,
+        name: `${l.firstName || ''} ${l.lastName || ''}`.trim() || 'Lead',
+        companyOrAccount: l.company || '',
+        phone: l.phone || '',
+        email: l.email || '',
+        module: 'Lead' as const,
+      })),
+      ...contacts.map((c) => ({
+        id: c.id,
+        name: `${c.firstName || ''} ${c.lastName || ''}`.trim() || 'Contact',
+        companyOrAccount: c.accountName || '',
+        phone: c.phone || '',
+        email: c.email || '',
+        module: 'Contact' as const,
+      })),
+    ];
+
+    const filteredCrmRecords = crmRecords.filter((rec) => {
+      if (audienceFilterTab === 'leads' && rec.module !== 'Lead') return false;
+      if (audienceFilterTab === 'contacts' && rec.module !== 'Contact') return false;
+      if (!audienceSearchQuery.trim()) return true;
+      const q = audienceSearchQuery.toLowerCase();
+      return (
+        rec.name.toLowerCase().includes(q) ||
+        rec.companyOrAccount.toLowerCase().includes(q) ||
+        rec.phone.includes(q) ||
+        rec.email.toLowerCase().includes(q)
+      );
+    });
+
+    const isRecordSelected = (rec: { id: string; phone?: string; email?: string }) => {
+      const cleanP = (rec.phone || '').replace(/[^0-9]/g, '').slice(-10);
+      const cleanE = (rec.email || '').trim().toLowerCase();
+      return broadcastRecipientsList.some((r) => {
+        const rp = (r.phone || '').replace(/[^0-9]/g, '').slice(-10);
+        const re = (r.email || '').trim().toLowerCase();
+        return (
+          r.id === rec.id ||
+          (cleanP && rp && cleanP === rp) ||
+          (cleanE && re && cleanE === re)
+        );
+      });
+    };
+
+    const handleToggleCrmRecord = (rec: {
+      id: string;
+      name: string;
+      companyOrAccount?: string;
+      phone?: string;
+      email?: string;
+      module: 'Lead' | 'Contact';
+    }) => {
+      const cleanP = (rec.phone || '').replace(/[^0-9]/g, '').slice(-10);
+      const cleanE = (rec.email || '').trim().toLowerCase();
+      const already = isRecordSelected(rec);
+
+      if (already) {
+        setBroadcastRecipientsList((prev) =>
+          prev.filter((r) => {
+            const rp = (r.phone || '').replace(/[^0-9]/g, '').slice(-10);
+            const re = (r.email || '').trim().toLowerCase();
+            const matches =
+              r.id === rec.id ||
+              (cleanP && rp && cleanP === rp) ||
+              (cleanE && re && cleanE === re);
+            return !matches;
+          })
+        );
+      } else {
+        setBroadcastRecipientsList((prev) => [
+          ...prev,
+          {
+            id: rec.id,
+            name: rec.name,
+            companyOrAccount: rec.companyOrAccount,
+            phone: rec.phone,
+            email: rec.email,
+            module: rec.module,
+          },
+        ]);
+      }
+    };
+
+    const handleSelectAllFilteredCrm = () => {
+      const existingKeys = new Set(
+        broadcastRecipientsList.map((r) => {
+          const rp = (r.phone || '').replace(/[^0-9]/g, '').slice(-10);
+          const re = (r.email || '').trim().toLowerCase();
+          return `${rp}_${re}`;
+        })
+      );
+      const toAdd: BroadcastTargetItem[] = [];
+      filteredCrmRecords.forEach((rec) => {
+        const rp = (rec.phone || '').replace(/[^0-9]/g, '').slice(-10);
+        const re = (rec.email || '').trim().toLowerCase();
+        const key = `${rp}_${re}`;
+        if (!existingKeys.has(key)) {
+          toAdd.push({
+            id: rec.id,
+            name: rec.name,
+            companyOrAccount: rec.companyOrAccount,
+            phone: rec.phone,
+            email: rec.email,
+            module: rec.module,
+          });
+          existingKeys.add(key);
+        }
+      });
+      setBroadcastRecipientsList((prev) => [...prev, ...toAdd]);
+    };
+
+    const handleDeselectFilteredCrm = () => {
+      const filteredKeys = new Set(
+        filteredCrmRecords.map((rec) => {
+          const rp = (rec.phone || '').replace(/[^0-9]/g, '').slice(-10);
+          const re = (rec.email || '').trim().toLowerCase();
+          return `${rp}_${re}`;
+        })
+      );
+      setBroadcastRecipientsList((prev) =>
+        prev.filter((r) => {
+          const rp = (r.phone || '').replace(/[^0-9]/g, '').slice(-10);
+          const re = (r.email || '').trim().toLowerCase();
+          return !filteredKeys.has(`${rp}_${re}`) && !filteredCrmRecords.some((f) => f.id === r.id);
+        })
+      );
+    };
+
+    const handleAddQuickCustom = (e?: React.FormEvent) => {
+      if (e) e.preventDefault();
+      const val = quickCustomInput.trim();
+      if (!val) return;
+      if (val.includes('@')) {
+        setBroadcastRecipientsList((prev) => [
+          ...prev,
+          {
+            id: `custom-${Date.now()}`,
+            name: val.split('@')[0],
+            companyOrAccount: selectedCampaign.name,
+            email: val,
+            phone: '',
+            module: 'Custom',
+          },
+        ]);
+        setQuickCustomInput('');
+      } else {
+        const digits = val.replace(/[^0-9]/g, '');
+        const localTen =
+          digits.length === 12 && digits.startsWith('91')
+            ? digits.slice(2)
+            : digits.length === 11 && digits.startsWith('0')
+            ? digits.slice(1)
+            : digits;
+        if (localTen.length < 10) {
+          alert('Please enter a valid 10-digit mobile number (e.g. +91 6202326924)');
+          return;
+        }
+        setBroadcastRecipientsList((prev) => [
+          ...prev,
+          {
+            id: `custom-${Date.now()}`,
+            name: `Recipient #${prev.length + 1}`,
+            companyOrAccount: selectedCampaign.name,
+            phone: val.startsWith('+') ? val : `+91 ${localTen}`,
+            email: '',
+            module: 'Custom',
+          },
+        ]);
+        setQuickCustomInput('');
+      }
+    };
 
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-2xs p-4">
-        <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-2xl overflow-hidden animate-in fade-in">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-2xs p-4 overflow-y-auto">
+        <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-3xl overflow-hidden animate-in fade-in my-6">
           <div className="px-6 py-4 bg-[#153B2E] text-white flex items-center justify-between">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-wider bg-white/15 px-2 py-0.5 rounded-full">
@@ -2418,46 +2655,238 @@ export const CampaignsModule: React.FC = () => {
               </div>
             )}
 
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <label className="block text-slate-700 font-bold">
-                  Campaign Target Members Included: <span className="text-[#153B2E]">{memberCount} Member(s)</span>
-                </label>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedCrmMemberIds([]);
-                    setShowAddMemberModal(true);
-                  }}
-                  className="text-[11px] font-bold text-[#153B2E] hover:underline cursor-pointer"
-                >
-                  + Add / Select Leads & Contacts
-                </button>
+            {/* AUDIENCE TARGET SELECTION SUITE */}
+            <div className="space-y-2.5 pt-1 border-t border-slate-100">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-slate-900 text-xs">
+                    Target Recipients:
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-100 text-[#153B2E] border border-emerald-200">
+                    {broadcastRecipientsList.length} Person(s) Selected
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setShowAudiencePicker(!showAudiencePicker)}
+                    className="px-2.5 py-1 rounded-lg text-xs font-bold border border-[#153B2E] text-[#153B2E] bg-emerald-50/60 hover:bg-emerald-100/80 transition flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>{showAudiencePicker ? 'Hide CRM Leads & Contacts' : '+ Choose from CRM Leads & Contacts'}</span>
+                    <span className="text-[10px] bg-[#153B2E] text-white px-1.5 py-0.2 rounded-full font-mono">
+                      {crmRecords.length}
+                    </span>
+                  </button>
+
+                  {broadcastRecipientsList.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => setBroadcastRecipientsList([])}
+                      className="px-2 py-1 rounded-lg text-xs font-semibold text-rose-600 hover:bg-rose-50 border border-rose-200 transition cursor-pointer"
+                      title="Clear all selected recipients"
+                    >
+                      Clear All
+                    </button>
+                  )}
+                </div>
               </div>
 
-              {(selectedCampaign.members || []).length > 0 && (
-                <div className="flex flex-wrap gap-1.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200 max-h-24 overflow-y-auto">
-                  {(selectedCampaign.members || []).map((m) => (
+              {/* Selected Recipients Chips with 1-Click Remove */}
+              {broadcastRecipientsList.length === 0 ? (
+                <div className="p-3.5 bg-amber-50/80 border border-amber-200 rounded-xl text-amber-900 flex flex-wrap items-center justify-between gap-2">
+                  <span>
+                    ⚠️ No recipients currently selected. Pick from CRM Leads & Contacts below or enter a custom number.
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setShowAudiencePicker(true)}
+                    className="font-bold underline text-amber-950 cursor-pointer text-xs"
+                  >
+                    Open CRM Picker
+                  </button>
+                </div>
+              ) : (
+                <div className="flex flex-wrap gap-1.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200 max-h-32 overflow-y-auto">
+                  {broadcastRecipientsList.map((r) => (
                     <span
-                      key={m.id}
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-[11px] font-semibold text-slate-800"
+                      key={r.id}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-[11px] font-semibold text-slate-800 shadow-2xs group"
                     >
-                      <span>{m.name}</span>
-                      <span className="font-mono text-emerald-700">
-                        ({broadcastChannel === 'email' ? m.email || m.phone : m.phone || m.email})
+                      <span
+                        className={`px-1.5 py-0.2 rounded text-[9px] font-bold ${
+                          r.module === 'Lead'
+                            ? 'bg-amber-100 text-amber-900 border border-amber-200'
+                            : r.module === 'Contact'
+                            ? 'bg-blue-100 text-blue-900 border border-blue-200'
+                            : r.module === 'Custom'
+                            ? 'bg-purple-100 text-purple-900 border border-purple-200'
+                            : 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                        }`}
+                      >
+                        {r.module || 'Member'}
                       </span>
+                      <span className="font-bold text-slate-900">{r.name}</span>
+                      <span className="font-mono text-emerald-700">
+                        ({broadcastChannel === 'email' ? r.email || r.phone : r.phone || r.email})
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setBroadcastRecipientsList((prev) => prev.filter((item) => item.id !== r.id))
+                        }
+                        className="text-slate-400 hover:text-rose-600 font-bold ml-1 cursor-pointer transition"
+                        title={`Remove ${r.name}`}
+                      >
+                        ✕
+                      </button>
                     </span>
                   ))}
                 </div>
               )}
 
-              <input
-                type="text"
-                value={broadcastCustomPhones}
-                onChange={(e) => setBroadcastCustomPhones(e.target.value)}
-                placeholder="Optional: Enter extra 10-digit WhatsApp numbers or emails separated by comma (e.g. +91 6202326924)"
-                className="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-mono"
-              />
+              {/* Quick Add Custom Mobile or Email */}
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={quickCustomInput}
+                  onChange={(e) => setQuickCustomInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      handleAddQuickCustom();
+                    }
+                  }}
+                  placeholder="Quick add any custom WhatsApp number or email (e.g. +91 6202326924)..."
+                  className="flex-1 px-3 py-1.5 border border-slate-300 rounded-xl text-xs font-mono"
+                />
+                <button
+                  type="button"
+                  onClick={handleAddQuickCustom}
+                  className="px-3.5 py-1.5 bg-[#153B2E] hover:bg-[#1E5442] text-white rounded-xl text-xs font-bold cursor-pointer"
+                >
+                  + Add
+                </button>
+              </div>
+
+              {/* Expandable CRM Leads & Contacts Picker Accordion */}
+              {showAudiencePicker && (
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2.5 animate-in fade-in">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-bold text-slate-800 text-xs">CRM Directory Filter:</span>
+                      <button
+                        type="button"
+                        onClick={() => setAudienceFilterTab('all')}
+                        className={`px-2.5 py-0.5 rounded-lg text-xs font-bold transition ${
+                          audienceFilterTab === 'all'
+                            ? 'bg-[#153B2E] text-white'
+                            : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                        }`}
+                      >
+                        All ({crmRecords.length})
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setAudienceFilterTab('leads')}
+                        className={`px-2.5 py-0.5 rounded-lg text-xs font-bold transition ${
+                          audienceFilterTab === 'leads'
+                            ? 'bg-amber-700 text-white'
+                            : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                        }`}
+                      >
+                        Leads ({leads.length})
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setAudienceFilterTab('contacts')}
+                        className={`px-2.5 py-0.5 rounded-lg text-xs font-bold transition ${
+                          audienceFilterTab === 'contacts'
+                            ? 'bg-blue-700 text-white'
+                            : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                        }`}
+                      >
+                        Contacts ({contacts.length})
+                      </button>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={handleSelectAllFilteredCrm}
+                        className="text-[11px] font-bold text-[#153B2E] hover:underline cursor-pointer"
+                      >
+                        + Select All Filtered ({filteredCrmRecords.length})
+                      </button>
+                      <span className="text-slate-300">|</span>
+                      <button
+                        type="button"
+                        onClick={handleDeselectFilteredCrm}
+                        className="text-[11px] font-bold text-rose-600 hover:underline cursor-pointer"
+                      >
+                        Deselect Filtered
+                      </button>
+                    </div>
+                  </div>
+
+                  <input
+                    type="text"
+                    value={audienceSearchQuery}
+                    onChange={(e) => setAudienceSearchQuery(e.target.value)}
+                    placeholder="Search by name, company, mobile number or email..."
+                    className="w-full px-3 py-1.5 border border-slate-200 rounded-lg text-xs bg-white"
+                  />
+
+                  <div className="border border-slate-200 rounded-xl bg-white max-h-44 overflow-y-auto divide-y divide-slate-100 text-xs">
+                    {filteredCrmRecords.length === 0 ? (
+                      <div className="p-4 text-center text-slate-400">
+                        No CRM Leads or Contacts match your search.
+                      </div>
+                    ) : (
+                      filteredCrmRecords.map((rec) => {
+                        const checked = isRecordSelected(rec);
+                        return (
+                          <label
+                            key={rec.id}
+                            className={`flex items-center justify-between px-3.5 py-2 cursor-pointer transition ${
+                              checked ? 'bg-emerald-50/50' : 'hover:bg-slate-50'
+                            }`}
+                          >
+                            <div className="flex items-center gap-2.5">
+                              <input
+                                type="checkbox"
+                                checked={checked}
+                                onChange={() => handleToggleCrmRecord(rec)}
+                                className="rounded text-[#153B2E]"
+                              />
+                              <span
+                                className={`px-1.5 py-0.2 rounded text-[9px] font-bold ${
+                                  rec.module === 'Lead'
+                                    ? 'bg-amber-100 text-amber-900 border border-amber-200'
+                                    : 'bg-blue-100 text-blue-900 border border-blue-200'
+                                }`}
+                              >
+                                {rec.module}
+                              </span>
+                              <div>
+                                <span className="font-bold text-slate-900">{rec.name}</span>
+                                {rec.companyOrAccount && (
+                                  <span className="text-slate-500 ml-1.5">
+                                    • {rec.companyOrAccount}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                            <span className="font-mono text-slate-600 text-[11px]">
+                              {broadcastChannel === 'email' ? rec.email || rec.phone : rec.phone || rec.email}
+                            </span>
+                          </label>
+                        );
+                      })
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
 
             <div>
@@ -2465,7 +2894,7 @@ export const CampaignsModule: React.FC = () => {
                 Message Content (Dynamic tags: {'{{name}}'}, {'{{company}}'})
               </label>
               <textarea
-                rows={4}
+                rows={3}
                 required
                 value={broadcastMessage}
                 onChange={(e) => setBroadcastMessage(e.target.value)}
@@ -2475,7 +2904,7 @@ export const CampaignsModule: React.FC = () => {
 
             <div className="pt-3 border-t border-slate-200 flex items-center justify-between">
               <span className="text-[11px] text-slate-500">
-                Dispatches live via connected gateway & logs delivery in PostgreSQL.
+                Dispatches live via Meta WhatsApp Cloud API / DLT SMS & logs in PostgreSQL.
               </span>
               <div className="flex items-center gap-2">
                 <button
@@ -2491,7 +2920,11 @@ export const CampaignsModule: React.FC = () => {
                   className="px-5 py-2 bg-[#153B2E] hover:bg-[#1E5442] text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm cursor-pointer"
                 >
                   <Send className="w-3.5 h-3.5" />
-                  <span>{isExecutingBroadcast ? 'Dispatching Live...' : 'Send Live Broadcast Now'}</span>
+                  <span>
+                    {isExecutingBroadcast
+                      ? 'Dispatching Live...'
+                      : `Send Live Broadcast (${broadcastRecipientsList.length} Recipients)`}
+                  </span>
                 </button>
               </div>
             </div>
