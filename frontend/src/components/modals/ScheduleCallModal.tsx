@@ -32,8 +32,26 @@ export const ScheduleCallModal: React.FC<ScheduleCallModalProps> = ({
   const [callType] = useState('Outbound'); // Locked Outbound
   const [outgoingCallStatus] = useState('Scheduled'); // Locked Scheduled
 
-  const [callStartDate, setCallStartDate] = useState('21/10/2026');
-  const [callStartTime, setCallStartTime] = useState('04:00 PM');
+  const getTodayFormatted = () => {
+    const d = new Date();
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
+  const getCurrentTimeFormatted = () => {
+    const d = new Date();
+    let hours = d.getHours();
+    const minutes = String(d.getMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    return `${String(hours).padStart(2, '0')}:${minutes} ${ampm}`;
+  };
+
+  const [callStartDate, setCallStartDate] = useState(getTodayFormatted);
+  const [callStartTime, setCallStartTime] = useState(getCurrentTimeFormatted);
   const [callOwner, setCallOwner] = useState('Aman kumar');
   const [subject, setSubject] = useState('Call scheduled with Unknown');
   const [reminder, setReminder] = useState('None');

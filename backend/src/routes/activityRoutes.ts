@@ -12,7 +12,9 @@ import {
   updateMeeting,
   deleteMeeting,
   getCalls,
+  getCallById,
   createCall,
+  updateCall,
   deleteCall,
 } from '../controllers/activityController.js';
 
@@ -28,6 +30,8 @@ router.delete('/meetings/:id', deleteMeeting);
 // 2. Calls specific routes (MUST precede generic /:id)
 router.get('/calls', getCalls);
 router.post('/calls', createCall);
+router.get('/calls/:id', getCallById);
+router.put('/calls/:id', updateCall);
 router.delete('/calls/:id', deleteCall);
 
 // 3. Tasks specific routes

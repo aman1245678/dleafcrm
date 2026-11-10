@@ -163,6 +163,25 @@ export async function initPostgresTables() {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
+
+      CREATE TABLE IF NOT EXISTS calls_records (
+        id VARCHAR(100) PRIMARY KEY,
+        company_id VARCHAR(100) DEFAULT 'comp-dleaf',
+        subject VARCHAR(255) NOT NULL,
+        call_type VARCHAR(50) DEFAULT 'Outbound',
+        call_status VARCHAR(50) DEFAULT 'Scheduled',
+        call_start_time VARCHAR(80),
+        call_duration VARCHAR(50),
+        contact_name VARCHAR(150),
+        phone VARCHAR(80),
+        related_to VARCHAR(255),
+        call_owner VARCHAR(150) DEFAULT 'Aman Kumar',
+        call_result VARCHAR(100),
+        call_purpose VARCHAR(100),
+        payload JSONB NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
     `);
 
     // Ensure default primary company exists

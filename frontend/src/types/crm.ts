@@ -258,6 +258,8 @@ export interface Call {
   callResult?: string;
   callForType?: 'Contact' | 'Lead' | string;
   contactName?: string;
+  phoneNumber?: string;
+  phone?: string;
   relatedToType?: 'Account' | 'Deal' | 'Campaign' | string;
   relatedRecordName?: string;
   relatedModule?: string;

@@ -235,6 +235,7 @@ interface CRMContextType {
   updateMeeting: (meeting: Meeting) => void;
   deleteMeeting: (meetingId: string) => void;
   addCall: (call: Omit<Call, 'id' | 'createdTime'>) => Call;
+  updateCall: (call: Call) => void;
   deleteCall: (callId: string) => void;
 
   addProduct: (product: Omit<Product, 'id'>) => Product;
@@ -488,6 +489,25 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         }
       } catch {
         // Keep local meetings
+      }
+
+      // Sync calls from backend PostgreSQL if available
+      try {
+        const serverCalls = await api.getCalls();
+        if (Array.isArray(serverCalls) && serverCalls.length > 0) {
+          setCalls((prev) => {
+            const byId = new Map<string, Call>();
+            serverCalls.forEach((c: Call) => {
+              if (c && c.id) byId.set(c.id, c);
+            });
+            prev.forEach((c) => {
+              if (c && c.id && !byId.has(c.id)) byId.set(c.id, c);
+            });
+            return Array.from(byId.values());
+          });
+        }
+      } catch {
+        // Keep local calls
       }
     };
     initSession();
@@ -1045,11 +1065,20 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     };
     setCalls((prev) => [newCall, ...prev]);
     addAuditLog('CREATE', 'Calls', newCall.subject, `Logged ${newCall.callType} call`);
+    api.createCall(newCall).catch(() => {});
     return newCall;
+  };
+
+  const updateCall = (call: Call) => {
+    setCalls((prev) => prev.map((c) => (c.id === call.id ? call : c)));
+    addAuditLog('UPDATE', 'Calls', call.subject, `Updated call details`);
+    api.updateCall(call.id, call).catch(() => {});
   };
 
   const deleteCall = (callId: string) => {
     setCalls((prev) => prev.filter((c) => c.id !== callId));
+    addAuditLog('DELETE', 'Calls', callId, 'Deleted call record');
+    api.deleteCall(callId).catch(() => {});
   };
 
   const addProduct = (data: Omit<Product, 'id'>): Product => {
@@ -1389,6 +1418,7 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         updateMeeting,
         deleteMeeting,
         addCall,
+        updateCall,
         deleteCall,
         addProduct,
         deleteProduct,

@@ -157,7 +157,12 @@ export const memoryCalls: any[] = [
     callStatus: 'Scheduled',
     phone: '+91 98765 43210',
     callStartTime: '2026-11-05 11:00',
+    callDuration: '04:15',
     callOwner: 'Aman kumar',
+    callPurpose: 'Prospecting',
+    callAgenda: 'Understand cloud database migration and WhatsApp API requirements.',
+    callResult: 'Interested',
+    description: 'Rajesh Sharma confirmed interest in enterprise CRM trial with WhatsApp business broadcast setup.',
     createdTime: '2026-11-04 13:00',
   },
   {
@@ -169,7 +174,12 @@ export const memoryCalls: any[] = [
     callStatus: 'Scheduled',
     phone: '+91 98111 22334',
     callStartTime: '2026-11-05 15:30',
+    callDuration: '02:40',
     callOwner: 'Aman kumar',
+    callPurpose: 'Negotiation',
+    callAgenda: 'Discuss 1-year contract extension and volume pricing discounts.',
+    callResult: 'Callback Requested',
+    description: 'Sunil Verma requested a callback next Tuesday after their board meeting.',
     createdTime: '2026-11-04 13:15',
   },
   {
@@ -178,10 +188,15 @@ export const memoryCalls: any[] = [
     contactName: 'Rahul Sharma',
     relatedRecordName: 'Sharma Retail Ventures',
     callType: 'Outbound',
-    callStatus: 'Scheduled',
+    callStatus: 'Completed',
     phone: '+91 98222 33445',
     callStartTime: '2026-11-06 10:30',
+    callDuration: '05:22',
     callOwner: 'Aman kumar',
+    callPurpose: 'Administrative',
+    callAgenda: 'Verify bank remittance details and GST invoicing cycle.',
+    callResult: 'Interested',
+    description: 'Invoice dispatched and remittance confirmed for next billing cycle.',
     createdTime: '2026-11-04 14:00',
   },
   {
@@ -193,10 +208,51 @@ export const memoryCalls: any[] = [
     callStatus: 'Scheduled',
     phone: '+91 98333 44556',
     callStartTime: '2026-11-06 12:00',
+    callDuration: '03:10',
     callOwner: 'Aman kumar',
+    callPurpose: 'Demo Follow-up',
+    callAgenda: 'Qualify team size, budget, and deployment timeline.',
+    callResult: 'Interested',
+    description: 'Lead is ready for a technical demonstration on Friday.',
     createdTime: '2026-11-04 14:30',
   },
 ];
+
+// Helper to seed initial calls into PostgreSQL if table is empty
+let isCallsSeeded = false;
+async function ensureCallsSeeded() {
+  if (isCallsSeeded) return;
+  try {
+    const check = await pool.query('SELECT COUNT(*) FROM calls_records');
+    if (parseInt(check.rows[0].count, 10) === 0) {
+      for (const c of memoryCalls) {
+        await pool.query(
+          `INSERT INTO calls_records (id, subject, call_type, call_status, call_start_time, call_duration, contact_name, phone, related_to, call_owner, call_result, call_purpose, payload)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+           ON CONFLICT (id) DO NOTHING`,
+          [
+            c.id,
+            c.subject,
+            c.callType || 'Outbound',
+            c.callStatus || 'Scheduled',
+            c.callStartTime || '',
+            c.callDuration || '',
+            c.contactName || '',
+            c.phone || '',
+            c.relatedRecordName || '',
+            c.callOwner || 'Aman kumar',
+            c.callResult || '',
+            c.callPurpose || '',
+            JSON.stringify(c),
+          ]
+        );
+      }
+    }
+    isCallsSeeded = true;
+  } catch (e) {
+    // DB offline fallback
+  }
+}
 
 export const getTasks = async (req: Request, res: Response) => {
   try {
@@ -712,24 +768,87 @@ export const deleteMeeting = async (req: Request, res: Response) => {
 
 export const getCalls = async (req: Request, res: Response) => {
   try {
-    const { search, callType, callStatus } = req.query;
-    let filtered = [...memoryCalls];
+    await ensureCallsSeeded();
+    const { search, callType, callStatus, callOwner, view } = req.query;
+
+    let callsList: any[] = [];
+    try {
+      const dbRes = await pool.query('SELECT payload FROM calls_records ORDER BY created_at DESC');
+      if (dbRes.rows && dbRes.rows.length > 0) {
+        callsList = dbRes.rows.map((r: any) => r.payload);
+      } else {
+        callsList = [...memoryCalls];
+      }
+    } catch (dbErr) {
+      callsList = [...memoryCalls];
+    }
+
+    let filtered = [...callsList];
+    const todayStr = new Date().toISOString().split('T')[0];
+
+    // Filter by Zoho CRM View Preset
+    if (view) {
+      const v = (view as string).toLowerCase();
+      if (v === 'my') {
+        filtered = filtered.filter((c) => (c.callOwner || c.owner || '').toLowerCase().includes('aman'));
+      } else if (v === 'today') {
+        filtered = filtered.filter((c) => (c.callStartTime || '').includes(todayStr));
+      } else if (v === 'outbound') {
+        filtered = filtered.filter((c) => (c.callType || '').toLowerCase() === 'outbound');
+      } else if (v === 'inbound') {
+        filtered = filtered.filter((c) => (c.callType || '').toLowerCase() === 'inbound');
+      } else if (v === 'scheduled') {
+        filtered = filtered.filter((c) => (c.callStatus || '').toLowerCase() === 'scheduled');
+      } else if (v === 'completed') {
+        filtered = filtered.filter((c) => (c.callStatus || '').toLowerCase() === 'completed');
+      }
+    }
+
+    if (callType) {
+      filtered = filtered.filter((c) => (c.callType || '').toLowerCase() === (callType as string).toLowerCase());
+    }
+
+    if (callStatus) {
+      filtered = filtered.filter((c) => (c.callStatus || '').toLowerCase() === (callStatus as string).toLowerCase());
+    }
+
+    if (callOwner) {
+      filtered = filtered.filter((c) => (c.callOwner || c.owner || '').toLowerCase().includes((callOwner as string).toLowerCase()));
+    }
+
     if (search) {
       const q = (search as string).toLowerCase();
       filtered = filtered.filter(
         (c) =>
-          c.subject.toLowerCase().includes(q) ||
+          c.subject?.toLowerCase().includes(q) ||
           (c.contactName && c.contactName.toLowerCase().includes(q)) ||
-          (c.relatedRecordName && c.relatedRecordName.toLowerCase().includes(q))
+          (c.relatedRecordName && c.relatedRecordName.toLowerCase().includes(q)) ||
+          (c.phone && c.phone.includes(q)) ||
+          (c.callPurpose && c.callPurpose.toLowerCase().includes(q)) ||
+          (c.callResult && c.callResult.toLowerCase().includes(q)) ||
+          (c.description && c.description.toLowerCase().includes(q))
       );
     }
-    if (callType) {
-      filtered = filtered.filter((c) => c.callType?.toLowerCase() === (callType as string).toLowerCase());
-    }
-    if (callStatus) {
-      filtered = filtered.filter((c) => c.callStatus?.toLowerCase() === (callStatus as string).toLowerCase());
-    }
+
     return res.json({ success: true, count: filtered.length, data: filtered });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+export const getCallById = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    try {
+      const dbRes = await pool.query('SELECT payload FROM calls_records WHERE id = $1', [id]);
+      if (dbRes.rows && dbRes.rows.length > 0) {
+        return res.json({ success: true, data: dbRes.rows[0].payload });
+      }
+    } catch {}
+
+    const call = memoryCalls.find((c) => c.id === id);
+    if (call) return res.json({ success: true, data: call });
+    return res.status(404).json({ success: false, message: 'Call not found' });
   } catch (err: any) {
     return res.status(500).json({ success: false, message: err.message });
   }
@@ -737,16 +856,137 @@ export const getCalls = async (req: Request, res: Response) => {
 
 export const createCall = async (req: Request, res: Response) => {
   try {
+    const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
     const newCall = {
       ...req.body,
-      id: `call-${Date.now()}`,
-      callOwner: req.body.callOwner || 'Aman kumar',
+      id: req.body.id || `call-${Date.now()}`,
+      callOwner: req.body.callOwner || req.body.owner || 'Aman kumar',
       owner: req.body.owner || req.body.callOwner || 'Aman kumar',
+      callType: req.body.callType || 'Outbound',
       callStatus: req.body.callStatus || (req.body.callDuration ? 'Completed' : 'Scheduled'),
-      createdTime: new Date().toISOString().replace('T', ' ').substring(0, 16),
+      callStartTime: req.body.callStartTime || nowStr,
+      callDuration: req.body.callDuration || (req.body.callStatus === 'Completed' ? '02:30' : '-'),
+      phone: req.body.phone || '+91 98765 43210',
+      createdTime: req.body.createdTime || nowStr,
     };
-    memoryCalls.unshift(newCall);
+
+    try {
+      await pool.query(
+        `INSERT INTO calls_records (id, subject, call_type, call_status, call_start_time, call_duration, contact_name, phone, related_to, call_owner, call_result, call_purpose, payload)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+         ON CONFLICT (id) DO UPDATE SET
+           subject = EXCLUDED.subject,
+           call_type = EXCLUDED.call_type,
+           call_status = EXCLUDED.call_status,
+           call_start_time = EXCLUDED.call_start_time,
+           call_duration = EXCLUDED.call_duration,
+           contact_name = EXCLUDED.contact_name,
+           phone = EXCLUDED.phone,
+           related_to = EXCLUDED.related_to,
+           call_owner = EXCLUDED.call_owner,
+           call_result = EXCLUDED.call_result,
+           call_purpose = EXCLUDED.call_purpose,
+           payload = EXCLUDED.payload,
+           updated_at = CURRENT_TIMESTAMP`,
+        [
+          newCall.id,
+          newCall.subject || 'Untitled Call',
+          newCall.callType,
+          newCall.callStatus,
+          newCall.callStartTime,
+          newCall.callDuration,
+          newCall.contactName || '',
+          newCall.phone || '',
+          newCall.relatedRecordName || '',
+          newCall.callOwner,
+          newCall.callResult || '',
+          newCall.callPurpose || '',
+          JSON.stringify(newCall),
+        ]
+      );
+    } catch (dbErr) {
+      console.warn('⚠️ [PostgreSQL calls_records] write error:', dbErr);
+    }
+
+    const existingIdx = memoryCalls.findIndex((c) => c.id === newCall.id);
+    if (existingIdx !== -1) {
+      memoryCalls[existingIdx] = newCall;
+    } else {
+      memoryCalls.unshift(newCall);
+    }
+
     return res.status(201).json({ success: true, data: newCall });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+export const updateCall = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 16);
+
+    let existingCall = memoryCalls.find((c) => c.id === id);
+    try {
+      const dbRes = await pool.query('SELECT payload FROM calls_records WHERE id = $1', [id]);
+      if (dbRes.rows && dbRes.rows.length > 0) {
+        existingCall = dbRes.rows[0].payload;
+      }
+    } catch {}
+
+    const updatedCall = {
+      ...(existingCall || {}),
+      ...req.body,
+      id,
+      modifiedTime: nowStr,
+    };
+
+    try {
+      await pool.query(
+        `INSERT INTO calls_records (id, subject, call_type, call_status, call_start_time, call_duration, contact_name, phone, related_to, call_owner, call_result, call_purpose, payload)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+         ON CONFLICT (id) DO UPDATE SET
+           subject = EXCLUDED.subject,
+           call_type = EXCLUDED.call_type,
+           call_status = EXCLUDED.call_status,
+           call_start_time = EXCLUDED.call_start_time,
+           call_duration = EXCLUDED.call_duration,
+           contact_name = EXCLUDED.contact_name,
+           phone = EXCLUDED.phone,
+           related_to = EXCLUDED.related_to,
+           call_owner = EXCLUDED.call_owner,
+           call_result = EXCLUDED.call_result,
+           call_purpose = EXCLUDED.call_purpose,
+           payload = EXCLUDED.payload,
+           updated_at = CURRENT_TIMESTAMP`,
+        [
+          updatedCall.id,
+          updatedCall.subject || '',
+          updatedCall.callType || 'Outbound',
+          updatedCall.callStatus || 'Completed',
+          updatedCall.callStartTime || '',
+          updatedCall.callDuration || '',
+          updatedCall.contactName || '',
+          updatedCall.phone || '',
+          updatedCall.relatedRecordName || '',
+          updatedCall.callOwner || 'Aman kumar',
+          updatedCall.callResult || '',
+          updatedCall.callPurpose || '',
+          JSON.stringify(updatedCall),
+        ]
+      );
+    } catch (dbErr) {
+      console.warn('⚠️ [PostgreSQL calls_records] update error:', dbErr);
+    }
+
+    const idx = memoryCalls.findIndex((c) => c.id === id);
+    if (idx !== -1) {
+      memoryCalls[idx] = updatedCall;
+    } else {
+      memoryCalls.unshift(updatedCall);
+    }
+
+    return res.json({ success: true, data: updatedCall });
   } catch (err: any) {
     return res.status(500).json({ success: false, message: err.message });
   }
@@ -755,12 +995,17 @@ export const createCall = async (req: Request, res: Response) => {
 export const deleteCall = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
+    try {
+      await pool.query('DELETE FROM calls_records WHERE id = $1', [id]);
+    } catch (dbErr) {
+      console.warn('⚠️ [PostgreSQL calls_records] delete error:', dbErr);
+    }
+
     const idx = memoryCalls.findIndex((c) => c.id === id);
     if (idx !== -1) {
       memoryCalls.splice(idx, 1);
-      return res.json({ success: true, message: 'Call deleted successfully' });
     }
-    return res.status(404).json({ success: false, message: 'Call not found' });
+    return res.json({ success: true, message: 'Call deleted successfully' });
   } catch (err: any) {
     return res.status(500).json({ success: false, message: err.message });
   }

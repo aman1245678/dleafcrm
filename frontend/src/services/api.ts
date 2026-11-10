@@ -509,6 +509,16 @@ export const api = {
     }
   },
 
+  getCallById: async (id: string) => {
+    try {
+      const res = await fetch(`/api/activities/calls/${id}`, { headers: getAuthHeaders() });
+      const data = await res.json();
+      return data.success ? data.data : null;
+    } catch {
+      return null;
+    }
+  },
+
   createCall: async (callData: unknown) => {
     try {
       const res = await fetch('/api/activities/calls', {
@@ -519,6 +529,20 @@ export const api = {
       return await res.json();
     } catch (err) {
       console.error('Error creating call via API:', err);
+      return null;
+    }
+  },
+
+  updateCall: async (id: string, callData: unknown) => {
+    try {
+      const res = await fetch(`/api/activities/calls/${id}`, {
+        method: 'PUT',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(callData),
+      });
+      return await res.json();
+    } catch (err) {
+      console.error('Error updating call via API:', err);
       return null;
     }
   },
