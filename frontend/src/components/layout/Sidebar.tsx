@@ -43,7 +43,6 @@ import {
   ShoppingCart,
   Lightbulb,
   X,
-  Lock,
 } from 'lucide-react';
 import { useCRM, NavigationModule } from '../../context/CRMContext';
 
@@ -163,7 +162,6 @@ export const Sidebar: React.FC = () => {
               { id: 'dataadmin' as const, label: 'Data Admin', icon: Database },
             ]
           : []),
-        { id: 'vault' as const, label: 'Security Vault', icon: Lock, badge: 'AES-256', badgeColor: 'bg-[#EE0979]' },
         { id: 'setup', label: 'CRM Setup', icon: Settings },
       ],
     },
