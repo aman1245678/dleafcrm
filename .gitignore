@@ -3,3 +3,6 @@ dist/
 .env
 .DS_Store
 *.log
+runtime/
+scratch_logos_found.json
+~$*

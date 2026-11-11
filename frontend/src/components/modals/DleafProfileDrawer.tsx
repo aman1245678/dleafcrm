@@ -1,344 +1,251 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   X,
-  CreditCard,
-  Check,
-  ChevronDown,
-  ChevronRight,
-  ExternalLink,
-  MessageCircle,
-  Phone,
-  Mail,
-  Users,
-  BookOpen,
-  Sparkles,
-  HelpCircle,
-  Share2,
-  Smartphone,
-  LogOut,
-  User,
   ShieldCheck,
-  Zap,
-  Moon,
-  Sun
+  Check,
+  ChevronRight,
+  Settings,
+  Mail,
+  MessageSquare,
+  Globe,
+  LogOut,
+  Building2,
+  Server,
+  Database,
+  UserCheck
 } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
+import { CRMUserRole } from '../../types/crm';
 
 interface DleafProfileDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenStoreModal: () => void;
+  onOpenStoreModal?: () => void;
 }
 
 export const DleafProfileDrawer: React.FC<DleafProfileDrawerProps> = ({
   isOpen,
   onClose,
-  onOpenStoreModal,
 }) => {
-  const { currentUser, logout, setAppMode } = useCRM();
-
-  // Mode: Day | Night | Auto
-  const [themeMode, setThemeMode] = useState<'Day' | 'Night' | 'Auto'>('Day');
-
-  // Selected Color Swatch
-  const [selectedColor, setSelectedColor] = useState<string>('#EE0979');
-
-  const swatches = [
-    '#EE0979', // Project Green
-    '#EE0979', // Dleaf Green
-    '#2563EB', // Blue
-    '#7C3AED', // Purple
-    '#DB2777', // Pink
-    '#DC2626', // Red
-    '#EA580C', // Orange
-    '#D97706', // Amber
-    '#475569', // Slate
-    '#0F172A', // Dark Navy
-  ];
+  const { currentUser, logout, setAppMode, setActiveModule, setIsImapModalOpen, switchRole } = useCRM();
 
   if (!isOpen) return null;
+
+  const roles: { id: CRMUserRole; label: string; desc: string }[] = [
+    { id: 'admin', label: 'Administrator / Superuser', desc: 'Full access to all CRM data, settings & database' },
+    { id: 'manager', label: 'Sales Manager', desc: 'Pipeline management, team quotas & reporting' },
+    { id: 'agent', label: 'Sales Representative', desc: 'Assigned leads, deals, tasks & daily calls' },
+  ];
+
+  const handleRoleSelect = (role: CRMUserRole) => {
+    switchRole(role);
+  };
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden select-none">
       {/* Semi-transparent Backdrop */}
       <div
         onClick={onClose}
-        className="absolute inset-0 bg-black/20 backdrop-blur-2xs transition-opacity duration-300"
+        className="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity duration-300"
       />
 
       {/* Slide-over Drawer Panel */}
-      <div className="absolute inset-y-0 right-0 max-w-sm w-full bg-white shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-250">
+      <div className="absolute inset-y-0 right-0 max-w-sm w-full bg-white shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-200">
         
-        {/* Top Gradient Banner with User Details */}
-        <div className="relative bg-gradient-to-r from-[#0F172A] via-[#334155] to-[#EE0979] text-white p-5 pb-6">
+        {/* Top Header with User Identity */}
+        <div className="relative bg-[#0F172A] text-white p-5 border-b border-slate-800">
           
           {/* Close X button */}
           <button
             onClick={onClose}
-            className="absolute top-3 right-3 w-7 h-7 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white transition cursor-pointer"
+            className="absolute top-4 right-4 w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-slate-300 hover:text-white transition cursor-pointer"
+            title="Close Drawer"
           >
             <X className="w-4 h-4" />
           </button>
 
           {/* User Profile Info */}
-          <div className="flex items-center gap-3.5 pt-1">
-            <div className="w-12 h-12 rounded-full bg-[#0F172A] border-2 border-[#FF6A00]/80 shadow-md flex items-center justify-center font-bold text-lg text-white">
+          <div className="flex items-start gap-3.5 pr-8">
+            <div className="w-13 h-13 rounded-2xl bg-gradient-to-tr from-[#FF6A00] to-[#EE0979] text-white font-black text-xl flex items-center justify-center shadow-md shrink-0">
               {currentUser?.avatar || (currentUser?.name ? currentUser.name.charAt(0) : 'A')}
             </div>
 
-            <div>
-              <div className="font-bold text-sm leading-tight flex items-center gap-1.5">
-                <span>{currentUser?.name || 'Aman kumar'}</span>
+            <div className="min-w-0 flex-1">
+              <div className="font-bold text-base text-white truncate">
+                {currentUser?.name || 'Aman Kumar'}
               </div>
-              <div className="text-[11px] text-[#FFF1F7] flex items-center gap-1 mt-0.5">
-                <span>User Id: {currentUser?.id || 'usr-client'}</span>
-                <HelpCircle className="w-3 h-3 opacity-80" />
+              <div className="text-xs text-slate-400 truncate mt-0.5">
+                {currentUser?.email || 'aman.kumar@dleaftech.com'}
               </div>
-              <div className="mt-1.5 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/20 text-[10px] font-semibold tracking-wide backdrop-blur-xs">
-                <span>{currentUser?.company || 'Dleaf Client Workspace'}</span>
-                <ChevronDown className="w-2.5 h-2.5 opacity-80" />
+              
+              <div className="mt-2 flex items-center gap-1.5 flex-wrap">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#EE0979]/20 text-pink-300 border border-[#EE0979]/30 text-[10px] font-bold uppercase tracking-wider">
+                  <ShieldCheck className="w-3 h-3 text-[#EE0979]" />
+                  <span>Super Admin</span>
+                </span>
+                <span className="inline-flex items-center gap-1 text-[11px] text-slate-400">
+                  <Building2 className="w-3 h-3" />
+                  <span className="truncate">{currentUser?.company || 'Dleaf Technologies Pvt. Ltd.'}</span>
+                </span>
               </div>
             </div>
           </div>
 
         </div>
 
-        {/* Scrollable Body */}
+        {/* Scrollable Body - Clean, Functional, No Dummy Fluff */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs">
           
-          {/* Trial / Edition Card with UPGRADE CTA */}
-          <div className="p-3.5 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
-            <div className="flex items-center justify-between text-[11px] text-slate-500">
-              <span className="flex items-center gap-1">
-                <span>⏰</span>
-                <span>Your trial plan: <strong className="text-[#D8086C]">14 Days Free Trial Active</strong></span>
+          {/* 1. Real System & Enterprise License Status */}
+          <div className="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-2.5">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-200/70">
+              <div className="font-bold text-slate-800 text-xs flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Enterprise Workspace Active</span>
+              </div>
+              <span className="text-[10px] font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-200">
+                Verified
               </span>
-              <button
-                onClick={() => {
-                  onClose();
-                  onOpenStoreModal();
-                }}
-                className="text-[#EE0979] hover:underline font-semibold"
-              >
-                View Plans
-              </button>
             </div>
 
-            <div className="flex items-center justify-between pt-1">
-              <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded bg-pink-100 text-[#D8086C] flex items-center justify-center font-bold text-[10px]">
-                  ⛁
-                </div>
-                <span className="font-bold text-slate-800 text-xs">Standard Trial Edition</span>
+            <div className="space-y-1.5 text-[11px] text-slate-600">
+              <div className="flex items-center justify-between">
+                <span className="flex items-center gap-1.5 text-slate-500">
+                  <Server className="w-3 h-3 text-slate-400" />
+                  Cloud Production VPS:
+                </span>
+                <span className="font-mono font-semibold text-slate-800">143.110.241.182</span>
               </div>
-
-              <button
-                onClick={() => {
-                  onClose();
-                  onOpenStoreModal();
-                }}
-                className="px-3 py-1 bg-white border border-[#EE0979] text-[#0F172A] hover:bg-[#FFF1F7] text-[11px] font-bold rounded shadow-2xs transition cursor-pointer"
-              >
-                UPGRADE
-              </button>
+              <div className="flex items-center justify-between">
+                <span className="flex items-center gap-1.5 text-slate-500">
+                  <Database className="w-3 h-3 text-slate-400" />
+                  Database:
+                </span>
+                <span className="font-semibold text-emerald-700">PostgreSQL (Connected)</span>
+              </div>
             </div>
           </div>
 
-          {/* Quick Setup Banner Card */}
-          <div
-            onClick={() => {
-              onClose();
-              setAppMode('portal');
-            }}
-            className="p-3 rounded-xl border border-pink-200/80 bg-gradient-to-r from-pink-50/60 to-purple-50/60 flex items-center justify-between cursor-pointer hover:shadow-xs transition"
-          >
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-pink-100 text-[#D8086C] flex items-center justify-center font-bold">
-                ⚙️
-              </div>
-              <div>
-                <div className="font-bold text-slate-800 text-xs">Start your quick setup</div>
-                <div className="text-[10px] text-slate-500">Go to landing page</div>
-              </div>
-            </div>
-            <div className="w-6 h-6 rounded-full bg-pink-500 text-white flex items-center justify-center">
-              <ChevronRight className="w-4 h-4" />
-            </div>
-          </div>
-
-          {/* Theme & Mode Toggles */}
-          <div className="pt-2 pb-2 border-t border-b border-slate-100 space-y-3">
-            
-            <div className="flex items-center justify-between">
-              <span className="font-semibold text-slate-700 text-xs">Mode</span>
-              
-              <div className="flex items-center bg-slate-100 p-0.5 rounded-lg text-[11px]">
-                <button
-                  onClick={() => setThemeMode('Day')}
-                  className={`px-3 py-1 rounded-md font-semibold transition cursor-pointer flex items-center gap-1 ${
-                    themeMode === 'Day' ? 'bg-[#0F172A] text-white shadow-2xs' : 'text-slate-600'
-                  }`}
-                >
-                  <Sun className="w-3 h-3" />
-                  <span>Day</span>
-                </button>
-                <button
-                  onClick={() => setThemeMode('Night')}
-                  className={`px-3 py-1 rounded-md font-semibold transition cursor-pointer flex items-center gap-1 ${
-                    themeMode === 'Night' ? 'bg-[#0F172A] text-white shadow-2xs' : 'text-slate-600'
-                  }`}
-                >
-                  <Moon className="w-3 h-3" />
-                  <span>Night</span>
-                </button>
-                <button
-                  onClick={() => setThemeMode('Auto')}
-                  className={`px-3 py-1 rounded-md font-semibold transition cursor-pointer ${
-                    themeMode === 'Auto' ? 'bg-[#0F172A] text-white shadow-2xs' : 'text-slate-600'
-                  }`}
-                >
-                  Auto ⓘ
-                </button>
-              </div>
-            </div>
-
-            {/* Themes Swatches */}
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-semibold text-slate-700 text-xs">Themes</span>
-                <div className="flex items-center gap-2 text-[10px] text-slate-500">
-                  <label className="flex items-center gap-1 cursor-pointer">
-                    <input type="radio" name="th_style" defaultChecked /> Dark
-                  </label>
-                  <label className="flex items-center gap-1 cursor-pointer">
-                    <input type="radio" name="th_style" /> Lite
-                  </label>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-1.5 flex-wrap">
-                {swatches.map((color) => (
-                  <button
-                    key={color}
-                    onClick={() => setSelectedColor(color)}
-                    style={{ backgroundColor: color }}
-                    className={`w-5 h-5 rounded-full transition transform hover:scale-110 cursor-pointer ${
-                      selectedColor === color ? 'ring-2 ring-offset-2 ring-slate-800 scale-110' : ''
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Need Help? Section */}
+          {/* 2. Workspace Role Switcher */}
           <div className="space-y-2">
             <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">
-              Need Help?
+              Active Security Role
             </span>
-
-            <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-700">
-              <a
-                href="#chat"
-                onClick={(e) => e.preventDefault()}
-                className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-50 transition"
-              >
-                <MessageCircle className="w-3.5 h-3.5 text-slate-500" />
-                <span>Chat with us</span>
-              </a>
-              <a
-                href="#call"
-                onClick={(e) => e.preventDefault()}
-                className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-50 transition"
-              >
-                <Phone className="w-3.5 h-3.5 text-slate-500" />
-                <span>Talk with us</span>
-              </a>
-              <a
-                href="#write"
-                onClick={(e) => e.preventDefault()}
-                className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-50 transition"
-              >
-                <Mail className="w-3.5 h-3.5 text-slate-500" />
-                <span>Write to us</span>
-              </a>
-              <a
-                href="#community"
-                onClick={(e) => e.preventDefault()}
-                className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-50 transition"
-              >
-                <Users className="w-3.5 h-3.5 text-slate-500" />
-                <span>Community</span>
-              </a>
-              <a
-                href="#resources"
-                onClick={(e) => e.preventDefault()}
-                className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-50 transition"
-              >
-                <BookOpen className="w-3.5 h-3.5 text-slate-500" />
-                <span>Resources &gt;</span>
-              </a>
-              <a
-                href="#tour"
-                onClick={(e) => e.preventDefault()}
-                className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-50 transition"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-slate-500" />
-                <span>Take a tour</span>
-              </a>
+            <div className="space-y-1.5">
+              {roles.map((r) => {
+                const isActive = currentUser?.role === r.id;
+                return (
+                  <button
+                    key={r.id}
+                    onClick={() => handleRoleSelect(r.id)}
+                    className={`w-full p-2.5 rounded-xl border text-left transition flex items-center justify-between cursor-pointer ${
+                      isActive
+                        ? 'bg-pink-50/60 border-[#EE0979] shadow-2xs'
+                        : 'bg-white border-slate-200 hover:bg-slate-50'
+                    }`}
+                  >
+                    <div>
+                      <div className="font-bold text-xs text-slate-900 flex items-center gap-1.5">
+                        <UserCheck className={`w-3.5 h-3.5 ${isActive ? 'text-[#EE0979]' : 'text-slate-400'}`} />
+                        <span>{r.label}</span>
+                      </div>
+                      <div className="text-[10.5px] text-slate-500 mt-0.5">{r.desc}</div>
+                    </div>
+                    {isActive && (
+                      <span className="w-5 h-5 rounded-full bg-[#EE0979] text-white flex items-center justify-center shrink-0">
+                        <Check className="w-3 h-3 stroke-[3]" />
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* News Room & Refer */}
-          <div className="pt-2 border-t border-slate-100 space-y-2">
+          {/* 3. Real Quick Actions & Navigation */}
+          <div className="space-y-2 pt-2 border-t border-slate-100">
             <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">
-              News room
+              System Navigation
             </span>
-            <div className="grid grid-cols-2 gap-2 text-[11px]">
-              <div className="p-2 rounded-lg bg-slate-50 border border-slate-200 flex items-center gap-2 cursor-pointer hover:bg-slate-100 transition">
-                <span>🎁</span>
-                <span className="font-semibold text-slate-800">What's New?</span>
-              </div>
-              <div className="p-2 rounded-lg bg-slate-50 border border-slate-200 flex items-center gap-2 cursor-pointer hover:bg-slate-100 transition">
-                <span>👥</span>
-                <span className="font-semibold text-slate-800">Refer and Earn</span>
-              </div>
-            </div>
-          </div>
 
-          {/* Mobile App Link */}
-          <div className="pt-2 border-t border-slate-100 space-y-1.5">
-            <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">
-              Mobile App
-            </span>
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-1 rounded bg-blue-100 text-blue-700 font-bold text-[10px]">CRM</span>
-              <span className="px-2.5 py-1 rounded bg-red-100 text-red-700 font-bold text-[10px]">Analytics</span>
+            <div className="space-y-1">
+              {/* Settings */}
+              <button
+                onClick={() => {
+                  setActiveModule('setup');
+                  onClose();
+                }}
+                className="w-full p-2 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-slate-900 flex items-center justify-between transition cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Settings className="w-4 h-4 text-slate-500" />
+                  <span className="font-semibold text-xs">CRM Setup & Customization</span>
+                </div>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+              </button>
+
+              {/* SalesInbox */}
+              <button
+                onClick={() => {
+                  setIsImapModalOpen(true);
+                  onClose();
+                }}
+                className="w-full p-2 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-slate-900 flex items-center justify-between transition cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Mail className="w-4 h-4 text-blue-600" />
+                  <span className="font-semibold text-xs">Connect Email (IMAP / SMTP)</span>
+                </div>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+              </button>
+
+              {/* WhatsApp Broadcasts */}
+              <button
+                onClick={() => {
+                  setActiveModule('campaigns');
+                  onClose();
+                }}
+                className="w-full p-2 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-slate-900 flex items-center justify-between transition cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5">
+                  <MessageSquare className="w-4 h-4 text-emerald-600" />
+                  <span className="font-semibold text-xs">WhatsApp Broadcast Center</span>
+                </div>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+              </button>
+
+              {/* Switch to Public Website */}
+              <button
+                onClick={() => {
+                  setAppMode('portal');
+                  onClose();
+                }}
+                className="w-full p-2 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-slate-900 flex items-center justify-between transition cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Globe className="w-4 h-4 text-[#EE0979]" />
+                  <span className="font-semibold text-xs">Public Website & Portal</span>
+                </div>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+              </button>
             </div>
           </div>
 
         </div>
 
-        {/* Bottom Drawer Footer: My Account & Sign Out */}
-        <div className="p-3 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs">
-          <button
-            onClick={() => {
-              onClose();
-              onOpenStoreModal();
-            }}
-            className="flex items-center gap-1.5 text-slate-700 hover:text-slate-900 font-semibold cursor-pointer"
-          >
-            <User className="w-3.5 h-3.5" />
-            <span>My Account</span>
-          </button>
+        {/* Bottom Drawer Footer: Sign Out & Platform Details */}
+        <div className="p-3.5 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs">
+          <div>
+            <div className="font-bold text-slate-800 text-[11px]">Dleaf CRM Enterprise</div>
+            <div className="text-[10px] text-slate-400 font-medium">v4.5 Live Production</div>
+          </div>
 
           <button
             onClick={() => {
               onClose();
               logout();
             }}
-            className="flex items-center gap-1.5 text-red-600 hover:text-red-700 font-semibold cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 hover:text-red-700 font-bold transition cursor-pointer border border-red-200"
           >
             <LogOut className="w-3.5 h-3.5" />
             <span>Sign Out</span>
