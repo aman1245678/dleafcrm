@@ -149,7 +149,7 @@ export const VaultModule: React.FC = () => {
             <div className="flex items-center gap-2">
               <h2 className="text-base font-bold text-slate-900">Dleaf Security Vault</h2>
               <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-100 text-[#EE0979]">
-                Zoho Vault Standard (AES-256)
+                Enterprise AES-256 Vault
               </span>
             </div>
             <p className="text-[11px] text-slate-500">

@@ -283,7 +283,7 @@ export const UserGuideModal: React.FC<UserGuideModalProps> = ({ isOpen, onClose 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600">
                 <div className="p-3.5 bg-white border border-slate-200 rounded-xl space-y-1 shadow-2xs">
                   <strong className="text-slate-900 block font-bold">SalesInbox (Port 993 IMAP/SMTP)</strong>
-                  <p>Connect company mailboxes (Zoho, Google Workspace, Microsoft 365). Incoming emails are automatically sorted by Deals, Leads, and Team colleagues.</p>
+                  <p>Connect company mailboxes (Dleaftech, Google Workspace, Microsoft 365). Incoming emails are automatically sorted by Deals, Leads, and Team colleagues.</p>
                 </div>
                 <div className="p-3.5 bg-white border border-slate-200 rounded-xl space-y-1 shadow-2xs">
                   <strong className="text-slate-900 block font-bold">Developer MCP Server AI</strong>

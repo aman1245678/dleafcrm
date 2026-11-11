@@ -110,7 +110,7 @@ export const SharedDocumentViewer: React.FC<SharedDocumentViewerProps> = ({ toke
       <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center text-white p-4">
         <div className="w-12 h-12 border-4 border-pink-500 border-t-transparent rounded-full animate-spin mb-4" />
         <h2 className="text-lg font-bold">Accessing Secure Document...</h2>
-        <p className="text-slate-400 text-sm mt-1">Verifying Zoho WorkDrive-grade cloud encryption</p>
+        <p className="text-slate-400 text-sm mt-1">Verifying Dleaf Drive cloud encryption</p>
       </div>
     );
   }
@@ -198,7 +198,7 @@ export const SharedDocumentViewer: React.FC<SharedDocumentViewerProps> = ({ toke
           <div className="mt-6 pt-4 border-t border-slate-800 text-center">
             <span className="text-[11px] text-slate-500 flex items-center justify-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-              Zoho WorkDrive Grade AES-256 Encryption
+              Dleaf Enterprise AES-256 Encryption
             </span>
           </div>
         </div>

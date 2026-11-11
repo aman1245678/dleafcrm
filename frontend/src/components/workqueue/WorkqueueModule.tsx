@@ -141,7 +141,7 @@ export const WorkqueueModule: React.FC = () => {
             <div className="flex items-center gap-2">
               <h1 className="font-bold text-lg text-slate-900 tracking-tight">Workqueue</h1>
               <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-[#153B2E] border border-emerald-200">
-                Zoho Enterprise Action Engine
+                Dleaf Enterprise Action Engine
               </span>
             </div>
             <p className="text-xs text-slate-500">

@@ -310,7 +310,7 @@ export const PortalHome: React.FC = () => {
                   <div className="font-bold text-[#0F172A] text-xs sm:text-sm">DleafCRM Intelligence</div>
                   <span className="text-[9px] bg-[#FFF1F7] text-[#EE0979] font-semibold px-1.5 py-0.5 rounded">Live App</span>
                 </div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Zoho-standard deals, CPQ invoices, price books & AI lead scoring.</div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Visual deals pipeline, CPQ invoices, price books & AI lead scoring.</div>
                 <button
                   onClick={() => setAppMode('workspace')}
                   className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer"

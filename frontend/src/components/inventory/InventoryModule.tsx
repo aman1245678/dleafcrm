@@ -253,7 +253,7 @@ export const InventoryModule: React.FC = () => {
                       <button
                         onClick={() => setActivePrintInvoice(inv)}
                         className="px-2.5 py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-300 rounded font-semibold text-xs flex items-center gap-1.5 transition cursor-pointer"
-                        title="Print / Download Zoho Books-grade GST Tax Invoice"
+                        title="Print / Download Enterprise GST Tax Invoice"
                       >
                         <Printer className="w-3.5 h-3.5 text-blue-600" />
                         <span>Print GST PDF</span>

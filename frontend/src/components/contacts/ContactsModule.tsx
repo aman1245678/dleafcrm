@@ -368,7 +368,7 @@ export const ContactsModule: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Zoho_Contacts_Export_${new Date().toISOString().split('T')[0]}.csv`;
+    a.download = `Dleaf_Contacts_Export_${new Date().toISOString().split('T')[0]}.csv`;
     a.click();
     URL.revokeObjectURL(url);
     showToast(`Exported ${filteredContacts.length} contact(s) to CSV.`);
@@ -1536,7 +1536,7 @@ export const ContactsModule: React.FC = () => {
                                     owner: true,
                                   });
                                   setIsColumnSettingsOpen(false);
-                                  showToast('Columns reset to default Zoho layout.');
+                                  showToast('Columns reset to default layout.');
                                 }}
                                 className="w-full text-left px-3.5 py-1.5 hover:bg-[#FFF8FA] hover:text-[#0F172A] text-slate-500 flex items-center gap-2 cursor-pointer border-b border-[#FFF1F7]"
                               >
@@ -1647,7 +1647,7 @@ export const ContactsModule: React.FC = () => {
                           </div>
                           <div className="font-bold text-sm text-[#0F172A]">No Contacts Found</div>
                           <p className="text-xs text-slate-500">
-                            Create a new contact record or import your contacts CSV to start managing customer relationships like Zoho CRM.
+                            Create a new contact record or import your contacts CSV to start managing customer relationships in Dleaf CRM.
                           </p>
                           <div className="flex items-center justify-center gap-2 pt-1">
                             <button

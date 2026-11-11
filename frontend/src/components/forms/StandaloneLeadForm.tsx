@@ -60,7 +60,7 @@ export const StandaloneLeadForm: React.FC = () => {
     }
   };
 
-  const embedScriptCode = `<!-- Dleaf CRM Zoho-Grade Web-to-Lead Embed Script -->
+  const embedScriptCode = `<!-- Dleaf CRM Enterprise Web-to-Lead Embed Script -->
 <div id="dleaf-crm-lead-form"></div>
 <script 
   src="${window.location.origin}/embed/lead-form.js" 
@@ -80,7 +80,7 @@ export const StandaloneLeadForm: React.FC = () => {
             Dleaf<span className="text-[#EE0979]">CRM</span>
           </span>
           <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-pink-50 text-[#EE0979] border border-pink-200 ml-1">
-            Zoho Web-to-Lead Form
+            Enterprise Web-to-Lead Form
           </span>
         </div>
 
@@ -106,10 +106,10 @@ export const StandaloneLeadForm: React.FC = () => {
       </div>
 
       {activeTab === 'embed' ? (
-        /* Zoho-Style Webform Script Generator View */
+        /* Enterprise Webform Script Generator View */
         <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-slate-200 p-6 space-y-4">
           <div>
-            <h3 className="font-bold text-base text-slate-900">Zoho Web-to-Lead Embed Code</h3>
+            <h3 className="font-bold text-base text-slate-900">Enterprise Web-to-Lead Embed Code</h3>
             <p className="text-xs text-slate-500 mt-1">
               Paste this HTML script into your website, landing page, or WordPress blog to capture leads directly into Dleaf CRM database in real-time.
             </p>

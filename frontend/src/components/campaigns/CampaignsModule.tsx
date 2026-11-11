@@ -663,7 +663,7 @@ export const CampaignsModule: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'Zoho_Campaigns_Sample_Import.csv';
+    a.download = 'Dleaf_Campaigns_Sample_Import.csv';
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -1452,7 +1452,7 @@ export const CampaignsModule: React.FC = () => {
           <div className="w-full min-h-[540px] bg-white rounded-lg border border-slate-200 shadow-2xs p-6 flex flex-col justify-between">
             <div>
               <div className="flex flex-wrap items-center justify-between pb-4 border-b border-slate-200 gap-2">
-                <h2 className="text-sm font-bold text-slate-800">Zoho Data Import Wizard — Campaigns</h2>
+                <h2 className="text-sm font-bold text-slate-800">Dleaf Data Import Wizard — Campaigns</h2>
 
                 <div className="flex items-center gap-2 text-xs">
                   {(['upload', 'actions', 'mapping', 'field_mapping', 'assign'] as const).map((st, idx) => (
@@ -2551,7 +2551,7 @@ export const CampaignsModule: React.FC = () => {
           <div className="px-6 py-4 bg-[#153B2E] text-white flex items-center justify-between">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-wider bg-white/15 px-2 py-0.5 rounded-full">
-                Live Zoho Campaign Dispatcher
+                Live Dleaf Campaign Dispatcher
               </span>
               <h3 className="text-sm font-bold mt-1">
                 Execute Broadcast — {selectedCampaign.name}

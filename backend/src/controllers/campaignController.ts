@@ -856,7 +856,7 @@ export const importCampaigns = async (req: Request, res: Response) => {
       expectedResponse: c.expectedResponse || '15%',
       numSent: Number(c.numSent) || 0,
       campaignOwner: c.campaignOwner || 'Aman Kumar',
-      description: c.description || 'Imported via Zoho Data Import Engine',
+      description: c.description || 'Imported via Dleaf Data Import Engine',
       members: Array.isArray(c.members) ? c.members : [],
       notesList: [],
       executionLogs: [],

@@ -122,7 +122,7 @@ export const CreateMeetingModal: React.FC<CreateMeetingModalProps> = ({
               <Calendar className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-slate-900">Create Meeting (Zoho CRM Standard)</h3>
+              <h3 className="text-sm font-bold text-slate-900">Schedule New Meeting</h3>
               <p className="text-[11px] text-slate-500">Schedule Video Call, Client Demo, or Executive Review</p>
             </div>
           </div>

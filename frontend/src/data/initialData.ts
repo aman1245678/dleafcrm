@@ -338,7 +338,7 @@ export const INITIAL_EMAILS: EmailMessage[] = [
     from: 'aman.kumar@dleaftech.com',
     fromName: 'Aman Kumar',
     to: 'team@dleaftech.com',
-    subject: 'Sprint Milestone: Zoho CRM Parity for Activities & Inventory Modules Live',
+    subject: 'Sprint Milestone: Activities & Inventory Modules Live in Production',
     body: `Team,\n\nAll 7 Inventory modules (Products, Price Books, Quotes, Sales Orders, Purchase Orders, Invoices, Vendors) and the complete Activities suite (Tasks Kanban, Meetings Calendar, Calls Hub) are now live and synchronized with PostgreSQL.\n\nPlease test the 1-click Quote-to-Invoice conversion workflow and verify that client quotation PDFs generate accurately with 18% GST calculation.\n\nAman Kumar\nFull-Stack Engineering Lead`,
     snippet: 'All 7 Inventory modules and the complete Activities suite are now live...',
     timestamp: '10 Nov, 7:00 PM',

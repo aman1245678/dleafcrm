@@ -295,7 +295,7 @@ export const DocumentsModule: React.FC = () => {
   const handleSaveWorkDriveConfig = () => {
     localStorage.setItem('zoho_wd_client_id', workDriveClientId);
     localStorage.setItem('zoho_wd_client_secret', workDriveSecret);
-    setWorkDriveSyncStatus('Connected & Synced with Zoho WorkDrive');
+    setWorkDriveSyncStatus('Connected & Synced with Dleaf Drive Cloud');
     setTimeout(() => setShowWorkDriveModal(false), 1500);
   };
 
@@ -316,7 +316,7 @@ export const DocumentsModule: React.FC = () => {
           <span className="font-bold text-base text-slate-800">Documents</span>
           <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-pink-50 text-[#EE0979] border border-pink-200 flex items-center gap-1">
             <ShieldCheck className="w-3.5 h-3.5" />
-            Zoho WorkDrive Grade Security
+            Dleaf Cloud Storage AES-256 Security
           </span>
         </div>
 
@@ -324,10 +324,10 @@ export const DocumentsModule: React.FC = () => {
           <button
             onClick={() => setShowWorkDriveModal(true)}
             className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer"
-            title="Configure Zoho WorkDrive Sync"
+            title="Configure Dleaf Cloud Drive Sync"
           >
             <Cloud className="w-3.5 h-3.5" />
-            <span>Zoho WorkDrive</span>
+            <span>Dleaf Drive</span>
           </button>
 
           <div className="relative">
@@ -558,7 +558,7 @@ export const DocumentsModule: React.FC = () => {
                     onClick={() => setShowWorkDriveModal(true)}
                     className="px-4 py-1.5 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded text-xs font-semibold text-slate-700 transition cursor-pointer"
                   >
-                    Sync Zoho WorkDrive
+                    Sync Dleaf Drive
                   </button>
                 </div>
               </div>
@@ -898,7 +898,7 @@ export const DocumentsModule: React.FC = () => {
         </div>
       )}
 
-      {/* Zoho WorkDrive Cloud Integration Modal */}
+      {/* Dleaf Cloud Storage Sync Configuration Modal */}
       {showWorkDriveModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-2xs p-4 select-none">
           <div className="bg-white rounded-lg shadow-xl border border-slate-200 w-full max-w-lg overflow-hidden animate-in fade-in">
@@ -906,7 +906,7 @@ export const DocumentsModule: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Cloud className="w-4 h-4 text-blue-600" />
                 <span className="font-bold text-xs text-slate-800">
-                  Zoho WorkDrive Cloud Sync Configuration
+                  Dleaf Cloud Storage Sync Configuration
                 </span>
               </div>
               <button
@@ -919,16 +919,16 @@ export const DocumentsModule: React.FC = () => {
 
             <div className="p-5 space-y-4 text-xs">
               <p className="text-slate-600">
-                Connect your Zoho WorkDrive TeamSpace directly to Dleaf CRM to auto-sync proposal PDFs, contract agreements, and invoices.
+                Connect your Dleaf Cloud Storage Space directly to Dleaf CRM to auto-sync proposal PDFs, contract agreements, and invoices.
               </p>
 
               <div>
                 <label className="block text-slate-700 font-semibold mb-1">
-                  Zoho API Client ID
+                  Storage Client ID
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. 1000.XXXXX.YYYYY"
+                  placeholder="e.g. dleaf_storage_prod_01"
                   value={workDriveClientId}
                   onChange={(e) => setWorkDriveClientId(e.target.value)}
                   className="w-full px-3 py-1.5 border border-slate-300 rounded text-xs font-mono"
@@ -937,7 +937,7 @@ export const DocumentsModule: React.FC = () => {
 
               <div>
                 <label className="block text-slate-700 font-semibold mb-1">
-                  Zoho API Client Secret
+                  Storage Access Secret
                 </label>
                 <input
                   type="password"
@@ -950,14 +950,14 @@ export const DocumentsModule: React.FC = () => {
 
               <div className="p-3 bg-blue-50 border border-blue-200 rounded text-blue-800 flex items-center justify-between">
                 <div>
-                  <span className="font-bold block">WorkDrive Connection Status</span>
+                  <span className="font-bold block">Storage Connection Status</span>
                   <span className="text-[11px] text-blue-600">{workDriveSyncStatus}</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => {
                     setWorkDriveSyncStatus('Testing API handshake...');
-                    setTimeout(() => setWorkDriveSyncStatus('Zoho WorkDrive API Active (Token: OAuth2 Valid)'), 1000);
+                    setTimeout(() => setWorkDriveSyncStatus('Dleaf Cloud Storage Active (Encrypted)'), 1000);
                   }}
                   className="px-3 py-1 bg-white border border-blue-300 text-blue-700 rounded font-semibold text-[11px] hover:bg-blue-50"
                 >
@@ -1137,7 +1137,7 @@ export const DocumentsModule: React.FC = () => {
             <div className="px-5 py-2.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
               <span className="flex items-center gap-1.5 text-[11px]">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                Zoho WorkDrive Secured Document Viewer
+                Dleaf Cloud Secured Document Viewer
               </span>
               <button
                 type="button"

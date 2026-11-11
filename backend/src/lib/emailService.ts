@@ -120,7 +120,7 @@ function generateOtpHtml(toEmail: string, otp: string, purpose: 'signin' | 'sign
                 <span style="color: #0f172a; font-weight: 800;">Dleaf CRM</span> &bull; Cloud Enterprise Workspace
               </p>
               <p style="margin: 0; color: #94a3b8; font-size: 11px;">
-                Secured by Zoho CPaaS &bull; https://dleafcrm.dleaftech.com
+                Secured by Dleaf Enterprise Cloud &bull; https://dleafcrm.dleaftech.com
               </p>
             </td>
           </tr>

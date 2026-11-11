@@ -230,7 +230,7 @@ export const CreateContactModal: React.FC = () => {
 
   const handleSubmit = (keepOpen: boolean = false) => {
     if (!lastName.trim()) {
-      setErrorMsg('Last Name is mandatory in Zoho CRM.');
+      setErrorMsg('Last Name is mandatory.');
       return;
     }
 
@@ -1113,7 +1113,7 @@ export const CreateContactModal: React.FC = () => {
               onChange={(e) => setFormViewMode(e.target.value as 'Standard View' | 'Compact View')}
               className="px-2.5 py-1 bg-white border border-[#F1D5E4] rounded-lg text-xs font-semibold text-[#0F172A]"
             >
-              <option value="Standard View">Standard View (All Zoho Fields)</option>
+              <option value="Standard View">Standard View (All CRM Fields)</option>
               <option value="Compact View">Compact View (Quick Create)</option>
             </select>
           </div>

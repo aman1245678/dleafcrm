@@ -82,7 +82,7 @@ export const CreateTaskModal: React.FC = () => {
         <div className="sticky top-0 bg-[#F4F5F7] border-b border-slate-200 px-6 py-2.5 flex items-center justify-between z-20">
           <div className="flex items-center gap-3">
             <h2 className="text-base font-bold text-slate-800 tracking-tight">Create Task</h2>
-            <span className="text-xs text-slate-400 font-normal">Zoho CRM Compliant Activity</span>
+            <span className="text-xs text-slate-400 font-normal">Enterprise Activity</span>
           </div>
 
           <div className="flex items-center gap-2">
