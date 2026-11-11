@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="g" x1="24" y1="18" x2="96" y2="102" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3ad35a"/>
+      <stop offset="1" stop-color="#0f8a3c"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="26" fill="#f6f7f5"/>
+  <!-- Broken outer ring -->
+  <path d="M34 24 A44 44 0 0 1 98 38" stroke="url(#g)" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M24 42 A44 44 0 0 0 86 98" stroke="url(#g)" stroke-width="6.5" stroke-linecap="round"/>
+  <circle cx="37" cy="31" r="5" fill="#2fbf50"/>
+  <circle cx="90" cy="88" r="5" fill="#2fbf50"/>
+  <!-- Letter N -->
+  <g stroke="url(#g)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M45 80 V40"/>
+    <path d="M45 40 L69 79"/>
+    <path d="M69 79 V40"/>
+  </g>
+  <!-- Circuit traces off the right stem -->
+  <g stroke="url(#g)" stroke-width="4" stroke-linecap="round">
+    <path d="M69 48 H82"/>
+    <path d="M69 60 H87"/>
+    <path d="M69 72 H82"/>
+  </g>
+  <g fill="none" stroke="url(#g)" stroke-width="3">
+    <circle cx="85" cy="48" r="3.4"/>
+    <circle cx="90" cy="60" r="3.4"/>
+    <circle cx="85" cy="72" r="3.4"/>
+  </g>
+</svg>

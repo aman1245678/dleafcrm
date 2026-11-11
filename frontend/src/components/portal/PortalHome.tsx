@@ -257,60 +257,63 @@ export const PortalHome: React.FC = () => {
           {/* ----------------- 4 HERO FEATURE PILLARS CARDS (Bottom Ribbon) ----------------- */}
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-md transition text-left flex items-start gap-3.5 group">
-              <div className="w-10 h-10 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <Code className="w-5 h-5 text-[#EE0979]" />
+            {/* Pillar 1: Dleaftech */}
+            <div className="p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-lg transition-all text-left flex items-start gap-3.5 group">
+              <div className="w-11 h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-pink-200 transition-all">
+                <img src="/brands/dleaftech-emblem.png" alt="Dleaftech" className="w-full h-full object-contain" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between">
-                  <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Dleaftech Engineering</div>
-                  <span className="text-[9px] bg-slate-100 text-slate-600 font-semibold px-1.5 py-0.5 rounded">Parent</span>
+                  <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Dleaftech Agency</div>
+                  <span className="text-[9px] bg-slate-100 text-slate-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">Parent</span>
                 </div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">AI-powered websites, custom enterprise apps & mobile development.</div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">AI enterprise apps, custom software & web development.</div>
                 <a
                   href="https://www.dleaftech.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
                 >
-                  <span>Visit Dleaftech</span>
+                  <span>Visit dleaftech.com</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-emerald-500 hover:shadow-md transition text-left flex items-start gap-3.5 group">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <MessageSquare className="w-5 h-5 text-emerald-600" />
+            {/* Pillar 2: Nexwapi */}
+            <div className="p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-emerald-500 hover:shadow-lg transition-all text-left flex items-start gap-3.5 group">
+              <div className="w-11 h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-emerald-200 transition-all">
+                <img src="/brands/nexwapi.svg" alt="Nexwapi" className="w-full h-full object-contain" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between">
                   <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Nexwapi WhatsApp API</div>
-                  <span className="text-[9px] bg-emerald-100 text-emerald-700 font-semibold px-1.5 py-0.5 rounded">Meta BSP</span>
+                  <span className="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200">Meta BSP</span>
                 </div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Official WhatsApp Cloud API, AI chatbots & automated bulk broadcasts.</div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Official WhatsApp Cloud API & automated bulk broadcasts.</div>
                 <a
                   href="https://nexwapi.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[11px] font-bold text-emerald-600 hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
                 >
-                  <span>Explore Nexwapi</span>
+                  <span>Explore nexwapi.com</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-md transition text-left flex items-start gap-3.5 group">
-              <div className="w-10 h-10 rounded-xl bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <Zap className="w-5 h-5 text-[#EE0979]" />
+            {/* Pillar 3: DleafCRM */}
+            <div className="p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-lg transition-all text-left flex items-start gap-3.5 group">
+              <div className="w-11 h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-pink-200 transition-all">
+                <img src="/favicon.png" alt="DleafCRM" className="w-full h-full object-contain" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between">
                   <div className="font-bold text-[#0F172A] text-xs sm:text-sm">DleafCRM Intelligence</div>
-                  <span className="text-[9px] bg-[#FFF1F7] text-[#EE0979] font-semibold px-1.5 py-0.5 rounded">Live App</span>
+                  <span className="text-[9px] bg-[#FFF1F7] text-[#EE0979] font-bold px-1.5 py-0.5 rounded border border-[#F1D5E4]">Live App</span>
                 </div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Visual deals pipeline, CPQ invoices, price books & AI lead scoring.</div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Visual deals pipeline, GST invoices, CPQ & AI lead scoring.</div>
                 <button
                   onClick={() => setAppMode('workspace')}
                   className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer"
@@ -321,23 +324,24 @@ export const PortalHome: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-[#F1D5E4] hover:border-purple-500 hover:shadow-md transition text-left flex items-start gap-3.5 group">
-              <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                <GraduationCap className="w-5 h-5 text-purple-600" />
+            {/* Pillar 4: Academy */}
+            <div className="p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-purple-500 hover:shadow-lg transition-all text-left flex items-start gap-3.5 group">
+              <div className="w-11 h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1 shrink-0 group-hover:scale-105 group-hover:border-purple-200 transition-all">
+                <img src="/brands/dleaftech-academy-alt.png" alt="Dleaftech Academy" className="w-full h-full object-contain rounded-lg" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between">
                   <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Dleaftech Academy</div>
-                  <span className="text-[9px] bg-purple-100 text-purple-700 font-semibold px-1.5 py-0.5 rounded">EdTech</span>
+                  <span className="text-[9px] bg-purple-50 text-purple-700 font-bold px-1.5 py-0.5 rounded border border-purple-200">EdTech</span>
                 </div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">10,000+ engineers trained, 500+ live projects & 200+ hiring partners.</div>
+                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">10,000+ engineers trained, 500+ live projects & hiring partners.</div>
                 <a
                   href="https://academy.dleaftech.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[11px] font-bold text-purple-600 hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
                 >
-                  <span>Explore Academy</span>
+                  <span>academy.dleaftech.com</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
@@ -346,123 +350,206 @@ export const PortalHome: React.FC = () => {
           </div>
 
           {/* ----------------- DLEAFTECH INNOVATION ECOSYSTEM BRANDS STRIP ----------------- */}
-          <div className="mt-14 pt-8 border-t border-slate-200/80">
-            <div className="text-center mb-6">
-              <div className="inline-flex items-center gap-2 bg-[#FFF1F7] text-[#EE0979] px-3.5 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase mb-1.5 border border-[#F1D5E4]">
-                <Building2 className="w-3.5 h-3.5 text-[#EE0979]" />
+          <div className="mt-14 pt-10 border-t border-slate-200/80">
+            {/* Header with pill and subtitle */}
+            <div className="text-center mb-8 max-w-2xl mx-auto space-y-2">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-50 via-purple-50 to-emerald-50 text-slate-800 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase border border-slate-200 shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5 text-[#EE0979]" />
                 <span>DleafTech Innovation Ecosystem & Platforms</span>
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               </div>
-              <p className="text-xs text-slate-600 font-medium max-w-xl mx-auto">
-                Engineered by parent company <strong className="text-slate-900 font-bold">Dleaf Technologies Pvt. Ltd.</strong> — delivering next-gen enterprise solutions across Web, AI, EdTech & WhatsApp.
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                One United Ecosystem. Enterprise-Grade Products.
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
+                Engineered and incubated by parent company <strong className="text-slate-900 font-semibold">Dleaf Technologies Pvt. Ltd.</strong> — delivering proprietary solutions across Web Architecture, Meta Cloud BSP, EdTech, FinTech & Supply Chain.
               </p>
             </div>
 
-            {/* Interactive Grid of Ecosystem Brand Cards with Live Links */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 px-2">
+            {/* High-impact 6-Card Grid with Real Logos */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5 px-1">
               
-              {/* Dleaftech */}
+              {/* Card 1: Dleaftech */}
               <a
                 href="https://www.dleaftech.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#EE0979] hover:shadow-md transition-all flex flex-col items-center text-center cursor-pointer"
+                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-[#EE0979] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#FF6A00] to-[#EE0979] text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
-                  DL
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FF6A00] to-[#EE0979] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-2 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-pink-200 transition-all duration-300">
+                  <img src="/brands/dleaftech-emblem.png" alt="Dleaftech" className="w-full h-full object-contain" />
                 </div>
-                <div className="font-extrabold text-xs text-slate-800 group-hover:text-[#EE0979] transition flex items-center gap-1">
+                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-pink-50 text-[#EE0979] border border-pink-200 mb-1.5">
+                  Parent Company
+                </span>
+                <div className="font-extrabold text-xs text-slate-900 group-hover:text-[#EE0979] transition flex items-center gap-1">
                   <span>Dleaftech</span>
-                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition" />
+                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-[#EE0979] transition" />
                 </div>
-                <span className="text-[10px] text-slate-500 font-medium mt-0.5">Parent IT Agency</span>
+                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">IT & AI Engineering</span>
+                <span className="text-[10px] text-[#EE0979] font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                  Visit Site ↗
+                </span>
               </a>
 
-              {/* Nexwapi */}
+              {/* Card 2: Nexwapi */}
               <a
                 href="https://nexwapi.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 hover:shadow-md transition-all flex flex-col items-center text-center cursor-pointer"
+                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
-                  NW
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-2 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-emerald-200 transition-all duration-300">
+                  <img src="/brands/nexwapi.svg" alt="Nexwapi" className="w-full h-full object-contain" />
                 </div>
-                <div className="font-extrabold text-xs text-slate-800 group-hover:text-emerald-600 transition flex items-center gap-1">
+                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-1.5">
+                  Meta Cloud BSP
+                </span>
+                <div className="font-extrabold text-xs text-slate-900 group-hover:text-emerald-600 transition flex items-center gap-1">
                   <span>Nexwapi</span>
-                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition" />
+                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-emerald-600 transition" />
                 </div>
-                <span className="text-[10px] text-emerald-600 font-medium mt-0.5">WhatsApp Cloud API</span>
+                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">WhatsApp Cloud API</span>
+                <span className="text-[10px] text-emerald-600 font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                  Visit Site ↗
+                </span>
               </a>
 
-              {/* Dleaftech Academy */}
+              {/* Card 3: Dleaftech Academy */}
               <a
                 href="https://academy.dleaftech.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-purple-500 hover:shadow-md transition-all flex flex-col items-center text-center cursor-pointer"
+                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-purple-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
-                  DA
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1.5 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-purple-200 transition-all duration-300">
+                  <img src="/brands/dleaftech-academy-alt.png" alt="Dleaftech Academy" className="w-full h-full object-contain rounded-lg" />
                 </div>
-                <div className="font-extrabold text-xs text-slate-800 group-hover:text-purple-600 transition flex items-center gap-1">
+                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-purple-50 text-purple-700 border border-purple-200 mb-1.5">
+                  EdTech Institute
+                </span>
+                <div className="font-extrabold text-xs text-slate-900 group-hover:text-purple-600 transition flex items-center gap-1">
                   <span>Academy</span>
-                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition" />
+                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-purple-600 transition" />
                 </div>
-                <span className="text-[10px] text-purple-600 font-medium mt-0.5">EdTech Hub</span>
+                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">10,000+ Alumni</span>
+                <span className="text-[10px] text-purple-600 font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                  Visit Site ↗
+                </span>
               </a>
 
-              {/* Zivoxa / Zioxa */}
-              <div className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-cyan-500 hover:shadow-md transition-all flex flex-col items-center text-center cursor-default">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
-                  ZX
+              {/* Card 4: Zivoxa Cloud ERP */}
+              <a
+                href="https://www.dleaftech.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+              >
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-2 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-cyan-200 transition-all duration-300">
+                  <img src="/brands/zivox-clean.png" alt="Zivoxa" className="w-full h-full object-contain" />
                 </div>
-                <div className="font-extrabold text-xs text-slate-800 group-hover:text-cyan-600 transition">
-                  Zivoxa
+                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-cyan-50 text-cyan-700 border border-cyan-200 mb-1.5">
+                  Enterprise SaaS
+                </span>
+                <div className="font-extrabold text-xs text-slate-900 group-hover:text-cyan-600 transition flex items-center gap-1">
+                  <span>Zivoxa</span>
+                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-cyan-600 transition" />
                 </div>
-                <span className="text-[10px] text-cyan-600 font-medium mt-0.5">Cloud ERP</span>
-              </div>
+                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">Cloud ERP Suite</span>
+                <span className="text-[10px] text-cyan-600 font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                  Explore ↗
+                </span>
+              </a>
 
-              {/* Bill Rakho */}
-              <div className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-amber-500 hover:shadow-md transition-all flex flex-col items-center text-center cursor-default">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
-                  BR
+              {/* Card 5: Bill Rakho */}
+              <a
+                href="https://nexwapi.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+              >
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-2 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-blue-200 transition-all duration-300">
+                  <img src="/brands/billrakho.svg" alt="Bill Rakho" className="w-full h-full object-contain" />
                 </div>
-                <div className="font-extrabold text-xs text-slate-800 group-hover:text-amber-600 transition">
-                  Bill Rakho
+                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-1.5">
+                  Smart FinTech
+                </span>
+                <div className="font-extrabold text-xs text-slate-900 group-hover:text-blue-600 transition flex items-center gap-1">
+                  <span>Bill Rakho</span>
+                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-blue-600 transition" />
                 </div>
-                <span className="text-[10px] text-amber-600 font-medium mt-0.5">Smart FinTech</span>
-              </div>
+                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">GST & Invoicing</span>
+                <span className="text-[10px] text-blue-600 font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                  Explore ↗
+                </span>
+              </a>
 
-              {/* Golax & Liftoo */}
-              <div className="group p-3.5 rounded-xl bg-white border border-slate-200 hover:border-rose-500 hover:shadow-md transition-all flex flex-col items-center text-center cursor-default">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-rose-500 to-red-600 text-white flex items-center justify-center font-black text-sm mb-2 shadow-sm group-hover:scale-105 transition-transform">
-                  GX
+              {/* Card 6: Golax & Liftoo */}
+              <a
+                href="https://www.dleaftech.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-rose-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+              >
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center gap-1.5 p-2 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-rose-200 transition-all duration-300">
+                  <img src="/brands/golax.png" alt="Golax" className="w-6 h-6 object-contain" />
+                  <span className="text-slate-300 font-light text-xs">/</span>
+                  <img src="/brands/liftoo.png" alt="Liftoo" className="w-6 h-6 object-contain rounded" />
                 </div>
-                <div className="font-extrabold text-xs text-slate-800 group-hover:text-rose-600 transition">
-                  Golax & Liftoo
+                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-rose-50 text-rose-700 border border-rose-200 mb-1.5">
+                  Supply Chain
+                </span>
+                <div className="font-extrabold text-xs text-slate-900 group-hover:text-rose-600 transition flex items-center gap-1">
+                  <span>Golax & Liftoo</span>
+                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-rose-600 transition" />
                 </div>
-                <span className="text-[10px] text-rose-600 font-medium mt-0.5">Logistics & Fleet</span>
-              </div>
+                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">Logistics & Fleet</span>
+                <span className="text-[10px] text-rose-600 font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                  Explore ↗
+                </span>
+              </a>
 
             </div>
 
-            {/* Bottom Meta & Cloud Badge */}
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-[11px] font-semibold text-slate-500">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                Official Meta Business Partner (WhatsApp Cloud API)
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#EE0979]"></span>
-                DleafTech High-Performance Cloud
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-purple-500"></span>
-                10,000+ Alumni & Active Users
-              </span>
+            {/* Bottom Trust & Accreditation Bar with Milox, Apna Patna & Partner Badges */}
+            <div className="mt-6 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 px-2">
+              <div className="flex flex-wrap items-center gap-4">
+                <span className="flex items-center gap-1.5 font-bold text-slate-700">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  Meta Verified Tech Provider
+                </span>
+                <span className="hidden sm:inline text-slate-300">•</span>
+                <span className="flex items-center gap-1.5 font-bold text-slate-700">
+                  <span className="w-2 h-2 rounded-full bg-[#EE0979]"></span>
+                  ISO 27001 Cloud Infrastructure
+                </span>
+                <span className="hidden sm:inline text-slate-300">•</span>
+                <span className="flex items-center gap-1.5 font-bold text-slate-700">
+                  <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+                  10,000+ Alumni & Active Users
+                </span>
+              </div>
+
+              {/* Extended network badges */}
+              <div className="flex items-center gap-2 text-[11px] font-medium text-slate-400">
+                <span>Also in Network:</span>
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-50 text-slate-600 border border-slate-200">
+                  <img src="/brands/milox.png" alt="Milox" className="w-3.5 h-3.5 rounded" />
+                  Milox
+                </span>
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-50 text-slate-600 border border-slate-200">
+                  <img src="/brands/apna-patna.png" alt="Apna Patna" className="w-3.5 h-3.5 rounded" />
+                  Apna Patna
+                </span>
+              </div>
             </div>
+
           </div>
 
         </div>
