@@ -313,11 +313,23 @@ export const CRMProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   });
   const [emails, setEmails] = useState<EmailMessage[]>(() => {
     const saved = localStorage.getItem(`${STORAGE_KEY}_emails`);
-    return saved ? JSON.parse(saved) : INITIAL_EMAILS;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      } catch {}
+    }
+    return INITIAL_EMAILS;
   });
   const [imapConfig, setImapConfig] = useState<IMAPConfig>(() => {
     const saved = localStorage.getItem(`${STORAGE_KEY}_imap`);
-    return saved ? JSON.parse(saved) : INITIAL_IMAP;
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.emailAddress && parsed.isConnected) return parsed;
+      } catch {}
+    }
+    return INITIAL_IMAP;
   });
   const [workflows, setWorkflows] = useState<WorkflowRule[]>(() => {
     const saved = localStorage.getItem(`${STORAGE_KEY}_workflows`);

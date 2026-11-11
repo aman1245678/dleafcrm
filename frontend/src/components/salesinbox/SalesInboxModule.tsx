@@ -35,6 +35,7 @@ export const SalesInboxModule: React.FC = () => {
     imapConfig,
     updateImapConfig,
     sendEmailReply,
+    setIsCreateLeadOpen,
     setIsCreateDealOpen,
     setIsCreateTaskOpen,
     setSelectedDealForDetail,
@@ -43,22 +44,29 @@ export const SalesInboxModule: React.FC = () => {
 
   // Mode: 'landing' (unconfigured Dleaf screen) | 'config_services' (select service) | 'config_form' (setup details) | 'inbox' (4-column active inbox)
   const [viewMode, setViewMode] = useState<'landing' | 'config_services' | 'config_form' | 'inbox'>(
-    imapConfig.isConnected ? 'inbox' : 'landing'
+    (imapConfig.isConnected || emails.length > 0) ? 'inbox' : 'landing'
   );
   const [selectedService, setSelectedService] = useState<'Enterprise Mail' | 'Gmail' | 'Yahoo Mail' | 'Office 365' | 'Outlook' | 'Other Mail'>('Gmail');
   const [protocol, setProtocol] = useState<'IMAP - OAuth Integration' | 'POP3'>('IMAP - OAuth Integration');
   const [syncPeriod, setSyncPeriod] = useState('Last 6 months');
-  const [emailInput, setEmailInput] = useState(imapConfig.emailAddress || 'hello@nexwapi.com');
-  const [displayNameInput, setDisplayNameInput] = useState(imapConfig.displayName || 'Aman');
-  const [passwordInput, setPasswordInput] = useState(imapConfig.appPassword || '••••••••');
+  const [emailInput, setEmailInput] = useState(imapConfig.emailAddress || 'sales@dleaftech.com');
+  const [displayNameInput, setDisplayNameInput] = useState(imapConfig.displayName || 'Aman Kumar');
+  const [passwordInput, setPasswordInput] = useState(imapConfig.appPassword || '••••••••••••••••');
   const [serverInput, setServerInput] = useState(imapConfig.server || 'imap.gmail.com');
   const [portInput, setPortInput] = useState(imapConfig.port || 993);
 
   const [activeTab, setActiveTab] = useState<'4col' | 'threads'>('4col');
-  const [selectedEmail, setSelectedEmail] = useState<EmailMessage>(emails[0] || null);
+  const [selectedEmail, setSelectedEmail] = useState<EmailMessage | null>(emails[0] || null);
   const [replyText, setReplyText] = useState('');
+  const [replySuccess, setReplySuccess] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isConfiguring, setIsConfiguring] = useState(false);
+
+  React.useEffect(() => {
+    if ((!selectedEmail || !emails.find(e => e.id === selectedEmail.id)) && emails.length > 0) {
+      setSelectedEmail(emails[0]);
+    }
+  }, [emails, selectedEmail]);
 
   const categories: Array<EmailMessage['category']> = ['Deals', 'Contacts/Leads', 'Colleagues', 'Others'];
 
@@ -77,6 +85,8 @@ export const SalesInboxModule: React.FC = () => {
     if (!replyText.trim() || !selectedEmail) return;
     sendEmailReply(selectedEmail.threadId, replyText);
     setReplyText('');
+    setReplySuccess(true);
+    setTimeout(() => setReplySuccess(false), 3500);
   };
 
   const handleFinishConfig = () => {
@@ -388,9 +398,9 @@ export const SalesInboxModule: React.FC = () => {
             <Mail className="w-5 h-5 text-[#EE0979]" />
             <h1 className="font-bold text-base text-[#0F172A]">SalesInbox</h1>
           </div>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#FFF1F7] text-[#0F172A] rounded-md border border-[#F1D5E4] text-xs font-medium">
-            <span className="w-2 h-2 rounded-full bg-[#EE0979] animate-pulse"></span>
-            <span>Live Sync: {imapConfig.emailAddress}</span>
+          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 text-emerald-800 rounded-md border border-emerald-200 text-xs font-semibold">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Live Sync: {imapConfig.emailAddress || 'sales@dleaftech.com'}</span>
           </div>
         </div>
 
@@ -408,11 +418,11 @@ export const SalesInboxModule: React.FC = () => {
           </div>
 
           <button
-            onClick={() => setViewMode('landing')}
+            onClick={() => setViewMode('config_services')}
             className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FFF8FA] hover:bg-[#FFF1F7] text-[#0F172A] rounded-lg text-xs font-semibold border border-[#F1D5E4] transition cursor-pointer"
           >
             <Settings className="w-3.5 h-3.5 text-[#EE0979]" />
-            <span>Setup Wizard</span>
+            <span>Connect Personal IMAP / Gmail</span>
           </button>
         </div>
       </div>
@@ -531,7 +541,7 @@ export const SalesInboxModule: React.FC = () => {
               </div>
 
               {/* CRM Context Card */}
-              {selectedEmail.relatedRecord && (
+              {selectedEmail.relatedRecord ? (
                 <div className="p-3 bg-[#FFF8FA] border-t border-b border-slate-200 text-xs">
                   <div className="flex items-center justify-between mb-1.5">
                     <span className="font-bold text-[11px] text-[#0F172A] uppercase tracking-wider flex items-center gap-1">
@@ -596,10 +606,47 @@ export const SalesInboxModule: React.FC = () => {
                     </button>
                   </div>
                 </div>
+              ) : (
+                <div className="p-3 bg-amber-50/90 border-t border-b border-amber-200 text-xs">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-bold text-[11px] text-amber-900 uppercase tracking-wider flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                      <span>Not in CRM Database</span>
+                    </span>
+                    <span className="text-[10px] text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-semibold">
+                      New Prospective Sender
+                    </span>
+                  </div>
+                  <p className="text-[11.5px] text-amber-800 leading-snug mb-2.5">
+                    This contact is not yet registered in your CRM. Convert this email inquiry directly into a CRM Lead or Deal with 1-click:
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setIsCreateLeadOpen(true)}
+                      className="flex-1 py-1.5 px-2 bg-[#EE0979] hover:bg-[#D8086C] text-white rounded text-[11px] font-bold flex items-center justify-center gap-1 shadow-2xs cursor-pointer"
+                    >
+                      <Plus className="w-3 h-3" />
+                      <span>+ Add to CRM as Lead</span>
+                    </button>
+                    <button
+                      onClick={() => setIsCreateDealOpen(true)}
+                      className="flex-1 py-1.5 px-2 bg-white hover:bg-slate-50 text-slate-800 rounded border border-slate-300 text-[11px] font-bold flex items-center justify-center gap-1 shadow-2xs cursor-pointer"
+                    >
+                      <DollarSign className="w-3 h-3 text-[#EE0979]" />
+                      <span>+ Create Pipeline Deal</span>
+                    </button>
+                  </div>
+                </div>
               )}
 
               {/* Reply Box */}
               <form onSubmit={handleSendReply} className="p-3 bg-white border-t border-slate-200">
+                {replySuccess && (
+                  <div className="mb-2 p-1.5 bg-emerald-50 text-emerald-700 text-[11px] font-semibold rounded border border-emerald-200 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Email reply dispatched successfully via SalesInbox Gateway!</span>
+                  </div>
+                )}
                 <div className="relative">
                   <textarea
                     rows={2}
