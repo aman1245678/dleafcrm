@@ -45,6 +45,7 @@ import {
 } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
 import { UserGuideModal } from '../modals/UserGuideModal';
+import heroBackground from '../../assets/background.png';
 
 export const PortalHome: React.FC = () => {
   const { setPortalPage, setIsPortalSignInOpen, setAppMode, setIsZiaOpen, isAuthenticated, openDleafAiWithPrompt } = useCRM();
@@ -88,10 +89,10 @@ export const PortalHome: React.FC = () => {
       ========================================================================== */}
       <section className="relative pt-3 sm:pt-6 pb-8 sm:pb-10 px-4 sm:px-8 lg:px-12 overflow-hidden bg-white">
 
-        {/* Exact Abstract Gradient Blob Background from /background.png */}
+        {/* Exact Abstract Gradient Blob Background from background.png */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
           <img
-            src="/background.png"
+            src={heroBackground}
             alt="DleafCRM Abstract Background"
             className="w-full h-full object-cover object-right-top opacity-95"
           />
@@ -107,9 +108,8 @@ export const PortalHome: React.FC = () => {
 
               {/* Exact Pill Badge */}
               <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3.5 py-1 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[#EE0979] animate-pulse" />
                 <span className="tracking-tight text-[11px] font-bold text-slate-800">
-                  DleafTech Innovation Ecosystem • Meta WhatsApp Official BSP
+                  DleafTech Innovation Ecosystem | Meta WhatsApp Official BSP
                 </span>
               </div>
 
@@ -356,7 +356,6 @@ export const PortalHome: React.FC = () => {
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-50 via-purple-50 to-emerald-50 text-slate-800 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase border border-slate-200 shadow-2xs">
                 <Sparkles className="w-3.5 h-3.5 text-[#EE0979]" />
                 <span>DleafTech Innovation Ecosystem & Platforms</span>
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               </div>
               <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                 One United Ecosystem. Enterprise-Grade Products.
@@ -520,18 +519,15 @@ export const PortalHome: React.FC = () => {
             {/* Bottom Trust & Accreditation Bar with Milox, Apna Patna & Partner Badges */}
             <div className="mt-6 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 px-2">
               <div className="flex flex-wrap items-center gap-4">
-                <span className="flex items-center gap-1.5 font-bold text-slate-700">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span className="font-bold text-slate-700">
                   Meta Verified Tech Provider
                 </span>
-                <span className="hidden sm:inline text-slate-300">•</span>
-                <span className="flex items-center gap-1.5 font-bold text-slate-700">
-                  <span className="w-2 h-2 rounded-full bg-[#EE0979]"></span>
+                <span className="hidden sm:inline text-slate-300">|</span>
+                <span className="font-bold text-slate-700">
                   ISO 27001 Cloud Infrastructure
                 </span>
-                <span className="hidden sm:inline text-slate-300">•</span>
-                <span className="flex items-center gap-1.5 font-bold text-slate-700">
-                  <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+                <span className="hidden sm:inline text-slate-300">|</span>
+                <span className="font-bold text-slate-700">
                   10,000+ Alumni & Active Users
                 </span>
               </div>
@@ -841,7 +837,6 @@ export const PortalHome: React.FC = () => {
                     <p className="text-xs text-slate-500 font-normal">Automated recommendations and telephony records</p>
                   </div>
                   <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     Live Connected
                   </span>
                 </div>
@@ -854,7 +849,7 @@ export const PortalHome: React.FC = () => {
                     <div className="flex items-center justify-between text-xs">
                       <div className="flex items-center gap-1.5 font-semibold text-slate-800">
                         <Bot className="w-3.5 h-3.5 text-[#EE0979]" />
-                        <span>AI Deal Insight • Tata Consumer</span>
+                        <span>AI Deal Insight | Tata Consumer</span>
                       </div>
                       <span className="text-[10.5px] text-slate-400">92% Win Prob</span>
                     </div>
@@ -881,7 +876,7 @@ export const PortalHome: React.FC = () => {
                       <span className="text-[10.5px] text-slate-500 font-mono">02:34 min</span>
                     </div>
                     <div>
-                      <div className="text-xs font-semibold text-slate-800">Rajesh Kumar • VP Procurement</div>
+                      <div className="text-xs font-semibold text-slate-800">Rajesh Kumar | VP Procurement</div>
                       <div className="text-[11px] text-slate-500">Tata Consumer Ltd (+91 98201 44210)</div>
                     </div>
                     <div className="text-[11px] text-slate-600 italic bg-white p-2 rounded border border-slate-200">
@@ -975,32 +970,25 @@ export const PortalHome: React.FC = () => {
               Trusted Ecosystem Clients & Brands
             </span>
             <div className="flex flex-wrap items-center justify-center sm:justify-end gap-5 sm:gap-7 opacity-90 transition-all text-xs font-bold">
-              <span className="font-editorial text-sm font-bold text-slate-800 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#EE0979]"></span>
+              <span className="font-editorial text-sm font-bold text-slate-800">
                 Spanish Tailor
               </span>
-              <span className="font-editorial text-sm font-bold text-[#007cc3] flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#007cc3]"></span>
+              <span className="font-editorial text-sm font-bold text-[#007cc3]">
                 Golax Logistics
               </span>
-              <span className="font-editorial text-sm font-bold text-emerald-600 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
+              <span className="font-editorial text-sm font-bold text-emerald-600">
                 Liftoo Mobility
               </span>
-              <span className="font-editorial text-sm font-bold text-purple-600 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-purple-600"></span>
+              <span className="font-editorial text-sm font-bold text-purple-600">
                 Milox Tech
               </span>
-              <span className="font-editorial text-sm font-bold text-amber-600 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-amber-600"></span>
+              <span className="font-editorial text-sm font-bold text-amber-600">
                 Bill Rakho
               </span>
-              <span className="font-editorial text-sm font-bold text-cyan-700 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-cyan-700"></span>
+              <span className="font-editorial text-sm font-bold text-cyan-700">
                 Zivoxa Cloud
               </span>
-              <span className="font-editorial text-sm font-bold text-blue-600 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+              <span className="font-editorial text-sm font-bold text-blue-600">
                 Apna Patna
               </span>
             </div>
@@ -1135,12 +1123,12 @@ export const PortalHome: React.FC = () => {
                 <Check className="w-3 h-3 text-[#EE0979]" />
                 No credit card needed
               </span>
-              <span>•</span>
+              <span className="text-slate-600">|</span>
               <span className="flex items-center gap-1">
                 <Check className="w-3 h-3 text-[#EE0979]" />
                 Full 15-day access
               </span>
-              <span>•</span>
+              <span className="text-slate-600">|</span>
               <span className="flex items-center gap-1">
                 <Check className="w-3 h-3 text-[#EE0979]" />
                 Cancel anytime
@@ -1268,9 +1256,9 @@ export const PortalHome: React.FC = () => {
           </div>
           <div className="flex items-center gap-3">
             <span className="hover:text-[#EE0979] transition cursor-pointer">Privacy Policy</span>
-            <span>•</span>
+            <span className="text-white/30">|</span>
             <span className="hover:text-[#EE0979] transition cursor-pointer">Terms of Service</span>
-            <span>•</span>
+            <span className="text-white/30">|</span>
             <span className="hover:text-[#EE0979] transition cursor-pointer">Security Compliance</span>
           </div>
         </div>

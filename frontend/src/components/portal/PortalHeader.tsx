@@ -49,8 +49,6 @@ export const PortalHeader: React.FC = () => {
       <div className="bg-[#0F172A] text-white text-[11.5px] px-4 sm:px-10 py-1.5 flex items-center justify-between border-b border-white/10">
         {/* Left: Brand Tagline */}
         <div className="flex items-center gap-3">
-          <span className="inline-block w-2 h-2 rounded-full bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA]" />
-          <span className="text-white/40 hidden sm:inline">|</span>
           <span className="text-white/80 hidden sm:inline font-normal">
             Your All-In-One Business Growth Platform
           </span>
