@@ -107,14 +107,14 @@ export const PortalHome: React.FC = () => {
             <div className="lg:col-span-7 space-y-3.5 text-left">
 
               {/* Exact Pill Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3.5 py-1 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
-                <span className="tracking-tight text-[11px] font-bold text-slate-800">
+              <div className="inline-flex max-w-full items-center gap-1.5 sm:gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3 sm:px-3.5 py-1 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
+                <span className="tracking-tight text-[10px] sm:text-[11px] font-bold text-slate-800 leading-snug">
                   DleafTech Innovation Ecosystem | Meta WhatsApp Official BSP
                 </span>
               </div>
 
               {/* Compact Main Heading */}
-              <h1 className="text-2xl sm:text-3xl lg:text-[40px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.15]">
+              <h1 className="text-[26px] sm:text-3xl lg:text-[40px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.2]">
                 Your Digital Vision,<br />
                 <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent">
                   Engineered by Dleaftech.
@@ -138,12 +138,12 @@ export const PortalHome: React.FC = () => {
                     value={ctaEmail}
                     onChange={(e) => setCtaEmail(e.target.value)}
                     placeholder="Enter your work email..."
-                    className="w-full pl-9 pr-3 py-2 bg-white/95 backdrop-blur-sm rounded-full border border-slate-200 text-xs sm:text-[13px] text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979] shadow-xs"
+                    className="w-full pl-9 pr-3 py-2.5 sm:py-2 bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-full border border-slate-200 text-xs sm:text-[13px] text-slate-800 placeholder-slate-400 focus:outline-hidden focus:border-[#EE0979] shadow-xs"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-4 py-2 rounded-full transition shadow-md shadow-[#EE0979]/25 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
+                  className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-4 py-2.5 sm:py-2 rounded-xl sm:rounded-full transition shadow-md shadow-[#EE0979]/25 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
                 >
                   <span>Start Free Trial</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -151,17 +151,17 @@ export const PortalHome: React.FC = () => {
               </form>
 
               {/* Trust Checklist */}
-              <div className="flex flex-wrap items-center gap-y-1.5 gap-x-4 text-[11px] text-slate-600 font-medium pt-0.5">
+              <div className="flex flex-wrap items-center gap-y-1.5 gap-x-3 sm:gap-x-4 text-[10.5px] sm:text-[11px] text-slate-600 font-medium pt-0.5">
                 <div className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979] shrink-0" />
                   <span>Free 14-Day Trial</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979] shrink-0" />
                   <span>No Credit Card Needed</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#EE0979] shrink-0" />
                   <span>Setup in 2 Minutes</span>
                 </div>
               </div>
@@ -171,7 +171,7 @@ export const PortalHome: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsGuideOpen(true)}
-                  className="inline-flex items-center gap-1.5 text-[#EE0979] font-bold hover:underline cursor-pointer bg-white/90 hover:bg-[#FFF1F7] px-3 py-1 rounded-full border border-[#F1D5E4] text-[11px] transition shadow-2xs"
+                  className="inline-flex items-center gap-1.5 text-[#EE0979] font-bold hover:underline cursor-pointer bg-white/90 hover:bg-[#FFF1F7] px-3 py-1.5 rounded-full border border-[#F1D5E4] text-[11px] transition shadow-2xs"
                 >
                   <BookOpen className="w-3 h-3 text-[#EE0979]" />
                   <span>Download User Guide (PDF)</span>
@@ -181,12 +181,12 @@ export const PortalHome: React.FC = () => {
             </div>
 
             {/* ----------------- RIGHT COLUMN: Interactive Dleaf Ai Assistant Card (5 cols) ----------------- */}
-            <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
+            <div className="lg:col-span-5 flex items-center justify-center lg:justify-end mt-2 lg:mt-0">
               <div className="w-full max-w-md bg-white/95 backdrop-blur-md rounded-2xl border border-white/80 shadow-[0_12px_35px_rgba(238,9,121,0.12)] p-4 sm:p-5 flex flex-col gap-3">
                 
                 {/* Header: Sparkle Icon + Title */}
-                <div className="flex items-center gap-3.5">
-                  <div className="w-12 h-12 rounded-xl bg-white shadow-xs border border-slate-100 flex items-center justify-center relative shrink-0 p-2">
+                <div className="flex items-center gap-3 sm:gap-3.5">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-white shadow-xs border border-slate-100 flex items-center justify-center relative shrink-0 p-2">
                     <div className="w-full h-full relative flex items-center justify-center">
                       <div className="absolute inset-0 bg-gradient-to-tr from-[#FF6A00] via-[#EE0979] to-[#7928CA] rounded-sm transform rotate-45 scale-75" />
                       <div className="absolute inset-0 bg-gradient-to-br from-[#7928CA] via-[#EE0979] to-[#FF6A00] rounded-sm transform scale-75" />
@@ -194,14 +194,14 @@ export const PortalHome: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex-1">
-                    <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#0F172A] leading-tight">
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-lg sm:text-2xl font-black tracking-tight text-[#0F172A] leading-tight truncate">
                       Dleaf <span className="text-[#EE0979]">Ai</span> Assistant
                     </h2>
-                    <p className="text-[10px] text-slate-500 font-medium">Ask anything or automate workflows live</p>
+                    <p className="text-[10px] text-slate-500 font-medium truncate">Ask anything or automate workflows live</p>
                   </div>
 
-                  <span className="text-[9.5px] bg-[#FFF1F7] text-[#EE0979] px-2 py-0.5 rounded-full font-bold shrink-0">
+                  <span className="text-[9px] sm:text-[9.5px] bg-[#FFF1F7] text-[#EE0979] px-2 py-0.5 rounded-full font-bold shrink-0">
                     Active
                   </span>
                 </div>
@@ -209,20 +209,20 @@ export const PortalHome: React.FC = () => {
                 {/* Interactive Working AI Prompt Box */}
                 <form
                   onSubmit={handleAiPromptSubmit}
-                  className="p-1.5 bg-[#F8FAFC] rounded-xl border border-[#F1D5E4] hover:border-[#EE0979] focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20 transition-all"
+                  className="p-1 sm:p-1.5 bg-[#F8FAFC] rounded-xl border border-[#F1D5E4] hover:border-[#EE0979] focus-within:border-[#EE0979] focus-within:ring-2 focus-within:ring-[#EE0979]/20 transition-all"
                 >
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center gap-1.5 min-w-0">
                     <Bot className="w-3.5 h-3.5 text-[#EE0979] shrink-0 ml-1.5" />
                     <input
                       type="text"
                       value={aiPrompt}
                       onChange={(e) => setAiPrompt(e.target.value)}
-                      placeholder="Ask AI: 'Summarize deals', 'Draft email'..."
-                      className="w-full bg-transparent text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden py-1"
+                      placeholder="Ask AI: 'Summarize deals'..."
+                      className="min-w-0 flex-1 bg-transparent text-xs text-slate-800 placeholder-slate-400 focus:outline-hidden py-1 px-1"
                     />
                     <button
                       type="submit"
-                      className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 active:scale-95 text-white font-bold text-[11px] px-3 py-1 rounded-lg transition shadow-xs flex items-center gap-1 shrink-0 cursor-pointer"
+                      className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 active:scale-95 text-white font-bold text-[11px] px-3 py-1.5 rounded-lg transition shadow-xs flex items-center gap-1 shrink-0 cursor-pointer"
                     >
                       <span>Ask</span>
                       <ArrowRight className="w-3 h-3" />
@@ -242,7 +242,7 @@ export const PortalHome: React.FC = () => {
                       key={chip}
                       type="button"
                       onClick={() => handleQuickPromptClick(chip.slice(2).trim())}
-                      className="text-[10px] font-medium bg-white hover:bg-[#FFF1F7] text-slate-600 hover:text-[#EE0979] border border-slate-200 hover:border-[#EE0979] px-2 py-0.5 rounded-full transition shadow-2xs cursor-pointer"
+                      className="text-[9.5px] sm:text-[10px] font-medium bg-white hover:bg-[#FFF1F7] text-slate-600 hover:text-[#EE0979] border border-slate-200 hover:border-[#EE0979] px-2 py-0.5 rounded-full transition shadow-2xs cursor-pointer"
                     >
                       {chip}
                     </button>
@@ -255,11 +255,11 @@ export const PortalHome: React.FC = () => {
           </div>
 
           {/* ----------------- 4 HERO FEATURE PILLARS CARDS (Bottom Ribbon) ----------------- */}
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
 
             {/* Pillar 1: Dleaftech */}
-            <div className="p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-lg transition-all text-left flex items-start gap-3.5 group">
-              <div className="w-11 h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-pink-200 transition-all">
+            <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-lg transition-all text-left flex items-start gap-3 sm:gap-3.5 group">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-pink-200 transition-all">
                 <img src="/brands/dleaftech-emblem.png" alt="Dleaftech" className="w-full h-full object-contain" />
               </div>
               <div className="flex-1 min-w-0">
@@ -267,12 +267,12 @@ export const PortalHome: React.FC = () => {
                   <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Dleaftech Agency</div>
                   <span className="text-[9px] bg-slate-100 text-slate-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">Parent</span>
                 </div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">AI enterprise apps, custom software & web development.</div>
+                <div className="text-[11px] sm:text-[11.5px] text-slate-600 mt-0.5 leading-snug">AI enterprise apps, custom software & web development.</div>
                 <a
                   href="https://www.dleaftech.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
+                  className="text-[10.5px] sm:text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
                 >
                   <span>Visit dleaftech.com</span>
                   <ExternalLink className="w-3 h-3" />
@@ -281,8 +281,8 @@ export const PortalHome: React.FC = () => {
             </div>
 
             {/* Pillar 2: Nexwapi */}
-            <div className="p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-emerald-500 hover:shadow-lg transition-all text-left flex items-start gap-3.5 group">
-              <div className="w-11 h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-emerald-200 transition-all">
+            <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-emerald-500 hover:shadow-lg transition-all text-left flex items-start gap-3 sm:gap-3.5 group">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-emerald-200 transition-all">
                 <img src="/brands/nexwapi.svg" alt="Nexwapi" className="w-full h-full object-contain" />
               </div>
               <div className="flex-1 min-w-0">
@@ -290,12 +290,12 @@ export const PortalHome: React.FC = () => {
                   <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Nexwapi WhatsApp API</div>
                   <span className="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200">Meta BSP</span>
                 </div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Official WhatsApp Cloud API & automated bulk broadcasts.</div>
+                <div className="text-[11px] sm:text-[11.5px] text-slate-600 mt-0.5 leading-snug">Official WhatsApp Cloud API & automated bulk broadcasts.</div>
                 <a
                   href="https://nexwapi.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[11px] font-bold text-emerald-600 hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
+                  className="text-[10.5px] sm:text-[11px] font-bold text-emerald-600 hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
                 >
                   <span>Explore nexwapi.com</span>
                   <ExternalLink className="w-3 h-3" />
@@ -304,8 +304,8 @@ export const PortalHome: React.FC = () => {
             </div>
 
             {/* Pillar 3: DleafCRM */}
-            <div className="p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-lg transition-all text-left flex items-start gap-3.5 group">
-              <div className="w-11 h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-pink-200 transition-all">
+            <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-lg transition-all text-left flex items-start gap-3 sm:gap-3.5 group">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-pink-200 transition-all">
                 <img src="/favicon.png" alt="DleafCRM" className="w-full h-full object-contain" />
               </div>
               <div className="flex-1 min-w-0">
@@ -313,10 +313,10 @@ export const PortalHome: React.FC = () => {
                   <div className="font-bold text-[#0F172A] text-xs sm:text-sm">DleafCRM Intelligence</div>
                   <span className="text-[9px] bg-[#FFF1F7] text-[#EE0979] font-bold px-1.5 py-0.5 rounded border border-[#F1D5E4]">Live App</span>
                 </div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">Visual deals pipeline, GST invoices, CPQ & AI lead scoring.</div>
+                <div className="text-[11px] sm:text-[11.5px] text-slate-600 mt-0.5 leading-snug">Visual deals pipeline, GST invoices, CPQ & AI lead scoring.</div>
                 <button
                   onClick={() => setAppMode('workspace')}
-                  className="text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer"
+                  className="text-[10.5px] sm:text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer"
                 >
                   <span>Launch Workspace</span>
                   <ArrowRight className="w-3 h-3" />
@@ -325,8 +325,8 @@ export const PortalHome: React.FC = () => {
             </div>
 
             {/* Pillar 4: Academy */}
-            <div className="p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-purple-500 hover:shadow-lg transition-all text-left flex items-start gap-3.5 group">
-              <div className="w-11 h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1 shrink-0 group-hover:scale-105 group-hover:border-purple-200 transition-all">
+            <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-purple-500 hover:shadow-lg transition-all text-left flex items-start gap-3 sm:gap-3.5 group">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1 shrink-0 group-hover:scale-105 group-hover:border-purple-200 transition-all">
                 <img src="/brands/dleaftech-academy-alt.png" alt="Dleaftech Academy" className="w-full h-full object-contain rounded-lg" />
               </div>
               <div className="flex-1 min-w-0">
@@ -334,12 +334,12 @@ export const PortalHome: React.FC = () => {
                   <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Dleaftech Academy</div>
                   <span className="text-[9px] bg-purple-50 text-purple-700 font-bold px-1.5 py-0.5 rounded border border-purple-200">EdTech</span>
                 </div>
-                <div className="text-[11.5px] text-slate-600 mt-0.5 leading-snug">10,000+ engineers trained, 500+ live projects & hiring partners.</div>
+                <div className="text-[11px] sm:text-[11.5px] text-slate-600 mt-0.5 leading-snug">10,000+ engineers trained, 500+ live projects & hiring partners.</div>
                 <a
                   href="https://academy.dleaftech.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[11px] font-bold text-purple-600 hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
+                  className="text-[10.5px] sm:text-[11px] font-bold text-purple-600 hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
                 >
                   <span>academy.dleaftech.com</span>
                   <ExternalLink className="w-3 h-3" />
@@ -350,14 +350,14 @@ export const PortalHome: React.FC = () => {
           </div>
 
           {/* ----------------- DLEAFTECH INNOVATION ECOSYSTEM BRANDS STRIP ----------------- */}
-          <div className="mt-14 pt-10 border-t border-slate-200/80">
+          <div className="mt-10 sm:mt-14 pt-8 sm:pt-10 border-t border-slate-200/80">
             {/* Header with pill and subtitle */}
-            <div className="text-center mb-8 max-w-2xl mx-auto space-y-2">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-50 via-purple-50 to-emerald-50 text-slate-800 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase border border-slate-200 shadow-2xs">
+            <div className="text-center mb-6 sm:mb-8 max-w-2xl mx-auto space-y-2">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-50 via-purple-50 to-emerald-50 text-slate-800 px-3.5 sm:px-4 py-1.5 rounded-full text-[10.5px] sm:text-xs font-bold tracking-wide uppercase border border-slate-200 shadow-2xs">
                 <Sparkles className="w-3.5 h-3.5 text-[#EE0979]" />
                 <span>DleafTech Innovation Ecosystem & Platforms</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              <h3 className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight">
                 One United Ecosystem. Enterprise-Grade Products.
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
@@ -365,29 +365,29 @@ export const PortalHome: React.FC = () => {
               </p>
             </div>
 
-            {/* High-impact 6-Card Grid with Real Logos */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5 px-1">
+            {/* High-impact 6-Card Grid with Real Logos (2 columns on mobile, 3 on tablet, 6 on desktop) */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5 px-0.5 sm:px-1">
               
               {/* Card 1: Dleaftech */}
               <a
                 href="https://www.dleaftech.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-[#EE0979] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-[#EE0979] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FF6A00] to-[#EE0979] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-2 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-pink-200 transition-all duration-300">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1.5 sm:p-2 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-pink-200 transition-all duration-300">
                   <img src="/brands/dleaftech-emblem.png" alt="Dleaftech" className="w-full h-full object-contain" />
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-pink-50 text-[#EE0979] border border-pink-200 mb-1.5">
+                <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[8.5px] sm:text-[9.5px] font-bold bg-pink-50 text-[#EE0979] border border-pink-200 mb-1 sm:mb-1.5">
                   Parent Company
                 </span>
-                <div className="font-extrabold text-xs text-slate-900 group-hover:text-[#EE0979] transition flex items-center gap-1">
+                <div className="font-extrabold text-[11px] sm:text-xs text-slate-900 group-hover:text-[#EE0979] transition flex items-center gap-1">
                   <span>Dleaftech</span>
-                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-[#EE0979] transition" />
+                  <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-slate-400 group-hover:text-[#EE0979] transition" />
                 </div>
-                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">IT & AI Engineering</span>
-                <span className="text-[10px] text-[#EE0979] font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium mt-0.5 sm:mt-1 leading-snug">IT & AI Engineering</span>
+                <span className="text-[9.5px] sm:text-[10px] text-[#EE0979] font-bold mt-1.5 sm:mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
                   Visit Site ↗
                 </span>
               </a>
@@ -397,21 +397,21 @@ export const PortalHome: React.FC = () => {
                 href="https://nexwapi.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-2 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-emerald-200 transition-all duration-300">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1.5 sm:p-2 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-emerald-200 transition-all duration-300">
                   <img src="/brands/nexwapi.svg" alt="Nexwapi" className="w-full h-full object-contain" />
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-1.5">
+                <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[8.5px] sm:text-[9.5px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-1 sm:mb-1.5">
                   Meta Cloud BSP
                 </span>
-                <div className="font-extrabold text-xs text-slate-900 group-hover:text-emerald-600 transition flex items-center gap-1">
+                <div className="font-extrabold text-[11px] sm:text-xs text-slate-900 group-hover:text-emerald-600 transition flex items-center gap-1">
                   <span>Nexwapi</span>
-                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-emerald-600 transition" />
+                  <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-slate-400 group-hover:text-emerald-600 transition" />
                 </div>
-                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">WhatsApp Cloud API</span>
-                <span className="text-[10px] text-emerald-600 font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium mt-0.5 sm:mt-1 leading-snug">WhatsApp Cloud API</span>
+                <span className="text-[9.5px] sm:text-[10px] text-emerald-600 font-bold mt-1.5 sm:mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
                   Visit Site ↗
                 </span>
               </a>
@@ -421,21 +421,21 @@ export const PortalHome: React.FC = () => {
                 href="https://academy.dleaftech.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-purple-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-purple-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1.5 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-purple-200 transition-all duration-300">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1 sm:p-1.5 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-purple-200 transition-all duration-300">
                   <img src="/brands/dleaftech-academy-alt.png" alt="Dleaftech Academy" className="w-full h-full object-contain rounded-lg" />
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-purple-50 text-purple-700 border border-purple-200 mb-1.5">
+                <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[8.5px] sm:text-[9.5px] font-bold bg-purple-50 text-purple-700 border border-purple-200 mb-1 sm:mb-1.5">
                   EdTech Institute
                 </span>
-                <div className="font-extrabold text-xs text-slate-900 group-hover:text-purple-600 transition flex items-center gap-1">
+                <div className="font-extrabold text-[11px] sm:text-xs text-slate-900 group-hover:text-purple-600 transition flex items-center gap-1">
                   <span>Academy</span>
-                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-purple-600 transition" />
+                  <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-slate-400 group-hover:text-purple-600 transition" />
                 </div>
-                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">10,000+ Alumni</span>
-                <span className="text-[10px] text-purple-600 font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium mt-0.5 sm:mt-1 leading-snug">10,000+ Alumni</span>
+                <span className="text-[9.5px] sm:text-[10px] text-purple-600 font-bold mt-1.5 sm:mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
                   Visit Site ↗
                 </span>
               </a>
@@ -445,21 +445,21 @@ export const PortalHome: React.FC = () => {
                 href="https://www.dleaftech.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-2 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-cyan-200 transition-all duration-300">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1.5 sm:p-2 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-cyan-200 transition-all duration-300">
                   <img src="/brands/zivox-clean.png" alt="Zivoxa" className="w-full h-full object-contain" />
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-cyan-50 text-cyan-700 border border-cyan-200 mb-1.5">
+                <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[8.5px] sm:text-[9.5px] font-bold bg-cyan-50 text-cyan-700 border border-cyan-200 mb-1 sm:mb-1.5">
                   Enterprise SaaS
                 </span>
-                <div className="font-extrabold text-xs text-slate-900 group-hover:text-cyan-600 transition flex items-center gap-1">
+                <div className="font-extrabold text-[11px] sm:text-xs text-slate-900 group-hover:text-cyan-600 transition flex items-center gap-1">
                   <span>Zivoxa</span>
-                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-cyan-600 transition" />
+                  <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-slate-400 group-hover:text-cyan-600 transition" />
                 </div>
-                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">Cloud ERP Suite</span>
-                <span className="text-[10px] text-cyan-600 font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium mt-0.5 sm:mt-1 leading-snug">Cloud ERP Suite</span>
+                <span className="text-[9.5px] sm:text-[10px] text-cyan-600 font-bold mt-1.5 sm:mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
                   Explore ↗
                 </span>
               </a>
@@ -469,21 +469,21 @@ export const PortalHome: React.FC = () => {
                 href="https://nexwapi.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-2 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-blue-200 transition-all duration-300">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1.5 sm:p-2 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-blue-200 transition-all duration-300">
                   <img src="/brands/billrakho.svg" alt="Bill Rakho" className="w-full h-full object-contain" />
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-1.5">
+                <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[8.5px] sm:text-[9.5px] font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-1 sm:mb-1.5">
                   Smart FinTech
                 </span>
-                <div className="font-extrabold text-xs text-slate-900 group-hover:text-blue-600 transition flex items-center gap-1">
+                <div className="font-extrabold text-[11px] sm:text-xs text-slate-900 group-hover:text-blue-600 transition flex items-center gap-1">
                   <span>Bill Rakho</span>
-                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-blue-600 transition" />
+                  <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-slate-400 group-hover:text-blue-600 transition" />
                 </div>
-                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">GST & Invoicing</span>
-                <span className="text-[10px] text-blue-600 font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium mt-0.5 sm:mt-1 leading-snug">GST & Invoicing</span>
+                <span className="text-[9.5px] sm:text-[10px] text-blue-600 font-bold mt-1.5 sm:mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
                   Explore ↗
                 </span>
               </a>
@@ -493,23 +493,23 @@ export const PortalHome: React.FC = () => {
                 href="https://www.dleaftech.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-rose-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-rose-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div className="w-16 h-16 rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center gap-1.5 p-2 mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-rose-200 transition-all duration-300">
-                  <img src="/brands/golax.png" alt="Golax" className="w-6 h-6 object-contain" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center gap-1.5 p-1.5 sm:p-2 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-rose-200 transition-all duration-300">
+                  <img src="/brands/golax.png" alt="Golax" className="w-5 h-5 sm:w-6 sm:h-6 object-contain" />
                   <span className="text-slate-300 font-light text-xs">/</span>
-                  <img src="/brands/liftoo.png" alt="Liftoo" className="w-6 h-6 object-contain rounded" />
+                  <img src="/brands/liftoo.png" alt="Liftoo" className="w-5 h-5 sm:w-6 sm:h-6 object-contain rounded" />
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-rose-50 text-rose-700 border border-rose-200 mb-1.5">
+                <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[8.5px] sm:text-[9.5px] font-bold bg-rose-50 text-rose-700 border border-rose-200 mb-1 sm:mb-1.5">
                   Supply Chain
                 </span>
-                <div className="font-extrabold text-xs text-slate-900 group-hover:text-rose-600 transition flex items-center gap-1">
+                <div className="font-extrabold text-[11px] sm:text-xs text-slate-900 group-hover:text-rose-600 transition flex items-center gap-1">
                   <span>Golax & Liftoo</span>
-                  <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-rose-600 transition" />
+                  <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-slate-400 group-hover:text-rose-600 transition" />
                 </div>
-                <span className="text-[11px] text-slate-500 font-medium mt-1 leading-snug">Logistics & Fleet</span>
-                <span className="text-[10px] text-rose-600 font-bold mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
+                <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium mt-0.5 sm:mt-1 leading-snug">Logistics & Fleet</span>
+                <span className="text-[9.5px] sm:text-[10px] text-rose-600 font-bold mt-1.5 sm:mt-2 opacity-0 group-hover:opacity-100 transition inline-flex items-center gap-0.5">
                   Explore ↗
                 </span>
               </a>
