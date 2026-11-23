@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
   CheckCircle2,
@@ -54,6 +54,39 @@ export const PortalHome: React.FC = () => {
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [aiPrompt, setAiPrompt] = useState('');
   const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+
+  // Silky-Smooth Scroll-Reveal Intersection Observer (60fps hardware accelerated)
+  useEffect(() => {
+    // Reveal hero elements immediately upon mount with subtle entry
+    const heroTimer = setTimeout(() => {
+      document.querySelectorAll('.hero-reveal').forEach((el) => {
+        el.classList.add('is-revealed');
+      });
+    }, 40);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: '0px 0px -30px 0px',
+      }
+    );
+
+    const elements = document.querySelectorAll('.reveal-on-scroll, .reveal-scale');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      clearTimeout(heroTimer);
+      observer.disconnect();
+    };
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     setMousePos({ x: e.clientX, y: e.clientY });
@@ -123,10 +156,10 @@ export const PortalHome: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
 
             {/* ----------------- LEFT COLUMN: Compact Copy & Form (7 cols) ----------------- */}
-            <div className="lg:col-span-7 space-y-3.5 text-left">
+            <div className="lg:col-span-7 space-y-3.5 text-left hero-reveal reveal-on-scroll is-revealed">
 
               {/* Compact Main Heading */}
-              <h1 className="text-[26px] sm:text-3xl lg:text-[40px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.2]">
+              <h1 className="text-[26px] sm:text-3xl lg:text-[40px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.2] animate-fade-in-up">
                 Your Digital Vision,<br />
                 <span className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] bg-clip-text text-transparent">
                   Engineered by Dleaftech.
@@ -155,7 +188,7 @@ export const PortalHome: React.FC = () => {
                 </div>
                 <button
                   type="submit"
-                  className="bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-4 py-2.5 sm:py-2 rounded-xl sm:rounded-full transition shadow-md shadow-[#EE0979]/25 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
+                  className="btn-smooth-interactive bg-gradient-to-r from-[#FF6A00] via-[#EE0979] to-[#7928CA] hover:opacity-95 active:scale-95 text-white font-bold text-xs px-4 py-2.5 sm:py-2 rounded-xl sm:rounded-full transition shadow-md shadow-[#EE0979]/25 flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
                 >
                   <span>Start Free Trial</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -194,7 +227,7 @@ export const PortalHome: React.FC = () => {
 
             {/* ----------------- RIGHT COLUMN: Interactive Dleaf Ai Assistant Card (5 cols) ----------------- */}
             <div className="lg:col-span-5 flex items-center justify-center lg:justify-end mt-2 lg:mt-0">
-              <div className="w-full max-w-md bg-white/95 backdrop-blur-md rounded-2xl border border-white/80 shadow-[0_12px_35px_rgba(238,9,121,0.12)] p-4 sm:p-5 flex flex-col gap-3">
+              <div className="w-full max-w-md bg-white/95 backdrop-blur-md rounded-2xl border border-white/80 shadow-[0_12px_35px_rgba(238,9,121,0.12)] p-4 sm:p-5 flex flex-col gap-3 hero-reveal reveal-scale is-revealed animate-gentle-float hover:shadow-[0_16px_40px_rgba(238,9,121,0.18)] transition-all duration-300">
                 
                 {/* Header: Sparkle Icon + Title */}
                 <div className="flex items-center gap-3 sm:gap-3.5">
@@ -234,7 +267,7 @@ export const PortalHome: React.FC = () => {
                     />
                     <button
                       type="submit"
-                      className="bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 active:scale-95 text-white font-bold text-[11px] px-3 py-1.5 rounded-lg transition shadow-xs flex items-center gap-1 shrink-0 cursor-pointer"
+                      className="btn-smooth-interactive bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 active:scale-95 text-white font-bold text-[11px] px-3 py-1.5 rounded-lg transition shadow-xs flex items-center gap-1 shrink-0 cursor-pointer"
                     >
                       <span>Ask</span>
                       <ArrowRight className="w-3 h-3" />
@@ -254,7 +287,7 @@ export const PortalHome: React.FC = () => {
                       key={chip}
                       type="button"
                       onClick={() => handleQuickPromptClick(chip.slice(2).trim())}
-                      className="text-[9.5px] sm:text-[10px] font-medium bg-white hover:bg-[#FFF1F7] text-slate-600 hover:text-[#EE0979] border border-slate-200 hover:border-[#EE0979] px-2 py-0.5 rounded-full transition shadow-2xs cursor-pointer"
+                      className="tab-capsule-smooth text-[9.5px] sm:text-[10px] font-medium bg-white hover:bg-[#FFF1F7] text-slate-600 hover:text-[#EE0979] border border-slate-200 hover:border-[#EE0979] px-2 py-0.5 rounded-full transition shadow-2xs cursor-pointer"
                     >
                       {chip}
                     </button>
@@ -274,7 +307,7 @@ export const PortalHome: React.FC = () => {
               href="https://www.dleaftech.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="card-smooth-interactive group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-blue-200/90 shadow-[0_4px_20px_-2px_rgba(59,130,246,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(59,130,246,0.48)] hover:border-blue-400 cursor-pointer"
+              className="card-smooth-interactive hero-reveal reveal-on-scroll is-revealed delay-75 group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-blue-200/90 shadow-[0_4px_20px_-2px_rgba(59,130,246,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(59,130,246,0.48)] hover:border-blue-400 cursor-pointer"
             >
               <div className="flex items-center min-w-0 flex-1">
                 <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-blue-100 shadow-2xs flex items-center justify-center p-2.5 shrink-0 group-hover:scale-105 transition-transform duration-300">
@@ -296,7 +329,7 @@ export const PortalHome: React.FC = () => {
               href="https://nexwapi.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="card-smooth-interactive group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-emerald-200/90 shadow-[0_4px_20px_-2px_rgba(16,185,129,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(16,185,129,0.48)] hover:border-emerald-400 cursor-pointer"
+              className="card-smooth-interactive hero-reveal reveal-on-scroll is-revealed delay-150 group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-emerald-200/90 shadow-[0_4px_20px_-2px_rgba(16,185,129,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(16,185,129,0.48)] hover:border-emerald-400 cursor-pointer"
             >
               <div className="flex items-center min-w-0 flex-1">
                 <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-emerald-100 shadow-2xs flex items-center justify-center p-2.5 shrink-0 group-hover:scale-105 transition-transform duration-300">
@@ -317,7 +350,7 @@ export const PortalHome: React.FC = () => {
             <button
               type="button"
               onClick={() => setAppMode('workspace')}
-              className="card-smooth-interactive group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-purple-200/90 shadow-[0_4px_20px_-2px_rgba(168,85,247,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(168,85,247,0.48)] hover:border-purple-400 cursor-pointer text-left w-full"
+              className="card-smooth-interactive hero-reveal reveal-on-scroll is-revealed delay-200 group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-purple-200/90 shadow-[0_4px_20px_-2px_rgba(168,85,247,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(168,85,247,0.48)] hover:border-purple-400 cursor-pointer text-left w-full"
             >
               <div className="flex items-center min-w-0 flex-1">
                 <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-purple-100 shadow-2xs flex items-center justify-center p-2.5 shrink-0 group-hover:scale-105 transition-transform duration-300">
@@ -339,7 +372,7 @@ export const PortalHome: React.FC = () => {
               href="https://academy.dleaftech.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="card-smooth-interactive group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-orange-200/90 shadow-[0_4px_20px_-2px_rgba(249,115,22,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(249,115,22,0.48)] hover:border-orange-400 cursor-pointer"
+              className="card-smooth-interactive hero-reveal reveal-on-scroll is-revealed delay-300 group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-orange-200/90 shadow-[0_4px_20px_-2px_rgba(249,115,22,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(249,115,22,0.48)] hover:border-orange-400 cursor-pointer"
             >
               <div className="flex items-center min-w-0 flex-1">
                 <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-orange-100 shadow-2xs flex items-center justify-center p-2 shrink-0 group-hover:scale-105 transition-transform duration-300">
@@ -361,7 +394,7 @@ export const PortalHome: React.FC = () => {
           {/* ----------------- DLEAFTECH INNOVATION ECOSYSTEM BRANDS STRIP ----------------- */}
           <div className="mt-10 sm:mt-14 pt-8 sm:pt-10 border-t border-slate-200/80">
             {/* Header with pill and subtitle */}
-            <div className="text-center mb-6 sm:mb-8 max-w-2xl mx-auto space-y-2">
+            <div className="text-center mb-6 sm:mb-8 max-w-2xl mx-auto space-y-2 reveal-on-scroll">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-50 via-purple-50 to-emerald-50 text-slate-800 px-3.5 sm:px-4 py-1.5 rounded-full text-[10.5px] sm:text-xs font-bold tracking-wide uppercase border border-slate-200 shadow-2xs">
                 <Sparkles className="w-3.5 h-3.5 text-[#EE0979]" />
                 <span>DleafTech Innovation Ecosystem & Platforms</span>
@@ -382,7 +415,7 @@ export const PortalHome: React.FC = () => {
                 href="https://www.dleaftech.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-[#EE0979] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="card-smooth-interactive reveal-on-scroll delay-75 group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-[#EE0979] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FF6A00] to-[#EE0979] opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1.5 sm:p-2 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-pink-200 transition-all duration-300">
@@ -406,7 +439,7 @@ export const PortalHome: React.FC = () => {
                 href="https://nexwapi.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="card-smooth-interactive reveal-on-scroll delay-150 group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1.5 sm:p-2 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-emerald-200 transition-all duration-300">
@@ -430,7 +463,7 @@ export const PortalHome: React.FC = () => {
                 href="https://academy.dleaftech.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-purple-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="card-smooth-interactive reveal-on-scroll delay-200 group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-purple-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1 sm:p-1.5 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-purple-200 transition-all duration-300">
@@ -454,7 +487,7 @@ export const PortalHome: React.FC = () => {
                 href="https://www.dleaftech.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="card-smooth-interactive reveal-on-scroll delay-250 group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1.5 sm:p-2 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-cyan-200 transition-all duration-300">
@@ -478,7 +511,7 @@ export const PortalHome: React.FC = () => {
                 href="https://nexwapi.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="card-smooth-interactive reveal-on-scroll delay-300 group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-blue-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center p-1.5 sm:p-2 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-blue-200 transition-all duration-300">
@@ -502,7 +535,7 @@ export const PortalHome: React.FC = () => {
                 href="https://www.dleaftech.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-rose-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+                className="card-smooth-interactive reveal-on-scroll delay-350 group p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-rose-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-slate-50/80 border border-slate-100 shadow-xs flex items-center justify-center gap-1.5 p-1.5 sm:p-2 mb-2 sm:mb-3 group-hover:scale-105 group-hover:bg-white group-hover:border-rose-200 transition-all duration-300">
@@ -536,7 +569,7 @@ export const PortalHome: React.FC = () => {
       <section className="py-8 sm:py-10 px-4 sm:px-8 lg:px-12 bg-white border-b border-[#F1D5E4]/80 relative">
         <div className="max-w-7xl mx-auto">
           {/* Section Heading - Clean, Modern Sans-Serif */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 reveal-on-scroll">
             <div>
               <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-[#EE0979] bg-[#FFF1F7] border border-[#F1D5E4] px-2.5 py-0.5 rounded-full mb-1.5">
                 <Sparkles className="w-3 h-3 text-[#EE0979]" />
@@ -608,11 +641,12 @@ export const PortalHome: React.FC = () => {
               },
             ].map((card, idx) => {
               const Icon = card.icon;
+              const delayClass = ['delay-75', 'delay-150', 'delay-200', 'delay-250', 'delay-300', 'delay-350'][idx] || '';
               return (
                 <div
                   key={idx}
                   onClick={() => setPortalPage('features')}
-                  className="card-smooth-interactive group p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-[#EE0979] flex flex-col justify-between cursor-pointer text-left"
+                  className={`card-smooth-interactive reveal-on-scroll ${delayClass} group p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-[#EE0979] flex flex-col justify-between cursor-pointer text-left`}
                 >
                   <div className="flex items-center justify-between">
                     <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl ${card.bg} ${card.color} flex items-center justify-center border ${card.border} group-hover:scale-108 transition-transform duration-300 shadow-2xs`}>
@@ -643,7 +677,7 @@ export const PortalHome: React.FC = () => {
       ========================================================================== */}
       <section className="py-5 px-4 sm:px-8 lg:px-12 bg-[#0F172A] text-white border-b border-white/10">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 items-center text-center">
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 reveal-on-scroll delay-75">
             <GraduationCap className="w-5 h-5 text-[#FF6A00] shrink-0" />
             <div className="text-left">
               <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">10,000+</div>
@@ -651,7 +685,7 @@ export const PortalHome: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 reveal-on-scroll delay-150">
             <Code className="w-5 h-5 text-[#EE0979] shrink-0" />
             <div className="text-left">
               <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">500+</div>
@@ -659,7 +693,7 @@ export const PortalHome: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 reveal-on-scroll delay-200">
             <Star className="w-5 h-5 text-amber-400 fill-amber-400 shrink-0" />
             <div className="text-left">
               <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">4.9 / 5.0</div>
@@ -667,7 +701,7 @@ export const PortalHome: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 reveal-on-scroll delay-300">
             <MessageSquare className="w-5 h-5 text-emerald-400 shrink-0" />
             <div className="text-left">
               <div className="font-editorial text-lg sm:text-xl font-bold text-white tracking-tight leading-none">Official BSP</div>
@@ -684,7 +718,7 @@ export const PortalHome: React.FC = () => {
         <div className="max-w-7xl mx-auto space-y-8">
 
           {/* Section Header - Clean & Focused */}
-          <div className="text-center max-w-2xl mx-auto space-y-2.5">
+          <div className="text-center max-w-2xl mx-auto space-y-2.5 reveal-on-scroll">
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
               Manage Deals, Quotes & Telephony from One Unified Hub
             </h2>
@@ -697,7 +731,7 @@ export const PortalHome: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
 
             {/* Left Panel: Real-time Deals Pipeline (7 Cols) */}
-            <div className="lg:col-span-7 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div className="card-smooth-interactive reveal-on-scroll delay-100 lg:col-span-7 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
               <div className="space-y-4">
                 
                 {/* Panel Header */}
@@ -806,7 +840,7 @@ export const PortalHome: React.FC = () => {
             </div>
 
             {/* Right Panel: Sales Activity & AI Insights (5 Cols) - Clean Professional White Card */}
-            <div className="lg:col-span-5 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div className="card-smooth-interactive reveal-on-scroll delay-200 lg:col-span-5 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
               
               <div className="space-y-4">
                 {/* Panel Header */}
@@ -891,7 +925,7 @@ export const PortalHome: React.FC = () => {
       ========================================================================== */}
       <section className="py-8 px-4 sm:px-8 lg:px-12 bg-white border-b border-[#F1D5E4]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-6">
+          <div className="text-center max-w-2xl mx-auto mb-6 reveal-on-scroll">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#EE0979] font-editorial">
               Modern Value Equation
             </span>
@@ -905,7 +939,7 @@ export const PortalHome: React.FC = () => {
 
           {/* Compact Feature Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
-            <div className="p-4 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-2">
+            <div className="card-smooth-interactive reveal-on-scroll delay-75 p-4 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-2">
               <div className="w-8 h-8 rounded-lg bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center">
                 <Rocket className="w-4 h-4" />
               </div>
@@ -915,7 +949,7 @@ export const PortalHome: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-2">
+            <div className="card-smooth-interactive reveal-on-scroll delay-150 p-4 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-2">
               <div className="w-8 h-8 rounded-lg bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center">
                 <Sliders className="w-4 h-4" />
               </div>
@@ -925,7 +959,7 @@ export const PortalHome: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-2">
+            <div className="card-smooth-interactive reveal-on-scroll delay-225 p-4 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-2">
               <div className="w-8 h-8 rounded-lg bg-[#FFF1F7] text-[#EE0979] flex items-center justify-center">
                 <Shield className="w-4 h-4" />
               </div>
@@ -944,7 +978,7 @@ export const PortalHome: React.FC = () => {
       <section className="py-7 px-4 sm:px-8 lg:px-12 bg-[#FAFAFD] border-b border-[#F1D5E4]">
         <div className="max-w-7xl mx-auto">
           {/* Logo Strip */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-[#F1D5E4]">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-[#F1D5E4] reveal-on-scroll">
             <span className="font-editorial text-xs font-bold uppercase tracking-wider text-slate-500 shrink-0">
               Trusted Ecosystem Clients & Brands
             </span>
@@ -995,7 +1029,7 @@ export const PortalHome: React.FC = () => {
                 rating: 5
               }
             ].map((t, i) => (
-              <div key={i} className="p-4 rounded-xl bg-white border border-[#F1D5E4] shadow-2xs space-y-2">
+              <div key={i} className={`card-smooth-interactive reveal-on-scroll ${['delay-75', 'delay-150', 'delay-225'][i]} p-4 rounded-xl bg-white border border-[#F1D5E4] shadow-2xs space-y-2`}>
                 <div className="flex items-center gap-1">
                   {[...Array(t.rating)].map((_, idx) => (
                     <Star key={idx} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
@@ -1019,7 +1053,7 @@ export const PortalHome: React.FC = () => {
       ========================================================================== */}
       <section className="py-7 px-4 sm:px-8 lg:px-12 bg-white border-b border-[#F1D5E4]">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-5">
+          <div className="text-center mb-5 reveal-on-scroll">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#EE0979] font-editorial">
               Frequently Asked Questions
             </span>
@@ -1047,7 +1081,7 @@ export const PortalHome: React.FC = () => {
                 a: "Yes. Built-in CPQ quotes and invoices automatically calculate CGST, SGST, IGST, and apply HSN codes."
               }
             ].map((faq, idx) => (
-              <div key={idx} className="p-3.5 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-1">
+              <div key={idx} className={`card-smooth-interactive reveal-on-scroll ${['delay-75', 'delay-150', 'delay-225', 'delay-300'][idx]} p-3.5 rounded-xl bg-[#FFF8FA] border border-[#F1D5E4] space-y-1`}>
                 <div className="font-editorial text-xs sm:text-sm font-bold text-[#0F172A]">
                   {faq.q}
                 </div>
@@ -1064,7 +1098,7 @@ export const PortalHome: React.FC = () => {
           SECTION 8: ULTRA-COMPACT CONVERSION BANNER (Brand Dark Navy with Gradient CTA)
       ========================================================================== */}
       <section className="py-8 px-4 sm:px-8 lg:px-12 bg-[#0F172A] text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
+        <div className="reveal-scale max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
           <div className="space-y-1.5 text-center lg:text-left max-w-xl">
             <div className="inline-flex items-center gap-1.5 bg-white/10 px-2.5 py-1 rounded-full text-[10.5px] font-semibold text-slate-300">
               <Sparkles className="w-3 h-3 text-[#EE0979]" />
