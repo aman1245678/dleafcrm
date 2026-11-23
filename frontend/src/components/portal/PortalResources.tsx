@@ -181,46 +181,46 @@ export const PortalResources: React.FC = () => {
   });
 
   return (
-    <div className="flex-1 flex flex-col bg-[#F8FAFC] font-sans pb-16 text-[#0F172A]">
+    <div className="flex-1 flex flex-col bg-[#F8FAFC] font-sans pb-14 text-[#0F172A]">
 
       {/* =========================================================================
-          1. HEADER - Simple, Clean, Professional SaaS Documentation
+          1. HEADER - Compact, Clean, Professional SaaS Documentation
       ========================================================================== */}
-      <section className="bg-white border-b border-slate-200/80 pt-7 pb-6 px-4 sm:px-8">
+      <section className="bg-white border-b border-slate-200/80 py-4 sm:py-5 px-4 sm:px-8">
         <div className="max-w-5xl mx-auto">
           
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
-            <span className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-semibold">
-              <BookOpen className="w-3.5 h-3.5 text-[#EE0979]" />
+          <div className="flex flex-wrap items-center justify-between gap-2.5 mb-1.5">
+            <span className="inline-flex items-center gap-1.5 text-[10.5px] font-bold text-[#EE0979] bg-[#FFF1F7] border border-[#F1D5E4] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              <BookOpen className="w-3 h-3 text-[#EE0979]" />
               <span>Knowledge Base & Documentation</span>
             </span>
 
             <button
               onClick={() => setIsGuideModalOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-slate-50 text-slate-700 hover:text-[#EE0979] border border-slate-200 rounded-lg text-xs font-bold transition shadow-2xs cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white hover:bg-slate-50 text-slate-700 hover:text-[#EE0979] border border-slate-200 rounded-lg text-[11px] font-bold transition shadow-2xs cursor-pointer"
             >
               <Download className="w-3.5 h-3.5 text-[#EE0979]" />
               <span>Download User Manual (PDF)</span>
             </button>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-tight">
             Resources & Guides
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl">
+          <p className="text-xs sm:text-[13px] text-slate-500 mt-0.5 max-w-xl font-normal leading-snug">
             Everything you need to configure your workspace, manage pipelines, and scale your sales with Dleaf CRM.
           </p>
 
-          {/* Search Bar */}
-          <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          {/* Search Bar - Compact */}
+          <div className="mt-2.5 pt-2.5 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
             <div className="relative flex-1">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder="Search guides, setup tutorials, WhatsApp API, invoicing..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-8 py-2 bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-[#EE0979] rounded-xl text-xs text-slate-900 placeholder-slate-400 outline-none transition shadow-2xs"
+                className="w-full pl-8 pr-8 py-1.5 bg-slate-50 hover:bg-white focus:bg-white border border-slate-200 focus:border-[#EE0979] rounded-lg text-xs text-slate-900 placeholder-slate-400 outline-none transition shadow-2xs"
               />
               {searchQuery && (
                 <button
@@ -232,20 +232,20 @@ export const PortalResources: React.FC = () => {
               )}
             </div>
 
-            <div className="text-xs font-semibold text-slate-500 whitespace-nowrap hidden sm:block">
+            <div className="text-[11px] font-semibold text-slate-500 whitespace-nowrap hidden sm:block">
               {filteredResources.length} {filteredResources.length === 1 ? 'guide' : 'guides'} available
             </div>
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto pt-3 pb-0.5 no-scrollbar">
+          {/* Category Filter Pills - Compact */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pt-2 pb-0.5 no-scrollbar">
             {categories.map((c) => {
               const isActive = activeCategory === c.key;
               return (
                 <button
                   key={c.key}
                   onClick={() => setActiveCategory(c.key)}
-                  className={`px-3 py-1 rounded-lg text-xs font-semibold whitespace-nowrap transition cursor-pointer border ${
+                  className={`tab-capsule-smooth px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-semibold whitespace-nowrap transition cursor-pointer border ${
                     isActive
                       ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-xs'
                       : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50 hover:text-slate-900'
@@ -261,12 +261,12 @@ export const PortalResources: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          2. CARDS GRID - Clean, Professional, Balanced (6 Key Guides)
+          2. CARDS GRID - Clean, Professional, Balanced
       ========================================================================== */}
-      <section className="max-w-5xl mx-auto w-full px-4 sm:px-8 mt-6">
+      <section className="max-w-5xl mx-auto w-full px-4 sm:px-8 mt-4 sm:mt-5">
         {filteredResources.length === 0 ? (
-          <div className="bg-white rounded-2xl p-8 border border-slate-200 text-center space-y-3">
-            <HelpCircle className="w-8 h-8 text-slate-400 mx-auto" />
+          <div className="bg-white rounded-xl p-6 border border-slate-200 text-center space-y-2">
+            <HelpCircle className="w-7 h-7 text-slate-400 mx-auto" />
             <h3 className="font-bold text-slate-800 text-sm">No matching guide found</h3>
             <p className="text-xs text-slate-500 max-w-sm mx-auto">
               No results found for "{searchQuery}". Try a different keyword or reset your filters.
@@ -276,24 +276,24 @@ export const PortalResources: React.FC = () => {
                 setSearchQuery('');
                 setActiveCategory('all');
               }}
-              className="px-4 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition"
+              className="px-3.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition"
             >
               Reset Filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
             {filteredResources.map((item) => (
               <div
                 key={item.id}
                 onClick={() => setSelectedArticle(item)}
-                className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-2xs hover:border-slate-300 hover:shadow-sm transition flex flex-col justify-between group cursor-pointer"
+                className="card-smooth-interactive bg-white rounded-xl p-4 sm:p-4.5 border border-slate-200/90 shadow-2xs hover:border-slate-300 hover:shadow-sm transition flex flex-col justify-between group cursor-pointer"
               >
                 <div>
                   {/* Top Bar: Icon & Category */}
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <div className={`w-9 h-9 rounded-lg ${item.iconBg} ${item.iconColor} border flex items-center justify-center shrink-0`}>
-                      <item.icon className="w-4.5 h-4.5" />
+                  <div className="flex items-center justify-between gap-2 mb-2.5">
+                    <div className={`w-8 h-8 rounded-lg ${item.iconBg} ${item.iconColor} border flex items-center justify-center shrink-0`}>
+                      <item.icon className="w-4 h-4" />
                     </div>
 
                     <span className="text-[10px] font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full border border-slate-200/60 whitespace-nowrap">
@@ -301,7 +301,7 @@ export const PortalResources: React.FC = () => {
                     </span>
                   </div>
 
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">
                     {item.category}
                   </span>
 
@@ -311,14 +311,14 @@ export const PortalResources: React.FC = () => {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                  <p className="text-xs text-slate-600 mt-1.5 leading-relaxed line-clamp-3">
                     {item.desc}
                   </p>
                 </div>
 
                 {/* Footer Action */}
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[10.5px] font-bold text-slate-700 bg-slate-50 px-2 py-0.5 rounded-md border border-slate-200/70">
+                <div className="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[10px] font-bold text-slate-700 bg-slate-50 px-2 py-0.5 rounded-md border border-slate-200/70">
                     {item.badge}
                   </span>
 
@@ -336,13 +336,13 @@ export const PortalResources: React.FC = () => {
       {/* =========================================================================
           3. CLEAN SUPPORT BANNER - Simple & Professional
       ========================================================================== */}
-      <section className="max-w-5xl mx-auto w-full px-4 sm:px-8 mt-8">
-        <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-5">
-          <div className="space-y-1 text-center sm:text-left">
-            <h3 className="text-base font-bold text-slate-900">
+      <section className="max-w-5xl mx-auto w-full px-4 sm:px-8 mt-6">
+        <div className="card-smooth-interactive bg-white rounded-xl p-4 sm:p-5 border border-slate-200 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="space-y-0.5 text-center sm:text-left">
+            <h3 className="text-sm sm:text-base font-bold text-slate-900">
               Need personalized assistance or team onboarding?
             </h3>
-            <p className="text-xs text-slate-600">
+            <p className="text-xs text-slate-500">
               Engineered by Dleaf Technologies. Contact our support team for setup guidance and live assistance.
             </p>
           </div>

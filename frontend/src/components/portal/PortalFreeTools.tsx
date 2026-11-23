@@ -14,6 +14,7 @@ import {
   LineChart,
   ArrowRight,
   ExternalLink,
+  Sparkles,
 } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
 
@@ -81,25 +82,26 @@ export const PortalFreeTools: React.FC = () => {
   ];
 
   return (
-    <div className="flex-1 flex flex-col bg-slate-50 font-sans pb-20">
-      {/* Top Banner */}
-      <section className="bg-white border-b border-slate-200 py-14 px-4 sm:px-8 text-center">
-        <div className="max-w-4xl mx-auto space-y-4">
-          <span className="text-xs font-bold text-[#EE0979] uppercase tracking-wider bg-[#FFF8FA] border border-[#F1D5E4] px-3 py-1 rounded-full">
-            100% Free Forever • No Sign-up Required
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+    <div className="flex-1 flex flex-col bg-slate-50 font-sans pb-14">
+      {/* Top Banner - Compact, Sleek & Professional */}
+      <section className="bg-white border-b border-slate-200/80 py-4 sm:py-5 px-4 sm:px-8 text-center">
+        <div className="max-w-4xl mx-auto space-y-1 sm:space-y-1.5">
+          <div className="inline-flex items-center gap-1.5 text-[10.5px] font-bold text-[#EE0979] bg-[#FFF1F7] border border-[#F1D5E4] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            <Sparkles className="w-3 h-3 text-[#EE0979]" />
+            <span>100% Free Forever • No Sign-up Required</span>
+          </div>
+          <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-tight">
             Free Sales Calculators & Business Tools
           </h1>
-          <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-xs sm:text-[13px] text-slate-500 max-w-xl mx-auto font-normal leading-snug">
             Interactive productivity tools to help sales directors, revenue leaders, and account executives forecast growth and close deals.
           </p>
 
           {/* Tool Switcher Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-6">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pt-2 sm:pt-2.5">
             <button
               onClick={() => setActiveTool('roi')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
+              className={`tab-capsule-smooth px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
                 activeTool === 'roi' ? 'bg-[#EE0979] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
@@ -109,7 +111,7 @@ export const PortalFreeTools: React.FC = () => {
 
             <button
               onClick={() => setActiveTool('commission')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
+              className={`tab-capsule-smooth px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
                 activeTool === 'commission' ? 'bg-[#EE0979] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
@@ -119,7 +121,7 @@ export const PortalFreeTools: React.FC = () => {
 
             <button
               onClick={() => setActiveTool('signature')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
+              className={`tab-capsule-smooth px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
                 activeTool === 'signature' ? 'bg-[#EE0979] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
@@ -129,7 +131,7 @@ export const PortalFreeTools: React.FC = () => {
 
             <button
               onClick={() => setActiveTool('leadScore')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
+              className={`tab-capsule-smooth px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
                 activeTool === 'leadScore' ? 'bg-[#EE0979] text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
@@ -141,8 +143,8 @@ export const PortalFreeTools: React.FC = () => {
       </section>
 
       {/* Main Interactive Tool Container */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-8 mt-10">
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-md p-6 sm:p-10">
+      <section className="max-w-5xl mx-auto px-4 sm:px-8 mt-5 sm:mt-6">
+        <div className="card-smooth-interactive bg-white rounded-xl border border-slate-200 shadow-md p-5 sm:p-8">
           {/* TOOL 1: ROI CALCULATOR */}
           {activeTool === 'roi' && (
             <div className="space-y-8 animate-in fade-in">
