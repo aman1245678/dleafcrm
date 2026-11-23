@@ -53,6 +53,11 @@ export const PortalHome: React.FC = () => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [aiPrompt, setAiPrompt] = useState('');
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    setMousePos({ x: e.clientX, y: e.clientY });
+  };
 
   const handleAiPromptSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -82,12 +87,26 @@ export const PortalHome: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 flex flex-col bg-[#F8FAFC] overflow-x-hidden font-sans text-[#0F172A]">
+    <div
+      onMouseMove={handleMouseMove}
+      className="flex-1 flex flex-col bg-[#F8FAFC] overflow-x-hidden font-sans text-[#0F172A] relative"
+    >
+      {/* Interactive Cursor Reactive Spotlight (Ultra-smooth ambient reaction across the entire home page) */}
+      <div
+        className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-70 hidden md:block"
+        style={{
+          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(238, 9, 121, 0.045), rgba(121, 40, 202, 0.02) 45%, transparent 75%)`,
+        }}
+      />
 
       {/* =========================================================================
           SECTION 1: HERO SECTION - Compact, Balanced & Interactive Dleaf Ai Card
       ========================================================================== */}
       <section className="relative pt-3 sm:pt-6 pb-8 sm:pb-10 px-4 sm:px-8 lg:px-12 overflow-hidden bg-white">
+
+        {/* Ambient Floating Glow Animation Effects */}
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-400/12 rounded-full blur-3xl pointer-events-none animate-float-slow -z-10" />
+        <div className="absolute top-1/2 -right-24 w-96 h-96 bg-purple-400/12 rounded-full blur-3xl pointer-events-none animate-pulse-glow -z-10" />
 
         {/* Exact Abstract Gradient Blob Background from background.png */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
@@ -255,7 +274,7 @@ export const PortalHome: React.FC = () => {
               href="https://www.dleaftech.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-blue-200/90 shadow-[0_4px_20px_-2px_rgba(59,130,246,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(59,130,246,0.48)] hover:border-blue-400 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+              className="card-smooth-interactive group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-blue-200/90 shadow-[0_4px_20px_-2px_rgba(59,130,246,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(59,130,246,0.48)] hover:border-blue-400 cursor-pointer"
             >
               <div className="flex items-center min-w-0 flex-1">
                 <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-blue-100 shadow-2xs flex items-center justify-center p-2.5 shrink-0 group-hover:scale-105 transition-transform duration-300">
@@ -277,7 +296,7 @@ export const PortalHome: React.FC = () => {
               href="https://nexwapi.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-emerald-200/90 shadow-[0_4px_20px_-2px_rgba(16,185,129,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(16,185,129,0.48)] hover:border-emerald-400 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+              className="card-smooth-interactive group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-emerald-200/90 shadow-[0_4px_20px_-2px_rgba(16,185,129,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(16,185,129,0.48)] hover:border-emerald-400 cursor-pointer"
             >
               <div className="flex items-center min-w-0 flex-1">
                 <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-emerald-100 shadow-2xs flex items-center justify-center p-2.5 shrink-0 group-hover:scale-105 transition-transform duration-300">
@@ -298,7 +317,7 @@ export const PortalHome: React.FC = () => {
             <button
               type="button"
               onClick={() => setAppMode('workspace')}
-              className="group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-purple-200/90 shadow-[0_4px_20px_-2px_rgba(168,85,247,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(168,85,247,0.48)] hover:border-purple-400 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-left w-full"
+              className="card-smooth-interactive group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-purple-200/90 shadow-[0_4px_20px_-2px_rgba(168,85,247,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(168,85,247,0.48)] hover:border-purple-400 cursor-pointer text-left w-full"
             >
               <div className="flex items-center min-w-0 flex-1">
                 <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-purple-100 shadow-2xs flex items-center justify-center p-2.5 shrink-0 group-hover:scale-105 transition-transform duration-300">
@@ -320,7 +339,7 @@ export const PortalHome: React.FC = () => {
               href="https://academy.dleaftech.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-orange-200/90 shadow-[0_4px_20px_-2px_rgba(249,115,22,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(249,115,22,0.48)] hover:border-orange-400 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+              className="card-smooth-interactive group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-orange-200/90 shadow-[0_4px_20px_-2px_rgba(249,115,22,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(249,115,22,0.48)] hover:border-orange-400 cursor-pointer"
             >
               <div className="flex items-center min-w-0 flex-1">
                 <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-orange-100 shadow-2xs flex items-center justify-center p-2 shrink-0 group-hover:scale-105 transition-transform duration-300">
@@ -512,101 +531,105 @@ export const PortalHome: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          SECTION 2: CORE PLATFORM CAPABILITIES (Compact Grid - Fraunces Editorial Serif)
+          SECTION 2: CORE PLATFORM CAPABILITIES - Simple, Professional & Compact
       ========================================================================== */}
-      <section className="py-7 px-4 sm:px-8 lg:px-12 bg-white border-b border-[#F1D5E4]">
+      <section className="py-8 sm:py-10 px-4 sm:px-8 lg:px-12 bg-white border-b border-[#F1D5E4]/80 relative">
         <div className="max-w-7xl mx-auto">
-          {/* Section Heading */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-4">
+          {/* Section Heading - Clean, Modern Sans-Serif */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
             <div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-[#EE0979] font-editorial">
-                High-Impact Growth Architecture
+              <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-[#EE0979] bg-[#FFF1F7] border border-[#F1D5E4] px-2.5 py-0.5 rounded-full mb-1.5">
+                <Sparkles className="w-3 h-3 text-[#EE0979]" />
+                <span>Platform Capabilities</span>
               </div>
-              <h2 className="text-xl sm:text-2xl lg:text-[28px] font-editorial-heading text-[#0F172A] leading-tight">
+              <h2 className="text-xl sm:text-2xl lg:text-[26px] font-extrabold text-[#0F172A] tracking-tight leading-tight">
                 Everything required to capture, close, and retain accounts.
               </h2>
             </div>
             <button
               onClick={() => setPortalPage('features')}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#EE0979] hover:text-[#FF6A00] font-editorial transition cursor-pointer self-start sm:self-end"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#EE0979] hover:text-[#D8066C] transition-colors cursor-pointer group shrink-0 self-start sm:self-auto"
             >
               <span>Explore all 24+ modules</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
 
-          {/* 6 Ultra-Compact Cards - Zero Dead Space */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5">
+          {/* 6 Compact, Professional Cards - Clean Sans-Serif, Zero Truncation, Smooth Reactions */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             {[
               {
                 icon: Briefcase,
-                color: 'text-[#EE0979] bg-[#FFF1F7]',
+                color: 'text-[#EE0979]',
+                bg: 'bg-pink-50',
+                border: 'border-pink-100',
                 title: 'Sales Automation',
-                desc: 'Auto-lead routing, scoring & automated follow-up sequences.',
-                tag: 'Core'
+                desc: 'Lead scoring & auto follow-ups',
               },
               {
                 icon: Sparkles,
-                color: 'text-[#FF6A00] bg-[#FFF8FA]',
-                title: 'DleafAI Intelligence',
-                desc: 'Smart churn alerts, deal win predictions & AI email drafts.',
-                tag: 'AI Powered'
+                color: 'text-[#FF6A00]',
+                bg: 'bg-orange-50',
+                border: 'border-orange-100',
+                title: 'DleafAI Engine',
+                desc: 'Win predictions & smart assist',
               },
               {
                 icon: PhoneCall,
-                color: 'text-[#7928CA] bg-[#F5EEFF]',
+                color: 'text-[#7928CA]',
+                bg: 'bg-purple-50',
+                border: 'border-purple-100',
                 title: 'Omnichannel Hub',
-                desc: 'Unified Twilio telephony, WhatsApp Business & Gmail inbox.',
-                tag: 'Instant'
+                desc: 'WhatsApp API & cloud calling',
               },
               {
                 icon: Layers,
-                color: 'text-[#EE0979] bg-[#FFF1F7]',
+                color: 'text-[#1877F2]',
+                bg: 'bg-blue-50',
+                border: 'border-blue-100',
                 title: 'Deal Blueprints',
-                desc: 'Visual drag-and-drop pipelines with strict stage gates.',
-                tag: 'Workflow'
+                desc: 'Visual pipelines & stage gates',
               },
               {
                 icon: Grid,
-                color: 'text-[#FF6A00] bg-[#FFF8FA]',
-                title: 'No-Code Modules',
-                desc: 'Custom fields, dynamic layouts, and role-based permissions.',
-                tag: 'Custom'
+                color: 'text-[#00C244]',
+                bg: 'bg-emerald-50',
+                border: 'border-emerald-100',
+                title: 'CPQ & Billing',
+                desc: 'GST invoices & custom fields',
               },
               {
                 icon: TrendingUp,
-                color: 'text-[#7928CA] bg-[#F5EEFF]',
+                color: 'text-[#6366F1]',
+                bg: 'bg-indigo-50',
+                border: 'border-indigo-100',
                 title: 'Revenue Analytics',
-                desc: 'Cohort analysis, sales velocity, and executive dashboards.',
-                tag: 'Real-time'
-              }
+                desc: 'Deal velocity & cohort KPIs',
+              },
             ].map((card, idx) => {
               const Icon = card.icon;
               return (
                 <div
                   key={idx}
                   onClick={() => setPortalPage('features')}
-                  className="group p-3.5 rounded-xl bg-white border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between"
+                  className="card-smooth-interactive group p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200/90 hover:border-[#EE0979] flex flex-col justify-between cursor-pointer text-left"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <div className={`w-8 h-8 rounded-lg ${card.color} flex items-center justify-center`}>
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <span className="text-[10px] font-semibold text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded">
-                        {card.tag}
-                      </span>
+                  <div className="flex items-center justify-between">
+                    <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl ${card.bg} ${card.color} flex items-center justify-center border ${card.border} group-hover:scale-108 transition-transform duration-300 shadow-2xs`}>
+                      <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                     </div>
-                    <h3 className="font-editorial text-[14px] font-semibold text-[#0F172A] group-hover:text-[#EE0979] transition-colors leading-snug">
+                    <div className="w-6 h-6 rounded-full bg-slate-50 group-hover:bg-[#FFF1F7] text-slate-400 group-hover:text-[#EE0979] flex items-center justify-center transition-colors">
+                      <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </div>
+
+                  <div className="mt-3.5">
+                    <h3 className="font-bold text-[13px] sm:text-[13.5px] text-[#0F172A] group-hover:text-[#EE0979] transition-colors leading-tight tracking-tight">
                       {card.title}
                     </h3>
-                    <p className="font-editorial-body text-[11.5px] text-slate-600 mt-1 leading-normal line-clamp-2">
+                    <p className="text-[11px] sm:text-[11.5px] text-slate-500 mt-1 leading-snug font-normal">
                       {card.desc}
                     </p>
-                  </div>
-                  <div className="pt-2.5 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-[#EE0979] group-hover:text-[#FF6A00]">
-                    <span>Learn more</span>
-                    <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                   </div>
                 </div>
               );
