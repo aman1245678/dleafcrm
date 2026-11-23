@@ -219,28 +219,29 @@ export const PortalFeatures: React.FC = () => {
   const currentCategoryData = featuresMap[selectedCat] || featuresMap.SFA;
 
   return (
-    <div className="flex-1 flex flex-col bg-slate-50 font-sans pb-20">
-      {/* Top Banner */}
-      <section className="bg-white border-b border-slate-200 py-12 px-4 sm:px-8">
-        <div className="max-w-5xl mx-auto text-center space-y-3">
-          <span className="text-xs font-bold text-[#EE0979] uppercase tracking-wider bg-[#FFF8FA] border border-[#F1D5E4] px-3 py-1 rounded-full">
-            Dleaf CRM Complete Capabilities Matrix
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+    <div className="flex-1 flex flex-col bg-slate-50 font-sans pb-12">
+      {/* Top Banner - Compact, Sleek & Professional */}
+      <section className="bg-white border-b border-slate-200/80 py-4 sm:py-5 px-4 sm:px-8">
+        <div className="max-w-4xl mx-auto text-center space-y-1 sm:space-y-1.5">
+          <div className="inline-flex items-center gap-1.5 text-[10.5px] font-bold text-[#EE0979] bg-[#FFF1F7] border border-[#F1D5E4] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            <Sparkles className="w-3 h-3 text-[#EE0979]" />
+            <span>Enterprise Feature Matrix</span>
+          </div>
+          <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
             Comprehensive Enterprise Feature Suite
           </h1>
-          <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">
-            Everything your sales, marketing, and support teams need to manage customer lifecycles and scale enterprise revenue.
+          <p className="text-xs sm:text-[13px] text-slate-500 max-w-xl mx-auto font-normal leading-snug">
+            Everything your sales, marketing, and support teams need to manage lifecycles and scale revenue.
           </p>
         </div>
       </section>
 
       {/* Main Two-Column Layout */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-8 mt-10">
-        <div className="flex flex-col lg:flex-row gap-8">
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 mt-5 sm:mt-6">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Left Category Selector */}
-          <div className="w-full lg:w-72 shrink-0 space-y-2">
-            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">
+          <div className="w-full lg:w-72 shrink-0 space-y-1.5">
+            <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-2 mb-1.5">
               Feature Categories
             </div>
             {categories.map((c) => (
@@ -250,14 +251,14 @@ export const PortalFeatures: React.FC = () => {
                   setSelectedCat(c.id);
                   setPortalActiveFeatureCategory(c.id);
                 }}
-                className={`w-full text-left px-4 py-3 rounded-xl text-xs font-bold transition flex items-center justify-between ${
+                className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-between cursor-pointer ${
                   selectedCat === c.id
-                    ? 'bg-[#EE0979] text-white shadow-md'
-                    : 'bg-white text-slate-700 hover:bg-slate-200/80 border border-slate-200'
+                    ? 'bg-[#EE0979] text-white shadow-sm scale-[1.01]'
+                    : 'bg-white text-slate-700 hover:bg-slate-100 hover:border-pink-200 border border-slate-200/90'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <c.icon className="w-4 h-4" />
+                  <c.icon className="w-3.5 h-3.5" />
                   <span>{c.label}</span>
                 </div>
                 <span className="text-xs opacity-70">›</span>
@@ -265,15 +266,15 @@ export const PortalFeatures: React.FC = () => {
             ))}
 
             {/* Quick Action Card */}
-            <div className="mt-6 p-5 bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-2xl shadow-md">
-              <div className="text-xs font-bold text-rose-500 uppercase tracking-wider">Test It Live</div>
-              <h4 className="text-sm font-bold mt-1">Open Live CRM Workspace</h4>
-              <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                Test the 8-stage Kanban board and WhatsApp communication drawer directly in the browser applet.
+            <div className="mt-4 p-4 bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-2xl shadow-md border border-white/10">
+              <div className="text-[10px] font-bold text-[#FF6A00] uppercase tracking-wider">Test It Live</div>
+              <h4 className="text-xs sm:text-sm font-bold mt-0.5">Open Live CRM Workspace</h4>
+              <p className="text-[11px] text-slate-300 mt-0.5 leading-relaxed">
+                Test the visual Kanban board and WhatsApp communication drawer in the browser.
               </p>
               <button
                 onClick={() => setAppMode('workspace')}
-                className="mt-4 w-full py-2 bg-[#EE0979] hover:bg-pink-600 text-white font-bold text-xs rounded-lg transition"
+                className="mt-3 w-full py-2 bg-gradient-to-r from-[#FF6A00] to-[#EE0979] hover:opacity-95 text-white font-bold text-xs rounded-lg transition shadow-sm cursor-pointer"
               >
                 Launch Workspace
               </button>
@@ -281,32 +282,32 @@ export const PortalFeatures: React.FC = () => {
           </div>
 
           {/* Right Detail Pane */}
-          <div className="flex-1 space-y-6">
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
-              <span className="text-xs font-bold text-[#EE0979] uppercase tracking-wider">Module Overview</span>
-              <h2 className="text-2xl font-bold text-slate-900 mt-1">{currentCategoryData.title}</h2>
-              <p className="text-slate-600 text-xs sm:text-sm mt-1">{currentCategoryData.subtitle}</p>
+          <div className="flex-1 space-y-4">
+            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/90 shadow-2xs">
+              <span className="text-[10.5px] font-bold text-[#EE0979] uppercase tracking-wider">Module Overview</span>
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900 mt-0.5">{currentCategoryData.title}</h2>
+              <p className="text-slate-500 text-xs mt-0.5">{currentCategoryData.subtitle}</p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 mt-5">
                 {currentCategoryData.items.map((item) => (
                   <div
                     key={item.name}
-                    className="p-5 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-blue-300 transition shadow-2xs flex flex-col justify-between"
+                    className="card-smooth-interactive p-4 rounded-xl border border-slate-200/90 bg-slate-50/40 hover:bg-white hover:border-[#EE0979]/50 transition shadow-2xs flex flex-col justify-between"
                   >
                     <div>
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <h4 className="font-bold text-slate-900 text-sm">{item.name}</h4>
+                      <div className="flex items-center justify-between gap-2 mb-1.5">
+                        <h4 className="font-bold text-slate-900 text-xs sm:text-[13px]">{item.name}</h4>
                         {item.tag && (
-                          <span className="bg-[#FFF1F7] text-[#EE0979] text-[10px] font-bold px-2 py-0.5 rounded-full">
+                          <span className="bg-[#FFF1F7] text-[#EE0979] text-[9.5px] font-bold px-1.5 py-0.5 rounded-full border border-[#F1D5E4]">
                             {item.tag}
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+                      <p className="text-[11px] text-slate-500 leading-relaxed">{item.desc}</p>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-slate-200/80 flex items-center justify-between text-[11px]">
-                      <span className="text-[#D8086C] font-bold bg-pink-50 px-2 py-0.5 rounded border border-rose-200">
+                    <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[10.5px]">
+                      <span className="text-[#EE0979] font-bold bg-pink-50 px-2 py-0.5 rounded border border-pink-200">
                         {item.metrics}
                       </span>
                       <button
