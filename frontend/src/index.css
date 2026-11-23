@@ -166,3 +166,34 @@
   transform: translateY(-1px);
 }
 
+/* Butter-Smooth Button & Badge Micro-Interactions */
+.btn-smooth-interactive {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+.btn-smooth-interactive:hover {
+  transform: translateY(-1.5px) scale(1.02);
+  box-shadow: 0 8px 22px -4px rgba(238, 9, 121, 0.28);
+}
+
+.btn-smooth-interactive:active {
+  transform: translateY(0.5px) scale(0.98);
+}
+
+/* Smooth Tab / Capsule Transition */
+.tab-capsule-smooth {
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, background-color, color;
+}
+
+.tab-capsule-smooth:hover {
+  transform: translateY(-1px);
+}
+
+.tab-capsule-smooth:active {
+  transform: translateY(0px) scale(0.98);
+}
+
