@@ -161,12 +161,23 @@ export const PortalHeader: React.FC = () => {
           </button>
         </div>
 
-        {/* Center: Products, Solutions, Customers, Resources, Pricing */}
+        {/* Center: Home, Products, Solutions, Customers, Resources, Pricing */}
         <nav className="hidden lg:flex items-center gap-6 text-[13.5px] font-medium text-[#0F172A]">
+          <button
+            onClick={() => handleNavClick('home')}
+            className={`hover:text-[#EE0979] transition cursor-pointer font-semibold py-1 ${
+              portalPage === 'home' ? 'text-[#EE0979]' : 'text-[#0F172A]'
+            }`}
+          >
+            Home
+          </button>
+
           <div className="relative group">
             <button
               onClick={() => handleNavClick('features')}
-              className="flex items-center gap-1 hover:text-[#EE0979] transition py-1 cursor-pointer font-semibold"
+              className={`flex items-center gap-1 hover:text-[#EE0979] transition py-1 cursor-pointer font-semibold ${
+                portalPage === 'features' ? 'text-[#EE0979]' : 'text-[#0F172A]'
+              }`}
             >
               <span>Products</span>
               <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
@@ -176,7 +187,9 @@ export const PortalHeader: React.FC = () => {
           <div className="relative group">
             <button
               onClick={() => handleNavClick('platform')}
-              className="flex items-center gap-1 hover:text-[#EE0979] transition py-1 cursor-pointer font-semibold"
+              className={`flex items-center gap-1 hover:text-[#EE0979] transition py-1 cursor-pointer font-semibold ${
+                portalPage === 'platform' ? 'text-[#EE0979]' : 'text-[#0F172A]'
+              }`}
             >
               <span>Solutions</span>
               <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
@@ -185,7 +198,9 @@ export const PortalHeader: React.FC = () => {
 
           <button
             onClick={() => handleNavClick('customers')}
-            className="hover:text-[#EE0979] transition cursor-pointer font-semibold"
+            className={`hover:text-[#EE0979] transition cursor-pointer font-semibold py-1 ${
+              portalPage === 'customers' ? 'text-[#EE0979]' : 'text-[#0F172A]'
+            }`}
           >
             Customers
           </button>
@@ -193,7 +208,9 @@ export const PortalHeader: React.FC = () => {
           <div className="relative group">
             <button
               onClick={() => handleNavClick('resources')}
-              className="flex items-center gap-1 hover:text-[#EE0979] transition py-1 cursor-pointer font-semibold"
+              className={`flex items-center gap-1 hover:text-[#EE0979] transition py-1 cursor-pointer font-semibold ${
+                portalPage === 'resources' ? 'text-[#EE0979]' : 'text-[#0F172A]'
+              }`}
             >
               <span>Resources</span>
               <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
@@ -202,7 +219,9 @@ export const PortalHeader: React.FC = () => {
 
           <button
             onClick={() => handleNavClick('pricing')}
-            className="hover:text-[#EE0979] transition cursor-pointer font-semibold"
+            className={`hover:text-[#EE0979] transition cursor-pointer font-semibold py-1 ${
+              portalPage === 'pricing' ? 'text-[#EE0979]' : 'text-[#0F172A]'
+            }`}
           >
             Pricing
           </button>
