@@ -106,13 +106,6 @@ export const PortalHome: React.FC = () => {
             {/* ----------------- LEFT COLUMN: Compact Copy & Form (7 cols) ----------------- */}
             <div className="lg:col-span-7 space-y-3.5 text-left">
 
-              {/* Exact Pill Badge */}
-              <div className="inline-flex max-w-full items-center gap-1.5 sm:gap-2 bg-white/95 backdrop-blur-md border border-[#F1D5E4] px-3 sm:px-3.5 py-1 rounded-full text-xs font-semibold text-[#0F172A] shadow-xs">
-                <span className="tracking-tight text-[10px] sm:text-[11px] font-bold text-slate-800 leading-snug">
-                  DleafTech Innovation Ecosystem | Meta WhatsApp Official BSP
-                </span>
-              </div>
-
               {/* Compact Main Heading */}
               <h1 className="text-[26px] sm:text-3xl lg:text-[40px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.2]">
                 Your Digital Vision,<br />
@@ -513,36 +506,6 @@ export const PortalHome: React.FC = () => {
 
             </div>
 
-            {/* Bottom Trust & Accreditation Bar with Milox, Apna Patna & Partner Badges */}
-            <div className="mt-6 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 px-2">
-              <div className="flex flex-wrap items-center gap-4">
-                <span className="font-bold text-slate-700">
-                  Meta Verified Tech Provider
-                </span>
-                <span className="hidden sm:inline text-slate-300">|</span>
-                <span className="font-bold text-slate-700">
-                  ISO 27001 Cloud Infrastructure
-                </span>
-                <span className="hidden sm:inline text-slate-300">|</span>
-                <span className="font-bold text-slate-700">
-                  10,000+ Alumni & Active Users
-                </span>
-              </div>
-
-              {/* Extended network badges */}
-              <div className="flex items-center gap-2 text-[11px] font-medium text-slate-400">
-                <span>Also in Network:</span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-50 text-slate-600 border border-slate-200">
-                  <img src="/brands/milox.png" alt="Milox" className="w-3.5 h-3.5 rounded" />
-                  Milox
-                </span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-50 text-slate-600 border border-slate-200">
-                  <img src="/brands/apna-patna.png" alt="Apna Patna" className="w-3.5 h-3.5 rounded" />
-                  Apna Patna
-                </span>
-              </div>
-            </div>
-
           </div>
 
         </div>
@@ -699,10 +662,6 @@ export const PortalHome: React.FC = () => {
 
           {/* Section Header - Clean & Focused */}
           <div className="text-center max-w-2xl mx-auto space-y-2.5">
-            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 bg-white border border-slate-200 px-3 py-1 rounded-full shadow-2xs">
-              <Briefcase className="w-3.5 h-3.5 text-[#EE0979]" />
-              <span>Pipeline & Sales Execution</span>
-            </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
               Manage Deals, Quotes & Telephony from One Unified Hub
             </h2>
