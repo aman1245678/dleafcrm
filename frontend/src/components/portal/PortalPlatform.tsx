@@ -12,6 +12,7 @@ import {
   ArrowRight,
   Database,
   Lock,
+  Sparkles,
 } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
 
@@ -58,62 +59,68 @@ export const PortalPlatform: React.FC = () => {
   ];
 
   return (
-    <div className="flex-1 flex flex-col bg-slate-50 font-sans pb-20">
-      {/* Top Banner */}
-      <section className="bg-white border-b border-slate-200 py-14 px-4 sm:px-8 text-center">
-        <div className="max-w-4xl mx-auto space-y-4">
-          <span className="text-xs font-bold text-[#EE0979] uppercase tracking-wider bg-[#FFF8FA] border border-[#F1D5E4] px-3 py-1 rounded-full">
-            Enterprise Cloud Foundation
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+    <div className="flex-1 flex flex-col bg-slate-50 font-sans pb-14">
+      {/* Top Banner - Compact, Sleek & Professional */}
+      <section className="bg-white border-b border-slate-200/80 py-4 sm:py-5 px-4 sm:px-8 text-center">
+        <div className="max-w-4xl mx-auto space-y-1 sm:space-y-1.5">
+          <div className="inline-flex items-center gap-1.5 text-[10.5px] font-bold text-[#EE0979] bg-[#FFF1F7] border border-[#F1D5E4] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            <Sparkles className="w-3 h-3 text-[#EE0979]" />
+            <span>Enterprise Cloud Foundation</span>
+          </div>
+          <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-tight">
             An extensible platform built for developer flexibility and enterprise scale
           </h1>
-          <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-xs sm:text-[13px] text-slate-500 max-w-xl mx-auto font-normal leading-snug">
             Extend CRM beyond out-of-the-box templates. Customize layouts, connect external microservices via MCP, and deploy custom business logic.
           </p>
         </div>
       </section>
 
       {/* Grid of Platform Pillars */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-8 mt-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 mt-5 sm:mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
           {platformPillars.map((p) => (
-            <div key={p.title} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-2xs hover:shadow-md transition">
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center border ${p.color} mb-4`}>
-                <p.icon className="w-6 h-6" />
+            <div
+              key={p.title}
+              className="card-smooth-interactive bg-white rounded-xl p-4 sm:p-5 border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col"
+            >
+              <div className={`w-10 h-10 rounded-lg flex items-center justify-center border ${p.color} mb-3 shadow-2xs`}>
+                <p.icon className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900">{p.title}</h3>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed">{p.desc}</p>
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 tracking-tight">{p.title}</h3>
+              <p className="text-xs text-slate-600 mt-1.5 leading-relaxed flex-1">{p.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Developer MCP Server Highlight Box */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-8 mt-14">
-        <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-8">
-          <div className="space-y-4 max-w-xl">
-            <span className="bg-pink-600/20 text-pink-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 mt-8 sm:mt-10">
+        <div className="card-smooth-interactive bg-slate-900 text-white rounded-2xl p-5 sm:p-8 shadow-xl border border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8">
+          <div className="space-y-2.5 sm:space-y-3 max-w-xl">
+            <span className="inline-flex items-center gap-1.5 bg-pink-600/20 text-pink-400 text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-pink-500/20">
+              <Sparkles className="w-3 h-3 text-pink-400" />
               Autonomous AI Standard
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+            <h2 className="text-lg sm:text-2xl font-black tracking-tight text-white">
               Model Context Protocol (MCP) Server Built-In
             </h2>
-            <p className="text-sm text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
               Connect external AI agents (Claude, Gemini, OpenAI) directly to your Dleaf CRM database. Read pipeline deals, update lead scores, and dispatch WhatsApp templates via standardized JSON-RPC tools.
             </p>
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex items-center gap-3 pt-1">
               <button
                 onClick={() => setAppMode('workspace')}
-                className="bg-pink-600 hover:bg-rose-500 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-xl transition"
+                className="btn-smooth-active bg-gradient-to-r from-[#EE0979] to-[#FF6A00] hover:opacity-95 text-white font-bold text-xs px-4 py-2 rounded-lg shadow-sm transition inline-flex items-center gap-1.5"
               >
-                Open MCP Playground in App
+                <span>Open MCP Playground in App</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
 
-          <div className="w-full lg:w-96 bg-slate-950 p-4 rounded-2xl border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto shadow-inner">
-            <div className="text-rose-500">// JSON-RPC Tool Definition</div>
+          <div className="w-full lg:w-96 bg-slate-950 p-3.5 sm:p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto shadow-inner">
+            <div className="text-rose-400 font-semibold text-[11px]">// JSON-RPC Tool Definition</div>
             <pre className="text-[11px] text-slate-400 mt-2 leading-relaxed">
 {`{
   "name": "crm_get_pipeline_deals",
@@ -124,9 +131,9 @@ export const PortalPlatform: React.FC = () => {
   }
 }`}
             </pre>
-            <div className="mt-3 pt-3 border-t border-slate-800 text-[10px] text-slate-500 flex justify-between">
+            <div className="mt-2.5 pt-2.5 border-t border-slate-800 text-[10px] text-slate-500 flex justify-between">
               <span>Status: Listening on port 3000</span>
-              <span className="text-rose-500 font-bold">200 OK</span>
+              <span className="text-rose-400 font-bold">200 OK</span>
             </div>
           </div>
         </div>
