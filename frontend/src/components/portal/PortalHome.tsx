@@ -255,97 +255,94 @@ export const PortalHome: React.FC = () => {
           </div>
 
           {/* ----------------- 4 HERO FEATURE PILLARS CARDS (Bottom Ribbon) ----------------- */}
-          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4.5">
 
-            {/* Pillar 1: Dleaftech */}
-            <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-lg transition-all text-left flex items-start gap-3 sm:gap-3.5 group">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-pink-200 transition-all">
-                <img src="/brands/dleaftech-emblem.png" alt="Dleaftech" className="w-full h-full object-contain" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between">
-                  <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Dleaftech Agency</div>
-                  <span className="text-[9px] bg-slate-100 text-slate-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">Parent</span>
+            {/* Pillar 1: Dleaftech Agency */}
+            <a
+              href="https://www.dleaftech.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-blue-200/90 shadow-[0_4px_20px_-2px_rgba(59,130,246,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(59,130,246,0.48)] hover:border-blue-400 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+            >
+              <div className="flex items-center min-w-0 flex-1">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-blue-100 shadow-2xs flex items-center justify-center p-2.5 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                  <img src="/brands/dleaftech-emblem.png" alt="Dleaftech" className="w-full h-full object-contain" />
                 </div>
-                <div className="text-[11px] sm:text-[11.5px] text-slate-600 mt-0.5 leading-snug">AI enterprise apps, custom software & web development.</div>
-                <a
-                  href="https://www.dleaftech.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[10.5px] sm:text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
-                >
-                  <span>Visit dleaftech.com</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                <div className="h-6 sm:h-7 w-[1.5px] bg-slate-200/90 mx-2.5 sm:mx-3 shrink-0" />
+                <div className="flex flex-col text-left leading-tight min-w-0">
+                  <span className="font-extrabold text-[#0F172A] text-[13px] sm:text-[14px] tracking-tight">Dleaftech</span>
+                  <span className="font-extrabold text-[#0F172A] text-[13px] sm:text-[14px] tracking-tight">Agency</span>
+                </div>
               </div>
-            </div>
+              <div className="w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-[#1877F2] text-white flex items-center justify-center shrink-0 ml-2 shadow-sm group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              </div>
+            </a>
 
-            {/* Pillar 2: Nexwapi */}
-            <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-emerald-500 hover:shadow-lg transition-all text-left flex items-start gap-3 sm:gap-3.5 group">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-emerald-200 transition-all">
-                <img src="/brands/nexwapi.svg" alt="Nexwapi" className="w-full h-full object-contain" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between">
-                  <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Nexwapi WhatsApp API</div>
-                  <span className="text-[9px] bg-emerald-50 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200">Meta BSP</span>
+            {/* Pillar 2: Nexwapi WhatsApp API */}
+            <a
+              href="https://nexwapi.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-emerald-200/90 shadow-[0_4px_20px_-2px_rgba(16,185,129,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(16,185,129,0.48)] hover:border-emerald-400 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+            >
+              <div className="flex items-center min-w-0 flex-1">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-emerald-100 shadow-2xs flex items-center justify-center p-2.5 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                  <img src="/brands/nexwapi.svg" alt="Nexwapi" className="w-full h-full object-contain" />
                 </div>
-                <div className="text-[11px] sm:text-[11.5px] text-slate-600 mt-0.5 leading-snug">Official WhatsApp Cloud API & automated bulk broadcasts.</div>
-                <a
-                  href="https://nexwapi.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[10.5px] sm:text-[11px] font-bold text-emerald-600 hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
-                >
-                  <span>Explore nexwapi.com</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                <div className="h-6 sm:h-7 w-[1.5px] bg-slate-200/90 mx-2.5 sm:mx-3 shrink-0" />
+                <div className="flex flex-col text-left leading-tight min-w-0">
+                  <span className="font-extrabold text-[#0F172A] text-[13px] sm:text-[14px] tracking-tight">Nexwapi</span>
+                  <span className="font-extrabold text-[#0F172A] text-[13px] sm:text-[14px] tracking-tight">WhatsApp API</span>
+                </div>
               </div>
-            </div>
+              <div className="w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-[#00C244] text-white flex items-center justify-center shrink-0 ml-2 shadow-sm group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              </div>
+            </a>
 
-            {/* Pillar 3: DleafCRM */}
-            <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-[#EE0979] hover:shadow-lg transition-all text-left flex items-start gap-3 sm:gap-3.5 group">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1.5 shrink-0 group-hover:scale-105 group-hover:border-pink-200 transition-all">
-                <img src="/favicon.png" alt="DleafCRM" className="w-full h-full object-contain" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between">
-                  <div className="font-bold text-[#0F172A] text-xs sm:text-sm">DleafCRM Intelligence</div>
-                  <span className="text-[9px] bg-[#FFF1F7] text-[#EE0979] font-bold px-1.5 py-0.5 rounded border border-[#F1D5E4]">Live App</span>
+            {/* Pillar 3: DleafCRM Intelligence */}
+            <button
+              type="button"
+              onClick={() => setAppMode('workspace')}
+              className="group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-purple-200/90 shadow-[0_4px_20px_-2px_rgba(168,85,247,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(168,85,247,0.48)] hover:border-purple-400 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer text-left w-full"
+            >
+              <div className="flex items-center min-w-0 flex-1">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-purple-100 shadow-2xs flex items-center justify-center p-2.5 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                  <img src="/favicon.png" alt="DleafCRM" className="w-full h-full object-contain" />
                 </div>
-                <div className="text-[11px] sm:text-[11.5px] text-slate-600 mt-0.5 leading-snug">Visual deals pipeline, GST invoices, CPQ & AI lead scoring.</div>
-                <button
-                  onClick={() => setAppMode('workspace')}
-                  className="text-[10.5px] sm:text-[11px] font-bold text-[#EE0979] hover:underline mt-1.5 flex items-center gap-1 cursor-pointer"
-                >
-                  <span>Launch Workspace</span>
-                  <ArrowRight className="w-3 h-3" />
-                </button>
+                <div className="h-6 sm:h-7 w-[1.5px] bg-slate-200/90 mx-2.5 sm:mx-3 shrink-0" />
+                <div className="flex flex-col text-left leading-tight min-w-0">
+                  <span className="font-extrabold text-[#0F172A] text-[13px] sm:text-[14px] tracking-tight">DleafCRM</span>
+                  <span className="font-extrabold text-[#0F172A] text-[13px] sm:text-[14px] tracking-tight">Intelligence</span>
+                </div>
               </div>
-            </div>
+              <div className="w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-[#7928CA] text-white flex items-center justify-center shrink-0 ml-2 shadow-sm group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              </div>
+            </button>
 
-            {/* Pillar 4: Academy */}
-            <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#F1D5E4] hover:border-purple-500 hover:shadow-lg transition-all text-left flex items-start gap-3 sm:gap-3.5 group">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-slate-100 shadow-xs flex items-center justify-center p-1 shrink-0 group-hover:scale-105 group-hover:border-purple-200 transition-all">
-                <img src="/brands/dleaftech-academy-alt.png" alt="Dleaftech Academy" className="w-full h-full object-contain rounded-lg" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between">
-                  <div className="font-bold text-[#0F172A] text-xs sm:text-sm">Dleaftech Academy</div>
-                  <span className="text-[9px] bg-purple-50 text-purple-700 font-bold px-1.5 py-0.5 rounded border border-purple-200">EdTech</span>
+            {/* Pillar 4: Dleaftech Academy */}
+            <a
+              href="https://academy.dleaftech.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative rounded-full bg-white/95 backdrop-blur-md p-2 sm:p-2.5 pl-2.5 sm:pl-3 pr-2.5 sm:pr-3 flex items-center justify-between border border-orange-200/90 shadow-[0_4px_20px_-2px_rgba(249,115,22,0.30)] hover:shadow-[0_8px_25px_-2px_rgba(249,115,22,0.48)] hover:border-orange-400 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+            >
+              <div className="flex items-center min-w-0 flex-1">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white border border-orange-100 shadow-2xs flex items-center justify-center p-2 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                  <img src="/brands/dleaftech-academy-alt.png" alt="Dleaftech Academy" className="w-full h-full object-contain rounded-full" />
                 </div>
-                <div className="text-[11px] sm:text-[11.5px] text-slate-600 mt-0.5 leading-snug">10,000+ engineers trained, 500+ live projects & hiring partners.</div>
-                <a
-                  href="https://academy.dleaftech.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[10.5px] sm:text-[11px] font-bold text-purple-600 hover:underline mt-1.5 inline-flex items-center gap-1 cursor-pointer"
-                >
-                  <span>academy.dleaftech.com</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                <div className="h-6 sm:h-7 w-[1.5px] bg-slate-200/90 mx-2.5 sm:mx-3 shrink-0" />
+                <div className="flex flex-col text-left leading-tight min-w-0">
+                  <span className="font-extrabold text-[#0F172A] text-[13px] sm:text-[14px] tracking-tight">Dleaftech</span>
+                  <span className="font-extrabold text-[#0F172A] text-[13px] sm:text-[14px] tracking-tight">Academy</span>
+                </div>
               </div>
-            </div>
+              <div className="w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-[#FF6A00] text-white flex items-center justify-center shrink-0 ml-2 shadow-sm group-hover:scale-110 group-hover:translate-x-0.5 transition-transform duration-200">
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              </div>
+            </a>
 
           </div>
 

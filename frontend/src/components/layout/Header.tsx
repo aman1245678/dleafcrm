@@ -28,6 +28,7 @@ import {
   BookOpen,
   Menu,
   X,
+  UserCheck,
 } from 'lucide-react';
 import { useCRM } from '../../context/CRMContext';
 import { DleafProfileDrawer } from '../modals/DleafProfileDrawer';
